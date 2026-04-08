@@ -1,0 +1,131 @@
+name: skivpn
+description: skivpn
+
+publish_to: none 
+version: 1.0.0+112
+environment:
+  sdk: ">=3.9.0 <4.0.0"
+  flutter: ">=3.35.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+
+  cupertino_icons: 1.0.8
+  flutter_emoji: 2.5.1
+  device_info_plus: 11.2.2
+  package_info_plus: 9.0.0
+  ffi: 2.1.5
+  url_launcher: 6.3.2
+  flutter_inappwebview:
+    #path: ../../KaringX/flutter_inappwebview/flutter_inappwebview
+    git: 
+      url: https://github.com/KaringX/flutter_inappwebview.git
+      ref: 3a5ead04885537489f3226a04cd0481a90183bbe #v6.2.0-beta.3
+      path: flutter_inappwebview
+  path_provider: 2.1.5
+  flutter_secure_storage: 10.0.0
+  json_annotation: 4.9.0
+  re_editor: 0.8.0
+  re_highlight: 0.0.3
+  launch_at_startup: 0.2.2 #0.2.2 - 0.3.1 StartupApproved cause reg exceptions
+  provider: 6.1.5+1
+  uuid: 4.5.3 #flutter_test 
+  slang: 4.14.0
+  slang_flutter: 4.14.0
+  watcher: 1.2.1
+  punycode_converter: 0.2.1
+  yaml: 3.1.3
+  scrollview_observer: 1.26.3
+  after_layout: 1.2.0
+  flutter_install_referrer: 2.1.1
+  windows_single_instance: 1.1.0
+  tray_manager: 0.5.2
+  hotkey_manager: 0.2.3
+  #accessibility_tools: 2.2.2
+  logger: 2.7.0
+  tuple: 2.0.2
+  crypto: 3.0.7
+  cryptography: 2.9.0
+  encrypt: 5.0.3
+  open_dir: 0.0.2+1
+  path: 1.9.1 #flutter_test
+  characters: 1.4.1 #flutter_test
+  win32_registry: 1.1.5 #flutter_test
+  share_plus: 12.0.1
+  app_installer: 1.3.1
+  app_settings: 7.0.0 
+  quick_actions: 1.1.0
+  android_package_manager: #0.7.1
+    #path: ../android_package_manager
+    git:
+      url: https://github.com/KaringX/android_package_manager.git
+      ref: 7b6be178b17c55e715a3575330d2330cbc812b1d
+  move_to_background: #1.0.2
+    #path: ../move_to_background/
+    git:
+      url: https://github.com/KaringX/move_to_background.git
+      ref: 9720fa00946af134caf04b05702230d4329f857f
+  window_manager: #0.5.0
+    #path: ../window_manager/packages/
+    git:
+      url: https://github.com/KaringX/window_manager.git
+      ref: bf21977eaa4e6035b1d81e249f91525a74f86ffd
+      path: packages/window_manager
+  libclash_vpn_service:
+    path: ../libclash-vpn-service/
+    #git:
+      #url: https://github.com/KaringX/libclash-vpn-service.git
+      #ref: master
+  board_service:
+    path: ../board-service/
+    #git:
+      #url: https://github.com/KaringX/board-service.git
+      #ref: master
+
+dev_dependencies:
+  flutter_launcher_icons: 0.14.4
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: 5.0.0
+  build_runner: 2.4.13
+  json_serializable: 6.8.0 #dart run build_runner build --delete-conflicting-outputs
+
+dependency_overrides:
+  path_provider_foundation: 2.3.2
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/txts/
+    - assets/fonts/
+    - assets/images/
+    - assets/datas/
+
+  fonts:
+    - family: Emoji # from hiddify
+      fonts:
+        - asset: assets/fonts/Emoji.ttf
+
+
+#https://www.appicon.co/
+flutter_launcher_icons: #flutter pub run flutter_launcher_icons
+  android: ic_launcher
+  ios: true
+  image_path: logo-round.png 
+  min_sdk_android: 21 
+  image_path_android: logo-round.png
+  image_path_ios: logo.png
+  remove_alpha_ios: true
+  windows:
+    generate: false 
+    image_path: logo-round.png
+    icon_size: 48
+  macos:
+    generate: true
+    image_path: logo-round-macos.png
+ 

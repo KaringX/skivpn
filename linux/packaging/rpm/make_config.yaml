@@ -1,0 +1,21 @@
+display_name: SkiVPN
+summary: SkiVPN
+group: Applications/Internet
+vendor: KaringX
+packager: KaringX
+license: Other
+priority: optional
+section: x11
+essential: false
+url: https://skivpn.com
+icon: assets/images/app_icon_256.png
+
+keywords:
+  - SkiVPN
+
+generic_name: SkiVPN
+
+categories:
+  - Applications/Internet
+
+startup_notify: true

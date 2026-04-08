@@ -1,0 +1,119 @@
+PODS:
+  - app_installer (1.3.1):
+    - FlutterMacOS
+  - app_settings (5.1.1):
+    - FlutterMacOS
+  - device_info_plus (0.0.1):
+    - FlutterMacOS
+  - flutter_inappwebview_macos (0.0.1):
+    - FlutterMacOS
+    - OrderedSet (~> 6.0.3)
+  - flutter_secure_storage_darwin (10.0.0):
+    - Flutter
+    - FlutterMacOS
+  - FlutterMacOS (1.0.0)
+  - HotKey (0.2.1)
+  - hotkey_manager_macos (0.0.1):
+    - FlutterMacOS
+    - HotKey
+  - libclash_vpn_service (0.1.0):
+    - FlutterMacOS
+  - open_dir_macos (0.0.1):
+    - FlutterMacOS
+  - OrderedSet (6.0.3)
+  - package_info_plus (0.0.1):
+    - FlutterMacOS
+  - path_provider_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - screen_retriever_macos (0.0.1):
+    - FlutterMacOS
+  - share_plus (0.0.1):
+    - FlutterMacOS
+  - tray_manager (0.0.1):
+    - FlutterMacOS
+  - url_launcher_macos (0.0.1):
+    - FlutterMacOS
+  - window_manager (0.5.0):
+    - FlutterMacOS
+
+DEPENDENCIES:
+  - app_installer (from `Flutter/ephemeral/.symlinks/plugins/app_installer/macos`)
+  - app_settings (from `Flutter/ephemeral/.symlinks/plugins/app_settings/macos`)
+  - device_info_plus (from `Flutter/ephemeral/.symlinks/plugins/device_info_plus/macos`)
+  - flutter_inappwebview_macos (from `Flutter/ephemeral/.symlinks/plugins/flutter_inappwebview_macos/macos`)
+  - flutter_secure_storage_darwin (from `Flutter/ephemeral/.symlinks/plugins/flutter_secure_storage_darwin/darwin`)
+  - FlutterMacOS (from `Flutter/ephemeral`)
+  - hotkey_manager_macos (from `Flutter/ephemeral/.symlinks/plugins/hotkey_manager_macos/macos`)
+  - libclash_vpn_service (from `Flutter/ephemeral/.symlinks/plugins/libclash_vpn_service/macos`)
+  - open_dir_macos (from `Flutter/ephemeral/.symlinks/plugins/open_dir_macos/macos`)
+  - package_info_plus (from `Flutter/ephemeral/.symlinks/plugins/package_info_plus/macos`)
+  - path_provider_foundation (from `Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/darwin`)
+  - screen_retriever_macos (from `Flutter/ephemeral/.symlinks/plugins/screen_retriever_macos/macos`)
+  - share_plus (from `Flutter/ephemeral/.symlinks/plugins/share_plus/macos`)
+  - tray_manager (from `Flutter/ephemeral/.symlinks/plugins/tray_manager/macos`)
+  - url_launcher_macos (from `Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/macos`)
+  - window_manager (from `Flutter/ephemeral/.symlinks/plugins/window_manager/macos`)
+
+SPEC REPOS:
+  trunk:
+    - HotKey
+    - OrderedSet
+
+EXTERNAL SOURCES:
+  app_installer:
+    :path: Flutter/ephemeral/.symlinks/plugins/app_installer/macos
+  app_settings:
+    :path: Flutter/ephemeral/.symlinks/plugins/app_settings/macos
+  device_info_plus:
+    :path: Flutter/ephemeral/.symlinks/plugins/device_info_plus/macos
+  flutter_inappwebview_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/flutter_inappwebview_macos/macos
+  flutter_secure_storage_darwin:
+    :path: Flutter/ephemeral/.symlinks/plugins/flutter_secure_storage_darwin/darwin
+  FlutterMacOS:
+    :path: Flutter/ephemeral
+  hotkey_manager_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/hotkey_manager_macos/macos
+  libclash_vpn_service:
+    :path: Flutter/ephemeral/.symlinks/plugins/libclash_vpn_service/macos
+  open_dir_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/open_dir_macos/macos
+  package_info_plus:
+    :path: Flutter/ephemeral/.symlinks/plugins/package_info_plus/macos
+  path_provider_foundation:
+    :path: Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/darwin
+  screen_retriever_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/screen_retriever_macos/macos
+  share_plus:
+    :path: Flutter/ephemeral/.symlinks/plugins/share_plus/macos
+  tray_manager:
+    :path: Flutter/ephemeral/.symlinks/plugins/tray_manager/macos
+  url_launcher_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/macos
+  window_manager:
+    :path: Flutter/ephemeral/.symlinks/plugins/window_manager/macos
+
+SPEC CHECKSUMS:
+  app_installer: 9a51509d3e3526fad6fb3d615c5e78621a1b08a1
+  app_settings: cd21e176b56f8172043640ade81322a98896bff4
+  device_info_plus: 4fb280989f669696856f8b129e4a5e3cd6c48f76
+  flutter_inappwebview_macos: c2d68649f9f8f1831bfcd98d73fd6256366d9d1d
+  flutter_secure_storage_darwin: acdb3f316ed05a3e68f856e0353b133eec373a23
+  FlutterMacOS: d0db08ddef1a9af05a5ec4b724367152bb0500b1
+  HotKey: 400beb7caa29054ea8d864c96f5ba7e5b4852277
+  hotkey_manager_macos: a4317849af96d2430fa89944d3c58977ca089fbe
+  libclash_vpn_service: ca1c41aac8340fe2982c7a67b7527b06d9be61d1
+  open_dir_macos: 79810d7921d777f8732bf6358b3a0839a8fad9b5
+  OrderedSet: e539b66b644ff081c73a262d24ad552a69be3a94
+  package_info_plus: f0052d280d17aa382b932f399edf32507174e870
+  path_provider_foundation: 608fcb11be570ce83519b076ab6a1fffe2474f05
+  screen_retriever_macos: 452e51764a9e1cdb74b3c541238795849f21557f
+  share_plus: 510bf0af1a42cd602274b4629920c9649c52f4cc
+  tray_manager: a104b5c81b578d83f3c3d0f40a997c8b10810166
+  url_launcher_macos: f87a979182d112f911de6820aefddaf56ee9fbfd
+  window_manager: b729e31d38fb04905235df9ea896128991cad99e
+
+PODFILE CHECKSUM: f1065eb42e636968fdeeb3b1a143dde70d9ab568
+
+COCOAPODS: 1.16.2

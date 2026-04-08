@@ -1,0 +1,14 @@
+display_name: SkiVPN
+package_name: skivpn
+maintainer:
+  name: KaringX
+
+icon: assets/images/app_icon_256.png
+
+keywords:
+  - SkiVPN
+
+generic_name: SkiVPN
+
+categories:
+  - Network

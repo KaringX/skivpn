@@ -1,0 +1,8 @@
+/.gradle
+/captures/
+/gradlew
+/gradlew.bat
+/local.properties
+
+**/*.keystore
+**/*.jks

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleShortVersionString</key>
+	<string>$(FLUTTER_BUILD_NAME)</string>
+	<key>CFBundleVersion</key>
+	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>NSSystemExtensionUsageDescription</key>
+	<string>ski systemExtension</string>
+	<key>NetworkExtension</key>
+	<dict>
+		<key>NEMachServiceName</key>
+		<string>group.com.nebula.ski</string>
+		<key>NEProviderClasses</key>
+		<dict>
+			<key>com.apple.networkextension.packet-tunnel</key>
+			<string>$(PRODUCT_MODULE_NAME).PacketTunnelProvider</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
