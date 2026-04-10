@@ -52,10 +52,6 @@ abstract final class AppUtils {
     return "com.nebula.ski.skiWidget.ControlCenterToggle";
   }
 
-  static String getICloudContainerId() {
-    return "iCloud.com.nebula.ski";
-  }
-
   static String getCoreVersion() {
     return "1.19.23";
   }
