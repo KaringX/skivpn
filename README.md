@@ -10,7 +10,7 @@
 [TestFlight](https://testflight.apple.com/join/U7F6nX42)
 
 [Telegram](https://t.me/SkiVPNApp)
-
+Supported platforms:: ios/macos/android/windows/linux
 VPN Service Provider Access: Contact @ovowe on Telegram.
  
 
