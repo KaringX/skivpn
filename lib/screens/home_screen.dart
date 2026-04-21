@@ -57,6 +57,7 @@ class _HomeScreenState extends LasyRenderingState<HomeScreen>
     with WidgetsBindingObserver, AfterLayoutMixin {
   static const String userAgreementAgreedIdKey = 'userAgreementAgreedKey';
   bool _logouting = false;
+  bool _agreementing = false;
   @override
   void initState() {
     super.initState();
@@ -70,6 +71,9 @@ class _HomeScreenState extends LasyRenderingState<HomeScreen>
     });
     ProfileManager.onEventUpdate.add(_onProfileUpdate);
     BoardSessionPersistentManager.instance().onEventReloginRequired.add(() {
+      if(_agreementing){
+        return;
+      }
       _relogin();
     });
     _init();
@@ -141,6 +145,7 @@ class _HomeScreenState extends LasyRenderingState<HomeScreen>
       }
       return;
     }
+    _agreementing = true;
     if (Platform.isIOS) {
       await Navigator.push(
         context,
@@ -178,6 +183,7 @@ class _HomeScreenState extends LasyRenderingState<HomeScreen>
         ),
       );
     }
+    _agreementing = false;
   }
 
   void _init() async {
