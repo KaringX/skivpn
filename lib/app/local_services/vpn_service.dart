@@ -210,7 +210,7 @@ class VPNService {
       configFilePath: configFilePath,
       systemExtension: _systemExtension,
       bundleIdentifier: bundleIdentifier,
-      controlKind: AppUtils.getcontrolKind(),
+      controlKind: AppUtils.getControlKind(),
       uiServerAddress: uiServerAddress,
       uiLocalizedDescription: uiLocalizedDescription,
       excludePorts: excludePorts,
@@ -287,13 +287,15 @@ class VPNService {
     if (!started) {
       return null;
     }
-    bool reinstall = await _prepareConfig(profile);
-    if (reinstall) {
-      await uninstall();
+    try {
+      bool reinstall = await _prepareConfig(profile);
+      if (reinstall) {
+        await uninstall();
+      }
+    } catch (err, stacktrace) {
+      return ReturnResultError(err.toString());
     }
-
     var setting = SettingManager.getConfig();
-
     if (Platform.isWindows) {
       final controlPort = ClashSettingManager.getControlPort();
       final mixedPort = ClashSettingManager.getMixedPort();
@@ -349,15 +351,19 @@ class VPNService {
       return ReturnResultError("current profile is empty");
     }
     if (profile.proxies.isEmpty) {
-      return ReturnResultError("无可用服务器, 请刷新套餐后重试");
+      return ReturnResultError("no proxy in current profile");
     }
     final prepareResult = await ProfileManager.prepare(profile);
     if (prepareResult != null) {
       return prepareResult;
     }
-    bool reinstall = await _prepareConfig(profile);
-    if (reinstall) {
-      await uninstall();
+    try {
+      bool reinstall = await _prepareConfig(profile);
+      if (reinstall) {
+        await uninstall();
+      }
+    } catch (err, stacktrace) {
+      return ReturnResultError(err.toString());
     }
     var setting = SettingManager.getConfig();
     if (Platform.isWindows) {

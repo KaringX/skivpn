@@ -3,7 +3,7 @@ import 'package:flutter_emoji/flutter_emoji.dart';
 
 abstract final class EmojiUtils {
   static final EmojiParser _parser = EmojiParser();
-  static const String _charColon = '/'; //这里只能用/, 用其他符号会导致解析出问题
+  static const String _charColon = '/';
   static final RegExp _regexName = RegExp(r'/([\w-+]+)/');
 
   static String removeEmoji(String text) {

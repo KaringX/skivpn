@@ -728,7 +728,7 @@ class _HomeScreenConnectWidgetState extends State<HomeScreenConnectWidget> {
       try {
         var obj = jsonDecode(connections);
         ClashConnections body = ClashConnections();
-        body.fromJson(obj);
+        body.fromJson(obj, false);
         _trafficTotalUpload.value = ClashHttpApi.convertTrafficToStringDouble(
           body.uploadTotal,
         );

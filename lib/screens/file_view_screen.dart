@@ -227,6 +227,13 @@ class ContextMenuControllerImpl implements SelectionToolbarController {
     final tcontext = Translations.of(context);
     var widgets = [
       ListTile(
+        title: Text("Select All"),
+        onTap: () async {
+          controller.selectAll();
+          Navigator.of(context).pop();
+        },
+      ),
+      ListTile(
         title: Text(tcontext.meta.copy),
         onTap: () async {
           controller.copy();
@@ -235,14 +242,14 @@ class ContextMenuControllerImpl implements SelectionToolbarController {
       ),
       if (!readOnly) ...[
         ListTile(
-          title: Text("paste"),
+          title: Text("Paste"),
           onTap: () async {
             controller.paste();
             Navigator.of(context).pop();
           },
         ),
         ListTile(
-          title: Text("cut"),
+          title: Text("Cut"),
           onTap: () async {
             controller.cut();
             Navigator.of(context).pop();

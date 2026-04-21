@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:skivpn/app/modules/clash_setting_manager.dart';
 import 'package:skivpn/app/modules/setting_manager.dart';
 import 'package:skivpn/app/utils/app_utils.dart';
+import 'package:skivpn/app/utils/package_manager_android.dart';
 import 'package:skivpn/i18n/strings.g.dart';
 import 'package:skivpn/screens/group_item_creator.dart';
 import 'package:skivpn/screens/group_item_options.dart';
@@ -25,26 +26,10 @@ class PerAppAndroidScreen extends LasyRenderingStatefulWidget {
   State<PerAppAndroidScreen> createState() => _PerAppAndroidScreenState();
 }
 
-class PackageInfoImpl extends PackageInfo {
-  PackageInfoImpl(String packageName)
-    : super(
-        packageName: packageName,
-        installLocation: AndroidInstallLocation.unspecified,
-      );
-}
-
-class PackageInfoEx {
-  late PackageInfo info;
-  String name = "";
-  Image? icon;
-}
-
 class _PerAppAndroidScreenState
     extends LasyRenderingState<PerAppAndroidScreen> {
   //https://github.com/ekoputrapratama/flutter_android_native/blob/6dacb8a0bcc9c8c05159eb916b2f0bea9db60826/lib/content/pm/ApplicationInfo.dart#L14
-  static const int kAndroidFlagSystem = 1;
-  static const _removed = "[removed]";
-  AndroidPackageManager? _pkgMgr;
+
   bool _loading = true;
   final List<PackageInfoEx> _applicationInfoList = [];
   final _searchController = TextEditingController();
@@ -65,7 +50,7 @@ class _PerAppAndroidScreenState
     SettingManager.save();
   }
 
-  _loadSearch(String? textVal) {
+  void _loadSearch(String? textVal) {
     if ((textVal != null) && textVal.isNotEmpty) {
       String search = textVal.toLowerCase();
       final data = _applicationInfoList.where((app) {
@@ -81,7 +66,7 @@ class _PerAppAndroidScreenState
     }
   }
 
-  _clearSearch() {
+  void _clearSearch() {
     _searchController.clear();
     _searchedData = _applicationInfoList;
     setState(() {});
@@ -90,147 +75,88 @@ class _PerAppAndroidScreenState
   Future<void> getInstalledPackages() async {
     _applicationInfoList.clear();
     _searchedData.clear();
-    _pkgMgr ??= AndroidPackageManager();
-    _pkgMgr!
-        .getInstalledPackages(flags: PackageInfoFlags({PMFlag.getMetaData}))
-        .then((value) async {
-          if (!mounted) {
-            return;
-          }
-          _loading = false;
-          if (value == null) {
-            return;
-          }
+    final settings = SettingManager.getConfig();
+    var perapp = ClashSettingManager.getConfig().Extension!.Tun.perApp;
+    _loading = true;
+    setState(() {});
+    final packages = await PackageManagerAndroid.getInstalledPackages(
+      onValid: (PackageInfo info) {
+        if (info.packageName == AppUtils.getId()) {
+          return false;
+        }
+        return true;
+      },
+    );
+    _loading = false;
+    _needPermission = packages.length <= 1;
+    if (!mounted) {
+      return;
+    }
+    if (_needPermission) {
+      setState(() {});
+      return;
+    }
+    List<PackageInfoEx> notExists = [];
+    List<PackageInfoEx> added = [];
+    List<PackageInfoEx> notAdded = [];
+    Set<String> exists = {};
+    Set<String> existsSystem = {};
 
-          if (value.length <= 1) {
-            _needPermission = true;
-            _loading = false;
-            setState(() {});
-            return;
-          }
-          List<PackageInfoEx> notExists = [];
-          List<PackageInfoEx> added = [];
-          List<PackageInfoEx> notAdded = [];
-          Set<String> exists = {};
-          Set<String> existsSystem = {};
-          final settings = SettingManager.getConfig();
-          var perapp = ClashSettingManager.getConfig().Extension!.Tun.perApp;
-          for (var app in value) {
-            if (app.packageName == null ||
-                app.packageName == AppUtils.getId()) {
-              continue;
-            }
+    for (var app in packages) {
+      if (settings.ui.perAppHideSystemApp) {
+        if ((app.info.applicationInfo != null) &&
+            (app.info.applicationInfo!.flags &
+                    PackageManagerAndroid.kAndroidFlagSystem !=
+                0)) {
+          existsSystem.add(app.info.packageName!);
+          continue;
+        }
+      }
 
-            if (settings.ui.perAppHideSystemApp) {
-              if ((app.applicationInfo != null) &&
-                  (app.applicationInfo!.flags & kAndroidFlagSystem != 0)) {
-                existsSystem.add(app.packageName!);
-                continue;
-              }
-            }
+      exists.add(app.info.packageName!);
+      if (perapp.PackageIds != null &&
+          perapp.PackageIds!.contains(app.info.packageName!)) {
+        added.add(app);
+      } else {
+        notAdded.add(app);
+      }
+    }
+    if (perapp.PackageIds != null) {
+      for (var papp in perapp.PackageIds!) {
+        if (!exists.contains(papp) && !existsSystem.contains(papp)) {
+          PackageInfoEx info = PackageInfoEx();
+          info.info = PackageInfoImpl(papp);
+          info.name = PackageManagerAndroid.kRemoved;
+          info.icon = null;
 
-            exists.add(app.packageName!);
-            PackageInfoEx info = PackageInfoEx();
-            info.info = app;
-            info.name = await getAppName(app.packageName!);
-            if (info.name.contains("{") &&
-                info.name.contains(":") &&
-                info.name.contains("\"")) {
-              continue;
-            }
-            if (!mounted) {
-              return;
-            }
-            if (perapp.PackageIds != null &&
-                perapp.PackageIds!.contains(info.info.packageName!)) {
-              added.add(info);
-            } else {
-              notAdded.add(info);
-            }
-          }
-          if (perapp.PackageIds != null) {
-            for (var papp in perapp.PackageIds!) {
-              if (!exists.contains(papp) && !existsSystem.contains(papp)) {
-                PackageInfoEx info = PackageInfoEx();
-                info.info = PackageInfoImpl(papp);
-                info.name = _removed;
-                info.icon = null;
+          notExists.add(info);
+        }
+      }
+    }
 
-                notExists.add(info);
-              }
-            }
-          }
+    notExists.sort(PackageManagerAndroid.sortByName);
+    added.sort(PackageManagerAndroid.sortByName);
+    notAdded.sort(PackageManagerAndroid.sortByName);
+    _applicationInfoList.addAll(notExists);
+    _applicationInfoList.addAll(added);
+    _applicationInfoList.addAll(notAdded);
 
-          notExists.sort(sort);
-          added.sort(sort);
-          notAdded.sort(sort);
-          _applicationInfoList.addAll(notExists);
-          _applicationInfoList.addAll(added);
-          _applicationInfoList.addAll(notAdded);
+    _searchedData = _applicationInfoList;
 
-          _searchedData = _applicationInfoList;
-          _loading = false;
-          setState(() {});
-        });
+    if (!mounted) {
+      return;
+    }
+    setState(() {});
   }
 
   Future<Image?> getInstalledPackageIcon(String packageName) async {
     if (SettingManager.getConfig().ui.perAppHideAppIcon) {
       return null;
     }
-    for (var app in _applicationInfoList) {
-      if (app.info.packageName == packageName) {
-        if (app.icon != null) {
-          return app.icon;
-        }
-        if (app.name == _removed) {
-          return null;
-        }
-        Image? image = await getAppIcon(app.info.packageName);
-        if (!mounted) {
-          return null;
-        }
-        app.icon = image;
-        return app.icon;
-      }
-    }
-    return null;
-  }
-
-  int sort(PackageInfoEx a, PackageInfoEx b) {
-    return a.name.compareTo(b.name);
-  }
-
-  Future<String> getAppName(String? packageName) async {
-    if (_pkgMgr == null || packageName == null) {
-      return "";
-    }
-    try {
-      return await _pkgMgr!.getApplicationLabel(packageName: packageName) ?? "";
-    } catch (err, stacktrace) {
-      return packageName;
-    }
-  }
-
-  Future<Image?> getAppIcon(String? packageName) async {
-    if (SettingManager.getConfig().ui.perAppHideAppIcon) {
-      return null;
-    }
-    if (_pkgMgr == null || packageName == null) {
-      return null;
-    }
-    try {
-      var data = await _pkgMgr!.getApplicationIcon(
-        packageName: packageName,
-        format: BitmapCompressFormat.png,
-      );
-      if (data == null) {
-        return null;
-      }
-      return Image.memory(data, cacheHeight: 96, cacheWidth: 96);
-    } catch (err, stacktrace) {
-      return null;
-    }
+    return PackageManagerAndroid.getInstalledPackageIcon(
+      _applicationInfoList,
+      packageName,
+    );
   }
 
   @override
@@ -329,9 +255,7 @@ class _PerAppAndroidScreenState
                         },
                         () {
                           _needPermission = false;
-                          _loading = true;
                           getInstalledPackages();
-                          setState(() {});
                         },
                       )
                     : _loadListView(),

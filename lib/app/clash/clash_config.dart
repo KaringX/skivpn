@@ -60,7 +60,7 @@ class BoolToTuple {
   static List<Tuple2<String?, String>> toTupleList(BuildContext context) {
     final tcontext = Translations.of(context);
     return [
-      Tuple2(null, "No Overwrite"),
+      Tuple2(null, "noOverwrite"),
       Tuple2("true", tcontext.meta.enable),
       Tuple2("false", tcontext.meta.disable),
     ];
@@ -179,7 +179,8 @@ enum ClashDnsCacheAlgorithm {
 
 enum ClashFakeIPFilterMode {
   blacklist(name: "blacklist"),
-  whitelist(name: "whitelist");
+  whitelist(name: "whitelist"),
+  rule(name: "rule");
 
   const ClashFakeIPFilterMode({required this.name});
   final String name;
@@ -188,6 +189,7 @@ enum ClashFakeIPFilterMode {
     return [
       ClashFakeIPFilterMode.blacklist.name,
       ClashFakeIPFilterMode.whitelist.name,
+      ClashFakeIPFilterMode.rule.name,
     ];
   }
 }
@@ -238,8 +240,9 @@ enum ClashGlobalClientFingerprint {
   }
 
   static List<Tuple2<String?, String>> toTupleList(BuildContext context) {
+    final tcontext = Translations.of(context);
     return [
-      Tuple2(ClashGlobalClientFingerprint.noOverwrite.name, "No Overwrite"),
+      Tuple2(ClashGlobalClientFingerprint.noOverwrite.name, "noOverwrite"),
       Tuple2(
         ClashGlobalClientFingerprint.none.name,
         ClashGlobalClientFingerprint.none.name!,
@@ -394,9 +397,19 @@ class RawExtensionTun {
   RawExtensionTunHttpProxy httpProxy;
   @JsonKey(name: 'per_app')
   RawExtensionTunPerApp perApp;
+  @JsonKey(name: 'auto_route_use_sub_ranges_by_default')
+  bool? autoRouteUseSubRangesByDefault;
 
-  RawExtensionTun.by({required this.httpProxy, required this.perApp});
-  RawExtensionTun(this.httpProxy, this.perApp);
+  RawExtensionTun.by({
+    required this.httpProxy,
+    required this.perApp,
+    this.autoRouteUseSubRangesByDefault,
+  });
+  RawExtensionTun(
+    this.httpProxy,
+    this.perApp,
+    this.autoRouteUseSubRangesByDefault,
+  );
   factory RawExtensionTun.fromJson(Map<String, dynamic> json) =>
       _$RawExtensionTunFromJson(json);
   Map<String, dynamic> toJson() => _$RawExtensionTunToJson(this);
@@ -406,6 +419,8 @@ class RawExtensionTun {
 class RawExtension {
   @JsonKey(name: 'geo-rule-set')
   RawExtensionGeoRuleset Ruleset;
+  @JsonKey(name: 'profile-store-selected-prefix')
+  String? ProfileStoreSelectedPrefix;
   @JsonKey(name: 'tun')
   RawExtensionTun Tun;
   @JsonKey(name: 'pprof-addr')

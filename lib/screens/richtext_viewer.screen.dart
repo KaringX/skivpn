@@ -146,7 +146,7 @@ class _RichtextViewScreenState extends LasyRenderingState<RichtextViewScreen> {
         },
       ),
       ListTile(
-        title: Text("share"),
+        title: Text("Share"),
         leading: Icon(Icons.share_outlined),
         onTap: () async {
           Navigator.pop(context);

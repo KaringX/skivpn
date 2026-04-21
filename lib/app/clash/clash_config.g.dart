@@ -73,12 +73,15 @@ RawExtensionTun _$RawExtensionTunFromJson(Map<String, dynamic> json) =>
       RawExtensionTunHttpProxy.fromJson(
           json['http_proxy'] as Map<String, dynamic>),
       RawExtensionTunPerApp.fromJson(json['per_app'] as Map<String, dynamic>),
+      json['auto_route_use_sub_ranges_by_default'] as bool?,
     );
 
 Map<String, dynamic> _$RawExtensionTunToJson(RawExtensionTun instance) =>
     <String, dynamic>{
       'http_proxy': instance.httpProxy.toJson(),
       'per_app': instance.perApp.toJson(),
+      'auto_route_use_sub_ranges_by_default':
+          instance.autoRouteUseSubRangesByDefault,
     };
 
 RawExtension _$RawExtensionFromJson(Map<String, dynamic> json) => RawExtension(
@@ -88,11 +91,13 @@ RawExtension _$RawExtensionFromJson(Map<String, dynamic> json) => RawExtension(
       json['pprof-addr'] as String?,
       json['proxy-group-replace'] as String?,
       json['runtime-profile-save-path'] as String?,
-    );
+    )..ProfileStoreSelectedPrefix =
+        json['profile-store-selected-prefix'] as String?;
 
 Map<String, dynamic> _$RawExtensionToJson(RawExtension instance) =>
     <String, dynamic>{
       'geo-rule-set': instance.Ruleset.toJson(),
+      'profile-store-selected-prefix': instance.ProfileStoreSelectedPrefix,
       'tun': instance.Tun.toJson(),
       'pprof-addr': instance.PprofAddr,
       'proxy-group-replace': instance.ProxyGroupReplace,

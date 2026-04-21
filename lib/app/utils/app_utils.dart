@@ -48,7 +48,7 @@ abstract final class AppUtils {
     return "";
   }
 
-  static String getcontrolKind() {
+  static String getControlKind() {
     return "com.nebula.ski.skiWidget.ControlCenterToggle";
   }
 

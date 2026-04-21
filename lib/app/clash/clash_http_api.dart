@@ -9,12 +9,34 @@ import 'package:skivpn/app/utils/http_utils.dart';
 
 import '../utils/did.dart';
 
+class ClashConfigsTun {
+  bool enable = false;
+  String device = "";
+  String stack = "";
+  //"dns-hijack": null,
+  bool auto_route = false;
+  bool auto_detect_interface = false;
+  int file_descriptor = 0;
+  void fromJson(Map<String, dynamic>? map) {
+    if (map == null) {
+      return;
+    }
+    enable = map["enable"] ?? false;
+    device = map["device"] ?? "";
+    stack = map["stack"] ?? "";
+    auto_route = map["auto-route"] ?? false;
+    auto_detect_interface = map["auto-detect-interface"] ?? false;
+    file_descriptor = map["file-descriptor"] ?? 0;
+  }
+}
+
 class ClashConfigs {
   int port = 0;
   int socks_port = 0;
   int redir_port = 0;
   int tproxy_port = 0;
   int mixed_port = 0;
+  ClashConfigsTun tun = ClashConfigsTun();
   /*
  "tun": {
         "enable": false,
@@ -66,16 +88,7 @@ class ClashConfigs {
       redir_port = map["redir-port"] ?? 0;
       tproxy_port = map["tproxy-port"] ?? 0;
       mixed_port = map["mixed-port"] ?? 0;
-      /*"tun": {
-        "enable": false,
-        "device": "",
-        "stack": "gVisor",
-        "dns-hijack": null,
-        "auto-route": false,
-        "auto-detect-interface": false,
-        "file-descriptor": 0
-    },*/
-
+      tun.fromJson(map["tun"]);
       allow = map["allow-lan"] ?? false;
       bind_address = map["bind-address"] ?? "";
       inbound_tfo = map["inbound-tfo"] ?? false;
@@ -124,16 +137,46 @@ class ClashTraffic {
   }
 }
 
+class ClashConnectionsTrack {
+  String start = "";
+  List<String> chains = [];
+  List<String> providerChains = [];
+  String rule = "";
+  String rulePayload = "";
+
+  void fromJson(Map<String, dynamic>? map) {
+    if (map == null) {
+      return;
+    }
+
+    start = map['start'] ?? "";
+    chains = List.from(map['chains'] ?? []);
+    providerChains = List.from(map['providerChains'] ?? []);
+    rule = map['rule'] ?? "";
+    rulePayload = map['rulePayload'] ?? "";
+  }
+
+  Map<String, dynamic> toJson() => {
+    'start': start,
+    'chains': chains,
+    'providerChains': providerChains,
+    'rule': rule,
+    'rulePayload': rulePayload,
+  };
+}
+
 class ClashConnections {
   num uploadTotal = 0;
   num downloadTotal = 0;
   num memory = 0;
+  List<ClashConnectionsTrack> connections = [];
   Map<String, dynamic> toJson() => {
     'uploadTotal': uploadTotal,
     'downloadTotal': downloadTotal,
     'memory': memory,
+    'connections': connections.map((c) => c.toJson()).toList(),
   };
-  void fromJson(Map<String, dynamic>? map) {
+  void fromJson(Map<String, dynamic>? map, bool withConnectionsList) {
     if (map == null) {
       return;
     }
@@ -141,6 +184,14 @@ class ClashConnections {
     uploadTotal = map['uploadTotal'] ?? 0;
     downloadTotal = map['downloadTotal'] ?? 0;
     memory = map['memory'] ?? 0;
+    if (withConnectionsList) {
+      var connectionsList = map['connections'];
+      if (connectionsList is List) {
+        connections = connectionsList
+            .map((item) => ClashConnectionsTrack()..fromJson(item))
+            .toList();
+      }
+    }
   }
 }
 
@@ -459,6 +510,43 @@ class ClashHttpApi {
     );
 
     return result.error;
+  }
+
+  static Future<ReturnResult<List<String>>> dnsQuery(
+    String domain, {
+    String queryType = "A",
+  }) async {
+    String secret = await getSecret();
+    Map<String, String> headers = getHeaders(secret);
+    var result = await HttpUtils.httpGetRequest(
+      "$host:${getControlPort?.call()}/dns/query?name=$domain&type=$queryType",
+      null,
+      headers,
+      const Duration(seconds: timeoutSeconds),
+      null,
+      null,
+    );
+    if (result.error != null) {
+      return ReturnResult(error: result.error);
+    }
+    try {
+      var decodedResponse = jsonDecode(result.data!.item2);
+      final answer = decodedResponse["Answer"];
+      List<String> ips = [];
+      if (answer is List) {
+        for (var item in answer) {
+          String data = item["data"] ?? "";
+          if (data.isNotEmpty) {
+            ips.add(data);
+          }
+        }
+        return ReturnResult(data: ips);
+      }
+
+      return ReturnResult(data: ips);
+    } catch (err) {
+      return ReturnResult(error: ReturnResultError(err.toString()));
+    }
   }
 
   static Future<ReturnResultError?> setConfigsMode(String mode) async {
