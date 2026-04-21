@@ -56,12 +56,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void dispose() {
-    LoginScreen.isAlive = false;
     _serviceNameFocus.dispose();
     _serviceNameController.dispose();
     _usernameController.dispose();
     _passwordController.dispose();
     super.dispose();
+    LoginScreen.isAlive = false;
   }
 
   @override
