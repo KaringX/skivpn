@@ -10,9 +10,13 @@ import 'package:skivpn/app/utils/url_launcher_utils.dart';
 import 'package:skivpn/i18n/strings.g.dart';
 import 'package:skivpn/screens/dialog_utils.dart';
 import 'package:skivpn/screens/sspanel/sspanel_login.dart';
+import 'package:skivpn/screens/sspanel/sspanel_register_screen.dart';
 import 'package:skivpn/screens/theme_define.dart';
 import 'package:skivpn/screens/v2board/v2board_login.dart';
+import 'package:skivpn/screens/v2board/v2board_register_screen.dart';
 import 'package:skivpn/screens/xboard/xboard_login.dart';
+import 'package:skivpn/screens/xboard/xboard_register_screen.dart';
+import 'package:tuple/tuple.dart';
 
 class LoginScreen extends StatefulWidget {
   static RouteSettings routSettings() {
@@ -266,7 +270,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                   isProviderSupported &&
                                       _provider!.registerUrl.isNotEmpty
                                   ? () async {
-                                      _register();
+                                      // _register();
+                                      UrlLauncherUtils.loadUrl(
+                                        _provider!.registerUrl,
+                                      );
                                     }
                                   : null,
                               child: Text(
@@ -507,15 +514,14 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _register() async {
-    if (_provider == null || _provider!.registerUrl.isEmpty) {
+    if (_provider == null) {
       return;
     }
-    UrlLauncherUtils.loadUrl(_provider!.registerUrl);
-    /* Tuple2<String, String>? up;
     if (_provider!.registerUrl.isNotEmpty) {
       UrlLauncherUtils.loadUrl(_provider!.registerUrl);
       return;
     }
+    Tuple2<String, String>? up;
     if (_provider!.type == BoardProviderType.v2board) {
       up = await Navigator.push(
         context,
@@ -546,6 +552,6 @@ class _LoginScreenState extends State<LoginScreen> {
       _usernameController.text = up.item1;
       _passwordController.text = up.item2;
       setState(() {});
-    }*/
+    }
   }
 }
