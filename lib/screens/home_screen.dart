@@ -275,9 +275,7 @@ class _HomeScreenState extends LasyRenderingState<HomeScreen>
                   SizedBox(
                     width: windowSize.width - 50 * 2,
                     child: Text(
-                      session != null
-                          ? "${AppUtils.getName()}-${session.provider.name}"
-                          : AppUtils.getName(),
+                      session != null ? session.provider.name : "",
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
