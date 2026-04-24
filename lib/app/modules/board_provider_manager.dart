@@ -71,7 +71,7 @@ class BoardProviderConfig {
     this.clientServiceUrl = '',
     this.subscriptionChannelUrl = '',
     this.loginUrl = '',
-    this.registerUrl = null,
+    this.registerUrl,
     this.forgotPasswordUrl = '',
     this.planUrl = '',
     this.homeUrl = '',
