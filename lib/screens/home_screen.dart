@@ -17,7 +17,6 @@ import 'package:skivpn/app/modules/board_session_persistent_manager.dart';
 import 'package:skivpn/app/modules/profile_manager.dart';
 import 'package:skivpn/app/modules/remote_config_manager.dart';
 import 'package:skivpn/app/utils/app_lifecycle_state_notify.dart';
-import 'package:skivpn/app/utils/app_utils.dart';
 import 'package:skivpn/app/utils/error_reporter_utils.dart';
 import 'package:skivpn/app/utils/local_storage.dart';
 import 'package:skivpn/i18n/strings.g.dart';
@@ -71,7 +70,7 @@ class _HomeScreenState extends LasyRenderingState<HomeScreen>
     });
     ProfileManager.onEventUpdate.add(_onProfileUpdate);
     BoardSessionPersistentManager.instance().onEventReloginRequired.add(() {
-      if(_agreementing){
+      if (_agreementing) {
         return;
       }
       _relogin();

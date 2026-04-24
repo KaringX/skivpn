@@ -22,15 +22,12 @@ import 'package:skivpn/screens/group_screen.dart';
 import 'package:skivpn/screens/language_settings_screen.dart';
 import 'package:skivpn/screens/list_add_screen.dart';
 import 'package:skivpn/screens/perapp_android_screen.dart';
-import 'package:skivpn/screens/theme_define.dart';
-import 'package:skivpn/screens/themes.dart';
 import 'package:skivpn/screens/version_update_screen.dart';
 import 'package:skivpn/screens/webview_helper.dart';
 import 'package:skivpn/screens/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:libclash_vpn_service/vpn_service.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class GroupHelper {
@@ -465,8 +462,6 @@ class GroupHelper {
       var setting = ClashSettingManager.getConfig();
       var extensions = setting.Extension!;
       final logLevels = ClashLogLevel.toList();
-
-      final started = await VPNService.getStarted();
 
       List<GroupItemOptions> options1 = [
         GroupItemOptions(

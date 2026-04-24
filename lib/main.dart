@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:libclash_vpn_service/vpn_service.dart';
-import 'package:move_to_background/move_to_background.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
@@ -23,6 +22,7 @@ import 'package:skivpn/app/utils/app_args.dart';
 import 'package:skivpn/app/utils/app_lifecycle_state_notify.dart';
 import 'package:skivpn/app/utils/app_utils.dart';
 import 'package:skivpn/app/utils/log.dart';
+import 'package:skivpn/app/utils/move_to_background_utils.dart';
 import 'package:skivpn/app/utils/path_utils.dart';
 import 'package:skivpn/app/utils/platform_utils.dart';
 import 'package:skivpn/app/utils/vpn_action_handler.dart';
@@ -131,6 +131,7 @@ Future<void> run(List<String> args) async {
         }
       }
     } while (false);
+
     if (PlatformUtils.isPC()) {
       await windowManager.ensureInitialized();
       const inProduction = bool.fromEnvironment("dart.vm.product");
@@ -265,7 +266,9 @@ class MyAppState extends State<MyApp>
   }
 
   @override
-  void didHaveMemoryPressure() {}
+  void didHaveMemoryPressure() {
+    Log.w("memoryPressure");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -285,7 +288,7 @@ class MyAppState extends State<MyApp>
               SingleActivator(LogicalKeyboardKey.select): ActivateIntent(),
             },
             child: MaterialApp(
-              showSemanticsDebugger: false,
+              //showSemanticsDebugger: false,
               debugShowCheckedModeBanner: false,
               locale: TranslationProvider.of(context).flutterLocale,
               supportedLocales: AppLocaleUtils.supportedLocales,
@@ -295,7 +298,7 @@ class MyAppState extends State<MyApp>
                 canPop: false,
                 onPopInvokedWithResult: (didPop, result) {
                   if (Platform.isAndroid || Platform.isIOS) {
-                    MoveToBackground.moveTaskToBack();
+                    MoveToBackgroundUtils.moveToBackground();
                   }
                 },
                 child: startFailedReason != null
@@ -326,9 +329,9 @@ class MyAppState extends State<MyApp>
   }
 
   @override
-  void onWindowClose() {
+  void onWindowClose() async {
     Log.d("onWindowClose");
-    windowManager.hide();
+    await windowManager.hide();
     _windowVisibleForMac = false;
     AppLifecycleStateNofity.statePaused("close");
   }

@@ -268,14 +268,18 @@ class _LoginScreenState extends State<LoginScreen> {
                             TextButton(
                               onPressed:
                                   isProviderSupported &&
-                                      _provider!.registerUrl != null
+                                      _provider!.registerUrl != null &&
+                                      _provider!.type !=
+                                          BoardProviderType.sspanel
                                   ? () async {
                                       _register();
                                     }
                                   : null,
                               child: Text(
                                 isProviderSupported &&
-                                        _provider!.registerUrl != null
+                                        _provider!.registerUrl != null &&
+                                        _provider!.type !=
+                                            BoardProviderType.sspanel
                                     ? tcontext.loginScreen.register
                                     : '',
                                 style: TextStyle(
