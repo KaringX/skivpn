@@ -49,7 +49,7 @@ class BoardProviderConfig {
   String clientServiceUrl;
   String subscriptionChannelUrl;
   String loginUrl;
-  String registerUrl;
+  String? registerUrl;
   String forgotPasswordUrl;
   String planUrl;
   String homeUrl;
@@ -71,7 +71,7 @@ class BoardProviderConfig {
     this.clientServiceUrl = '',
     this.subscriptionChannelUrl = '',
     this.loginUrl = '',
-    this.registerUrl = '',
+    this.registerUrl = null,
     this.forgotPasswordUrl = '',
     this.planUrl = '',
     this.homeUrl = '',
@@ -128,7 +128,7 @@ class BoardProviderConfig {
     clientServiceUrl = map["client_service_url"] ?? "";
     subscriptionChannelUrl = map["subscription_channel_url"] ?? "";
     loginUrl = map["login_url"] ?? "";
-    registerUrl = map["register_url"] ?? "";
+    registerUrl = map["register_url"];
     forgotPasswordUrl = map["forgot_password_url"] ?? "";
     planUrl = map["plan_url"] ?? "";
     homeUrl = map["home_url"] ?? "";

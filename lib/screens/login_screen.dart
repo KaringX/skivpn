@@ -268,17 +268,14 @@ class _LoginScreenState extends State<LoginScreen> {
                             TextButton(
                               onPressed:
                                   isProviderSupported &&
-                                      _provider!.registerUrl.isNotEmpty
+                                      _provider!.registerUrl != null
                                   ? () async {
-                                      // _register();
-                                      UrlLauncherUtils.loadUrl(
-                                        _provider!.registerUrl,
-                                      );
+                                      _register();
                                     }
                                   : null,
                               child: Text(
                                 isProviderSupported &&
-                                        _provider!.registerUrl.isNotEmpty
+                                        _provider!.registerUrl != null
                                     ? tcontext.loginScreen.register
                                     : '',
                                 style: TextStyle(
@@ -514,11 +511,11 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _register() async {
-    if (_provider == null) {
+    if (_provider == null || _provider!.registerUrl == null) {
       return;
     }
-    if (_provider!.registerUrl.isNotEmpty) {
-      UrlLauncherUtils.loadUrl(_provider!.registerUrl);
+    if (_provider!.registerUrl!.isNotEmpty) {
+      UrlLauncherUtils.loadUrl(_provider!.registerUrl!);
       return;
     }
     Tuple2<String, String>? up;
