@@ -68,6 +68,9 @@ class _HomeScreenState extends LasyRenderingState<HomeScreen>
     XboardLogin.onEventLogin[hashCode] = (() {
       setState(() {});
     });
+    SSPanelLogin.onEventLogin[hashCode] = (() {
+      setState(() {});
+    });
     ProfileManager.onEventUpdate.add(_onProfileUpdate);
     BoardSessionPersistentManager.instance().onEventReloginRequired.add(() {
       if (_agreementing) {

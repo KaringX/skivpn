@@ -55,6 +55,25 @@ class _LoginScreenState extends State<LoginScreen> {
       }
       _validateServiceNameAsync();
     });
+    V2boardLogin.onEventLogin[hashCode] = (() {
+      if (!mounted) {
+        return;
+      }
+      Navigator.of(context).pop();
+    });
+    XboardLogin.onEventLogin[hashCode] = (() {
+      if (!mounted) {
+        return;
+      }
+      Navigator.of(context).pop();
+    });
+    SSPanelLogin.onEventLogin[hashCode] = (() {
+      if (!mounted) {
+        return;
+      }
+      Navigator.of(context).pop();
+    });
+
     super.initState();
   }
 
@@ -64,6 +83,9 @@ class _LoginScreenState extends State<LoginScreen> {
     _serviceNameController.dispose();
     _usernameController.dispose();
     _passwordController.dispose();
+    V2boardLogin.onEventLogin.remove(hashCode);
+    XboardLogin.onEventLogin.remove(hashCode);
+    SSPanelLogin.onEventLogin.remove(hashCode);
     super.dispose();
     LoginScreen.isAlive = false;
   }
@@ -504,7 +526,6 @@ class _LoginScreenState extends State<LoginScreen> {
       );
       return;
     }
-    Navigator.of(context).pop();
   }
 
   void _forgotpwd() async {
