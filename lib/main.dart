@@ -370,8 +370,6 @@ class MyAppState extends State<MyApp>
   @override
   void onWindowUserSessionDisconnect() {
     Log.d("main.dart onWindowUserSessionDisconnect");
-
-    _quit();
   }
 
   void firstShowWindow(bool forceShow) {
