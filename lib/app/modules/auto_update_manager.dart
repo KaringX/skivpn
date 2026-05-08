@@ -17,6 +17,7 @@ import 'package:skivpn/app/utils/file_utils.dart';
 import 'package:skivpn/app/utils/install_referrer_utils.dart';
 import 'package:skivpn/app/utils/log.dart';
 import 'package:skivpn/app/utils/path_utils.dart';
+import 'package:skivpn/app/utils/platform_utils.dart';
 import 'package:skivpn/app/utils/version_compare_utils.dart';
 import 'package:libclash_vpn_service/state.dart';
 import 'package:path/path.dart' as path;
@@ -93,6 +94,7 @@ class AutoUpdateCheckVersion {
 
 class AutoUpdateManager {
   static final List<void Function()> onEventCheck = [];
+  static Timer? _timerChecker;
   static bool _checking = false;
   static bool _downloading = false;
   static Duration _duration = const Duration(hours: 3);
@@ -149,9 +151,19 @@ class AutoUpdateManager {
     Future.delayed(const Duration(seconds: 3), () async {
       _check();
     });
+
+    if (PlatformUtils.isPC()) {
+      _timerChecker = Timer.periodic(const Duration(minutes: 30), (timer) {
+        _check();
+      });
+    }
   }
 
-  static Future<void> uninit() async {}
+  static Future<void> uninit() async {
+    _timerChecker?.cancel();
+    _timerChecker = null;
+  }
+
   static void updateChannelChanged() {
     _versionCheck.clear();
     _check();

@@ -16,6 +16,7 @@ import 'package:skivpn/app/utils/emoji_utils.dart';
 import 'package:skivpn/app/utils/file_utils.dart';
 import 'package:skivpn/app/utils/log.dart';
 import 'package:skivpn/app/utils/path_utils.dart';
+import 'package:skivpn/app/utils/platform_utils.dart';
 import 'package:yaml/yaml.dart';
 
 class ProxyGroups {
@@ -319,6 +320,7 @@ class ProfileManager {
 
   static final List<void Function(String, bool, bool, bool)> onEventUpdate = [];
   static final Set<String> updating = {};
+  static Timer? _timerChecker;
   static bool _saving = false;
 
   static Future<void> init() async {
@@ -341,9 +343,18 @@ class ProfileManager {
     Future.delayed(const Duration(seconds: 30), () async {
       updateByTicker();
     });
+    if (PlatformUtils.isPC()) {
+      _timerChecker = Timer.periodic(const Duration(minutes: 30), (timer) {
+        updateByTicker();
+      });
+    }
   }
 
   static Future<void> uninit() async {
+    if (_timerChecker != null) {
+      _timerChecker!.cancel();
+      _timerChecker = null;
+    }
     await save();
   }
 
