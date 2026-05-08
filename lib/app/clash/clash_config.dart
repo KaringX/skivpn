@@ -397,12 +397,30 @@ class RawExtensionTun {
   RawExtensionTunHttpProxy httpProxy;
   @JsonKey(name: 'per_app')
   RawExtensionTunPerApp perApp;
+  @JsonKey(name: 'include_all_networks')
+  bool? includeAllNetworks;
+  @JsonKey(name: 'exclude_local_networks')
+  bool? excludeLocalNetworks;
+  @JsonKey(name: 'exclude_cellular_services')
+  bool? excludeCellularServices;
+  @JsonKey(name: 'exclude_apns')
+  bool? excludeApns;
+  @JsonKey(name: 'exclude_device_communication')
+  bool? excludeDeviceCommunication;
+  @JsonKey(name: 'enforce_routes')
+  bool? enforceRoutes;
   @JsonKey(name: 'auto_route_use_sub_ranges_by_default')
   bool? autoRouteUseSubRangesByDefault;
 
   RawExtensionTun.by({
     required this.httpProxy,
     required this.perApp,
+    this.includeAllNetworks,
+    this.excludeLocalNetworks,
+    this.excludeCellularServices,
+    this.excludeApns,
+    this.excludeDeviceCommunication,
+    this.enforceRoutes,
     this.autoRouteUseSubRangesByDefault,
   });
   RawExtensionTun(

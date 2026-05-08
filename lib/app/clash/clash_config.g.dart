@@ -74,12 +74,25 @@ RawExtensionTun _$RawExtensionTunFromJson(Map<String, dynamic> json) =>
           json['http_proxy'] as Map<String, dynamic>),
       RawExtensionTunPerApp.fromJson(json['per_app'] as Map<String, dynamic>),
       json['auto_route_use_sub_ranges_by_default'] as bool?,
-    );
+    )
+      ..includeAllNetworks = json['include_all_networks'] as bool?
+      ..excludeLocalNetworks = json['exclude_local_networks'] as bool?
+      ..excludeCellularServices = json['exclude_cellular_services'] as bool?
+      ..excludeApns = json['exclude_apns'] as bool?
+      ..excludeDeviceCommunication =
+          json['exclude_device_communication'] as bool?
+      ..enforceRoutes = json['enforce_routes'] as bool?;
 
 Map<String, dynamic> _$RawExtensionTunToJson(RawExtensionTun instance) =>
     <String, dynamic>{
       'http_proxy': instance.httpProxy.toJson(),
       'per_app': instance.perApp.toJson(),
+      'include_all_networks': instance.includeAllNetworks,
+      'exclude_local_networks': instance.excludeLocalNetworks,
+      'exclude_cellular_services': instance.excludeCellularServices,
+      'exclude_apns': instance.excludeApns,
+      'exclude_device_communication': instance.excludeDeviceCommunication,
+      'enforce_routes': instance.enforceRoutes,
       'auto_route_use_sub_ranges_by_default':
           instance.autoRouteUseSubRangesByDefault,
     };
