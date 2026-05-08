@@ -20,14 +20,6 @@ public class ExtensionPlatformInterface: NSObject, LibclashPlatformInterfaceProt
         }
     }
 
-    public func findConnectionOwner(_: Int32, sourceAddress _: String?, sourcePort _: Int32, destinationAddress _: String?, destinationPort _: Int32, ret0_ _: UnsafeMutablePointer<Int32>?) throws {
-        throw NSError(domain: "not implemented", code: 0)
-    }
-
-    public func packageName(byUid _: Int32, error _: NSErrorPointer) -> String {
-        ""
-    }
-    
     private func openTun0(_ options: LibclashTunOptionsProtocol?, _ ret0_: UnsafeMutablePointer<Int32>?) async throws {
         guard let options else {
             throw NSError(domain: "nil options", code: 0)
@@ -36,8 +28,8 @@ public class ExtensionPlatformInterface: NSObject, LibclashPlatformInterfaceProt
             throw NSError(domain: "nil return pointer", code: 0)
         }
 
-        // let autoRouteUseSubRangesByDefault = autoRouteUseSubRangesByDefault
-        // let excludeAPNs = excludeAPNsRoute
+        let autoRouteUseSubRangesByDefault = tunnel.config?.auto_route_use_sub_ranges_by_default ?? false
+        let excludeAPNs = tunnel.config?.exclude_apns ?? false
 
         let settings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: "127.0.0.1")
         if options.getAutoRoute() {
@@ -45,8 +37,6 @@ public class ExtensionPlatformInterface: NSObject, LibclashPlatformInterfaceProt
 
             let dnsServer = try options.getDNSServerAddress()
             let dnsSettings = NEDNSSettings(servers: [dnsServer.value])
-            dnsSettings.matchDomains = [""]
-            dnsSettings.matchDomainsNoSearch = true
             settings.dnsSettings = dnsSettings
 
             var ipv4Address: [String] = []
@@ -68,17 +58,16 @@ public class ExtensionPlatformInterface: NSObject, LibclashPlatformInterfaceProt
                     let ipv4RoutePrefix = inet4RouteAddressIterator.next()!
                     ipv4Routes.append(NEIPv4Route(destinationAddress: ipv4RoutePrefix.address(), subnetMask: ipv4RoutePrefix.mask()))
                 }
-            } /* else if autoRouteUseSubRangesByDefault {
-                 ipv4Routes.append(NEIPv4Route(destinationAddress: "1.0.0.0", subnetMask: "255.0.0.0"))
-                 ipv4Routes.append(NEIPv4Route(destinationAddress: "2.0.0.0", subnetMask: "254.0.0.0"))
-                 ipv4Routes.append(NEIPv4Route(destinationAddress: "4.0.0.0", subnetMask: "252.0.0.0"))
-                 ipv4Routes.append(NEIPv4Route(destinationAddress: "8.0.0.0", subnetMask: "248.0.0.0"))
-                 ipv4Routes.append(NEIPv4Route(destinationAddress: "16.0.0.0", subnetMask: "240.0.0.0"))
-                 ipv4Routes.append(NEIPv4Route(destinationAddress: "32.0.0.0", subnetMask: "224.0.0.0"))
-                 ipv4Routes.append(NEIPv4Route(destinationAddress: "64.0.0.0", subnetMask: "192.0.0.0"))
-                 ipv4Routes.append(NEIPv4Route(destinationAddress: "128.0.0.0", subnetMask: "128.0.0.0"))
-             } */ else
-            {
+            } else if autoRouteUseSubRangesByDefault {
+                ipv4Routes.append(NEIPv4Route(destinationAddress: "1.0.0.0", subnetMask: "255.0.0.0"))
+                ipv4Routes.append(NEIPv4Route(destinationAddress: "2.0.0.0", subnetMask: "254.0.0.0"))
+                ipv4Routes.append(NEIPv4Route(destinationAddress: "4.0.0.0", subnetMask: "252.0.0.0"))
+                ipv4Routes.append(NEIPv4Route(destinationAddress: "8.0.0.0", subnetMask: "248.0.0.0"))
+                ipv4Routes.append(NEIPv4Route(destinationAddress: "16.0.0.0", subnetMask: "240.0.0.0"))
+                ipv4Routes.append(NEIPv4Route(destinationAddress: "32.0.0.0", subnetMask: "224.0.0.0"))
+                ipv4Routes.append(NEIPv4Route(destinationAddress: "64.0.0.0", subnetMask: "192.0.0.0"))
+                ipv4Routes.append(NEIPv4Route(destinationAddress: "128.0.0.0", subnetMask: "128.0.0.0"))
+            } else {
                 ipv4Routes.append(NEIPv4Route.default())
             }
 
@@ -93,14 +82,14 @@ public class ExtensionPlatformInterface: NSObject, LibclashPlatformInterfaceProt
                  }) {
                      ipv4ExcludeRoutes.append(NEIPv4Route(destinationAddress: "0.0.0.0", subnetMask: "255.255.255.254"))
                  }
-             }
+             }*/
              if excludeAPNs, !ipv4Routes.isEmpty {
                  if !ipv4ExcludeRoutes.contains(where: { it in
                      it.destinationAddress == "17.0.0.0" && it.destinationSubnetMask == "255.0.0.0"
                  }) {
                      ipv4ExcludeRoutes.append(NEIPv4Route(destinationAddress: "17.0.0.0", subnetMask: "255.0.0.0"))
                  }
-             } */
+             } 
 
             ipv4Settings.includedRoutes = ipv4Routes
             ipv4Settings.excludedRoutes = ipv4ExcludeRoutes
@@ -124,17 +113,16 @@ public class ExtensionPlatformInterface: NSObject, LibclashPlatformInterfaceProt
                     let ipv6RoutePrefix = inet6RouteAddressIterator.next()!
                     ipv6Routes.append(NEIPv6Route(destinationAddress: ipv6RoutePrefix.address(), networkPrefixLength: NSNumber(value: ipv6RoutePrefix.prefix())))
                 }
-            } /* else if autoRouteUseSubRangesByDefault {
-                 ipv6Routes.append(NEIPv6Route(destinationAddress: "100::", networkPrefixLength: 8))
-                 ipv6Routes.append(NEIPv6Route(destinationAddress: "200::", networkPrefixLength: 7))
-                 ipv6Routes.append(NEIPv6Route(destinationAddress: "400::", networkPrefixLength: 6))
-                 ipv6Routes.append(NEIPv6Route(destinationAddress: "800::", networkPrefixLength: 5))
-                 ipv6Routes.append(NEIPv6Route(destinationAddress: "1000::", networkPrefixLength: 4))
-                 ipv6Routes.append(NEIPv6Route(destinationAddress: "2000::", networkPrefixLength: 3))
-                 ipv6Routes.append(NEIPv6Route(destinationAddress: "4000::", networkPrefixLength: 2))
-                 ipv6Routes.append(NEIPv6Route(destinationAddress: "8000::", networkPrefixLength: 1))
-             } */ else
-            {
+            } else if autoRouteUseSubRangesByDefault {
+                ipv6Routes.append(NEIPv6Route(destinationAddress: "100::", networkPrefixLength: 8))
+                ipv6Routes.append(NEIPv6Route(destinationAddress: "200::", networkPrefixLength: 7))
+                ipv6Routes.append(NEIPv6Route(destinationAddress: "400::", networkPrefixLength: 6))
+                ipv6Routes.append(NEIPv6Route(destinationAddress: "800::", networkPrefixLength: 5))
+                ipv6Routes.append(NEIPv6Route(destinationAddress: "1000::", networkPrefixLength: 4))
+                ipv6Routes.append(NEIPv6Route(destinationAddress: "2000::", networkPrefixLength: 3))
+                ipv6Routes.append(NEIPv6Route(destinationAddress: "4000::", networkPrefixLength: 2))
+                ipv6Routes.append(NEIPv6Route(destinationAddress: "8000::", networkPrefixLength: 1))
+            } else {
                 ipv6Routes.append(NEIPv6Route.default())
             }
 
@@ -155,6 +143,14 @@ public class ExtensionPlatformInterface: NSObject, LibclashPlatformInterfaceProt
             ipv6Settings.includedRoutes = ipv6Routes
             ipv6Settings.excludedRoutes = ipv6ExcludeRoutes
             settings.ipv6Settings = ipv6Settings
+
+            let hasDefaultRoute = ipv4Routes.contains(where: {
+                $0.destinationAddress == "0.0.0.0" && $0.destinationSubnetMask == "0.0.0.0"
+            })
+            if !hasDefaultRoute {
+                dnsSettings.matchDomains = [""]
+                dnsSettings.matchDomainsNoSearch = true
+            }
         }
 
         if options.isHTTPProxyEnabled() {
@@ -170,13 +166,13 @@ public class ExtensionPlatformInterface: NSObject, LibclashPlatformInterfaceProt
             while bypassDomainIterator.hasNext() {
                 bypassDomains.append(bypassDomainIterator.next())
             }
-            /* if excludeAPNs {
-                 if !bypassDomains.contains(where: { it in
-                     it == "push.apple.com"
-                 }) {
-                     bypassDomains.append("push.apple.com")
-                 }
-             } */
+            if excludeAPNs {
+                if !bypassDomains.contains(where: { it in
+                    it == "push.apple.com"
+                }) {
+                    bypassDomains.append("push.apple.com")
+                }
+            } 
             if !bypassDomains.isEmpty {
                 proxySettings.exceptionList = bypassDomains
             }
@@ -193,6 +189,7 @@ public class ExtensionPlatformInterface: NSObject, LibclashPlatformInterfaceProt
 
         networkSettings = settings
         try await tunnel.setTunnelNetworkSettings(settings)
+
         if let tunFd = tunnel.packetFlow.value(forKeyPath: "socket.fileDescriptor") as? Int32 {
             ret0_.pointee = tunFd
             return
@@ -202,11 +199,19 @@ public class ExtensionPlatformInterface: NSObject, LibclashPlatformInterfaceProt
         }
         ret0_.pointee = tun_fd
     }
-    
-    public func protectFd(_ fd: Int32) {
-        
+
+    public func findConnectionOwner(_: Int32, sourceAddress _: String?, sourcePort _: Int32, destinationAddress _: String?, destinationPort _: Int32, ret0_ _: UnsafeMutablePointer<Int32>?) throws {
+        throw NSError(domain: "not implemented", code: 0)
     }
-    
+
+    public func packageName(byUid _: Int32, error _: NSErrorPointer) -> String {
+        ""
+    }
+
+    public func protectFd(_ fd: Int32) {
+
+    }
+
     func getTunnelFd() -> Int32? {
         var buf = [CChar](repeating: 0, count: Int(IFNAMSIZ))
         for fd: Int32 in 0 ... 1024 {
