@@ -195,6 +195,18 @@ class VPNService {
         (setting.Tun?.OverWrite == true && setting.Tun?.Enable == true);
     config.wake_lock = appSetting.wakeLock;
     config.auto_connect_at_boot = appSetting.autoConnectAtBoot;
+    config.include_all_networks =
+        setting.Extension?.Tun.includeAllNetworks ?? false;
+    config.exclude_local_networks =
+        setting.Extension?.Tun.excludeLocalNetworks ?? false;
+    config.exclude_cellular_services =
+        setting.Extension?.Tun.excludeCellularServices ?? false;
+    config.exclude_apns = setting.Extension?.Tun.excludeApns ?? false;
+    config.exclude_device_communication =
+        setting.Extension?.Tun.excludeDeviceCommunication ?? false;
+    config.enforce_routes = setting.Extension?.Tun.enforceRoutes ?? false;
+    config.auto_route_use_sub_ranges_by_default =
+        setting.Extension?.Tun.autoRouteUseSubRangesByDefault ?? false;
     var bundleIdentifier = AppUtils.getBundleId(_systemExtension);
     var uiServerAddress = name;
     var uiLocalizedDescription = vpnName;

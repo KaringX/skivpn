@@ -661,6 +661,92 @@ class GroupHelper {
                   },
           ),
         ),
+        if (Platform.isIOS || Platform.isMacOS) ...[
+          GroupItemOptions(
+            switchOptions: GroupItemSwitchOptions(
+              name: tcontext.tun.tunDefaultRoute,
+              switchValue:
+                  extensions.Tun.autoRouteUseSubRangesByDefault != true,
+              onSwitch: tun.OverWrite != true || tun.Enable != true
+                  ? null
+                  : (bool value) async {
+                      extensions.Tun.autoRouteUseSubRangesByDefault = !value;
+                    },
+            ),
+          ),
+          GroupItemOptions(
+            switchOptions: GroupItemSwitchOptions(
+              name: "includeAllNetworks",
+              tips: "iOS 14.0+;macOS 10.15+",
+              switchValue: extensions.Tun.includeAllNetworks,
+              onSwitch: tun.OverWrite != true || tun.Enable != true
+                  ? null
+                  : (bool value) async {
+                      extensions.Tun.includeAllNetworks = value;
+                    },
+            ),
+          ),
+          GroupItemOptions(
+            switchOptions: GroupItemSwitchOptions(
+              name: "excludeLocalNetworks",
+              tips: "iOS 14.2+;macOS 10.15+",
+              switchValue: extensions.Tun.excludeLocalNetworks,
+              onSwitch: tun.OverWrite != true || tun.Enable != true
+                  ? null
+                  : (bool value) async {
+                      extensions.Tun.excludeLocalNetworks = value;
+                    },
+            ),
+          ),
+          GroupItemOptions(
+            switchOptions: GroupItemSwitchOptions(
+              name: "excludeCellularServices",
+              tips: "iOS 16.4+;macOS 13.3+",
+              switchValue: extensions.Tun.excludeCellularServices,
+              onSwitch: tun.OverWrite != true || tun.Enable != true
+                  ? null
+                  : (bool value) async {
+                      extensions.Tun.excludeCellularServices = value;
+                    },
+            ),
+          ),
+          GroupItemOptions(
+            switchOptions: GroupItemSwitchOptions(
+              name: "excludeAPNs",
+              tips: "iOS 16.4+;macOS 13.3+",
+              switchValue: extensions.Tun.excludeApns,
+              onSwitch: tun.OverWrite != true || tun.Enable != true
+                  ? null
+                  : (bool value) async {
+                      extensions.Tun.excludeApns = value;
+                    },
+            ),
+          ),
+          GroupItemOptions(
+            switchOptions: GroupItemSwitchOptions(
+              name: "excludeDeviceCommunication",
+              tips: "iOS 17.4+;macOS 14.4+",
+              switchValue: extensions.Tun.excludeDeviceCommunication,
+              onSwitch: tun.OverWrite != true || tun.Enable != true
+                  ? null
+                  : (bool value) async {
+                      extensions.Tun.excludeDeviceCommunication = value;
+                    },
+            ),
+          ),
+          GroupItemOptions(
+            switchOptions: GroupItemSwitchOptions(
+              name: "enforceRoutes",
+              tips: "iOS 14.2+;macOS 11.0+",
+              switchValue: extensions.Tun.enforceRoutes,
+              onSwitch: tun.OverWrite != true || tun.Enable != true
+                  ? null
+                  : (bool value) async {
+                      extensions.Tun.enforceRoutes = value;
+                    },
+            ),
+          ),
+        ],
         if (PlatformUtils.isPC()) ...[
           GroupItemOptions(
             switchOptions: GroupItemSwitchOptions(
