@@ -39,12 +39,12 @@ abstract final class InstallDateUtils {
 
   static String _getDeviceIdKey() {
     if (Platform.isIOS) {
-      return 'KaringInstallDateIOS';
+      return 'SkivpnInstallDateIOS';
     } else if (Platform.isMacOS) {
-      return 'KaringInstallDateMacOS';
+      return 'SkivpnInstallDateMacOS';
     }
 
-    return 'KaringInstallDate';
+    return 'SkivpnInstallDate';
   }
 
   static Future<int> getTS() async {
