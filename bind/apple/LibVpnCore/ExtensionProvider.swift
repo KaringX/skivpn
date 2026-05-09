@@ -207,6 +207,7 @@ extension ExtensionProvider {
         let setupOptions = LibclashSetupOptions()
         setupOptions.homeDir = config!.base_dir
         setupOptions.logFile = config!.log_path
+        setupOptions.errorFile = config!.err_path
 
         var error: NSError?
         LibclashSetup(setupOptions, &error)
