@@ -664,7 +664,7 @@ class GroupHelper {
         if (Platform.isIOS || Platform.isMacOS) ...[
           GroupItemOptions(
             switchOptions: GroupItemSwitchOptions(
-              name: tcontext.tun.tunDefaultRoute,
+              name: "Default Route",
               switchValue:
                   extensions.Tun.autoRouteUseSubRangesByDefault != true,
               onSwitch: tun.OverWrite != true || tun.Enable != true
