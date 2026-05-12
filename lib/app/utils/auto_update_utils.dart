@@ -22,7 +22,6 @@ class AutoupdateItem {
   String version = "";
   String url = "";
   String sha256 = "";
-  String fileName = "";
   List<String> updateChannel = []; //stable, beta
 
   void fromJson(Map<String, dynamic>? map) {
@@ -43,7 +42,6 @@ class AutoupdateItem {
     version = map["version"] ?? "";
     url = map["url"] ?? "";
     sha256 = map["sha256"] ?? "";
-    fileName = map["file_name"] ?? "";
     var _versionChannel = map["version_channel"] ?? [];
     for (var i in _versionChannel) {
       updateChannel.add(i as String);
