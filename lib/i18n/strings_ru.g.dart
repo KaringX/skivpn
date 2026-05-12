@@ -41,15 +41,15 @@ class TranslationsRu with BaseTranslations<AppLocale, Translations> implements T
 	@override late final _TranslationsPerAppAndroidScreenRu PerAppAndroidScreen = _TranslationsPerAppAndroidScreenRu._(_root);
 	@override late final _TranslationsUserAgreementScreenRu UserAgreementScreen = _TranslationsUserAgreementScreenRu._(_root);
 	@override late final _TranslationsVersionUpdateScreenRu VersionUpdateScreen = _TranslationsVersionUpdateScreenRu._(_root);
+	@override late final _TranslationsHomeScreenRu homeScreen = _TranslationsHomeScreenRu._(_root);
+	@override late final _TranslationsLoginScreenRu loginScreen = _TranslationsLoginScreenRu._(_root);
+	@override late final _TranslationsPlanWidgetRu planWidget = _TranslationsPlanWidgetRu._(_root);
+	@override late final _TranslationsXboardRegisterScreenRu xboardRegisterScreen = _TranslationsXboardRegisterScreenRu._(_root);
 	@override late final _TranslationsMainRu main = _TranslationsMainRu._(_root);
 	@override late final _TranslationsMetaRu meta = _TranslationsMetaRu._(_root);
 	@override late final _TranslationsPermissionRu permission = _TranslationsPermissionRu._(_root);
 	@override late final _TranslationsTunRu tun = _TranslationsTunRu._(_root);
 	@override String get edgeRuntimeNotInstalled => 'Среда выполнения Edge WebView2 не установлена ​​на текущем устройстве, и страница не может быть отображена. Загрузите и установите среду выполнения Edge WebView2 (x64), перезапустите приложение и повторите попытку.';
-	@override late final _TranslationsHomeScreenRu homeScreen = _TranslationsHomeScreenRu._(_root);
-	@override late final _TranslationsLoginScreenRu loginScreen = _TranslationsLoginScreenRu._(_root);
-	@override late final _TranslationsPlanWidgetRu planWidget = _TranslationsPlanWidgetRu._(_root);
-	@override late final _TranslationsXboardRegisterScreenRu xboardRegisterScreen = _TranslationsXboardRegisterScreenRu._(_root);
 	@override Map<String, String> get locales => {
 		'en': 'English',
 		'zh-CN': '简体中文',
@@ -109,6 +109,91 @@ class _TranslationsVersionUpdateScreenRu implements TranslationsVersionUpdateScr
 	@override String versionReady({required Object p}) => 'Новая версия [${p}] доступна';
 	@override String get update => 'Перезапустить';
 	@override String get cancel => 'Не сейчас';
+}
+
+// Path: homeScreen
+class _TranslationsHomeScreenRu implements TranslationsHomeScreenEn {
+	_TranslationsHomeScreenRu._(this._root);
+
+	final TranslationsRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get traffic => 'Трафик:';
+	@override String get speed => 'Скорость:';
+	@override String get autoSelect => 'Автовыбор';
+	@override String get loadBalance => 'Балансировка нагрузки';
+	@override String get serviceCenter => 'Сервисный центр';
+	@override String get onlineSupport => 'Онлайн поддержка';
+	@override String get subscriptionChannel => 'Канал подписки';
+	@override String get buyPlan => 'Купить план';
+}
+
+// Path: loginScreen
+class _TranslationsLoginScreenRu implements TranslationsLoginScreenEn {
+	_TranslationsLoginScreenRu._(this._root);
+
+	final TranslationsRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get login => 'Вход';
+	@override String get register => 'Зарегистрировать аккаунт';
+	@override String get forgotPassword => 'Забыли пароль';
+	@override String get provider => 'Провайдер';
+	@override String get providerName => 'Название ${_root.loginScreen.provider}';
+	@override String get providerNameRequired => 'Пожалуйста, введите название ${_root.loginScreen.provider}';
+	@override String get account => 'Аккаунт';
+	@override String get accountRequired => 'Пожалуйста, введите аккаунт';
+	@override String get email => 'Электронная почта';
+	@override String get emailRequired => 'Пожалуйста, введите адрес электронной почты';
+	@override String get password => 'Пароль';
+	@override String get passwordRequired => 'Пожалуйста, введите пароль';
+	@override String get validEmailRequired => 'Пожалуйста, введите действительный адрес электронной почты';
+	@override String passwordMinLength({required Object minLength}) => 'Длина пароля должна быть не менее ${minLength} символов';
+	@override String get unsupportedProvider => 'Неподдерживаемый ${_root.loginScreen.provider}';
+	@override String get unsupportedProviderType => 'Неподдерживаемый тип ${_root.loginScreen.provider}';
+}
+
+// Path: planWidget
+class _TranslationsPlanWidgetRu implements TranslationsPlanWidgetEn {
+	_TranslationsPlanWidgetRu._(this._root);
+
+	final TranslationsRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get used => 'Использованный';
+	@override String get totalTraffic => 'Общий трафик';
+	@override String get expirationTime => 'Время истечения';
+	@override String get remainingTime => 'Оставшееся время';
+}
+
+// Path: xboardRegisterScreen
+class _TranslationsXboardRegisterScreenRu implements TranslationsXboardRegisterScreenEn {
+	_TranslationsXboardRegisterScreenRu._(this._root);
+
+	final TranslationsRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get register => 'Регистрация';
+	@override String get email => 'Электронная почта';
+	@override String get emailVerificationCode => 'Код подтверждения электронной почты';
+	@override String get send => 'Отправить';
+	@override String get password => 'Пароль';
+	@override String get confirmPassword => 'Подтвердить пароль';
+	@override String get verificationCode => 'Код подтверждения';
+	@override String get invitationCode => 'Код приглашения';
+	@override String get emailSentNotice => 'Код подтверждения отправлен на вашу электронную почту';
+	@override String get registerSuccess => 'Регистрация успешна';
+	@override String get invalidEmail => 'Пожалуйста, введите действительный адрес электронной почты';
+	@override String get passwordRequired => 'Пожалуйста, введите пароль';
+	@override String passwordMinLength({required Object minLength}) => 'Длина пароля должна быть не менее ${minLength} символов';
+	@override String get confirmPasswordRequired => 'Пожалуйста, введите пароль еще раз';
+	@override String get passwordMismatch => 'Введенные пароли не совпадают';
+	@override String get emailCodeRequired => 'Пожалуйста, введите код подтверждения электронной почты';
+	@override String emailCodeLength({required Object codeLength}) => 'Код подтверждения электронной почты должен быть ${codeLength} цифрами';
+	@override String get verificationCodeRequired => 'Пожалуйста, введите код подтверждения';
+	@override String get verificationCodeLength => 'Ошибка длины кода подтверждения';
+	@override String get userAgreement => 'Пользовательское соглашение';
+	@override String get pleaseCheck => 'Пожалуйста, отметьте';
 }
 
 // Path: main
@@ -278,91 +363,6 @@ class _TranslationsTunRu implements TranslationsTunEn {
 	@override String get bypassHttpProxyDomain => 'Домены, которым разрешено обходить HTTP-прокси';
 }
 
-// Path: homeScreen
-class _TranslationsHomeScreenRu implements TranslationsHomeScreenEn {
-	_TranslationsHomeScreenRu._(this._root);
-
-	final TranslationsRu _root; // ignore: unused_field
-
-	// Translations
-	@override String get traffic => 'Трафик:';
-	@override String get speed => 'Скорость:';
-	@override String get autoSelect => 'Автовыбор';
-	@override String get loadBalance => 'Балансировка нагрузки';
-	@override String get serviceCenter => 'Сервисный центр';
-	@override String get onlineSupport => 'Онлайн поддержка';
-	@override String get subscriptionChannel => 'Канал подписки';
-	@override String get buyPlan => 'Купить план';
-}
-
-// Path: loginScreen
-class _TranslationsLoginScreenRu implements TranslationsLoginScreenEn {
-	_TranslationsLoginScreenRu._(this._root);
-
-	final TranslationsRu _root; // ignore: unused_field
-
-	// Translations
-	@override String get login => 'Вход';
-	@override String get register => 'Зарегистрировать аккаунт';
-	@override String get forgotPassword => 'Забыли пароль';
-	@override String get provider => 'Провайдер';
-	@override String get providerName => 'Название ${_root.loginScreen.provider}';
-	@override String get providerNameRequired => 'Пожалуйста, введите название ${_root.loginScreen.provider}';
-	@override String get account => 'Аккаунт';
-	@override String get accountRequired => 'Пожалуйста, введите аккаунт';
-	@override String get email => 'Электронная почта';
-	@override String get emailRequired => 'Пожалуйста, введите адрес электронной почты';
-	@override String get password => 'Пароль';
-	@override String get passwordRequired => 'Пожалуйста, введите пароль';
-	@override String get validEmailRequired => 'Пожалуйста, введите действительный адрес электронной почты';
-	@override String passwordMinLength({required Object minLength}) => 'Длина пароля должна быть не менее ${minLength} символов';
-	@override String get unsupportedProvider => 'Неподдерживаемый ${_root.loginScreen.provider}';
-	@override String get unsupportedProviderType => 'Неподдерживаемый тип ${_root.loginScreen.provider}';
-}
-
-// Path: planWidget
-class _TranslationsPlanWidgetRu implements TranslationsPlanWidgetEn {
-	_TranslationsPlanWidgetRu._(this._root);
-
-	final TranslationsRu _root; // ignore: unused_field
-
-	// Translations
-	@override String get used => 'Использованный';
-	@override String get totalTraffic => 'Общий трафик';
-	@override String get expirationTime => 'Время истечения';
-	@override String get remainingTime => 'Оставшееся время';
-}
-
-// Path: xboardRegisterScreen
-class _TranslationsXboardRegisterScreenRu implements TranslationsXboardRegisterScreenEn {
-	_TranslationsXboardRegisterScreenRu._(this._root);
-
-	final TranslationsRu _root; // ignore: unused_field
-
-	// Translations
-	@override String get register => 'Регистрация';
-	@override String get email => 'Электронная почта';
-	@override String get emailVerificationCode => 'Код подтверждения электронной почты';
-	@override String get send => 'Отправить';
-	@override String get password => 'Пароль';
-	@override String get confirmPassword => 'Подтвердить пароль';
-	@override String get verificationCode => 'Код подтверждения';
-	@override String get invitationCode => 'Код приглашения';
-	@override String get emailSentNotice => 'Код подтверждения отправлен на вашу электронную почту';
-	@override String get registerSuccess => 'Регистрация успешна';
-	@override String get invalidEmail => 'Пожалуйста, введите действительный адрес электронной почты';
-	@override String get passwordRequired => 'Пожалуйста, введите пароль';
-	@override String passwordMinLength({required Object minLength}) => 'Длина пароля должна быть не менее ${minLength} символов';
-	@override String get confirmPasswordRequired => 'Пожалуйста, введите пароль еще раз';
-	@override String get passwordMismatch => 'Введенные пароли не совпадают';
-	@override String get emailCodeRequired => 'Пожалуйста, введите код подтверждения электронной почты';
-	@override String emailCodeLength({required Object codeLength}) => 'Код подтверждения электронной почты должен быть ${codeLength} цифрами';
-	@override String get verificationCodeRequired => 'Пожалуйста, введите код подтверждения';
-	@override String get verificationCodeLength => 'Ошибка длины кода подтверждения';
-	@override String get userAgreement => 'Пользовательское соглашение';
-	@override String get pleaseCheck => 'Пожалуйста, отметьте';
-}
-
 // Path: main.tray
 class _TranslationsMainTrayRu implements TranslationsMainTrayEn {
 	_TranslationsMainTrayRu._(this._root);
@@ -395,6 +395,55 @@ extension on TranslationsRu {
 			'VersionUpdateScreen.versionReady' => ({required Object p}) => 'Новая версия [${p}] доступна',
 			'VersionUpdateScreen.update' => 'Перезапустить',
 			'VersionUpdateScreen.cancel' => 'Не сейчас',
+			'homeScreen.traffic' => 'Трафик:',
+			'homeScreen.speed' => 'Скорость:',
+			'homeScreen.autoSelect' => 'Автовыбор',
+			'homeScreen.loadBalance' => 'Балансировка нагрузки',
+			'homeScreen.serviceCenter' => 'Сервисный центр',
+			'homeScreen.onlineSupport' => 'Онлайн поддержка',
+			'homeScreen.subscriptionChannel' => 'Канал подписки',
+			'homeScreen.buyPlan' => 'Купить план',
+			'loginScreen.login' => 'Вход',
+			'loginScreen.register' => 'Зарегистрировать аккаунт',
+			'loginScreen.forgotPassword' => 'Забыли пароль',
+			'loginScreen.provider' => 'Провайдер',
+			'loginScreen.providerName' => 'Название ${_root.loginScreen.provider}',
+			'loginScreen.providerNameRequired' => 'Пожалуйста, введите название ${_root.loginScreen.provider}',
+			'loginScreen.account' => 'Аккаунт',
+			'loginScreen.accountRequired' => 'Пожалуйста, введите аккаунт',
+			'loginScreen.email' => 'Электронная почта',
+			'loginScreen.emailRequired' => 'Пожалуйста, введите адрес электронной почты',
+			'loginScreen.password' => 'Пароль',
+			'loginScreen.passwordRequired' => 'Пожалуйста, введите пароль',
+			'loginScreen.validEmailRequired' => 'Пожалуйста, введите действительный адрес электронной почты',
+			'loginScreen.passwordMinLength' => ({required Object minLength}) => 'Длина пароля должна быть не менее ${minLength} символов',
+			'loginScreen.unsupportedProvider' => 'Неподдерживаемый ${_root.loginScreen.provider}',
+			'loginScreen.unsupportedProviderType' => 'Неподдерживаемый тип ${_root.loginScreen.provider}',
+			'planWidget.used' => 'Использованный',
+			'planWidget.totalTraffic' => 'Общий трафик',
+			'planWidget.expirationTime' => 'Время истечения',
+			'planWidget.remainingTime' => 'Оставшееся время',
+			'xboardRegisterScreen.register' => 'Регистрация',
+			'xboardRegisterScreen.email' => 'Электронная почта',
+			'xboardRegisterScreen.emailVerificationCode' => 'Код подтверждения электронной почты',
+			'xboardRegisterScreen.send' => 'Отправить',
+			'xboardRegisterScreen.password' => 'Пароль',
+			'xboardRegisterScreen.confirmPassword' => 'Подтвердить пароль',
+			'xboardRegisterScreen.verificationCode' => 'Код подтверждения',
+			'xboardRegisterScreen.invitationCode' => 'Код приглашения',
+			'xboardRegisterScreen.emailSentNotice' => 'Код подтверждения отправлен на вашу электронную почту',
+			'xboardRegisterScreen.registerSuccess' => 'Регистрация успешна',
+			'xboardRegisterScreen.invalidEmail' => 'Пожалуйста, введите действительный адрес электронной почты',
+			'xboardRegisterScreen.passwordRequired' => 'Пожалуйста, введите пароль',
+			'xboardRegisterScreen.passwordMinLength' => ({required Object minLength}) => 'Длина пароля должна быть не менее ${minLength} символов',
+			'xboardRegisterScreen.confirmPasswordRequired' => 'Пожалуйста, введите пароль еще раз',
+			'xboardRegisterScreen.passwordMismatch' => 'Введенные пароли не совпадают',
+			'xboardRegisterScreen.emailCodeRequired' => 'Пожалуйста, введите код подтверждения электронной почты',
+			'xboardRegisterScreen.emailCodeLength' => ({required Object codeLength}) => 'Код подтверждения электронной почты должен быть ${codeLength} цифрами',
+			'xboardRegisterScreen.verificationCodeRequired' => 'Пожалуйста, введите код подтверждения',
+			'xboardRegisterScreen.verificationCodeLength' => 'Ошибка длины кода подтверждения',
+			'xboardRegisterScreen.userAgreement' => 'Пользовательское соглашение',
+			'xboardRegisterScreen.pleaseCheck' => 'Пожалуйста, отметьте',
 			'main.tray.menuOpen' => 'Открыть',
 			'main.tray.menuExit' => 'Выйти',
 			'meta.enable' => 'Включить',
@@ -528,55 +577,6 @@ extension on TranslationsRu {
 			'tun.appendHttpProxy' => 'Подключите HTTP-прокси к VPN',
 			'tun.bypassHttpProxyDomain' => 'Домены, которым разрешено обходить HTTP-прокси',
 			'edgeRuntimeNotInstalled' => 'Среда выполнения Edge WebView2 не установлена ​​на текущем устройстве, и страница не может быть отображена. Загрузите и установите среду выполнения Edge WebView2 (x64), перезапустите приложение и повторите попытку.',
-			'homeScreen.traffic' => 'Трафик:',
-			'homeScreen.speed' => 'Скорость:',
-			'homeScreen.autoSelect' => 'Автовыбор',
-			'homeScreen.loadBalance' => 'Балансировка нагрузки',
-			'homeScreen.serviceCenter' => 'Сервисный центр',
-			'homeScreen.onlineSupport' => 'Онлайн поддержка',
-			'homeScreen.subscriptionChannel' => 'Канал подписки',
-			'homeScreen.buyPlan' => 'Купить план',
-			'loginScreen.login' => 'Вход',
-			'loginScreen.register' => 'Зарегистрировать аккаунт',
-			'loginScreen.forgotPassword' => 'Забыли пароль',
-			'loginScreen.provider' => 'Провайдер',
-			'loginScreen.providerName' => 'Название ${_root.loginScreen.provider}',
-			'loginScreen.providerNameRequired' => 'Пожалуйста, введите название ${_root.loginScreen.provider}',
-			'loginScreen.account' => 'Аккаунт',
-			'loginScreen.accountRequired' => 'Пожалуйста, введите аккаунт',
-			'loginScreen.email' => 'Электронная почта',
-			'loginScreen.emailRequired' => 'Пожалуйста, введите адрес электронной почты',
-			'loginScreen.password' => 'Пароль',
-			'loginScreen.passwordRequired' => 'Пожалуйста, введите пароль',
-			'loginScreen.validEmailRequired' => 'Пожалуйста, введите действительный адрес электронной почты',
-			'loginScreen.passwordMinLength' => ({required Object minLength}) => 'Длина пароля должна быть не менее ${minLength} символов',
-			'loginScreen.unsupportedProvider' => 'Неподдерживаемый ${_root.loginScreen.provider}',
-			'loginScreen.unsupportedProviderType' => 'Неподдерживаемый тип ${_root.loginScreen.provider}',
-			'planWidget.used' => 'Использованный',
-			'planWidget.totalTraffic' => 'Общий трафик',
-			'planWidget.expirationTime' => 'Время истечения',
-			'planWidget.remainingTime' => 'Оставшееся время',
-			'xboardRegisterScreen.register' => 'Регистрация',
-			'xboardRegisterScreen.email' => 'Электронная почта',
-			'xboardRegisterScreen.emailVerificationCode' => 'Код подтверждения электронной почты',
-			'xboardRegisterScreen.send' => 'Отправить',
-			'xboardRegisterScreen.password' => 'Пароль',
-			'xboardRegisterScreen.confirmPassword' => 'Подтвердить пароль',
-			'xboardRegisterScreen.verificationCode' => 'Код подтверждения',
-			'xboardRegisterScreen.invitationCode' => 'Код приглашения',
-			'xboardRegisterScreen.emailSentNotice' => 'Код подтверждения отправлен на вашу электронную почту',
-			'xboardRegisterScreen.registerSuccess' => 'Регистрация успешна',
-			'xboardRegisterScreen.invalidEmail' => 'Пожалуйста, введите действительный адрес электронной почты',
-			'xboardRegisterScreen.passwordRequired' => 'Пожалуйста, введите пароль',
-			'xboardRegisterScreen.passwordMinLength' => ({required Object minLength}) => 'Длина пароля должна быть не менее ${minLength} символов',
-			'xboardRegisterScreen.confirmPasswordRequired' => 'Пожалуйста, введите пароль еще раз',
-			'xboardRegisterScreen.passwordMismatch' => 'Введенные пароли не совпадают',
-			'xboardRegisterScreen.emailCodeRequired' => 'Пожалуйста, введите код подтверждения электронной почты',
-			'xboardRegisterScreen.emailCodeLength' => ({required Object codeLength}) => 'Код подтверждения электронной почты должен быть ${codeLength} цифрами',
-			'xboardRegisterScreen.verificationCodeRequired' => 'Пожалуйста, введите код подтверждения',
-			'xboardRegisterScreen.verificationCodeLength' => 'Ошибка длины кода подтверждения',
-			'xboardRegisterScreen.userAgreement' => 'Пользовательское соглашение',
-			'xboardRegisterScreen.pleaseCheck' => 'Пожалуйста, отметьте',
 			'locales.en' => 'English',
 			'locales.zh-CN' => '简体中文',
 			'locales.zh-TW' => '繁體中文',

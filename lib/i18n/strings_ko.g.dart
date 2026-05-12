@@ -41,15 +41,15 @@ class TranslationsKo with BaseTranslations<AppLocale, Translations> implements T
 	@override late final _TranslationsPerAppAndroidScreenKo PerAppAndroidScreen = _TranslationsPerAppAndroidScreenKo._(_root);
 	@override late final _TranslationsUserAgreementScreenKo UserAgreementScreen = _TranslationsUserAgreementScreenKo._(_root);
 	@override late final _TranslationsVersionUpdateScreenKo VersionUpdateScreen = _TranslationsVersionUpdateScreenKo._(_root);
+	@override late final _TranslationsHomeScreenKo homeScreen = _TranslationsHomeScreenKo._(_root);
+	@override late final _TranslationsLoginScreenKo loginScreen = _TranslationsLoginScreenKo._(_root);
+	@override late final _TranslationsPlanWidgetKo planWidget = _TranslationsPlanWidgetKo._(_root);
+	@override late final _TranslationsXboardRegisterScreenKo xboardRegisterScreen = _TranslationsXboardRegisterScreenKo._(_root);
 	@override late final _TranslationsMainKo main = _TranslationsMainKo._(_root);
 	@override late final _TranslationsMetaKo meta = _TranslationsMetaKo._(_root);
 	@override late final _TranslationsPermissionKo permission = _TranslationsPermissionKo._(_root);
 	@override late final _TranslationsTunKo tun = _TranslationsTunKo._(_root);
 	@override String get edgeRuntimeNotInstalled => '현재 장치에 Edge WebView2 런타임이 설치되어 있지 않아 페이지를 표시할 수 없습니다. Edge WebView2 런타임(x64)을 다운로드하여 설치하고 앱을 다시 시작한 후 다시 시도하십시오。';
-	@override late final _TranslationsHomeScreenKo homeScreen = _TranslationsHomeScreenKo._(_root);
-	@override late final _TranslationsLoginScreenKo loginScreen = _TranslationsLoginScreenKo._(_root);
-	@override late final _TranslationsPlanWidgetKo planWidget = _TranslationsPlanWidgetKo._(_root);
-	@override late final _TranslationsXboardRegisterScreenKo xboardRegisterScreen = _TranslationsXboardRegisterScreenKo._(_root);
 	@override Map<String, String> get locales => {
 		'en': 'English',
 		'zh-CN': '简体中文',
@@ -109,6 +109,91 @@ class _TranslationsVersionUpdateScreenKo implements TranslationsVersionUpdateScr
 	@override String versionReady({required Object p}) => '새 버전 [${p}]이 준비되었습니다';
 	@override String get update => '업데이트를 위해 재시작';
 	@override String get cancel => '나중에';
+}
+
+// Path: homeScreen
+class _TranslationsHomeScreenKo implements TranslationsHomeScreenEn {
+	_TranslationsHomeScreenKo._(this._root);
+
+	final TranslationsKo _root; // ignore: unused_field
+
+	// Translations
+	@override String get traffic => '트래픽:';
+	@override String get speed => '속도:';
+	@override String get autoSelect => '자동 선택';
+	@override String get loadBalance => '로드 밸런스';
+	@override String get serviceCenter => '서비스 센터';
+	@override String get onlineSupport => '온라인 지원';
+	@override String get subscriptionChannel => '구독 채널';
+	@override String get buyPlan => '요금제 구매';
+}
+
+// Path: loginScreen
+class _TranslationsLoginScreenKo implements TranslationsLoginScreenEn {
+	_TranslationsLoginScreenKo._(this._root);
+
+	final TranslationsKo _root; // ignore: unused_field
+
+	// Translations
+	@override String get login => '로그인';
+	@override String get register => '계정 가입';
+	@override String get forgotPassword => '비밀번호 찾기';
+	@override String get provider => '서비스 제공자';
+	@override String get providerName => '${_root.loginScreen.provider} 이름';
+	@override String get providerNameRequired => '${_root.loginScreen.provider} 이름을 입력하세요';
+	@override String get account => '계정';
+	@override String get accountRequired => '계정을 입력하세요';
+	@override String get email => '이메일';
+	@override String get emailRequired => '이메일 주소를 입력하세요';
+	@override String get password => '비밀번호';
+	@override String get passwordRequired => '비밀번호를 입력하세요';
+	@override String get validEmailRequired => '유효한 이메일 주소를 입력하세요';
+	@override String passwordMinLength({required Object minLength}) => '비밀번호 길이는 최소 ${minLength}자 이상이어야 합니다';
+	@override String get unsupportedProvider => '지원되지 않는 ${_root.loginScreen.provider}';
+	@override String get unsupportedProviderType => '지원되지 않는 ${_root.loginScreen.provider} 유형';
+}
+
+// Path: planWidget
+class _TranslationsPlanWidgetKo implements TranslationsPlanWidgetEn {
+	_TranslationsPlanWidgetKo._(this._root);
+
+	final TranslationsKo _root; // ignore: unused_field
+
+	// Translations
+	@override String get used => '사용됨';
+	@override String get totalTraffic => '총 트래픽';
+	@override String get expirationTime => '만료 시간';
+	@override String get remainingTime => '남은 시간';
+}
+
+// Path: xboardRegisterScreen
+class _TranslationsXboardRegisterScreenKo implements TranslationsXboardRegisterScreenEn {
+	_TranslationsXboardRegisterScreenKo._(this._root);
+
+	final TranslationsKo _root; // ignore: unused_field
+
+	// Translations
+	@override String get register => '가입';
+	@override String get email => '이메일';
+	@override String get emailVerificationCode => '이메일 인증 코드';
+	@override String get send => '전송';
+	@override String get password => '비밀번호';
+	@override String get confirmPassword => '비밀번호 확인';
+	@override String get verificationCode => '인증 코드';
+	@override String get invitationCode => '초대 코드';
+	@override String get emailSentNotice => '인증 코드가 이메일로 전송되었습니다';
+	@override String get registerSuccess => '가입에 성공했습니다';
+	@override String get invalidEmail => '유효한 이메일 주소를 입력하세요';
+	@override String get passwordRequired => '비밀번호를 입력하세요';
+	@override String passwordMinLength({required Object minLength}) => '비밀번호 길이는 최소 ${minLength}자 이상이어야 합니다';
+	@override String get confirmPasswordRequired => '비밀번호를 다시 입력하세요';
+	@override String get passwordMismatch => '두 번 입력한 비밀번호가 일치하지 않습니다';
+	@override String get emailCodeRequired => '이메일 인증 코드를 입력하세요';
+	@override String emailCodeLength({required Object codeLength}) => '이메일 인증 코드는 ${codeLength}자이어야 합니다';
+	@override String get verificationCodeRequired => '인증 코드를 입력하세요';
+	@override String get verificationCodeLength => '인증 코드 길이 오류';
+	@override String get userAgreement => '이용 약관';
+	@override String get pleaseCheck => '체크해 주세요';
 }
 
 // Path: main
@@ -278,91 +363,6 @@ class _TranslationsTunKo implements TranslationsTunEn {
 	@override String get bypassHttpProxyDomain => 'HTTP 프록시를 우회하도록 허용된 도메인';
 }
 
-// Path: homeScreen
-class _TranslationsHomeScreenKo implements TranslationsHomeScreenEn {
-	_TranslationsHomeScreenKo._(this._root);
-
-	final TranslationsKo _root; // ignore: unused_field
-
-	// Translations
-	@override String get traffic => '트래픽:';
-	@override String get speed => '속도:';
-	@override String get autoSelect => '자동 선택';
-	@override String get loadBalance => '로드 밸런스';
-	@override String get serviceCenter => '서비스 센터';
-	@override String get onlineSupport => '온라인 지원';
-	@override String get subscriptionChannel => '구독 채널';
-	@override String get buyPlan => '요금제 구매';
-}
-
-// Path: loginScreen
-class _TranslationsLoginScreenKo implements TranslationsLoginScreenEn {
-	_TranslationsLoginScreenKo._(this._root);
-
-	final TranslationsKo _root; // ignore: unused_field
-
-	// Translations
-	@override String get login => '로그인';
-	@override String get register => '계정 가입';
-	@override String get forgotPassword => '비밀번호 찾기';
-	@override String get provider => '서비스 제공자';
-	@override String get providerName => '${_root.loginScreen.provider} 이름';
-	@override String get providerNameRequired => '${_root.loginScreen.provider} 이름을 입력하세요';
-	@override String get account => '계정';
-	@override String get accountRequired => '계정을 입력하세요';
-	@override String get email => '이메일';
-	@override String get emailRequired => '이메일 주소를 입력하세요';
-	@override String get password => '비밀번호';
-	@override String get passwordRequired => '비밀번호를 입력하세요';
-	@override String get validEmailRequired => '유효한 이메일 주소를 입력하세요';
-	@override String passwordMinLength({required Object minLength}) => '비밀번호 길이는 최소 ${minLength}자 이상이어야 합니다';
-	@override String get unsupportedProvider => '지원되지 않는 ${_root.loginScreen.provider}';
-	@override String get unsupportedProviderType => '지원되지 않는 ${_root.loginScreen.provider} 유형';
-}
-
-// Path: planWidget
-class _TranslationsPlanWidgetKo implements TranslationsPlanWidgetEn {
-	_TranslationsPlanWidgetKo._(this._root);
-
-	final TranslationsKo _root; // ignore: unused_field
-
-	// Translations
-	@override String get used => '사용됨';
-	@override String get totalTraffic => '총 트래픽';
-	@override String get expirationTime => '만료 시간';
-	@override String get remainingTime => '남은 시간';
-}
-
-// Path: xboardRegisterScreen
-class _TranslationsXboardRegisterScreenKo implements TranslationsXboardRegisterScreenEn {
-	_TranslationsXboardRegisterScreenKo._(this._root);
-
-	final TranslationsKo _root; // ignore: unused_field
-
-	// Translations
-	@override String get register => '가입';
-	@override String get email => '이메일';
-	@override String get emailVerificationCode => '이메일 인증 코드';
-	@override String get send => '전송';
-	@override String get password => '비밀번호';
-	@override String get confirmPassword => '비밀번호 확인';
-	@override String get verificationCode => '인증 코드';
-	@override String get invitationCode => '초대 코드';
-	@override String get emailSentNotice => '인증 코드가 이메일로 전송되었습니다';
-	@override String get registerSuccess => '가입에 성공했습니다';
-	@override String get invalidEmail => '유효한 이메일 주소를 입력하세요';
-	@override String get passwordRequired => '비밀번호를 입력하세요';
-	@override String passwordMinLength({required Object minLength}) => '비밀번호 길이는 최소 ${minLength}자 이상이어야 합니다';
-	@override String get confirmPasswordRequired => '비밀번호를 다시 입력하세요';
-	@override String get passwordMismatch => '두 번 입력한 비밀번호가 일치하지 않습니다';
-	@override String get emailCodeRequired => '이메일 인증 코드를 입력하세요';
-	@override String emailCodeLength({required Object codeLength}) => '이메일 인증 코드는 ${codeLength}자이어야 합니다';
-	@override String get verificationCodeRequired => '인증 코드를 입력하세요';
-	@override String get verificationCodeLength => '인증 코드 길이 오류';
-	@override String get userAgreement => '이용 약관';
-	@override String get pleaseCheck => '체크해 주세요';
-}
-
 // Path: main.tray
 class _TranslationsMainTrayKo implements TranslationsMainTrayEn {
 	_TranslationsMainTrayKo._(this._root);
@@ -395,6 +395,55 @@ extension on TranslationsKo {
 			'VersionUpdateScreen.versionReady' => ({required Object p}) => '새 버전 [${p}]이 준비되었습니다',
 			'VersionUpdateScreen.update' => '업데이트를 위해 재시작',
 			'VersionUpdateScreen.cancel' => '나중에',
+			'homeScreen.traffic' => '트래픽:',
+			'homeScreen.speed' => '속도:',
+			'homeScreen.autoSelect' => '자동 선택',
+			'homeScreen.loadBalance' => '로드 밸런스',
+			'homeScreen.serviceCenter' => '서비스 센터',
+			'homeScreen.onlineSupport' => '온라인 지원',
+			'homeScreen.subscriptionChannel' => '구독 채널',
+			'homeScreen.buyPlan' => '요금제 구매',
+			'loginScreen.login' => '로그인',
+			'loginScreen.register' => '계정 가입',
+			'loginScreen.forgotPassword' => '비밀번호 찾기',
+			'loginScreen.provider' => '서비스 제공자',
+			'loginScreen.providerName' => '${_root.loginScreen.provider} 이름',
+			'loginScreen.providerNameRequired' => '${_root.loginScreen.provider} 이름을 입력하세요',
+			'loginScreen.account' => '계정',
+			'loginScreen.accountRequired' => '계정을 입력하세요',
+			'loginScreen.email' => '이메일',
+			'loginScreen.emailRequired' => '이메일 주소를 입력하세요',
+			'loginScreen.password' => '비밀번호',
+			'loginScreen.passwordRequired' => '비밀번호를 입력하세요',
+			'loginScreen.validEmailRequired' => '유효한 이메일 주소를 입력하세요',
+			'loginScreen.passwordMinLength' => ({required Object minLength}) => '비밀번호 길이는 최소 ${minLength}자 이상이어야 합니다',
+			'loginScreen.unsupportedProvider' => '지원되지 않는 ${_root.loginScreen.provider}',
+			'loginScreen.unsupportedProviderType' => '지원되지 않는 ${_root.loginScreen.provider} 유형',
+			'planWidget.used' => '사용됨',
+			'planWidget.totalTraffic' => '총 트래픽',
+			'planWidget.expirationTime' => '만료 시간',
+			'planWidget.remainingTime' => '남은 시간',
+			'xboardRegisterScreen.register' => '가입',
+			'xboardRegisterScreen.email' => '이메일',
+			'xboardRegisterScreen.emailVerificationCode' => '이메일 인증 코드',
+			'xboardRegisterScreen.send' => '전송',
+			'xboardRegisterScreen.password' => '비밀번호',
+			'xboardRegisterScreen.confirmPassword' => '비밀번호 확인',
+			'xboardRegisterScreen.verificationCode' => '인증 코드',
+			'xboardRegisterScreen.invitationCode' => '초대 코드',
+			'xboardRegisterScreen.emailSentNotice' => '인증 코드가 이메일로 전송되었습니다',
+			'xboardRegisterScreen.registerSuccess' => '가입에 성공했습니다',
+			'xboardRegisterScreen.invalidEmail' => '유효한 이메일 주소를 입력하세요',
+			'xboardRegisterScreen.passwordRequired' => '비밀번호를 입력하세요',
+			'xboardRegisterScreen.passwordMinLength' => ({required Object minLength}) => '비밀번호 길이는 최소 ${minLength}자 이상이어야 합니다',
+			'xboardRegisterScreen.confirmPasswordRequired' => '비밀번호를 다시 입력하세요',
+			'xboardRegisterScreen.passwordMismatch' => '두 번 입력한 비밀번호가 일치하지 않습니다',
+			'xboardRegisterScreen.emailCodeRequired' => '이메일 인증 코드를 입력하세요',
+			'xboardRegisterScreen.emailCodeLength' => ({required Object codeLength}) => '이메일 인증 코드는 ${codeLength}자이어야 합니다',
+			'xboardRegisterScreen.verificationCodeRequired' => '인증 코드를 입력하세요',
+			'xboardRegisterScreen.verificationCodeLength' => '인증 코드 길이 오류',
+			'xboardRegisterScreen.userAgreement' => '이용 약관',
+			'xboardRegisterScreen.pleaseCheck' => '체크해 주세요',
 			'main.tray.menuOpen' => '열기',
 			'main.tray.menuExit' => '종료',
 			'meta.enable' => '활성화',
@@ -528,55 +577,6 @@ extension on TranslationsKo {
 			'tun.appendHttpProxy' => 'VPN에 HTTP 프록시 추가',
 			'tun.bypassHttpProxyDomain' => 'HTTP 프록시를 우회하도록 허용된 도메인',
 			'edgeRuntimeNotInstalled' => '현재 장치에 Edge WebView2 런타임이 설치되어 있지 않아 페이지를 표시할 수 없습니다. Edge WebView2 런타임(x64)을 다운로드하여 설치하고 앱을 다시 시작한 후 다시 시도하십시오。',
-			'homeScreen.traffic' => '트래픽:',
-			'homeScreen.speed' => '속도:',
-			'homeScreen.autoSelect' => '자동 선택',
-			'homeScreen.loadBalance' => '로드 밸런스',
-			'homeScreen.serviceCenter' => '서비스 센터',
-			'homeScreen.onlineSupport' => '온라인 지원',
-			'homeScreen.subscriptionChannel' => '구독 채널',
-			'homeScreen.buyPlan' => '요금제 구매',
-			'loginScreen.login' => '로그인',
-			'loginScreen.register' => '계정 가입',
-			'loginScreen.forgotPassword' => '비밀번호 찾기',
-			'loginScreen.provider' => '서비스 제공자',
-			'loginScreen.providerName' => '${_root.loginScreen.provider} 이름',
-			'loginScreen.providerNameRequired' => '${_root.loginScreen.provider} 이름을 입력하세요',
-			'loginScreen.account' => '계정',
-			'loginScreen.accountRequired' => '계정을 입력하세요',
-			'loginScreen.email' => '이메일',
-			'loginScreen.emailRequired' => '이메일 주소를 입력하세요',
-			'loginScreen.password' => '비밀번호',
-			'loginScreen.passwordRequired' => '비밀번호를 입력하세요',
-			'loginScreen.validEmailRequired' => '유효한 이메일 주소를 입력하세요',
-			'loginScreen.passwordMinLength' => ({required Object minLength}) => '비밀번호 길이는 최소 ${minLength}자 이상이어야 합니다',
-			'loginScreen.unsupportedProvider' => '지원되지 않는 ${_root.loginScreen.provider}',
-			'loginScreen.unsupportedProviderType' => '지원되지 않는 ${_root.loginScreen.provider} 유형',
-			'planWidget.used' => '사용됨',
-			'planWidget.totalTraffic' => '총 트래픽',
-			'planWidget.expirationTime' => '만료 시간',
-			'planWidget.remainingTime' => '남은 시간',
-			'xboardRegisterScreen.register' => '가입',
-			'xboardRegisterScreen.email' => '이메일',
-			'xboardRegisterScreen.emailVerificationCode' => '이메일 인증 코드',
-			'xboardRegisterScreen.send' => '전송',
-			'xboardRegisterScreen.password' => '비밀번호',
-			'xboardRegisterScreen.confirmPassword' => '비밀번호 확인',
-			'xboardRegisterScreen.verificationCode' => '인증 코드',
-			'xboardRegisterScreen.invitationCode' => '초대 코드',
-			'xboardRegisterScreen.emailSentNotice' => '인증 코드가 이메일로 전송되었습니다',
-			'xboardRegisterScreen.registerSuccess' => '가입에 성공했습니다',
-			'xboardRegisterScreen.invalidEmail' => '유효한 이메일 주소를 입력하세요',
-			'xboardRegisterScreen.passwordRequired' => '비밀번호를 입력하세요',
-			'xboardRegisterScreen.passwordMinLength' => ({required Object minLength}) => '비밀번호 길이는 최소 ${minLength}자 이상이어야 합니다',
-			'xboardRegisterScreen.confirmPasswordRequired' => '비밀번호를 다시 입력하세요',
-			'xboardRegisterScreen.passwordMismatch' => '두 번 입력한 비밀번호가 일치하지 않습니다',
-			'xboardRegisterScreen.emailCodeRequired' => '이메일 인증 코드를 입력하세요',
-			'xboardRegisterScreen.emailCodeLength' => ({required Object codeLength}) => '이메일 인증 코드는 ${codeLength}자이어야 합니다',
-			'xboardRegisterScreen.verificationCodeRequired' => '인증 코드를 입력하세요',
-			'xboardRegisterScreen.verificationCodeLength' => '인증 코드 길이 오류',
-			'xboardRegisterScreen.userAgreement' => '이용 약관',
-			'xboardRegisterScreen.pleaseCheck' => '체크해 주세요',
 			'locales.en' => 'English',
 			'locales.zh-CN' => '简体中文',
 			'locales.zh-TW' => '繁體中文',

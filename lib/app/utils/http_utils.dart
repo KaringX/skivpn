@@ -618,6 +618,13 @@ abstract final class HttpUtils {
     return await fun();
   }
 
+  static Future<HttpClientRequest?> waitRequestTimeout(
+    Duration duration,
+  ) async {
+    await Future.delayed(duration);
+    return null;
+  }
+
   static Future<HttpClientResponse?> waitResponseDone(
     HttpClientRequest request,
     String? path,

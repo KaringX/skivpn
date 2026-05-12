@@ -41,15 +41,15 @@ class TranslationsAr with BaseTranslations<AppLocale, Translations> implements T
 	@override late final _TranslationsPerAppAndroidScreenAr PerAppAndroidScreen = _TranslationsPerAppAndroidScreenAr._(_root);
 	@override late final _TranslationsUserAgreementScreenAr UserAgreementScreen = _TranslationsUserAgreementScreenAr._(_root);
 	@override late final _TranslationsVersionUpdateScreenAr VersionUpdateScreen = _TranslationsVersionUpdateScreenAr._(_root);
+	@override late final _TranslationsHomeScreenAr homeScreen = _TranslationsHomeScreenAr._(_root);
+	@override late final _TranslationsLoginScreenAr loginScreen = _TranslationsLoginScreenAr._(_root);
+	@override late final _TranslationsPlanWidgetAr planWidget = _TranslationsPlanWidgetAr._(_root);
+	@override late final _TranslationsXboardRegisterScreenAr xboardRegisterScreen = _TranslationsXboardRegisterScreenAr._(_root);
 	@override late final _TranslationsMainAr main = _TranslationsMainAr._(_root);
 	@override late final _TranslationsMetaAr meta = _TranslationsMetaAr._(_root);
 	@override late final _TranslationsPermissionAr permission = _TranslationsPermissionAr._(_root);
 	@override late final _TranslationsTunAr tun = _TranslationsTunAr._(_root);
 	@override String get edgeRuntimeNotInstalled => 'لم يتم تثبيت وقت تشغيل Edge WebView2 على الجهاز الحالي ولا يمكن عرض الصفحة، يرجى تنزيل وتثبيت وقت تشغيل Edge WebView2 (x64)، وإعادة تشغيل التطبيق والمحاولة مرة أخرى.';
-	@override late final _TranslationsHomeScreenAr homeScreen = _TranslationsHomeScreenAr._(_root);
-	@override late final _TranslationsLoginScreenAr loginScreen = _TranslationsLoginScreenAr._(_root);
-	@override late final _TranslationsPlanWidgetAr planWidget = _TranslationsPlanWidgetAr._(_root);
-	@override late final _TranslationsXboardRegisterScreenAr xboardRegisterScreen = _TranslationsXboardRegisterScreenAr._(_root);
 	@override Map<String, String> get locales => {
 		'en': 'English',
 		'zh-CN': '简体中文',
@@ -109,6 +109,91 @@ class _TranslationsVersionUpdateScreenAr implements TranslationsVersionUpdateScr
 	@override String versionReady({required Object p}) => 'الإصدار الجديد [${p}] جاهز';
 	@override String get update => 'أعد التشغيل للتحديث';
 	@override String get cancel => 'ليس الآن';
+}
+
+// Path: homeScreen
+class _TranslationsHomeScreenAr implements TranslationsHomeScreenEn {
+	_TranslationsHomeScreenAr._(this._root);
+
+	final TranslationsAr _root; // ignore: unused_field
+
+	// Translations
+	@override String get traffic => 'حجم:';
+	@override String get speed => 'السرعة:';
+	@override String get autoSelect => 'اختيار تلقائي';
+	@override String get loadBalance => 'موازنة التحميل';
+	@override String get serviceCenter => 'مركز الخدمة';
+	@override String get onlineSupport => 'الدعم المباشر';
+	@override String get subscriptionChannel => 'قناة الاشتراك';
+	@override String get buyPlan => 'شراء الباقة';
+}
+
+// Path: loginScreen
+class _TranslationsLoginScreenAr implements TranslationsLoginScreenEn {
+	_TranslationsLoginScreenAr._(this._root);
+
+	final TranslationsAr _root; // ignore: unused_field
+
+	// Translations
+	@override String get login => 'دخول';
+	@override String get register => 'إنشاء حساب';
+	@override String get forgotPassword => 'هل نسيت كلمة المرور';
+	@override String get provider => 'مزود الخدمة';
+	@override String get providerName => 'اسم ${_root.loginScreen.provider}';
+	@override String get providerNameRequired => 'يرجى إدخال اسم ${_root.loginScreen.provider}';
+	@override String get account => 'حساب';
+	@override String get accountRequired => 'يرجى إدخال الحساب';
+	@override String get email => 'البريد الإلكتروني';
+	@override String get emailRequired => 'يرجى إدخال عنوان بريدك الإلكتروني';
+	@override String get password => 'كلمة المرور';
+	@override String get passwordRequired => 'يرجى إدخال كلمة المرور';
+	@override String get validEmailRequired => 'يرجى إدخال عنوان بريد إلكتروني صحيح';
+	@override String passwordMinLength({required Object minLength}) => 'يجب أن تكون كلمة المرور ${minLength} أحرف على الأقل';
+	@override String get unsupportedProvider => '${_root.loginScreen.provider} غير مدعوم';
+	@override String get unsupportedProviderType => 'نوع ${_root.loginScreen.provider} غير مدعوم';
+}
+
+// Path: planWidget
+class _TranslationsPlanWidgetAr implements TranslationsPlanWidgetEn {
+	_TranslationsPlanWidgetAr._(this._root);
+
+	final TranslationsAr _root; // ignore: unused_field
+
+	// Translations
+	@override String get used => 'المستخدمة';
+	@override String get totalTraffic => 'إجمالي حجم البيانات';
+	@override String get expirationTime => 'وقت انتهاء الصلاحية';
+	@override String get remainingTime => 'الوقت المتبقي';
+}
+
+// Path: xboardRegisterScreen
+class _TranslationsXboardRegisterScreenAr implements TranslationsXboardRegisterScreenEn {
+	_TranslationsXboardRegisterScreenAr._(this._root);
+
+	final TranslationsAr _root; // ignore: unused_field
+
+	// Translations
+	@override String get register => 'تسجيل';
+	@override String get email => 'البريد الإلكتروني';
+	@override String get emailVerificationCode => 'رمز التحقق من البريد الإلكتروني';
+	@override String get send => 'إرسال';
+	@override String get password => 'كلمة المرور';
+	@override String get confirmPassword => 'تأكيد كلمة المرور';
+	@override String get verificationCode => 'رمز التحقق';
+	@override String get invitationCode => 'كود الدعوة';
+	@override String get emailSentNotice => 'تم إرسال رمز التحقق إلى بريدك الإلكتروني';
+	@override String get registerSuccess => 'تم التسجيل بنجاح';
+	@override String get invalidEmail => 'يرجى إدخال عنوان بريد إلكتروني صحيح';
+	@override String get passwordRequired => 'يرجى إدخال كلمة المرور';
+	@override String passwordMinLength({required Object minLength}) => 'يجب أن تكون كلمة المرور ${minLength} أحرف على الأقل';
+	@override String get confirmPasswordRequired => 'يرجى إدخال كلمة المرور مرة أخرى';
+	@override String get passwordMismatch => 'كلمات المرور غير متطابقة';
+	@override String get emailCodeRequired => 'يرجى إدخال رمز التحقق من البريد الإلكتروني';
+	@override String emailCodeLength({required Object codeLength}) => 'يجب أن يكون رمز التحقق من البريد الإلكتروني ${codeLength} أرقام';
+	@override String get verificationCodeRequired => 'يرجى إدخال رمز التحقق';
+	@override String get verificationCodeLength => 'خطأ في طول رمز التحقق';
+	@override String get userAgreement => 'اتفاقية المستخدم';
+	@override String get pleaseCheck => 'يرجى التحديد';
 }
 
 // Path: main
@@ -278,91 +363,6 @@ class _TranslationsTunAr implements TranslationsTunEn {
 	@override String get bypassHttpProxyDomain => 'المجالات المسموح لها بتجاوز وكيل HTTP';
 }
 
-// Path: homeScreen
-class _TranslationsHomeScreenAr implements TranslationsHomeScreenEn {
-	_TranslationsHomeScreenAr._(this._root);
-
-	final TranslationsAr _root; // ignore: unused_field
-
-	// Translations
-	@override String get traffic => 'حجم:';
-	@override String get speed => 'السرعة:';
-	@override String get autoSelect => 'اختيار تلقائي';
-	@override String get loadBalance => 'موازنة التحميل';
-	@override String get serviceCenter => 'مركز الخدمة';
-	@override String get onlineSupport => 'الدعم المباشر';
-	@override String get subscriptionChannel => 'قناة الاشتراك';
-	@override String get buyPlan => 'شراء الباقة';
-}
-
-// Path: loginScreen
-class _TranslationsLoginScreenAr implements TranslationsLoginScreenEn {
-	_TranslationsLoginScreenAr._(this._root);
-
-	final TranslationsAr _root; // ignore: unused_field
-
-	// Translations
-	@override String get login => 'دخول';
-	@override String get register => 'إنشاء حساب';
-	@override String get forgotPassword => 'هل نسيت كلمة المرور';
-	@override String get provider => 'مزود الخدمة';
-	@override String get providerName => 'اسم ${_root.loginScreen.provider}';
-	@override String get providerNameRequired => 'يرجى إدخال اسم ${_root.loginScreen.provider}';
-	@override String get account => 'حساب';
-	@override String get accountRequired => 'يرجى إدخال الحساب';
-	@override String get email => 'البريد الإلكتروني';
-	@override String get emailRequired => 'يرجى إدخال عنوان بريدك الإلكتروني';
-	@override String get password => 'كلمة المرور';
-	@override String get passwordRequired => 'يرجى إدخال كلمة المرور';
-	@override String get validEmailRequired => 'يرجى إدخال عنوان بريد إلكتروني صحيح';
-	@override String passwordMinLength({required Object minLength}) => 'يجب أن تكون كلمة المرور ${minLength} أحرف على الأقل';
-	@override String get unsupportedProvider => '${_root.loginScreen.provider} غير مدعوم';
-	@override String get unsupportedProviderType => 'نوع ${_root.loginScreen.provider} غير مدعوم';
-}
-
-// Path: planWidget
-class _TranslationsPlanWidgetAr implements TranslationsPlanWidgetEn {
-	_TranslationsPlanWidgetAr._(this._root);
-
-	final TranslationsAr _root; // ignore: unused_field
-
-	// Translations
-	@override String get used => 'المستخدمة';
-	@override String get totalTraffic => 'إجمالي حجم البيانات';
-	@override String get expirationTime => 'وقت انتهاء الصلاحية';
-	@override String get remainingTime => 'الوقت المتبقي';
-}
-
-// Path: xboardRegisterScreen
-class _TranslationsXboardRegisterScreenAr implements TranslationsXboardRegisterScreenEn {
-	_TranslationsXboardRegisterScreenAr._(this._root);
-
-	final TranslationsAr _root; // ignore: unused_field
-
-	// Translations
-	@override String get register => 'تسجيل';
-	@override String get email => 'البريد الإلكتروني';
-	@override String get emailVerificationCode => 'رمز التحقق من البريد الإلكتروني';
-	@override String get send => 'إرسال';
-	@override String get password => 'كلمة المرور';
-	@override String get confirmPassword => 'تأكيد كلمة المرور';
-	@override String get verificationCode => 'رمز التحقق';
-	@override String get invitationCode => 'كود الدعوة';
-	@override String get emailSentNotice => 'تم إرسال رمز التحقق إلى بريدك الإلكتروني';
-	@override String get registerSuccess => 'تم التسجيل بنجاح';
-	@override String get invalidEmail => 'يرجى إدخال عنوان بريد إلكتروني صحيح';
-	@override String get passwordRequired => 'يرجى إدخال كلمة المرور';
-	@override String passwordMinLength({required Object minLength}) => 'يجب أن تكون كلمة المرور ${minLength} أحرف على الأقل';
-	@override String get confirmPasswordRequired => 'يرجى إدخال كلمة المرور مرة أخرى';
-	@override String get passwordMismatch => 'كلمات المرور غير متطابقة';
-	@override String get emailCodeRequired => 'يرجى إدخال رمز التحقق من البريد الإلكتروني';
-	@override String emailCodeLength({required Object codeLength}) => 'يجب أن يكون رمز التحقق من البريد الإلكتروني ${codeLength} أرقام';
-	@override String get verificationCodeRequired => 'يرجى إدخال رمز التحقق';
-	@override String get verificationCodeLength => 'خطأ في طول رمز التحقق';
-	@override String get userAgreement => 'اتفاقية المستخدم';
-	@override String get pleaseCheck => 'يرجى التحديد';
-}
-
 // Path: main.tray
 class _TranslationsMainTrayAr implements TranslationsMainTrayEn {
 	_TranslationsMainTrayAr._(this._root);
@@ -395,6 +395,55 @@ extension on TranslationsAr {
 			'VersionUpdateScreen.versionReady' => ({required Object p}) => 'الإصدار الجديد [${p}] جاهز',
 			'VersionUpdateScreen.update' => 'أعد التشغيل للتحديث',
 			'VersionUpdateScreen.cancel' => 'ليس الآن',
+			'homeScreen.traffic' => 'حجم:',
+			'homeScreen.speed' => 'السرعة:',
+			'homeScreen.autoSelect' => 'اختيار تلقائي',
+			'homeScreen.loadBalance' => 'موازنة التحميل',
+			'homeScreen.serviceCenter' => 'مركز الخدمة',
+			'homeScreen.onlineSupport' => 'الدعم المباشر',
+			'homeScreen.subscriptionChannel' => 'قناة الاشتراك',
+			'homeScreen.buyPlan' => 'شراء الباقة',
+			'loginScreen.login' => 'دخول',
+			'loginScreen.register' => 'إنشاء حساب',
+			'loginScreen.forgotPassword' => 'هل نسيت كلمة المرور',
+			'loginScreen.provider' => 'مزود الخدمة',
+			'loginScreen.providerName' => 'اسم ${_root.loginScreen.provider}',
+			'loginScreen.providerNameRequired' => 'يرجى إدخال اسم ${_root.loginScreen.provider}',
+			'loginScreen.account' => 'حساب',
+			'loginScreen.accountRequired' => 'يرجى إدخال الحساب',
+			'loginScreen.email' => 'البريد الإلكتروني',
+			'loginScreen.emailRequired' => 'يرجى إدخال عنوان بريدك الإلكتروني',
+			'loginScreen.password' => 'كلمة المرور',
+			'loginScreen.passwordRequired' => 'يرجى إدخال كلمة المرور',
+			'loginScreen.validEmailRequired' => 'يرجى إدخال عنوان بريد إلكتروني صحيح',
+			'loginScreen.passwordMinLength' => ({required Object minLength}) => 'يجب أن تكون كلمة المرور ${minLength} أحرف على الأقل',
+			'loginScreen.unsupportedProvider' => '${_root.loginScreen.provider} غير مدعوم',
+			'loginScreen.unsupportedProviderType' => 'نوع ${_root.loginScreen.provider} غير مدعوم',
+			'planWidget.used' => 'المستخدمة',
+			'planWidget.totalTraffic' => 'إجمالي حجم البيانات',
+			'planWidget.expirationTime' => 'وقت انتهاء الصلاحية',
+			'planWidget.remainingTime' => 'الوقت المتبقي',
+			'xboardRegisterScreen.register' => 'تسجيل',
+			'xboardRegisterScreen.email' => 'البريد الإلكتروني',
+			'xboardRegisterScreen.emailVerificationCode' => 'رمز التحقق من البريد الإلكتروني',
+			'xboardRegisterScreen.send' => 'إرسال',
+			'xboardRegisterScreen.password' => 'كلمة المرور',
+			'xboardRegisterScreen.confirmPassword' => 'تأكيد كلمة المرور',
+			'xboardRegisterScreen.verificationCode' => 'رمز التحقق',
+			'xboardRegisterScreen.invitationCode' => 'كود الدعوة',
+			'xboardRegisterScreen.emailSentNotice' => 'تم إرسال رمز التحقق إلى بريدك الإلكتروني',
+			'xboardRegisterScreen.registerSuccess' => 'تم التسجيل بنجاح',
+			'xboardRegisterScreen.invalidEmail' => 'يرجى إدخال عنوان بريد إلكتروني صحيح',
+			'xboardRegisterScreen.passwordRequired' => 'يرجى إدخال كلمة المرور',
+			'xboardRegisterScreen.passwordMinLength' => ({required Object minLength}) => 'يجب أن تكون كلمة المرور ${minLength} أحرف على الأقل',
+			'xboardRegisterScreen.confirmPasswordRequired' => 'يرجى إدخال كلمة المرور مرة أخرى',
+			'xboardRegisterScreen.passwordMismatch' => 'كلمات المرور غير متطابقة',
+			'xboardRegisterScreen.emailCodeRequired' => 'يرجى إدخال رمز التحقق من البريد الإلكتروني',
+			'xboardRegisterScreen.emailCodeLength' => ({required Object codeLength}) => 'يجب أن يكون رمز التحقق من البريد الإلكتروني ${codeLength} أرقام',
+			'xboardRegisterScreen.verificationCodeRequired' => 'يرجى إدخال رمز التحقق',
+			'xboardRegisterScreen.verificationCodeLength' => 'خطأ في طول رمز التحقق',
+			'xboardRegisterScreen.userAgreement' => 'اتفاقية المستخدم',
+			'xboardRegisterScreen.pleaseCheck' => 'يرجى التحديد',
 			'main.tray.menuOpen' => 'يفتح',
 			'main.tray.menuExit' => 'مخرج',
 			'meta.enable' => 'يُمكَِن',
@@ -528,55 +577,6 @@ extension on TranslationsAr {
 			'tun.appendHttpProxy' => 'إلحاق وكيل HTTP إلى VPN',
 			'tun.bypassHttpProxyDomain' => 'المجالات المسموح لها بتجاوز وكيل HTTP',
 			'edgeRuntimeNotInstalled' => 'لم يتم تثبيت وقت تشغيل Edge WebView2 على الجهاز الحالي ولا يمكن عرض الصفحة، يرجى تنزيل وتثبيت وقت تشغيل Edge WebView2 (x64)، وإعادة تشغيل التطبيق والمحاولة مرة أخرى.',
-			'homeScreen.traffic' => 'حجم:',
-			'homeScreen.speed' => 'السرعة:',
-			'homeScreen.autoSelect' => 'اختيار تلقائي',
-			'homeScreen.loadBalance' => 'موازنة التحميل',
-			'homeScreen.serviceCenter' => 'مركز الخدمة',
-			'homeScreen.onlineSupport' => 'الدعم المباشر',
-			'homeScreen.subscriptionChannel' => 'قناة الاشتراك',
-			'homeScreen.buyPlan' => 'شراء الباقة',
-			'loginScreen.login' => 'دخول',
-			'loginScreen.register' => 'إنشاء حساب',
-			'loginScreen.forgotPassword' => 'هل نسيت كلمة المرور',
-			'loginScreen.provider' => 'مزود الخدمة',
-			'loginScreen.providerName' => 'اسم ${_root.loginScreen.provider}',
-			'loginScreen.providerNameRequired' => 'يرجى إدخال اسم ${_root.loginScreen.provider}',
-			'loginScreen.account' => 'حساب',
-			'loginScreen.accountRequired' => 'يرجى إدخال الحساب',
-			'loginScreen.email' => 'البريد الإلكتروني',
-			'loginScreen.emailRequired' => 'يرجى إدخال عنوان بريدك الإلكتروني',
-			'loginScreen.password' => 'كلمة المرور',
-			'loginScreen.passwordRequired' => 'يرجى إدخال كلمة المرور',
-			'loginScreen.validEmailRequired' => 'يرجى إدخال عنوان بريد إلكتروني صحيح',
-			'loginScreen.passwordMinLength' => ({required Object minLength}) => 'يجب أن تكون كلمة المرور ${minLength} أحرف على الأقل',
-			'loginScreen.unsupportedProvider' => '${_root.loginScreen.provider} غير مدعوم',
-			'loginScreen.unsupportedProviderType' => 'نوع ${_root.loginScreen.provider} غير مدعوم',
-			'planWidget.used' => 'المستخدمة',
-			'planWidget.totalTraffic' => 'إجمالي حجم البيانات',
-			'planWidget.expirationTime' => 'وقت انتهاء الصلاحية',
-			'planWidget.remainingTime' => 'الوقت المتبقي',
-			'xboardRegisterScreen.register' => 'تسجيل',
-			'xboardRegisterScreen.email' => 'البريد الإلكتروني',
-			'xboardRegisterScreen.emailVerificationCode' => 'رمز التحقق من البريد الإلكتروني',
-			'xboardRegisterScreen.send' => 'إرسال',
-			'xboardRegisterScreen.password' => 'كلمة المرور',
-			'xboardRegisterScreen.confirmPassword' => 'تأكيد كلمة المرور',
-			'xboardRegisterScreen.verificationCode' => 'رمز التحقق',
-			'xboardRegisterScreen.invitationCode' => 'كود الدعوة',
-			'xboardRegisterScreen.emailSentNotice' => 'تم إرسال رمز التحقق إلى بريدك الإلكتروني',
-			'xboardRegisterScreen.registerSuccess' => 'تم التسجيل بنجاح',
-			'xboardRegisterScreen.invalidEmail' => 'يرجى إدخال عنوان بريد إلكتروني صحيح',
-			'xboardRegisterScreen.passwordRequired' => 'يرجى إدخال كلمة المرور',
-			'xboardRegisterScreen.passwordMinLength' => ({required Object minLength}) => 'يجب أن تكون كلمة المرور ${minLength} أحرف على الأقل',
-			'xboardRegisterScreen.confirmPasswordRequired' => 'يرجى إدخال كلمة المرور مرة أخرى',
-			'xboardRegisterScreen.passwordMismatch' => 'كلمات المرور غير متطابقة',
-			'xboardRegisterScreen.emailCodeRequired' => 'يرجى إدخال رمز التحقق من البريد الإلكتروني',
-			'xboardRegisterScreen.emailCodeLength' => ({required Object codeLength}) => 'يجب أن يكون رمز التحقق من البريد الإلكتروني ${codeLength} أرقام',
-			'xboardRegisterScreen.verificationCodeRequired' => 'يرجى إدخال رمز التحقق',
-			'xboardRegisterScreen.verificationCodeLength' => 'خطأ في طول رمز التحقق',
-			'xboardRegisterScreen.userAgreement' => 'اتفاقية المستخدم',
-			'xboardRegisterScreen.pleaseCheck' => 'يرجى التحديد',
 			'locales.en' => 'English',
 			'locales.zh-CN' => '简体中文',
 			'locales.zh-TW' => '繁體中文',

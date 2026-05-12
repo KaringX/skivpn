@@ -41,15 +41,15 @@ class TranslationsZhCn with BaseTranslations<AppLocale, Translations> implements
 	@override late final _TranslationsPerAppAndroidScreenZhCn PerAppAndroidScreen = _TranslationsPerAppAndroidScreenZhCn._(_root);
 	@override late final _TranslationsUserAgreementScreenZhCn UserAgreementScreen = _TranslationsUserAgreementScreenZhCn._(_root);
 	@override late final _TranslationsVersionUpdateScreenZhCn VersionUpdateScreen = _TranslationsVersionUpdateScreenZhCn._(_root);
+	@override late final _TranslationsHomeScreenZhCn homeScreen = _TranslationsHomeScreenZhCn._(_root);
+	@override late final _TranslationsLoginScreenZhCn loginScreen = _TranslationsLoginScreenZhCn._(_root);
+	@override late final _TranslationsPlanWidgetZhCn planWidget = _TranslationsPlanWidgetZhCn._(_root);
+	@override late final _TranslationsXboardRegisterScreenZhCn xboardRegisterScreen = _TranslationsXboardRegisterScreenZhCn._(_root);
 	@override late final _TranslationsMainZhCn main = _TranslationsMainZhCn._(_root);
 	@override late final _TranslationsMetaZhCn meta = _TranslationsMetaZhCn._(_root);
 	@override late final _TranslationsPermissionZhCn permission = _TranslationsPermissionZhCn._(_root);
 	@override late final _TranslationsTunZhCn tun = _TranslationsTunZhCn._(_root);
 	@override String get edgeRuntimeNotInstalled => '当前设备尚未安装Edge WebView2运行时,无法展示页面,请下载安装Edge WebView2运行时(x64)后,重启App再试';
-	@override late final _TranslationsHomeScreenZhCn homeScreen = _TranslationsHomeScreenZhCn._(_root);
-	@override late final _TranslationsLoginScreenZhCn loginScreen = _TranslationsLoginScreenZhCn._(_root);
-	@override late final _TranslationsPlanWidgetZhCn planWidget = _TranslationsPlanWidgetZhCn._(_root);
-	@override late final _TranslationsXboardRegisterScreenZhCn xboardRegisterScreen = _TranslationsXboardRegisterScreenZhCn._(_root);
 	@override Map<String, String> get locales => {
 		'en': 'English',
 		'zh-CN': '简体中文',
@@ -109,6 +109,91 @@ class _TranslationsVersionUpdateScreenZhCn implements TranslationsVersionUpdateS
 	@override String versionReady({required Object p}) => '新版本[${p}]已就绪';
 	@override String get update => '重启更新';
 	@override String get cancel => '暂不更新';
+}
+
+// Path: homeScreen
+class _TranslationsHomeScreenZhCn implements TranslationsHomeScreenEn {
+	_TranslationsHomeScreenZhCn._(this._root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get traffic => '流量:';
+	@override String get speed => '速度:';
+	@override String get autoSelect => '自动选择';
+	@override String get loadBalance => '负载均衡';
+	@override String get serviceCenter => '服务中心';
+	@override String get onlineSupport => '在线客服';
+	@override String get subscriptionChannel => '订阅频道';
+	@override String get buyPlan => '购买套餐';
+}
+
+// Path: loginScreen
+class _TranslationsLoginScreenZhCn implements TranslationsLoginScreenEn {
+	_TranslationsLoginScreenZhCn._(this._root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get login => '登录';
+	@override String get register => '注册账号';
+	@override String get forgotPassword => '忘记密码';
+	@override String get provider => '服务商(机场)';
+	@override String get providerName => '${_root.loginScreen.provider}名称';
+	@override String get providerNameRequired => '请输入${_root.loginScreen.provider}名称';
+	@override String get account => '账号';
+	@override String get accountRequired => '请输入账号';
+	@override String get email => '邮箱';
+	@override String get emailRequired => '请输入邮箱地址';
+	@override String get password => '密码';
+	@override String get passwordRequired => '请输入密码';
+	@override String get validEmailRequired => '请输入有效的邮箱地址';
+	@override String passwordMinLength({required Object minLength}) => '密码长度至少${minLength}位';
+	@override String get unsupportedProvider => '不支持的${_root.loginScreen.provider}';
+	@override String get unsupportedProviderType => '不支持的${_root.loginScreen.provider}类型';
+}
+
+// Path: planWidget
+class _TranslationsPlanWidgetZhCn implements TranslationsPlanWidgetEn {
+	_TranslationsPlanWidgetZhCn._(this._root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get used => '已使用';
+	@override String get totalTraffic => '总流量';
+	@override String get expirationTime => '过期时间';
+	@override String get remainingTime => '剩余时间';
+}
+
+// Path: xboardRegisterScreen
+class _TranslationsXboardRegisterScreenZhCn implements TranslationsXboardRegisterScreenEn {
+	_TranslationsXboardRegisterScreenZhCn._(this._root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get register => '注册';
+	@override String get email => '邮箱';
+	@override String get emailVerificationCode => '邮箱验证码';
+	@override String get send => '发送';
+	@override String get password => '密码';
+	@override String get confirmPassword => '确认密码';
+	@override String get verificationCode => '验证码';
+	@override String get invitationCode => '邀请码';
+	@override String get emailSentNotice => '验证码已发送至您的邮箱';
+	@override String get registerSuccess => '注册成功';
+	@override String get invalidEmail => '请输入有效的邮箱地址';
+	@override String get passwordRequired => '请输入密码';
+	@override String passwordMinLength({required Object minLength}) => '密码长度至少${minLength}位';
+	@override String get confirmPasswordRequired => '请再次输入密码';
+	@override String get passwordMismatch => '两次输入的密码不一致';
+	@override String get emailCodeRequired => '请输入邮箱验证码';
+	@override String emailCodeLength({required Object codeLength}) => '邮箱验证码应为${codeLength}位';
+	@override String get verificationCodeRequired => '请输入验证码';
+	@override String get verificationCodeLength => '验证码长度错误';
+	@override String get userAgreement => '用户协议';
+	@override String get pleaseCheck => '请勾选';
 }
 
 // Path: main
@@ -278,91 +363,6 @@ class _TranslationsTunZhCn implements TranslationsTunEn {
 	@override String get bypassHttpProxyDomain => '允许绕过HTTP代理的域名';
 }
 
-// Path: homeScreen
-class _TranslationsHomeScreenZhCn implements TranslationsHomeScreenEn {
-	_TranslationsHomeScreenZhCn._(this._root);
-
-	final TranslationsZhCn _root; // ignore: unused_field
-
-	// Translations
-	@override String get traffic => '流量:';
-	@override String get speed => '速度:';
-	@override String get autoSelect => '自动选择';
-	@override String get loadBalance => '负载均衡';
-	@override String get serviceCenter => '服务中心';
-	@override String get onlineSupport => '在线客服';
-	@override String get subscriptionChannel => '订阅频道';
-	@override String get buyPlan => '购买套餐';
-}
-
-// Path: loginScreen
-class _TranslationsLoginScreenZhCn implements TranslationsLoginScreenEn {
-	_TranslationsLoginScreenZhCn._(this._root);
-
-	final TranslationsZhCn _root; // ignore: unused_field
-
-	// Translations
-	@override String get login => '登录';
-	@override String get register => '注册账号';
-	@override String get forgotPassword => '忘记密码';
-	@override String get provider => '服务商(机场)';
-	@override String get providerName => '${_root.loginScreen.provider}名称';
-	@override String get providerNameRequired => '请输入${_root.loginScreen.provider}名称';
-	@override String get account => '账号';
-	@override String get accountRequired => '请输入账号';
-	@override String get email => '邮箱';
-	@override String get emailRequired => '请输入邮箱地址';
-	@override String get password => '密码';
-	@override String get passwordRequired => '请输入密码';
-	@override String get validEmailRequired => '请输入有效的邮箱地址';
-	@override String passwordMinLength({required Object minLength}) => '密码长度至少${minLength}位';
-	@override String get unsupportedProvider => '不支持的${_root.loginScreen.provider}';
-	@override String get unsupportedProviderType => '不支持的${_root.loginScreen.provider}类型';
-}
-
-// Path: planWidget
-class _TranslationsPlanWidgetZhCn implements TranslationsPlanWidgetEn {
-	_TranslationsPlanWidgetZhCn._(this._root);
-
-	final TranslationsZhCn _root; // ignore: unused_field
-
-	// Translations
-	@override String get used => '已使用';
-	@override String get totalTraffic => '总流量';
-	@override String get expirationTime => '过期时间';
-	@override String get remainingTime => '剩余时间';
-}
-
-// Path: xboardRegisterScreen
-class _TranslationsXboardRegisterScreenZhCn implements TranslationsXboardRegisterScreenEn {
-	_TranslationsXboardRegisterScreenZhCn._(this._root);
-
-	final TranslationsZhCn _root; // ignore: unused_field
-
-	// Translations
-	@override String get register => '注册';
-	@override String get email => '邮箱';
-	@override String get emailVerificationCode => '邮箱验证码';
-	@override String get send => '发送';
-	@override String get password => '密码';
-	@override String get confirmPassword => '确认密码';
-	@override String get verificationCode => '验证码';
-	@override String get invitationCode => '邀请码';
-	@override String get emailSentNotice => '验证码已发送至您的邮箱';
-	@override String get registerSuccess => '注册成功';
-	@override String get invalidEmail => '请输入有效的邮箱地址';
-	@override String get passwordRequired => '请输入密码';
-	@override String passwordMinLength({required Object minLength}) => '密码长度至少${minLength}位';
-	@override String get confirmPasswordRequired => '请再次输入密码';
-	@override String get passwordMismatch => '两次输入的密码不一致';
-	@override String get emailCodeRequired => '请输入邮箱验证码';
-	@override String emailCodeLength({required Object codeLength}) => '邮箱验证码应为${codeLength}位';
-	@override String get verificationCodeRequired => '请输入验证码';
-	@override String get verificationCodeLength => '验证码长度错误';
-	@override String get userAgreement => '用户协议';
-	@override String get pleaseCheck => '请勾选';
-}
-
 // Path: main.tray
 class _TranslationsMainTrayZhCn implements TranslationsMainTrayEn {
 	_TranslationsMainTrayZhCn._(this._root);
@@ -395,6 +395,55 @@ extension on TranslationsZhCn {
 			'VersionUpdateScreen.versionReady' => ({required Object p}) => '新版本[${p}]已就绪',
 			'VersionUpdateScreen.update' => '重启更新',
 			'VersionUpdateScreen.cancel' => '暂不更新',
+			'homeScreen.traffic' => '流量:',
+			'homeScreen.speed' => '速度:',
+			'homeScreen.autoSelect' => '自动选择',
+			'homeScreen.loadBalance' => '负载均衡',
+			'homeScreen.serviceCenter' => '服务中心',
+			'homeScreen.onlineSupport' => '在线客服',
+			'homeScreen.subscriptionChannel' => '订阅频道',
+			'homeScreen.buyPlan' => '购买套餐',
+			'loginScreen.login' => '登录',
+			'loginScreen.register' => '注册账号',
+			'loginScreen.forgotPassword' => '忘记密码',
+			'loginScreen.provider' => '服务商(机场)',
+			'loginScreen.providerName' => '${_root.loginScreen.provider}名称',
+			'loginScreen.providerNameRequired' => '请输入${_root.loginScreen.provider}名称',
+			'loginScreen.account' => '账号',
+			'loginScreen.accountRequired' => '请输入账号',
+			'loginScreen.email' => '邮箱',
+			'loginScreen.emailRequired' => '请输入邮箱地址',
+			'loginScreen.password' => '密码',
+			'loginScreen.passwordRequired' => '请输入密码',
+			'loginScreen.validEmailRequired' => '请输入有效的邮箱地址',
+			'loginScreen.passwordMinLength' => ({required Object minLength}) => '密码长度至少${minLength}位',
+			'loginScreen.unsupportedProvider' => '不支持的${_root.loginScreen.provider}',
+			'loginScreen.unsupportedProviderType' => '不支持的${_root.loginScreen.provider}类型',
+			'planWidget.used' => '已使用',
+			'planWidget.totalTraffic' => '总流量',
+			'planWidget.expirationTime' => '过期时间',
+			'planWidget.remainingTime' => '剩余时间',
+			'xboardRegisterScreen.register' => '注册',
+			'xboardRegisterScreen.email' => '邮箱',
+			'xboardRegisterScreen.emailVerificationCode' => '邮箱验证码',
+			'xboardRegisterScreen.send' => '发送',
+			'xboardRegisterScreen.password' => '密码',
+			'xboardRegisterScreen.confirmPassword' => '确认密码',
+			'xboardRegisterScreen.verificationCode' => '验证码',
+			'xboardRegisterScreen.invitationCode' => '邀请码',
+			'xboardRegisterScreen.emailSentNotice' => '验证码已发送至您的邮箱',
+			'xboardRegisterScreen.registerSuccess' => '注册成功',
+			'xboardRegisterScreen.invalidEmail' => '请输入有效的邮箱地址',
+			'xboardRegisterScreen.passwordRequired' => '请输入密码',
+			'xboardRegisterScreen.passwordMinLength' => ({required Object minLength}) => '密码长度至少${minLength}位',
+			'xboardRegisterScreen.confirmPasswordRequired' => '请再次输入密码',
+			'xboardRegisterScreen.passwordMismatch' => '两次输入的密码不一致',
+			'xboardRegisterScreen.emailCodeRequired' => '请输入邮箱验证码',
+			'xboardRegisterScreen.emailCodeLength' => ({required Object codeLength}) => '邮箱验证码应为${codeLength}位',
+			'xboardRegisterScreen.verificationCodeRequired' => '请输入验证码',
+			'xboardRegisterScreen.verificationCodeLength' => '验证码长度错误',
+			'xboardRegisterScreen.userAgreement' => '用户协议',
+			'xboardRegisterScreen.pleaseCheck' => '请勾选',
 			'main.tray.menuOpen' => '打开',
 			'main.tray.menuExit' => '退出',
 			'meta.enable' => '启用',
@@ -528,55 +577,6 @@ extension on TranslationsZhCn {
 			'tun.appendHttpProxy' => '附加HTTP代理到VPN',
 			'tun.bypassHttpProxyDomain' => '允许绕过HTTP代理的域名',
 			'edgeRuntimeNotInstalled' => '当前设备尚未安装Edge WebView2运行时,无法展示页面,请下载安装Edge WebView2运行时(x64)后,重启App再试',
-			'homeScreen.traffic' => '流量:',
-			'homeScreen.speed' => '速度:',
-			'homeScreen.autoSelect' => '自动选择',
-			'homeScreen.loadBalance' => '负载均衡',
-			'homeScreen.serviceCenter' => '服务中心',
-			'homeScreen.onlineSupport' => '在线客服',
-			'homeScreen.subscriptionChannel' => '订阅频道',
-			'homeScreen.buyPlan' => '购买套餐',
-			'loginScreen.login' => '登录',
-			'loginScreen.register' => '注册账号',
-			'loginScreen.forgotPassword' => '忘记密码',
-			'loginScreen.provider' => '服务商(机场)',
-			'loginScreen.providerName' => '${_root.loginScreen.provider}名称',
-			'loginScreen.providerNameRequired' => '请输入${_root.loginScreen.provider}名称',
-			'loginScreen.account' => '账号',
-			'loginScreen.accountRequired' => '请输入账号',
-			'loginScreen.email' => '邮箱',
-			'loginScreen.emailRequired' => '请输入邮箱地址',
-			'loginScreen.password' => '密码',
-			'loginScreen.passwordRequired' => '请输入密码',
-			'loginScreen.validEmailRequired' => '请输入有效的邮箱地址',
-			'loginScreen.passwordMinLength' => ({required Object minLength}) => '密码长度至少${minLength}位',
-			'loginScreen.unsupportedProvider' => '不支持的${_root.loginScreen.provider}',
-			'loginScreen.unsupportedProviderType' => '不支持的${_root.loginScreen.provider}类型',
-			'planWidget.used' => '已使用',
-			'planWidget.totalTraffic' => '总流量',
-			'planWidget.expirationTime' => '过期时间',
-			'planWidget.remainingTime' => '剩余时间',
-			'xboardRegisterScreen.register' => '注册',
-			'xboardRegisterScreen.email' => '邮箱',
-			'xboardRegisterScreen.emailVerificationCode' => '邮箱验证码',
-			'xboardRegisterScreen.send' => '发送',
-			'xboardRegisterScreen.password' => '密码',
-			'xboardRegisterScreen.confirmPassword' => '确认密码',
-			'xboardRegisterScreen.verificationCode' => '验证码',
-			'xboardRegisterScreen.invitationCode' => '邀请码',
-			'xboardRegisterScreen.emailSentNotice' => '验证码已发送至您的邮箱',
-			'xboardRegisterScreen.registerSuccess' => '注册成功',
-			'xboardRegisterScreen.invalidEmail' => '请输入有效的邮箱地址',
-			'xboardRegisterScreen.passwordRequired' => '请输入密码',
-			'xboardRegisterScreen.passwordMinLength' => ({required Object minLength}) => '密码长度至少${minLength}位',
-			'xboardRegisterScreen.confirmPasswordRequired' => '请再次输入密码',
-			'xboardRegisterScreen.passwordMismatch' => '两次输入的密码不一致',
-			'xboardRegisterScreen.emailCodeRequired' => '请输入邮箱验证码',
-			'xboardRegisterScreen.emailCodeLength' => ({required Object codeLength}) => '邮箱验证码应为${codeLength}位',
-			'xboardRegisterScreen.verificationCodeRequired' => '请输入验证码',
-			'xboardRegisterScreen.verificationCodeLength' => '验证码长度错误',
-			'xboardRegisterScreen.userAgreement' => '用户协议',
-			'xboardRegisterScreen.pleaseCheck' => '请勾选',
 			'locales.en' => 'English',
 			'locales.zh-CN' => '简体中文',
 			'locales.zh-TW' => '繁體中文',

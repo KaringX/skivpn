@@ -41,15 +41,15 @@ class TranslationsJa with BaseTranslations<AppLocale, Translations> implements T
 	@override late final _TranslationsPerAppAndroidScreenJa PerAppAndroidScreen = _TranslationsPerAppAndroidScreenJa._(_root);
 	@override late final _TranslationsUserAgreementScreenJa UserAgreementScreen = _TranslationsUserAgreementScreenJa._(_root);
 	@override late final _TranslationsVersionUpdateScreenJa VersionUpdateScreen = _TranslationsVersionUpdateScreenJa._(_root);
+	@override late final _TranslationsHomeScreenJa homeScreen = _TranslationsHomeScreenJa._(_root);
+	@override late final _TranslationsLoginScreenJa loginScreen = _TranslationsLoginScreenJa._(_root);
+	@override late final _TranslationsPlanWidgetJa planWidget = _TranslationsPlanWidgetJa._(_root);
+	@override late final _TranslationsXboardRegisterScreenJa xboardRegisterScreen = _TranslationsXboardRegisterScreenJa._(_root);
 	@override late final _TranslationsMainJa main = _TranslationsMainJa._(_root);
 	@override late final _TranslationsMetaJa meta = _TranslationsMetaJa._(_root);
 	@override late final _TranslationsPermissionJa permission = _TranslationsPermissionJa._(_root);
 	@override late final _TranslationsTunJa tun = _TranslationsTunJa._(_root);
 	@override String get edgeRuntimeNotInstalled => '現在のデバイスには Edge WebView2 ランタイムがインストールされていないため、ページを表示できません。Edge WebView2 ランタイム (x64) をダウンロードしてインストールし、アプリを再起動してからもう一度お試しください。';
-	@override late final _TranslationsHomeScreenJa homeScreen = _TranslationsHomeScreenJa._(_root);
-	@override late final _TranslationsLoginScreenJa loginScreen = _TranslationsLoginScreenJa._(_root);
-	@override late final _TranslationsPlanWidgetJa planWidget = _TranslationsPlanWidgetJa._(_root);
-	@override late final _TranslationsXboardRegisterScreenJa xboardRegisterScreen = _TranslationsXboardRegisterScreenJa._(_root);
 	@override Map<String, String> get locales => {
 		'en': 'English',
 		'zh-CN': '简体中文',
@@ -109,6 +109,91 @@ class _TranslationsVersionUpdateScreenJa implements TranslationsVersionUpdateScr
 	@override String versionReady({required Object p}) => '新しいバージョン [${p}] の準備ができました';
 	@override String get update => '再起動して更新';
 	@override String get cancel => '今はしない';
+}
+
+// Path: homeScreen
+class _TranslationsHomeScreenJa implements TranslationsHomeScreenEn {
+	_TranslationsHomeScreenJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get traffic => 'トラフィック:';
+	@override String get speed => '速度:';
+	@override String get autoSelect => '自動選択';
+	@override String get loadBalance => '負荷分散';
+	@override String get serviceCenter => 'サービスセンター';
+	@override String get onlineSupport => 'オンラインサポート';
+	@override String get subscriptionChannel => 'サブスクリプションチャンネル';
+	@override String get buyPlan => 'プランを購入';
+}
+
+// Path: loginScreen
+class _TranslationsLoginScreenJa implements TranslationsLoginScreenEn {
+	_TranslationsLoginScreenJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get login => 'ログイン';
+	@override String get register => 'アカウント登録';
+	@override String get forgotPassword => 'パスワードを忘れた';
+	@override String get provider => 'プロバイダー';
+	@override String get providerName => '${_root.loginScreen.provider}名';
+	@override String get providerNameRequired => '${_root.loginScreen.provider}名を入力してください';
+	@override String get account => 'アカウント';
+	@override String get accountRequired => 'アカウントを入力してください';
+	@override String get email => 'メール';
+	@override String get emailRequired => 'メールアドレスを入力してください';
+	@override String get password => 'パスワード';
+	@override String get passwordRequired => 'パスワードを入力してください';
+	@override String get validEmailRequired => '有効なメールアドレスを入力してください';
+	@override String passwordMinLength({required Object minLength}) => 'パスワード長は最低${minLength}文字以上である必要があります';
+	@override String get unsupportedProvider => 'サポートされていない${_root.loginScreen.provider}';
+	@override String get unsupportedProviderType => 'サポートされていない${_root.loginScreen.provider}タイプ';
+}
+
+// Path: planWidget
+class _TranslationsPlanWidgetJa implements TranslationsPlanWidgetEn {
+	_TranslationsPlanWidgetJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get used => '使用済み';
+	@override String get totalTraffic => '総トラフィック';
+	@override String get expirationTime => '有効期限';
+	@override String get remainingTime => '残り時間';
+}
+
+// Path: xboardRegisterScreen
+class _TranslationsXboardRegisterScreenJa implements TranslationsXboardRegisterScreenEn {
+	_TranslationsXboardRegisterScreenJa._(this._root);
+
+	final TranslationsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get register => '登録';
+	@override String get email => 'メール';
+	@override String get emailVerificationCode => 'メール認証コード';
+	@override String get send => '送信';
+	@override String get password => 'パスワード';
+	@override String get confirmPassword => 'パスワードを確認する';
+	@override String get verificationCode => '認証コード';
+	@override String get invitationCode => '招待コード';
+	@override String get emailSentNotice => '認証コードをメールで送信しました';
+	@override String get registerSuccess => '登録に成功しました';
+	@override String get invalidEmail => '有効なメールアドレスを入力してください';
+	@override String get passwordRequired => 'パスワードを入力してください';
+	@override String passwordMinLength({required Object minLength}) => 'パスワード長は最低${minLength}文字以上である必要があります';
+	@override String get confirmPasswordRequired => 'パスワードをもう一度入力してください';
+	@override String get passwordMismatch => '2回入力したパスワードが一致しません';
+	@override String get emailCodeRequired => 'メール認証コードを入力してください';
+	@override String emailCodeLength({required Object codeLength}) => 'メール認診コードは${codeLength}桁である必要があります';
+	@override String get verificationCodeRequired => '認証コードを入力してください';
+	@override String get verificationCodeLength => '認証コードの長さが不正です';
+	@override String get userAgreement => '利用規約';
+	@override String get pleaseCheck => 'チェックしてください';
 }
 
 // Path: main
@@ -278,91 +363,6 @@ class _TranslationsTunJa implements TranslationsTunEn {
 	@override String get bypassHttpProxyDomain => 'HTTPプロキシをバイパスすることを許可するドメイン';
 }
 
-// Path: homeScreen
-class _TranslationsHomeScreenJa implements TranslationsHomeScreenEn {
-	_TranslationsHomeScreenJa._(this._root);
-
-	final TranslationsJa _root; // ignore: unused_field
-
-	// Translations
-	@override String get traffic => 'トラフィック:';
-	@override String get speed => '速度:';
-	@override String get autoSelect => '自動選択';
-	@override String get loadBalance => '負荷分散';
-	@override String get serviceCenter => 'サービスセンター';
-	@override String get onlineSupport => 'オンラインサポート';
-	@override String get subscriptionChannel => 'サブスクリプションチャンネル';
-	@override String get buyPlan => 'プランを購入';
-}
-
-// Path: loginScreen
-class _TranslationsLoginScreenJa implements TranslationsLoginScreenEn {
-	_TranslationsLoginScreenJa._(this._root);
-
-	final TranslationsJa _root; // ignore: unused_field
-
-	// Translations
-	@override String get login => 'ログイン';
-	@override String get register => 'アカウント登録';
-	@override String get forgotPassword => 'パスワードを忘れた';
-	@override String get provider => 'プロバイダー';
-	@override String get providerName => '${_root.loginScreen.provider}名';
-	@override String get providerNameRequired => '${_root.loginScreen.provider}名を入力してください';
-	@override String get account => 'アカウント';
-	@override String get accountRequired => 'アカウントを入力してください';
-	@override String get email => 'メール';
-	@override String get emailRequired => 'メールアドレスを入力してください';
-	@override String get password => 'パスワード';
-	@override String get passwordRequired => 'パスワードを入力してください';
-	@override String get validEmailRequired => '有効なメールアドレスを入力してください';
-	@override String passwordMinLength({required Object minLength}) => 'パスワード長は最低${minLength}文字以上である必要があります';
-	@override String get unsupportedProvider => 'サポートされていない${_root.loginScreen.provider}';
-	@override String get unsupportedProviderType => 'サポートされていない${_root.loginScreen.provider}タイプ';
-}
-
-// Path: planWidget
-class _TranslationsPlanWidgetJa implements TranslationsPlanWidgetEn {
-	_TranslationsPlanWidgetJa._(this._root);
-
-	final TranslationsJa _root; // ignore: unused_field
-
-	// Translations
-	@override String get used => '使用済み';
-	@override String get totalTraffic => '総トラフィック';
-	@override String get expirationTime => '有効期限';
-	@override String get remainingTime => '残り時間';
-}
-
-// Path: xboardRegisterScreen
-class _TranslationsXboardRegisterScreenJa implements TranslationsXboardRegisterScreenEn {
-	_TranslationsXboardRegisterScreenJa._(this._root);
-
-	final TranslationsJa _root; // ignore: unused_field
-
-	// Translations
-	@override String get register => '登録';
-	@override String get email => 'メール';
-	@override String get emailVerificationCode => 'メール認証コード';
-	@override String get send => '送信';
-	@override String get password => 'パスワード';
-	@override String get confirmPassword => 'パスワードを確認する';
-	@override String get verificationCode => '認証コード';
-	@override String get invitationCode => '招待コード';
-	@override String get emailSentNotice => '認証コードをメールで送信しました';
-	@override String get registerSuccess => '登録に成功しました';
-	@override String get invalidEmail => '有効なメールアドレスを入力してください';
-	@override String get passwordRequired => 'パスワードを入力してください';
-	@override String passwordMinLength({required Object minLength}) => 'パスワード長は最低${minLength}文字以上である必要があります';
-	@override String get confirmPasswordRequired => 'パスワードをもう一度入力してください';
-	@override String get passwordMismatch => '2回入力したパスワードが一致しません';
-	@override String get emailCodeRequired => 'メール認証コードを入力してください';
-	@override String emailCodeLength({required Object codeLength}) => 'メール認診コードは${codeLength}桁である必要があります';
-	@override String get verificationCodeRequired => '認証コードを入力してください';
-	@override String get verificationCodeLength => '認証コードの長さが不正です';
-	@override String get userAgreement => '利用規約';
-	@override String get pleaseCheck => 'チェックしてください';
-}
-
 // Path: main.tray
 class _TranslationsMainTrayJa implements TranslationsMainTrayEn {
 	_TranslationsMainTrayJa._(this._root);
@@ -395,6 +395,55 @@ extension on TranslationsJa {
 			'VersionUpdateScreen.versionReady' => ({required Object p}) => '新しいバージョン [${p}] の準備ができました',
 			'VersionUpdateScreen.update' => '再起動して更新',
 			'VersionUpdateScreen.cancel' => '今はしない',
+			'homeScreen.traffic' => 'トラフィック:',
+			'homeScreen.speed' => '速度:',
+			'homeScreen.autoSelect' => '自動選択',
+			'homeScreen.loadBalance' => '負荷分散',
+			'homeScreen.serviceCenter' => 'サービスセンター',
+			'homeScreen.onlineSupport' => 'オンラインサポート',
+			'homeScreen.subscriptionChannel' => 'サブスクリプションチャンネル',
+			'homeScreen.buyPlan' => 'プランを購入',
+			'loginScreen.login' => 'ログイン',
+			'loginScreen.register' => 'アカウント登録',
+			'loginScreen.forgotPassword' => 'パスワードを忘れた',
+			'loginScreen.provider' => 'プロバイダー',
+			'loginScreen.providerName' => '${_root.loginScreen.provider}名',
+			'loginScreen.providerNameRequired' => '${_root.loginScreen.provider}名を入力してください',
+			'loginScreen.account' => 'アカウント',
+			'loginScreen.accountRequired' => 'アカウントを入力してください',
+			'loginScreen.email' => 'メール',
+			'loginScreen.emailRequired' => 'メールアドレスを入力してください',
+			'loginScreen.password' => 'パスワード',
+			'loginScreen.passwordRequired' => 'パスワードを入力してください',
+			'loginScreen.validEmailRequired' => '有効なメールアドレスを入力してください',
+			'loginScreen.passwordMinLength' => ({required Object minLength}) => 'パスワード長は最低${minLength}文字以上である必要があります',
+			'loginScreen.unsupportedProvider' => 'サポートされていない${_root.loginScreen.provider}',
+			'loginScreen.unsupportedProviderType' => 'サポートされていない${_root.loginScreen.provider}タイプ',
+			'planWidget.used' => '使用済み',
+			'planWidget.totalTraffic' => '総トラフィック',
+			'planWidget.expirationTime' => '有効期限',
+			'planWidget.remainingTime' => '残り時間',
+			'xboardRegisterScreen.register' => '登録',
+			'xboardRegisterScreen.email' => 'メール',
+			'xboardRegisterScreen.emailVerificationCode' => 'メール認証コード',
+			'xboardRegisterScreen.send' => '送信',
+			'xboardRegisterScreen.password' => 'パスワード',
+			'xboardRegisterScreen.confirmPassword' => 'パスワードを確認する',
+			'xboardRegisterScreen.verificationCode' => '認証コード',
+			'xboardRegisterScreen.invitationCode' => '招待コード',
+			'xboardRegisterScreen.emailSentNotice' => '認証コードをメールで送信しました',
+			'xboardRegisterScreen.registerSuccess' => '登録に成功しました',
+			'xboardRegisterScreen.invalidEmail' => '有効なメールアドレスを入力してください',
+			'xboardRegisterScreen.passwordRequired' => 'パスワードを入力してください',
+			'xboardRegisterScreen.passwordMinLength' => ({required Object minLength}) => 'パスワード長は最低${minLength}文字以上である必要があります',
+			'xboardRegisterScreen.confirmPasswordRequired' => 'パスワードをもう一度入力してください',
+			'xboardRegisterScreen.passwordMismatch' => '2回入力したパスワードが一致しません',
+			'xboardRegisterScreen.emailCodeRequired' => 'メール認証コードを入力してください',
+			'xboardRegisterScreen.emailCodeLength' => ({required Object codeLength}) => 'メール認診コードは${codeLength}桁である必要があります',
+			'xboardRegisterScreen.verificationCodeRequired' => '認証コードを入力してください',
+			'xboardRegisterScreen.verificationCodeLength' => '認証コードの長さが不正です',
+			'xboardRegisterScreen.userAgreement' => '利用規約',
+			'xboardRegisterScreen.pleaseCheck' => 'チェックしてください',
 			'main.tray.menuOpen' => '開く',
 			'main.tray.menuExit' => '終了',
 			'meta.enable' => '有効',
@@ -528,55 +577,6 @@ extension on TranslationsJa {
 			'tun.appendHttpProxy' => 'VPNにHTTPプロキシを追加する',
 			'tun.bypassHttpProxyDomain' => 'HTTPプロキシをバイパスすることを許可するドメイン',
 			'edgeRuntimeNotInstalled' => '現在のデバイスには Edge WebView2 ランタイムがインストールされていないため、ページを表示できません。Edge WebView2 ランタイム (x64) をダウンロードしてインストールし、アプリを再起動してからもう一度お試しください。',
-			'homeScreen.traffic' => 'トラフィック:',
-			'homeScreen.speed' => '速度:',
-			'homeScreen.autoSelect' => '自動選択',
-			'homeScreen.loadBalance' => '負荷分散',
-			'homeScreen.serviceCenter' => 'サービスセンター',
-			'homeScreen.onlineSupport' => 'オンラインサポート',
-			'homeScreen.subscriptionChannel' => 'サブスクリプションチャンネル',
-			'homeScreen.buyPlan' => 'プランを購入',
-			'loginScreen.login' => 'ログイン',
-			'loginScreen.register' => 'アカウント登録',
-			'loginScreen.forgotPassword' => 'パスワードを忘れた',
-			'loginScreen.provider' => 'プロバイダー',
-			'loginScreen.providerName' => '${_root.loginScreen.provider}名',
-			'loginScreen.providerNameRequired' => '${_root.loginScreen.provider}名を入力してください',
-			'loginScreen.account' => 'アカウント',
-			'loginScreen.accountRequired' => 'アカウントを入力してください',
-			'loginScreen.email' => 'メール',
-			'loginScreen.emailRequired' => 'メールアドレスを入力してください',
-			'loginScreen.password' => 'パスワード',
-			'loginScreen.passwordRequired' => 'パスワードを入力してください',
-			'loginScreen.validEmailRequired' => '有効なメールアドレスを入力してください',
-			'loginScreen.passwordMinLength' => ({required Object minLength}) => 'パスワード長は最低${minLength}文字以上である必要があります',
-			'loginScreen.unsupportedProvider' => 'サポートされていない${_root.loginScreen.provider}',
-			'loginScreen.unsupportedProviderType' => 'サポートされていない${_root.loginScreen.provider}タイプ',
-			'planWidget.used' => '使用済み',
-			'planWidget.totalTraffic' => '総トラフィック',
-			'planWidget.expirationTime' => '有効期限',
-			'planWidget.remainingTime' => '残り時間',
-			'xboardRegisterScreen.register' => '登録',
-			'xboardRegisterScreen.email' => 'メール',
-			'xboardRegisterScreen.emailVerificationCode' => 'メール認証コード',
-			'xboardRegisterScreen.send' => '送信',
-			'xboardRegisterScreen.password' => 'パスワード',
-			'xboardRegisterScreen.confirmPassword' => 'パスワードを確認する',
-			'xboardRegisterScreen.verificationCode' => '認証コード',
-			'xboardRegisterScreen.invitationCode' => '招待コード',
-			'xboardRegisterScreen.emailSentNotice' => '認証コードをメールで送信しました',
-			'xboardRegisterScreen.registerSuccess' => '登録に成功しました',
-			'xboardRegisterScreen.invalidEmail' => '有効なメールアドレスを入力してください',
-			'xboardRegisterScreen.passwordRequired' => 'パスワードを入力してください',
-			'xboardRegisterScreen.passwordMinLength' => ({required Object minLength}) => 'パスワード長は最低${minLength}文字以上である必要があります',
-			'xboardRegisterScreen.confirmPasswordRequired' => 'パスワードをもう一度入力してください',
-			'xboardRegisterScreen.passwordMismatch' => '2回入力したパスワードが一致しません',
-			'xboardRegisterScreen.emailCodeRequired' => 'メール認証コードを入力してください',
-			'xboardRegisterScreen.emailCodeLength' => ({required Object codeLength}) => 'メール認診コードは${codeLength}桁である必要があります',
-			'xboardRegisterScreen.verificationCodeRequired' => '認証コードを入力してください',
-			'xboardRegisterScreen.verificationCodeLength' => '認証コードの長さが不正です',
-			'xboardRegisterScreen.userAgreement' => '利用規約',
-			'xboardRegisterScreen.pleaseCheck' => 'チェックしてください',
 			'locales.en' => 'English',
 			'locales.zh-CN' => '简体中文',
 			'locales.zh-TW' => '繁體中文',

@@ -41,7 +41,9 @@ abstract final class AppUrlUtils {
       ),
       "did": Uri.encodeComponent(did),
       "new": Uri.encodeComponent(firstTime.toString()),
-      "from": Uri.encodeComponent("skivpn"),
+      "from": Uri.encodeComponent(
+        AppUtils.getName().replaceAll(" ", "").toLowerCase(),
+      ),
       "i_r": Uri.encodeComponent(installRefer),
       "i_d": Uri.encodeComponent(installDate.toString()),
     };

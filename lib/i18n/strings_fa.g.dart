@@ -41,15 +41,15 @@ class TranslationsFa with BaseTranslations<AppLocale, Translations> implements T
 	@override late final _TranslationsPerAppAndroidScreenFa PerAppAndroidScreen = _TranslationsPerAppAndroidScreenFa._(_root);
 	@override late final _TranslationsUserAgreementScreenFa UserAgreementScreen = _TranslationsUserAgreementScreenFa._(_root);
 	@override late final _TranslationsVersionUpdateScreenFa VersionUpdateScreen = _TranslationsVersionUpdateScreenFa._(_root);
+	@override late final _TranslationsHomeScreenFa homeScreen = _TranslationsHomeScreenFa._(_root);
+	@override late final _TranslationsLoginScreenFa loginScreen = _TranslationsLoginScreenFa._(_root);
+	@override late final _TranslationsPlanWidgetFa planWidget = _TranslationsPlanWidgetFa._(_root);
+	@override late final _TranslationsXboardRegisterScreenFa xboardRegisterScreen = _TranslationsXboardRegisterScreenFa._(_root);
 	@override late final _TranslationsMainFa main = _TranslationsMainFa._(_root);
 	@override late final _TranslationsMetaFa meta = _TranslationsMetaFa._(_root);
 	@override late final _TranslationsPermissionFa permission = _TranslationsPermissionFa._(_root);
 	@override late final _TranslationsTunFa tun = _TranslationsTunFa._(_root);
 	@override String get edgeRuntimeNotInstalled => 'زمان اجرا Edge WebView2 روی دستگاه فعلی نصب نشده است و صفحه قابل نمایش نیست لطفاً زمان اجرا Edge WebView2 (x64) را بارگیری و نصب کنید، برنامه را مجدداً راه اندازی کنید و دوباره امتحان کنید.';
-	@override late final _TranslationsHomeScreenFa homeScreen = _TranslationsHomeScreenFa._(_root);
-	@override late final _TranslationsLoginScreenFa loginScreen = _TranslationsLoginScreenFa._(_root);
-	@override late final _TranslationsPlanWidgetFa planWidget = _TranslationsPlanWidgetFa._(_root);
-	@override late final _TranslationsXboardRegisterScreenFa xboardRegisterScreen = _TranslationsXboardRegisterScreenFa._(_root);
 	@override Map<String, String> get locales => {
 		'en': 'English',
 		'zh-CN': '简体中文',
@@ -109,6 +109,91 @@ class _TranslationsVersionUpdateScreenFa implements TranslationsVersionUpdateScr
 	@override String versionReady({required Object p}) => 'نسخه جدید [${p}] آماده است';
 	@override String get update => 'راه‌اندازی مجدد برای به‌روزرسانی';
 	@override String get cancel => 'الان‌ نه';
+}
+
+// Path: homeScreen
+class _TranslationsHomeScreenFa implements TranslationsHomeScreenEn {
+	_TranslationsHomeScreenFa._(this._root);
+
+	final TranslationsFa _root; // ignore: unused_field
+
+	// Translations
+	@override String get traffic => 'ترافیک:';
+	@override String get speed => 'سرعت:';
+	@override String get autoSelect => 'انتخاب خودکار';
+	@override String get loadBalance => 'تعادل بار';
+	@override String get serviceCenter => 'مرکز خدمات';
+	@override String get onlineSupport => 'پشتیبانی آنلاین';
+	@override String get subscriptionChannel => 'کانال اشتراک';
+	@override String get buyPlan => 'خرید طرح';
+}
+
+// Path: loginScreen
+class _TranslationsLoginScreenFa implements TranslationsLoginScreenEn {
+	_TranslationsLoginScreenFa._(this._root);
+
+	final TranslationsFa _root; // ignore: unused_field
+
+	// Translations
+	@override String get login => 'ورود';
+	@override String get register => 'ایجاد حساب';
+	@override String get forgotPassword => 'فراموشی رمز عبور';
+	@override String get provider => 'ارائه دهنده خدمات';
+	@override String get providerName => 'نام ${_root.loginScreen.provider}';
+	@override String get providerNameRequired => 'لطفا نام ${_root.loginScreen.provider} را وارد کنید';
+	@override String get account => 'حساب';
+	@override String get accountRequired => 'لطفا حساب را وارد کنید';
+	@override String get email => 'ایمیل';
+	@override String get emailRequired => 'لطفا آدرس ایمیل را وارد کنید';
+	@override String get password => 'رمز عبور';
+	@override String get passwordRequired => 'لطفا رمز عبور را وارد کنید';
+	@override String get validEmailRequired => 'لطفا یک آدرس ایمیل معتبر وارد کنید';
+	@override String passwordMinLength({required Object minLength}) => 'طول رمز عبور باید حداقل ${minLength} کاراکتر باشد';
+	@override String get unsupportedProvider => '${_root.loginScreen.provider} پشتیبانی نمی شود';
+	@override String get unsupportedProviderType => 'نوع ${_root.loginScreen.provider} پشتیبانی نمی شود';
+}
+
+// Path: planWidget
+class _TranslationsPlanWidgetFa implements TranslationsPlanWidgetEn {
+	_TranslationsPlanWidgetFa._(this._root);
+
+	final TranslationsFa _root; // ignore: unused_field
+
+	// Translations
+	@override String get used => 'استفاده شده';
+	@override String get totalTraffic => 'کل ترافیک';
+	@override String get expirationTime => 'زمان انقضا';
+	@override String get remainingTime => 'زمان باقی مانده';
+}
+
+// Path: xboardRegisterScreen
+class _TranslationsXboardRegisterScreenFa implements TranslationsXboardRegisterScreenEn {
+	_TranslationsXboardRegisterScreenFa._(this._root);
+
+	final TranslationsFa _root; // ignore: unused_field
+
+	// Translations
+	@override String get register => 'ثبت نام';
+	@override String get email => 'ایمیل';
+	@override String get emailVerificationCode => 'کد تایید ایمیل';
+	@override String get send => 'ارسال';
+	@override String get password => 'رمز عبور';
+	@override String get confirmPassword => 'تأیید رمز عبور';
+	@override String get verificationCode => 'کد تایید';
+	@override String get invitationCode => 'کد دعوت';
+	@override String get emailSentNotice => 'کد تایید برای ایمیل شما ارسال شد';
+	@override String get registerSuccess => 'ثبت نام با موفقیت انجام شد';
+	@override String get invalidEmail => 'لطفا یک آدرس ایمیل معتبر وارد کنید';
+	@override String get passwordRequired => 'لطفا رمز عبور را وارد کنید';
+	@override String passwordMinLength({required Object minLength}) => 'طول رمز عبور باید حداقل ${minLength} کاراکتر باشد';
+	@override String get confirmPasswordRequired => 'لطفا رمز عبور را دوباره وارد کنید';
+	@override String get passwordMismatch => 'رمزهای عبور مطابقت ندارند';
+	@override String get emailCodeRequired => 'لطفا کد تایید ایمیل را وارد کنید';
+	@override String emailCodeLength({required Object codeLength}) => 'کد تایید ایمیل باید ${codeLength} رقم باشد';
+	@override String get verificationCodeRequired => 'لطفا کد تایید را وارد کنید';
+	@override String get verificationCodeLength => 'خطا در طول کد تایید';
+	@override String get userAgreement => 'توافق‌نامه کاربر';
+	@override String get pleaseCheck => 'لطفاً تیک بزنید';
 }
 
 // Path: main
@@ -278,91 +363,6 @@ class _TranslationsTunFa implements TranslationsTunEn {
 	@override String get bypassHttpProxyDomain => 'دامنه ها مجاز به دور زدن پروکسی HTTP هستند';
 }
 
-// Path: homeScreen
-class _TranslationsHomeScreenFa implements TranslationsHomeScreenEn {
-	_TranslationsHomeScreenFa._(this._root);
-
-	final TranslationsFa _root; // ignore: unused_field
-
-	// Translations
-	@override String get traffic => 'ترافیک:';
-	@override String get speed => 'سرعت:';
-	@override String get autoSelect => 'انتخاب خودکار';
-	@override String get loadBalance => 'تعادل بار';
-	@override String get serviceCenter => 'مرکز خدمات';
-	@override String get onlineSupport => 'پشتیبانی آنلاین';
-	@override String get subscriptionChannel => 'کانال اشتراک';
-	@override String get buyPlan => 'خرید طرح';
-}
-
-// Path: loginScreen
-class _TranslationsLoginScreenFa implements TranslationsLoginScreenEn {
-	_TranslationsLoginScreenFa._(this._root);
-
-	final TranslationsFa _root; // ignore: unused_field
-
-	// Translations
-	@override String get login => 'ورود';
-	@override String get register => 'ایجاد حساب';
-	@override String get forgotPassword => 'فراموشی رمز عبور';
-	@override String get provider => 'ارائه دهنده خدمات';
-	@override String get providerName => 'نام ${_root.loginScreen.provider}';
-	@override String get providerNameRequired => 'لطفا نام ${_root.loginScreen.provider} را وارد کنید';
-	@override String get account => 'حساب';
-	@override String get accountRequired => 'لطفا حساب را وارد کنید';
-	@override String get email => 'ایمیل';
-	@override String get emailRequired => 'لطفا آدرس ایمیل را وارد کنید';
-	@override String get password => 'رمز عبور';
-	@override String get passwordRequired => 'لطفا رمز عبور را وارد کنید';
-	@override String get validEmailRequired => 'لطفا یک آدرس ایمیل معتبر وارد کنید';
-	@override String passwordMinLength({required Object minLength}) => 'طول رمز عبور باید حداقل ${minLength} کاراکتر باشد';
-	@override String get unsupportedProvider => '${_root.loginScreen.provider} پشتیبانی نمی شود';
-	@override String get unsupportedProviderType => 'نوع ${_root.loginScreen.provider} پشتیبانی نمی شود';
-}
-
-// Path: planWidget
-class _TranslationsPlanWidgetFa implements TranslationsPlanWidgetEn {
-	_TranslationsPlanWidgetFa._(this._root);
-
-	final TranslationsFa _root; // ignore: unused_field
-
-	// Translations
-	@override String get used => 'استفاده شده';
-	@override String get totalTraffic => 'کل ترافیک';
-	@override String get expirationTime => 'زمان انقضا';
-	@override String get remainingTime => 'زمان باقی مانده';
-}
-
-// Path: xboardRegisterScreen
-class _TranslationsXboardRegisterScreenFa implements TranslationsXboardRegisterScreenEn {
-	_TranslationsXboardRegisterScreenFa._(this._root);
-
-	final TranslationsFa _root; // ignore: unused_field
-
-	// Translations
-	@override String get register => 'ثبت نام';
-	@override String get email => 'ایمیل';
-	@override String get emailVerificationCode => 'کد تایید ایمیل';
-	@override String get send => 'ارسال';
-	@override String get password => 'رمز عبور';
-	@override String get confirmPassword => 'تأیید رمز عبور';
-	@override String get verificationCode => 'کد تایید';
-	@override String get invitationCode => 'کد دعوت';
-	@override String get emailSentNotice => 'کد تایید برای ایمیل شما ارسال شد';
-	@override String get registerSuccess => 'ثبت نام با موفقیت انجام شد';
-	@override String get invalidEmail => 'لطفا یک آدرس ایمیل معتبر وارد کنید';
-	@override String get passwordRequired => 'لطفا رمز عبور را وارد کنید';
-	@override String passwordMinLength({required Object minLength}) => 'طول رمز عبور باید حداقل ${minLength} کاراکتر باشد';
-	@override String get confirmPasswordRequired => 'لطفا رمز عبور را دوباره وارد کنید';
-	@override String get passwordMismatch => 'رمزهای عبور مطابقت ندارند';
-	@override String get emailCodeRequired => 'لطفا کد تایید ایمیل را وارد کنید';
-	@override String emailCodeLength({required Object codeLength}) => 'کد تایید ایمیل باید ${codeLength} رقم باشد';
-	@override String get verificationCodeRequired => 'لطفا کد تایید را وارد کنید';
-	@override String get verificationCodeLength => 'خطا در طول کد تایید';
-	@override String get userAgreement => 'توافق‌نامه کاربر';
-	@override String get pleaseCheck => 'لطفاً تیک بزنید';
-}
-
 // Path: main.tray
 class _TranslationsMainTrayFa implements TranslationsMainTrayEn {
 	_TranslationsMainTrayFa._(this._root);
@@ -395,6 +395,55 @@ extension on TranslationsFa {
 			'VersionUpdateScreen.versionReady' => ({required Object p}) => 'نسخه جدید [${p}] آماده است',
 			'VersionUpdateScreen.update' => 'راه‌اندازی مجدد برای به‌روزرسانی',
 			'VersionUpdateScreen.cancel' => 'الان‌ نه',
+			'homeScreen.traffic' => 'ترافیک:',
+			'homeScreen.speed' => 'سرعت:',
+			'homeScreen.autoSelect' => 'انتخاب خودکار',
+			'homeScreen.loadBalance' => 'تعادل بار',
+			'homeScreen.serviceCenter' => 'مرکز خدمات',
+			'homeScreen.onlineSupport' => 'پشتیبانی آنلاین',
+			'homeScreen.subscriptionChannel' => 'کانال اشتراک',
+			'homeScreen.buyPlan' => 'خرید طرح',
+			'loginScreen.login' => 'ورود',
+			'loginScreen.register' => 'ایجاد حساب',
+			'loginScreen.forgotPassword' => 'فراموشی رمز عبور',
+			'loginScreen.provider' => 'ارائه دهنده خدمات',
+			'loginScreen.providerName' => 'نام ${_root.loginScreen.provider}',
+			'loginScreen.providerNameRequired' => 'لطفا نام ${_root.loginScreen.provider} را وارد کنید',
+			'loginScreen.account' => 'حساب',
+			'loginScreen.accountRequired' => 'لطفا حساب را وارد کنید',
+			'loginScreen.email' => 'ایمیل',
+			'loginScreen.emailRequired' => 'لطفا آدرس ایمیل را وارد کنید',
+			'loginScreen.password' => 'رمز عبور',
+			'loginScreen.passwordRequired' => 'لطفا رمز عبور را وارد کنید',
+			'loginScreen.validEmailRequired' => 'لطفا یک آدرس ایمیل معتبر وارد کنید',
+			'loginScreen.passwordMinLength' => ({required Object minLength}) => 'طول رمز عبور باید حداقل ${minLength} کاراکتر باشد',
+			'loginScreen.unsupportedProvider' => '${_root.loginScreen.provider} پشتیبانی نمی شود',
+			'loginScreen.unsupportedProviderType' => 'نوع ${_root.loginScreen.provider} پشتیبانی نمی شود',
+			'planWidget.used' => 'استفاده شده',
+			'planWidget.totalTraffic' => 'کل ترافیک',
+			'planWidget.expirationTime' => 'زمان انقضا',
+			'planWidget.remainingTime' => 'زمان باقی مانده',
+			'xboardRegisterScreen.register' => 'ثبت نام',
+			'xboardRegisterScreen.email' => 'ایمیل',
+			'xboardRegisterScreen.emailVerificationCode' => 'کد تایید ایمیل',
+			'xboardRegisterScreen.send' => 'ارسال',
+			'xboardRegisterScreen.password' => 'رمز عبور',
+			'xboardRegisterScreen.confirmPassword' => 'تأیید رمز عبور',
+			'xboardRegisterScreen.verificationCode' => 'کد تایید',
+			'xboardRegisterScreen.invitationCode' => 'کد دعوت',
+			'xboardRegisterScreen.emailSentNotice' => 'کد تایید برای ایمیل شما ارسال شد',
+			'xboardRegisterScreen.registerSuccess' => 'ثبت نام با موفقیت انجام شد',
+			'xboardRegisterScreen.invalidEmail' => 'لطفا یک آدرس ایمیل معتبر وارد کنید',
+			'xboardRegisterScreen.passwordRequired' => 'لطفا رمز عبور را وارد کنید',
+			'xboardRegisterScreen.passwordMinLength' => ({required Object minLength}) => 'طول رمز عبور باید حداقل ${minLength} کاراکتر باشد',
+			'xboardRegisterScreen.confirmPasswordRequired' => 'لطفا رمز عبور را دوباره وارد کنید',
+			'xboardRegisterScreen.passwordMismatch' => 'رمزهای عبور مطابقت ندارند',
+			'xboardRegisterScreen.emailCodeRequired' => 'لطفا کد تایید ایمیل را وارد کنید',
+			'xboardRegisterScreen.emailCodeLength' => ({required Object codeLength}) => 'کد تایید ایمیل باید ${codeLength} رقم باشد',
+			'xboardRegisterScreen.verificationCodeRequired' => 'لطفا کد تایید را وارد کنید',
+			'xboardRegisterScreen.verificationCodeLength' => 'خطا در طول کد تایید',
+			'xboardRegisterScreen.userAgreement' => 'توافق‌نامه کاربر',
+			'xboardRegisterScreen.pleaseCheck' => 'لطفاً تیک بزنید',
 			'main.tray.menuOpen' => 'بازکردن',
 			'main.tray.menuExit' => 'بستن',
 			'meta.enable' => 'فعال‌سازی',
@@ -528,55 +577,6 @@ extension on TranslationsFa {
 			'tun.appendHttpProxy' => 'پیوست دادن پروکسی HTTP به وی‌پی‌ان',
 			'tun.bypassHttpProxyDomain' => 'دامنه ها مجاز به دور زدن پروکسی HTTP هستند',
 			'edgeRuntimeNotInstalled' => 'زمان اجرا Edge WebView2 روی دستگاه فعلی نصب نشده است و صفحه قابل نمایش نیست لطفاً زمان اجرا Edge WebView2 (x64) را بارگیری و نصب کنید، برنامه را مجدداً راه اندازی کنید و دوباره امتحان کنید.',
-			'homeScreen.traffic' => 'ترافیک:',
-			'homeScreen.speed' => 'سرعت:',
-			'homeScreen.autoSelect' => 'انتخاب خودکار',
-			'homeScreen.loadBalance' => 'تعادل بار',
-			'homeScreen.serviceCenter' => 'مرکز خدمات',
-			'homeScreen.onlineSupport' => 'پشتیبانی آنلاین',
-			'homeScreen.subscriptionChannel' => 'کانال اشتراک',
-			'homeScreen.buyPlan' => 'خرید طرح',
-			'loginScreen.login' => 'ورود',
-			'loginScreen.register' => 'ایجاد حساب',
-			'loginScreen.forgotPassword' => 'فراموشی رمز عبور',
-			'loginScreen.provider' => 'ارائه دهنده خدمات',
-			'loginScreen.providerName' => 'نام ${_root.loginScreen.provider}',
-			'loginScreen.providerNameRequired' => 'لطفا نام ${_root.loginScreen.provider} را وارد کنید',
-			'loginScreen.account' => 'حساب',
-			'loginScreen.accountRequired' => 'لطفا حساب را وارد کنید',
-			'loginScreen.email' => 'ایمیل',
-			'loginScreen.emailRequired' => 'لطفا آدرس ایمیل را وارد کنید',
-			'loginScreen.password' => 'رمز عبور',
-			'loginScreen.passwordRequired' => 'لطفا رمز عبور را وارد کنید',
-			'loginScreen.validEmailRequired' => 'لطفا یک آدرس ایمیل معتبر وارد کنید',
-			'loginScreen.passwordMinLength' => ({required Object minLength}) => 'طول رمز عبور باید حداقل ${minLength} کاراکتر باشد',
-			'loginScreen.unsupportedProvider' => '${_root.loginScreen.provider} پشتیبانی نمی شود',
-			'loginScreen.unsupportedProviderType' => 'نوع ${_root.loginScreen.provider} پشتیبانی نمی شود',
-			'planWidget.used' => 'استفاده شده',
-			'planWidget.totalTraffic' => 'کل ترافیک',
-			'planWidget.expirationTime' => 'زمان انقضا',
-			'planWidget.remainingTime' => 'زمان باقی مانده',
-			'xboardRegisterScreen.register' => 'ثبت نام',
-			'xboardRegisterScreen.email' => 'ایمیل',
-			'xboardRegisterScreen.emailVerificationCode' => 'کد تایید ایمیل',
-			'xboardRegisterScreen.send' => 'ارسال',
-			'xboardRegisterScreen.password' => 'رمز عبور',
-			'xboardRegisterScreen.confirmPassword' => 'تأیید رمز عبور',
-			'xboardRegisterScreen.verificationCode' => 'کد تایید',
-			'xboardRegisterScreen.invitationCode' => 'کد دعوت',
-			'xboardRegisterScreen.emailSentNotice' => 'کد تایید برای ایمیل شما ارسال شد',
-			'xboardRegisterScreen.registerSuccess' => 'ثبت نام با موفقیت انجام شد',
-			'xboardRegisterScreen.invalidEmail' => 'لطفا یک آدرس ایمیل معتبر وارد کنید',
-			'xboardRegisterScreen.passwordRequired' => 'لطفا رمز عبور را وارد کنید',
-			'xboardRegisterScreen.passwordMinLength' => ({required Object minLength}) => 'طول رمز عبور باید حداقل ${minLength} کاراکتر باشد',
-			'xboardRegisterScreen.confirmPasswordRequired' => 'لطفا رمز عبور را دوباره وارد کنید',
-			'xboardRegisterScreen.passwordMismatch' => 'رمزهای عبور مطابقت ندارند',
-			'xboardRegisterScreen.emailCodeRequired' => 'لطفا کد تایید ایمیل را وارد کنید',
-			'xboardRegisterScreen.emailCodeLength' => ({required Object codeLength}) => 'کد تایید ایمیل باید ${codeLength} رقم باشد',
-			'xboardRegisterScreen.verificationCodeRequired' => 'لطفا کد تایید را وارد کنید',
-			'xboardRegisterScreen.verificationCodeLength' => 'خطا در طول کد تایید',
-			'xboardRegisterScreen.userAgreement' => 'توافق‌نامه کاربر',
-			'xboardRegisterScreen.pleaseCheck' => 'لطفاً تیک بزنید',
 			'locales.en' => 'English',
 			'locales.zh-CN' => '简体中文',
 			'locales.zh-TW' => '繁體中文',

@@ -41,15 +41,15 @@ class TranslationsZhTw with BaseTranslations<AppLocale, Translations> implements
 	@override late final _TranslationsPerAppAndroidScreenZhTw PerAppAndroidScreen = _TranslationsPerAppAndroidScreenZhTw._(_root);
 	@override late final _TranslationsUserAgreementScreenZhTw UserAgreementScreen = _TranslationsUserAgreementScreenZhTw._(_root);
 	@override late final _TranslationsVersionUpdateScreenZhTw VersionUpdateScreen = _TranslationsVersionUpdateScreenZhTw._(_root);
+	@override late final _TranslationsHomeScreenZhTw homeScreen = _TranslationsHomeScreenZhTw._(_root);
+	@override late final _TranslationsLoginScreenZhTw loginScreen = _TranslationsLoginScreenZhTw._(_root);
+	@override late final _TranslationsPlanWidgetZhTw planWidget = _TranslationsPlanWidgetZhTw._(_root);
+	@override late final _TranslationsXboardRegisterScreenZhTw xboardRegisterScreen = _TranslationsXboardRegisterScreenZhTw._(_root);
 	@override late final _TranslationsMainZhTw main = _TranslationsMainZhTw._(_root);
 	@override late final _TranslationsMetaZhTw meta = _TranslationsMetaZhTw._(_root);
 	@override late final _TranslationsPermissionZhTw permission = _TranslationsPermissionZhTw._(_root);
 	@override late final _TranslationsTunZhTw tun = _TranslationsTunZhTw._(_root);
 	@override String get edgeRuntimeNotInstalled => '當前設備尚未安裝Edge WebView2運行時,無法展示頁面,請下載安裝Edge WebView2運行時(x64)後,重啟App再試';
-	@override late final _TranslationsHomeScreenZhTw homeScreen = _TranslationsHomeScreenZhTw._(_root);
-	@override late final _TranslationsLoginScreenZhTw loginScreen = _TranslationsLoginScreenZhTw._(_root);
-	@override late final _TranslationsPlanWidgetZhTw planWidget = _TranslationsPlanWidgetZhTw._(_root);
-	@override late final _TranslationsXboardRegisterScreenZhTw xboardRegisterScreen = _TranslationsXboardRegisterScreenZhTw._(_root);
 	@override Map<String, String> get locales => {
 		'en': 'English',
 		'zh-CN': '简体中文',
@@ -109,6 +109,91 @@ class _TranslationsVersionUpdateScreenZhTw implements TranslationsVersionUpdateS
 	@override String versionReady({required Object p}) => '新版本[${p}]已就緒';
 	@override String get update => '重啟更新';
 	@override String get cancel => '暫不更新';
+}
+
+// Path: homeScreen
+class _TranslationsHomeScreenZhTw implements TranslationsHomeScreenEn {
+	_TranslationsHomeScreenZhTw._(this._root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get traffic => '流量:';
+	@override String get speed => '速度:';
+	@override String get autoSelect => '自動選擇';
+	@override String get loadBalance => '負載均衡';
+	@override String get serviceCenter => '服務中心';
+	@override String get onlineSupport => '線上客服';
+	@override String get subscriptionChannel => '訂閱頻道';
+	@override String get buyPlan => '購買套餐';
+}
+
+// Path: loginScreen
+class _TranslationsLoginScreenZhTw implements TranslationsLoginScreenEn {
+	_TranslationsLoginScreenZhTw._(this._root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get login => '登錄';
+	@override String get register => '註冊賬號';
+	@override String get forgotPassword => '忘記密碼';
+	@override String get provider => '服務商';
+	@override String get providerName => '${_root.loginScreen.provider}名稱';
+	@override String get providerNameRequired => '請輸入${_root.loginScreen.provider}名稱';
+	@override String get account => '賬號';
+	@override String get accountRequired => '請輸入賬號';
+	@override String get email => '郵箱';
+	@override String get emailRequired => '請輸入郵箱地址';
+	@override String get password => '密碼';
+	@override String get passwordRequired => '請輸入密碼';
+	@override String get validEmailRequired => '請輸入有效的郵箱地址';
+	@override String passwordMinLength({required Object minLength}) => '密碼長度至少${minLength}位';
+	@override String get unsupportedProvider => '不支持的${_root.loginScreen.provider}';
+	@override String get unsupportedProviderType => '不支持的${_root.loginScreen.provider}類型';
+}
+
+// Path: planWidget
+class _TranslationsPlanWidgetZhTw implements TranslationsPlanWidgetEn {
+	_TranslationsPlanWidgetZhTw._(this._root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get used => '已使用';
+	@override String get totalTraffic => '總流量';
+	@override String get expirationTime => '過期時間';
+	@override String get remainingTime => '剩餘時間';
+}
+
+// Path: xboardRegisterScreen
+class _TranslationsXboardRegisterScreenZhTw implements TranslationsXboardRegisterScreenEn {
+	_TranslationsXboardRegisterScreenZhTw._(this._root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get register => '註冊';
+	@override String get email => '郵箱';
+	@override String get emailVerificationCode => '郵箱驗證碼';
+	@override String get send => '發送';
+	@override String get password => '密碼';
+	@override String get confirmPassword => '確認密碼';
+	@override String get verificationCode => '驗證碼';
+	@override String get invitationCode => '邀請碼';
+	@override String get emailSentNotice => '驗證碼已發送至您的郵箱';
+	@override String get registerSuccess => '註冊成功';
+	@override String get invalidEmail => '請輸入有效的郵箱地址';
+	@override String get passwordRequired => '請輸入密碼';
+	@override String passwordMinLength({required Object minLength}) => '密碼長度至少${minLength}位';
+	@override String get confirmPasswordRequired => '請再次輸入密碼';
+	@override String get passwordMismatch => '兩次輸入的密碼不一致';
+	@override String get emailCodeRequired => '請輸入郵箱驗證碼';
+	@override String emailCodeLength({required Object codeLength}) => '郵箱驗證碼應為${codeLength}位';
+	@override String get verificationCodeRequired => '請輸入驗證碼';
+	@override String get verificationCodeLength => '驗證碼長度錯誤';
+	@override String get userAgreement => '使用者協議';
+	@override String get pleaseCheck => '請勾選';
 }
 
 // Path: main
@@ -278,91 +363,6 @@ class _TranslationsTunZhTw implements TranslationsTunEn {
 	@override String get bypassHttpProxyDomain => '允許繞過HTTP代理的域名';
 }
 
-// Path: homeScreen
-class _TranslationsHomeScreenZhTw implements TranslationsHomeScreenEn {
-	_TranslationsHomeScreenZhTw._(this._root);
-
-	final TranslationsZhTw _root; // ignore: unused_field
-
-	// Translations
-	@override String get traffic => '流量:';
-	@override String get speed => '速度:';
-	@override String get autoSelect => '自動選擇';
-	@override String get loadBalance => '負載均衡';
-	@override String get serviceCenter => '服務中心';
-	@override String get onlineSupport => '線上客服';
-	@override String get subscriptionChannel => '訂閱頻道';
-	@override String get buyPlan => '購買套餐';
-}
-
-// Path: loginScreen
-class _TranslationsLoginScreenZhTw implements TranslationsLoginScreenEn {
-	_TranslationsLoginScreenZhTw._(this._root);
-
-	final TranslationsZhTw _root; // ignore: unused_field
-
-	// Translations
-	@override String get login => '登錄';
-	@override String get register => '註冊賬號';
-	@override String get forgotPassword => '忘記密碼';
-	@override String get provider => '服務商';
-	@override String get providerName => '${_root.loginScreen.provider}名稱';
-	@override String get providerNameRequired => '請輸入${_root.loginScreen.provider}名稱';
-	@override String get account => '賬號';
-	@override String get accountRequired => '請輸入賬號';
-	@override String get email => '郵箱';
-	@override String get emailRequired => '請輸入郵箱地址';
-	@override String get password => '密碼';
-	@override String get passwordRequired => '請輸入密碼';
-	@override String get validEmailRequired => '請輸入有效的郵箱地址';
-	@override String passwordMinLength({required Object minLength}) => '密碼長度至少${minLength}位';
-	@override String get unsupportedProvider => '不支持的${_root.loginScreen.provider}';
-	@override String get unsupportedProviderType => '不支持的${_root.loginScreen.provider}類型';
-}
-
-// Path: planWidget
-class _TranslationsPlanWidgetZhTw implements TranslationsPlanWidgetEn {
-	_TranslationsPlanWidgetZhTw._(this._root);
-
-	final TranslationsZhTw _root; // ignore: unused_field
-
-	// Translations
-	@override String get used => '已使用';
-	@override String get totalTraffic => '總流量';
-	@override String get expirationTime => '過期時間';
-	@override String get remainingTime => '剩餘時間';
-}
-
-// Path: xboardRegisterScreen
-class _TranslationsXboardRegisterScreenZhTw implements TranslationsXboardRegisterScreenEn {
-	_TranslationsXboardRegisterScreenZhTw._(this._root);
-
-	final TranslationsZhTw _root; // ignore: unused_field
-
-	// Translations
-	@override String get register => '註冊';
-	@override String get email => '郵箱';
-	@override String get emailVerificationCode => '郵箱驗證碼';
-	@override String get send => '發送';
-	@override String get password => '密碼';
-	@override String get confirmPassword => '確認密碼';
-	@override String get verificationCode => '驗證碼';
-	@override String get invitationCode => '邀請碼';
-	@override String get emailSentNotice => '驗證碼已發送至您的郵箱';
-	@override String get registerSuccess => '註冊成功';
-	@override String get invalidEmail => '請輸入有效的郵箱地址';
-	@override String get passwordRequired => '請輸入密碼';
-	@override String passwordMinLength({required Object minLength}) => '密碼長度至少${minLength}位';
-	@override String get confirmPasswordRequired => '請再次輸入密碼';
-	@override String get passwordMismatch => '兩次輸入的密碼不一致';
-	@override String get emailCodeRequired => '請輸入郵箱驗證碼';
-	@override String emailCodeLength({required Object codeLength}) => '郵箱驗證碼應為${codeLength}位';
-	@override String get verificationCodeRequired => '請輸入驗證碼';
-	@override String get verificationCodeLength => '驗證碼長度錯誤';
-	@override String get userAgreement => '使用者協議';
-	@override String get pleaseCheck => '請勾選';
-}
-
 // Path: main.tray
 class _TranslationsMainTrayZhTw implements TranslationsMainTrayEn {
 	_TranslationsMainTrayZhTw._(this._root);
@@ -395,6 +395,55 @@ extension on TranslationsZhTw {
 			'VersionUpdateScreen.versionReady' => ({required Object p}) => '新版本[${p}]已就緒',
 			'VersionUpdateScreen.update' => '重啟更新',
 			'VersionUpdateScreen.cancel' => '暫不更新',
+			'homeScreen.traffic' => '流量:',
+			'homeScreen.speed' => '速度:',
+			'homeScreen.autoSelect' => '自動選擇',
+			'homeScreen.loadBalance' => '負載均衡',
+			'homeScreen.serviceCenter' => '服務中心',
+			'homeScreen.onlineSupport' => '線上客服',
+			'homeScreen.subscriptionChannel' => '訂閱頻道',
+			'homeScreen.buyPlan' => '購買套餐',
+			'loginScreen.login' => '登錄',
+			'loginScreen.register' => '註冊賬號',
+			'loginScreen.forgotPassword' => '忘記密碼',
+			'loginScreen.provider' => '服務商',
+			'loginScreen.providerName' => '${_root.loginScreen.provider}名稱',
+			'loginScreen.providerNameRequired' => '請輸入${_root.loginScreen.provider}名稱',
+			'loginScreen.account' => '賬號',
+			'loginScreen.accountRequired' => '請輸入賬號',
+			'loginScreen.email' => '郵箱',
+			'loginScreen.emailRequired' => '請輸入郵箱地址',
+			'loginScreen.password' => '密碼',
+			'loginScreen.passwordRequired' => '請輸入密碼',
+			'loginScreen.validEmailRequired' => '請輸入有效的郵箱地址',
+			'loginScreen.passwordMinLength' => ({required Object minLength}) => '密碼長度至少${minLength}位',
+			'loginScreen.unsupportedProvider' => '不支持的${_root.loginScreen.provider}',
+			'loginScreen.unsupportedProviderType' => '不支持的${_root.loginScreen.provider}類型',
+			'planWidget.used' => '已使用',
+			'planWidget.totalTraffic' => '總流量',
+			'planWidget.expirationTime' => '過期時間',
+			'planWidget.remainingTime' => '剩餘時間',
+			'xboardRegisterScreen.register' => '註冊',
+			'xboardRegisterScreen.email' => '郵箱',
+			'xboardRegisterScreen.emailVerificationCode' => '郵箱驗證碼',
+			'xboardRegisterScreen.send' => '發送',
+			'xboardRegisterScreen.password' => '密碼',
+			'xboardRegisterScreen.confirmPassword' => '確認密碼',
+			'xboardRegisterScreen.verificationCode' => '驗證碼',
+			'xboardRegisterScreen.invitationCode' => '邀請碼',
+			'xboardRegisterScreen.emailSentNotice' => '驗證碼已發送至您的郵箱',
+			'xboardRegisterScreen.registerSuccess' => '註冊成功',
+			'xboardRegisterScreen.invalidEmail' => '請輸入有效的郵箱地址',
+			'xboardRegisterScreen.passwordRequired' => '請輸入密碼',
+			'xboardRegisterScreen.passwordMinLength' => ({required Object minLength}) => '密碼長度至少${minLength}位',
+			'xboardRegisterScreen.confirmPasswordRequired' => '請再次輸入密碼',
+			'xboardRegisterScreen.passwordMismatch' => '兩次輸入的密碼不一致',
+			'xboardRegisterScreen.emailCodeRequired' => '請輸入郵箱驗證碼',
+			'xboardRegisterScreen.emailCodeLength' => ({required Object codeLength}) => '郵箱驗證碼應為${codeLength}位',
+			'xboardRegisterScreen.verificationCodeRequired' => '請輸入驗證碼',
+			'xboardRegisterScreen.verificationCodeLength' => '驗證碼長度錯誤',
+			'xboardRegisterScreen.userAgreement' => '使用者協議',
+			'xboardRegisterScreen.pleaseCheck' => '請勾選',
 			'main.tray.menuOpen' => '打開',
 			'main.tray.menuExit' => '退出',
 			'meta.enable' => '啟用',
@@ -528,55 +577,6 @@ extension on TranslationsZhTw {
 			'tun.appendHttpProxy' => '附加HTTP代理到VPN',
 			'tun.bypassHttpProxyDomain' => '允許繞過HTTP代理的域名',
 			'edgeRuntimeNotInstalled' => '當前設備尚未安裝Edge WebView2運行時,無法展示頁面,請下載安裝Edge WebView2運行時(x64)後,重啟App再試',
-			'homeScreen.traffic' => '流量:',
-			'homeScreen.speed' => '速度:',
-			'homeScreen.autoSelect' => '自動選擇',
-			'homeScreen.loadBalance' => '負載均衡',
-			'homeScreen.serviceCenter' => '服務中心',
-			'homeScreen.onlineSupport' => '線上客服',
-			'homeScreen.subscriptionChannel' => '訂閱頻道',
-			'homeScreen.buyPlan' => '購買套餐',
-			'loginScreen.login' => '登錄',
-			'loginScreen.register' => '註冊賬號',
-			'loginScreen.forgotPassword' => '忘記密碼',
-			'loginScreen.provider' => '服務商',
-			'loginScreen.providerName' => '${_root.loginScreen.provider}名稱',
-			'loginScreen.providerNameRequired' => '請輸入${_root.loginScreen.provider}名稱',
-			'loginScreen.account' => '賬號',
-			'loginScreen.accountRequired' => '請輸入賬號',
-			'loginScreen.email' => '郵箱',
-			'loginScreen.emailRequired' => '請輸入郵箱地址',
-			'loginScreen.password' => '密碼',
-			'loginScreen.passwordRequired' => '請輸入密碼',
-			'loginScreen.validEmailRequired' => '請輸入有效的郵箱地址',
-			'loginScreen.passwordMinLength' => ({required Object minLength}) => '密碼長度至少${minLength}位',
-			'loginScreen.unsupportedProvider' => '不支持的${_root.loginScreen.provider}',
-			'loginScreen.unsupportedProviderType' => '不支持的${_root.loginScreen.provider}類型',
-			'planWidget.used' => '已使用',
-			'planWidget.totalTraffic' => '總流量',
-			'planWidget.expirationTime' => '過期時間',
-			'planWidget.remainingTime' => '剩餘時間',
-			'xboardRegisterScreen.register' => '註冊',
-			'xboardRegisterScreen.email' => '郵箱',
-			'xboardRegisterScreen.emailVerificationCode' => '郵箱驗證碼',
-			'xboardRegisterScreen.send' => '發送',
-			'xboardRegisterScreen.password' => '密碼',
-			'xboardRegisterScreen.confirmPassword' => '確認密碼',
-			'xboardRegisterScreen.verificationCode' => '驗證碼',
-			'xboardRegisterScreen.invitationCode' => '邀請碼',
-			'xboardRegisterScreen.emailSentNotice' => '驗證碼已發送至您的郵箱',
-			'xboardRegisterScreen.registerSuccess' => '註冊成功',
-			'xboardRegisterScreen.invalidEmail' => '請輸入有效的郵箱地址',
-			'xboardRegisterScreen.passwordRequired' => '請輸入密碼',
-			'xboardRegisterScreen.passwordMinLength' => ({required Object minLength}) => '密碼長度至少${minLength}位',
-			'xboardRegisterScreen.confirmPasswordRequired' => '請再次輸入密碼',
-			'xboardRegisterScreen.passwordMismatch' => '兩次輸入的密碼不一致',
-			'xboardRegisterScreen.emailCodeRequired' => '請輸入郵箱驗證碼',
-			'xboardRegisterScreen.emailCodeLength' => ({required Object codeLength}) => '郵箱驗證碼應為${codeLength}位',
-			'xboardRegisterScreen.verificationCodeRequired' => '請輸入驗證碼',
-			'xboardRegisterScreen.verificationCodeLength' => '驗證碼長度錯誤',
-			'xboardRegisterScreen.userAgreement' => '使用者協議',
-			'xboardRegisterScreen.pleaseCheck' => '請勾選',
 			'locales.en' => 'English',
 			'locales.zh-CN' => '简体中文',
 			'locales.zh-TW' => '繁體中文',

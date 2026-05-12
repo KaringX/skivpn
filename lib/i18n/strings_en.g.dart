@@ -44,6 +44,10 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final TranslationsPerAppAndroidScreenEn PerAppAndroidScreen = TranslationsPerAppAndroidScreenEn._(_root);
 	late final TranslationsUserAgreementScreenEn UserAgreementScreen = TranslationsUserAgreementScreenEn._(_root);
 	late final TranslationsVersionUpdateScreenEn VersionUpdateScreen = TranslationsVersionUpdateScreenEn._(_root);
+	late final TranslationsHomeScreenEn homeScreen = TranslationsHomeScreenEn._(_root);
+	late final TranslationsLoginScreenEn loginScreen = TranslationsLoginScreenEn._(_root);
+	late final TranslationsPlanWidgetEn planWidget = TranslationsPlanWidgetEn._(_root);
+	late final TranslationsXboardRegisterScreenEn xboardRegisterScreen = TranslationsXboardRegisterScreenEn._(_root);
 	late final TranslationsMainEn main = TranslationsMainEn._(_root);
 	late final TranslationsMetaEn meta = TranslationsMetaEn._(_root);
 	late final TranslationsPermissionEn permission = TranslationsPermissionEn._(_root);
@@ -52,10 +56,6 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	/// en: 'The current device has not installed the Edge WebView2 runtime, so the page cannot be displayed. Please download and install the Edge WebView2 runtime (x64), restart the App and try again.'
 	String get edgeRuntimeNotInstalled => 'The current device has not installed the Edge WebView2 runtime, so the page cannot be displayed. Please download and install the Edge WebView2 runtime (x64), restart the App and try again.';
 
-	late final TranslationsHomeScreenEn homeScreen = TranslationsHomeScreenEn._(_root);
-	late final TranslationsLoginScreenEn loginScreen = TranslationsLoginScreenEn._(_root);
-	late final TranslationsPlanWidgetEn planWidget = TranslationsPlanWidgetEn._(_root);
-	late final TranslationsXboardRegisterScreenEn xboardRegisterScreen = TranslationsXboardRegisterScreenEn._(_root);
 	Map<String, String> get locales => {
 		'en': 'English',
 		'zh-CN': '简体中文',
@@ -141,6 +141,189 @@ class TranslationsVersionUpdateScreenEn {
 
 	/// en: 'Not Now'
 	String get cancel => 'Not Now';
+}
+
+// Path: homeScreen
+class TranslationsHomeScreenEn {
+	TranslationsHomeScreenEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Traffic:'
+	String get traffic => 'Traffic:';
+
+	/// en: 'Speed:'
+	String get speed => 'Speed:';
+
+	/// en: 'Auto Select'
+	String get autoSelect => 'Auto Select';
+
+	/// en: 'Load Balance'
+	String get loadBalance => 'Load Balance';
+
+	/// en: 'Service Center'
+	String get serviceCenter => 'Service Center';
+
+	/// en: 'Online Support'
+	String get onlineSupport => 'Online Support';
+
+	/// en: 'Subscription Channel'
+	String get subscriptionChannel => 'Subscription Channel';
+
+	/// en: 'Buy Plan'
+	String get buyPlan => 'Buy Plan';
+}
+
+// Path: loginScreen
+class TranslationsLoginScreenEn {
+	TranslationsLoginScreenEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Login'
+	String get login => 'Login';
+
+	/// en: 'Register Account'
+	String get register => 'Register Account';
+
+	/// en: 'Forgot Password'
+	String get forgotPassword => 'Forgot Password';
+
+	/// en: 'Provider'
+	String get provider => 'Provider';
+
+	/// en: 'Provider Name'
+	String get providerName => '${_root.loginScreen.provider} Name';
+
+	/// en: 'Please enter the Provider name'
+	String get providerNameRequired => 'Please enter the ${_root.loginScreen.provider} name';
+
+	/// en: 'Account'
+	String get account => 'Account';
+
+	/// en: 'Please enter account'
+	String get accountRequired => 'Please enter account';
+
+	/// en: 'Email'
+	String get email => 'Email';
+
+	/// en: 'Please enter email address'
+	String get emailRequired => 'Please enter email address';
+
+	/// en: 'Password'
+	String get password => 'Password';
+
+	/// en: 'Please enter password'
+	String get passwordRequired => 'Please enter password';
+
+	/// en: 'Please enter valid email address'
+	String get validEmailRequired => 'Please enter valid email address';
+
+	/// en: 'Password length at least $minLength characters'
+	String passwordMinLength({required Object minLength}) => 'Password length at least ${minLength} characters';
+
+	/// en: 'Unsupported Provider'
+	String get unsupportedProvider => 'Unsupported ${_root.loginScreen.provider}';
+
+	/// en: 'Unsupported Provider type'
+	String get unsupportedProviderType => 'Unsupported ${_root.loginScreen.provider} type';
+}
+
+// Path: planWidget
+class TranslationsPlanWidgetEn {
+	TranslationsPlanWidgetEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Used'
+	String get used => 'Used';
+
+	/// en: 'Total Traffic'
+	String get totalTraffic => 'Total Traffic';
+
+	/// en: 'Expiration Time'
+	String get expirationTime => 'Expiration Time';
+
+	/// en: 'Remaining Time'
+	String get remainingTime => 'Remaining Time';
+}
+
+// Path: xboardRegisterScreen
+class TranslationsXboardRegisterScreenEn {
+	TranslationsXboardRegisterScreenEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Register'
+	String get register => 'Register';
+
+	/// en: 'Email'
+	String get email => 'Email';
+
+	/// en: 'Email Verification Code'
+	String get emailVerificationCode => 'Email Verification Code';
+
+	/// en: 'Send'
+	String get send => 'Send';
+
+	/// en: 'Password'
+	String get password => 'Password';
+
+	/// en: 'Confirm Password'
+	String get confirmPassword => 'Confirm Password';
+
+	/// en: 'Verification Code'
+	String get verificationCode => 'Verification Code';
+
+	/// en: 'Invitation Code'
+	String get invitationCode => 'Invitation Code';
+
+	/// en: 'Verification code sent to your email'
+	String get emailSentNotice => 'Verification code sent to your email';
+
+	/// en: 'Registration successful'
+	String get registerSuccess => 'Registration successful';
+
+	/// en: 'Please enter valid email address'
+	String get invalidEmail => 'Please enter valid email address';
+
+	/// en: 'Please enter password'
+	String get passwordRequired => 'Please enter password';
+
+	/// en: 'Password length at least $minLength characters'
+	String passwordMinLength({required Object minLength}) => 'Password length at least ${minLength} characters';
+
+	/// en: 'Please enter password again'
+	String get confirmPasswordRequired => 'Please enter password again';
+
+	/// en: 'Passwords don't match'
+	String get passwordMismatch => 'Passwords don\'t match';
+
+	/// en: 'Please enter email verification code'
+	String get emailCodeRequired => 'Please enter email verification code';
+
+	/// en: 'Email verification code should be $codeLength digits'
+	String emailCodeLength({required Object codeLength}) => 'Email verification code should be ${codeLength} digits';
+
+	/// en: 'Please enter verification code'
+	String get verificationCodeRequired => 'Please enter verification code';
+
+	/// en: 'Verification code length error'
+	String get verificationCodeLength => 'Verification code length error';
+
+	/// en: 'User Agreement'
+	String get userAgreement => 'User Agreement';
+
+	/// en: 'Please check'
+	String get pleaseCheck => 'Please check';
 }
 
 // Path: main
@@ -570,189 +753,6 @@ class TranslationsTunEn {
 	String get bypassHttpProxyDomain => 'Domains allowed to bypass HTTP proxy';
 }
 
-// Path: homeScreen
-class TranslationsHomeScreenEn {
-	TranslationsHomeScreenEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-
-	/// en: 'Traffic:'
-	String get traffic => 'Traffic:';
-
-	/// en: 'Speed:'
-	String get speed => 'Speed:';
-
-	/// en: 'Auto Select'
-	String get autoSelect => 'Auto Select';
-
-	/// en: 'Load Balance'
-	String get loadBalance => 'Load Balance';
-
-	/// en: 'Service Center'
-	String get serviceCenter => 'Service Center';
-
-	/// en: 'Online Support'
-	String get onlineSupport => 'Online Support';
-
-	/// en: 'Subscription Channel'
-	String get subscriptionChannel => 'Subscription Channel';
-
-	/// en: 'Buy Plan'
-	String get buyPlan => 'Buy Plan';
-}
-
-// Path: loginScreen
-class TranslationsLoginScreenEn {
-	TranslationsLoginScreenEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-
-	/// en: 'Login'
-	String get login => 'Login';
-
-	/// en: 'Register Account'
-	String get register => 'Register Account';
-
-	/// en: 'Forgot Password'
-	String get forgotPassword => 'Forgot Password';
-
-	/// en: 'Provider'
-	String get provider => 'Provider';
-
-	/// en: 'Provider Name'
-	String get providerName => '${_root.loginScreen.provider} Name';
-
-	/// en: 'Please enter the Provider name'
-	String get providerNameRequired => 'Please enter the ${_root.loginScreen.provider} name';
-
-	/// en: 'Account'
-	String get account => 'Account';
-
-	/// en: 'Please enter account'
-	String get accountRequired => 'Please enter account';
-
-	/// en: 'Email'
-	String get email => 'Email';
-
-	/// en: 'Please enter email address'
-	String get emailRequired => 'Please enter email address';
-
-	/// en: 'Password'
-	String get password => 'Password';
-
-	/// en: 'Please enter password'
-	String get passwordRequired => 'Please enter password';
-
-	/// en: 'Please enter valid email address'
-	String get validEmailRequired => 'Please enter valid email address';
-
-	/// en: 'Password length at least $minLength characters'
-	String passwordMinLength({required Object minLength}) => 'Password length at least ${minLength} characters';
-
-	/// en: 'Unsupported Provider'
-	String get unsupportedProvider => 'Unsupported ${_root.loginScreen.provider}';
-
-	/// en: 'Unsupported Provider type'
-	String get unsupportedProviderType => 'Unsupported ${_root.loginScreen.provider} type';
-}
-
-// Path: planWidget
-class TranslationsPlanWidgetEn {
-	TranslationsPlanWidgetEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-
-	/// en: 'Used'
-	String get used => 'Used';
-
-	/// en: 'Total Traffic'
-	String get totalTraffic => 'Total Traffic';
-
-	/// en: 'Expiration Time'
-	String get expirationTime => 'Expiration Time';
-
-	/// en: 'Remaining Time'
-	String get remainingTime => 'Remaining Time';
-}
-
-// Path: xboardRegisterScreen
-class TranslationsXboardRegisterScreenEn {
-	TranslationsXboardRegisterScreenEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-
-	/// en: 'Register'
-	String get register => 'Register';
-
-	/// en: 'Email'
-	String get email => 'Email';
-
-	/// en: 'Email Verification Code'
-	String get emailVerificationCode => 'Email Verification Code';
-
-	/// en: 'Send'
-	String get send => 'Send';
-
-	/// en: 'Password'
-	String get password => 'Password';
-
-	/// en: 'Confirm Password'
-	String get confirmPassword => 'Confirm Password';
-
-	/// en: 'Verification Code'
-	String get verificationCode => 'Verification Code';
-
-	/// en: 'Invitation Code'
-	String get invitationCode => 'Invitation Code';
-
-	/// en: 'Verification code sent to your email'
-	String get emailSentNotice => 'Verification code sent to your email';
-
-	/// en: 'Registration successful'
-	String get registerSuccess => 'Registration successful';
-
-	/// en: 'Please enter valid email address'
-	String get invalidEmail => 'Please enter valid email address';
-
-	/// en: 'Please enter password'
-	String get passwordRequired => 'Please enter password';
-
-	/// en: 'Password length at least $minLength characters'
-	String passwordMinLength({required Object minLength}) => 'Password length at least ${minLength} characters';
-
-	/// en: 'Please enter password again'
-	String get confirmPasswordRequired => 'Please enter password again';
-
-	/// en: 'Passwords don't match'
-	String get passwordMismatch => 'Passwords don\'t match';
-
-	/// en: 'Please enter email verification code'
-	String get emailCodeRequired => 'Please enter email verification code';
-
-	/// en: 'Email verification code should be $codeLength digits'
-	String emailCodeLength({required Object codeLength}) => 'Email verification code should be ${codeLength} digits';
-
-	/// en: 'Please enter verification code'
-	String get verificationCodeRequired => 'Please enter verification code';
-
-	/// en: 'Verification code length error'
-	String get verificationCodeLength => 'Verification code length error';
-
-	/// en: 'User Agreement'
-	String get userAgreement => 'User Agreement';
-
-	/// en: 'Please check'
-	String get pleaseCheck => 'Please check';
-}
-
 // Path: main.tray
 class TranslationsMainTrayEn {
 	TranslationsMainTrayEn._(this._root);
@@ -789,6 +789,55 @@ extension on Translations {
 			'VersionUpdateScreen.versionReady' => ({required Object p}) => 'The new version[${p}] is ready',
 			'VersionUpdateScreen.update' => 'Restart To Update',
 			'VersionUpdateScreen.cancel' => 'Not Now',
+			'homeScreen.traffic' => 'Traffic:',
+			'homeScreen.speed' => 'Speed:',
+			'homeScreen.autoSelect' => 'Auto Select',
+			'homeScreen.loadBalance' => 'Load Balance',
+			'homeScreen.serviceCenter' => 'Service Center',
+			'homeScreen.onlineSupport' => 'Online Support',
+			'homeScreen.subscriptionChannel' => 'Subscription Channel',
+			'homeScreen.buyPlan' => 'Buy Plan',
+			'loginScreen.login' => 'Login',
+			'loginScreen.register' => 'Register Account',
+			'loginScreen.forgotPassword' => 'Forgot Password',
+			'loginScreen.provider' => 'Provider',
+			'loginScreen.providerName' => '${_root.loginScreen.provider} Name',
+			'loginScreen.providerNameRequired' => 'Please enter the ${_root.loginScreen.provider} name',
+			'loginScreen.account' => 'Account',
+			'loginScreen.accountRequired' => 'Please enter account',
+			'loginScreen.email' => 'Email',
+			'loginScreen.emailRequired' => 'Please enter email address',
+			'loginScreen.password' => 'Password',
+			'loginScreen.passwordRequired' => 'Please enter password',
+			'loginScreen.validEmailRequired' => 'Please enter valid email address',
+			'loginScreen.passwordMinLength' => ({required Object minLength}) => 'Password length at least ${minLength} characters',
+			'loginScreen.unsupportedProvider' => 'Unsupported ${_root.loginScreen.provider}',
+			'loginScreen.unsupportedProviderType' => 'Unsupported ${_root.loginScreen.provider} type',
+			'planWidget.used' => 'Used',
+			'planWidget.totalTraffic' => 'Total Traffic',
+			'planWidget.expirationTime' => 'Expiration Time',
+			'planWidget.remainingTime' => 'Remaining Time',
+			'xboardRegisterScreen.register' => 'Register',
+			'xboardRegisterScreen.email' => 'Email',
+			'xboardRegisterScreen.emailVerificationCode' => 'Email Verification Code',
+			'xboardRegisterScreen.send' => 'Send',
+			'xboardRegisterScreen.password' => 'Password',
+			'xboardRegisterScreen.confirmPassword' => 'Confirm Password',
+			'xboardRegisterScreen.verificationCode' => 'Verification Code',
+			'xboardRegisterScreen.invitationCode' => 'Invitation Code',
+			'xboardRegisterScreen.emailSentNotice' => 'Verification code sent to your email',
+			'xboardRegisterScreen.registerSuccess' => 'Registration successful',
+			'xboardRegisterScreen.invalidEmail' => 'Please enter valid email address',
+			'xboardRegisterScreen.passwordRequired' => 'Please enter password',
+			'xboardRegisterScreen.passwordMinLength' => ({required Object minLength}) => 'Password length at least ${minLength} characters',
+			'xboardRegisterScreen.confirmPasswordRequired' => 'Please enter password again',
+			'xboardRegisterScreen.passwordMismatch' => 'Passwords don\'t match',
+			'xboardRegisterScreen.emailCodeRequired' => 'Please enter email verification code',
+			'xboardRegisterScreen.emailCodeLength' => ({required Object codeLength}) => 'Email verification code should be ${codeLength} digits',
+			'xboardRegisterScreen.verificationCodeRequired' => 'Please enter verification code',
+			'xboardRegisterScreen.verificationCodeLength' => 'Verification code length error',
+			'xboardRegisterScreen.userAgreement' => 'User Agreement',
+			'xboardRegisterScreen.pleaseCheck' => 'Please check',
 			'main.tray.menuOpen' => 'Open',
 			'main.tray.menuExit' => 'Exit',
 			'meta.enable' => 'Enable',
@@ -922,55 +971,6 @@ extension on Translations {
 			'tun.appendHttpProxy' => 'Append HTTP Proxy to VPN',
 			'tun.bypassHttpProxyDomain' => 'Domains allowed to bypass HTTP proxy',
 			'edgeRuntimeNotInstalled' => 'The current device has not installed the Edge WebView2 runtime, so the page cannot be displayed. Please download and install the Edge WebView2 runtime (x64), restart the App and try again.',
-			'homeScreen.traffic' => 'Traffic:',
-			'homeScreen.speed' => 'Speed:',
-			'homeScreen.autoSelect' => 'Auto Select',
-			'homeScreen.loadBalance' => 'Load Balance',
-			'homeScreen.serviceCenter' => 'Service Center',
-			'homeScreen.onlineSupport' => 'Online Support',
-			'homeScreen.subscriptionChannel' => 'Subscription Channel',
-			'homeScreen.buyPlan' => 'Buy Plan',
-			'loginScreen.login' => 'Login',
-			'loginScreen.register' => 'Register Account',
-			'loginScreen.forgotPassword' => 'Forgot Password',
-			'loginScreen.provider' => 'Provider',
-			'loginScreen.providerName' => '${_root.loginScreen.provider} Name',
-			'loginScreen.providerNameRequired' => 'Please enter the ${_root.loginScreen.provider} name',
-			'loginScreen.account' => 'Account',
-			'loginScreen.accountRequired' => 'Please enter account',
-			'loginScreen.email' => 'Email',
-			'loginScreen.emailRequired' => 'Please enter email address',
-			'loginScreen.password' => 'Password',
-			'loginScreen.passwordRequired' => 'Please enter password',
-			'loginScreen.validEmailRequired' => 'Please enter valid email address',
-			'loginScreen.passwordMinLength' => ({required Object minLength}) => 'Password length at least ${minLength} characters',
-			'loginScreen.unsupportedProvider' => 'Unsupported ${_root.loginScreen.provider}',
-			'loginScreen.unsupportedProviderType' => 'Unsupported ${_root.loginScreen.provider} type',
-			'planWidget.used' => 'Used',
-			'planWidget.totalTraffic' => 'Total Traffic',
-			'planWidget.expirationTime' => 'Expiration Time',
-			'planWidget.remainingTime' => 'Remaining Time',
-			'xboardRegisterScreen.register' => 'Register',
-			'xboardRegisterScreen.email' => 'Email',
-			'xboardRegisterScreen.emailVerificationCode' => 'Email Verification Code',
-			'xboardRegisterScreen.send' => 'Send',
-			'xboardRegisterScreen.password' => 'Password',
-			'xboardRegisterScreen.confirmPassword' => 'Confirm Password',
-			'xboardRegisterScreen.verificationCode' => 'Verification Code',
-			'xboardRegisterScreen.invitationCode' => 'Invitation Code',
-			'xboardRegisterScreen.emailSentNotice' => 'Verification code sent to your email',
-			'xboardRegisterScreen.registerSuccess' => 'Registration successful',
-			'xboardRegisterScreen.invalidEmail' => 'Please enter valid email address',
-			'xboardRegisterScreen.passwordRequired' => 'Please enter password',
-			'xboardRegisterScreen.passwordMinLength' => ({required Object minLength}) => 'Password length at least ${minLength} characters',
-			'xboardRegisterScreen.confirmPasswordRequired' => 'Please enter password again',
-			'xboardRegisterScreen.passwordMismatch' => 'Passwords don\'t match',
-			'xboardRegisterScreen.emailCodeRequired' => 'Please enter email verification code',
-			'xboardRegisterScreen.emailCodeLength' => ({required Object codeLength}) => 'Email verification code should be ${codeLength} digits',
-			'xboardRegisterScreen.verificationCodeRequired' => 'Please enter verification code',
-			'xboardRegisterScreen.verificationCodeLength' => 'Verification code length error',
-			'xboardRegisterScreen.userAgreement' => 'User Agreement',
-			'xboardRegisterScreen.pleaseCheck' => 'Please check',
 			'locales.en' => 'English',
 			'locales.zh-CN' => '简体中文',
 			'locales.zh-TW' => '繁體中文',

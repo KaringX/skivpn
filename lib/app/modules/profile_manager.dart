@@ -351,10 +351,8 @@ class ProfileManager {
   }
 
   static Future<void> uninit() async {
-    if (_timerChecker != null) {
-      _timerChecker!.cancel();
-      _timerChecker = null;
-    }
+    _timerChecker?.cancel();
+    _timerChecker = null;
     await save();
   }
 
@@ -641,7 +639,6 @@ class ProfileManager {
       profile.filehash = fileLen;
       proxiesUpdated = profile.isProxiesDiff(old);
     }
-
     await save();
     updating.remove(id);
     Future.delayed(const Duration(milliseconds: 10), () async {
