@@ -346,6 +346,18 @@ class BoardSessionPersistentManager implements BoardSessionPersistent {
     return _config.sessions.first;
   }
 
+  BoardSession? getBySubscribeUrl(String url) {
+    if (url.isEmpty) {
+      return null;
+    }
+    for (var session in _config.sessions) {
+      if (session.subscribeUrl == url) {
+        return session;
+      }
+    }
+    return null;
+  }
+
   Future<void> updateProviders(List<BoardProviderConfig> providers) async {
     Map<String, BoardProviderConfig> updatedProviderIds = {};
     for (var provider in providers) {
