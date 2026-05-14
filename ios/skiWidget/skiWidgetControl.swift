@@ -51,12 +51,12 @@ extension skiWidgetControl {
         }
 
         func currentValue() async throws -> Bool {
-            let runing = isRunning()
+            let runing = await isRunning()
             return runing
         }
 
-        func isRunning() -> Bool {
-            let status = VpnServiceHandler.shared.getCurrentState()
+        func isRunning() async -> Bool {
+            let status = await VpnServiceHandler.shared.getCurrentState()
             return status == NEVPNStatus.connecting || status == NEVPNStatus.connected || status == NEVPNStatus.reasserting
         }
     }
