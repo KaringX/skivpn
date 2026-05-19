@@ -8,7 +8,7 @@
 </h2>
 
 [TestFlight](https://testflight.apple.com/join/U7F6nX42)
-
+[AppStore](https://apps.apple.com/us/app/skivpn/id6760533891)
 [Telegram](https://t.me/SkiVPNApp)
 
 Supported platforms: ios/macos/android/windows/linux
