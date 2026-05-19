@@ -46,8 +46,7 @@ struct skiWidgetControl: ControlWidget {
 extension skiWidgetControl {
     struct Provider: ControlValueProvider {
          var previewValue: Bool {
-            let runing = isRunning()
-            return runing
+            false
         }
 
         func currentValue() async throws -> Bool {
