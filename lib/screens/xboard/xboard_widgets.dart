@@ -119,7 +119,7 @@ class _XboardWidgetPlanState extends State<XboardWidgetPlan> {
                             const SizedBox(width: 5),
                             Expanded(
                               child: Text(
-                                subscribeInfo.plan!.name,
+                                subscribeInfo.plan?.name ?? "",
                                 textAlign: TextAlign.left,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(fontWeight: FontWeight.bold),
