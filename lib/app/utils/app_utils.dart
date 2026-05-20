@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:skivpn/generated/build_time.dart' as build_time;
 
 abstract final class AppUtils {
   static Future<String> getPackgetVersion() async {
@@ -28,6 +29,10 @@ abstract final class AppUtils {
 
   static String getBuildinVersion() {
     return "1.0.1.200";
+  }
+
+  static DateTime getBuildinVersionDate() {
+    return build_time.buildDateTime;
   }
 
   static String getId() {

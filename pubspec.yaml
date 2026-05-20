@@ -87,13 +87,14 @@ dependencies:
       #ref: master
 
 dev_dependencies:
+  source_gen: 4.2.3
+  build_runner: 2.15.0
   flutter_launcher_icons: 0.14.4
   flutter_test:
     sdk: flutter
 
-  flutter_lints: 5.0.0
-  build_runner: 2.4.13
-  json_serializable: 6.8.0 #dart run build_runner build --delete-conflicting-outputs
+  flutter_lints: 6.0.0
+  json_serializable: 6.11.4 #dart run build_runner build
 
 dependency_overrides:
   path_provider_foundation: 2.3.2
