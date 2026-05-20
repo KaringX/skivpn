@@ -8,7 +8,7 @@ import 'package:skivpn/app/utils/install_date_utils.dart';
 import 'package:skivpn/app/utils/install_referrer_utils.dart';
 
 abstract final class AppUrlUtils {
-  static String getQueryParamsForAnalytics(int bodyLen) {
+  static String getQueryParamsForAnalytics(String bodyLen) {
     return AppUrlUtilsPrivate.signQueryParams(
       AppUtils.getBuildinVersion(),
       bodyLen,
@@ -16,7 +16,7 @@ abstract final class AppUrlUtils {
     );
   }
 
-  static Future<String> getQueryParamsForUrl({int bodyLen = 0}) async {
+  static Future<String> getQueryParamsForUrl({String bodyLen = "0"}) async {
     String planguageTag = [
       WidgetsBinding.instance.platformDispatcher.locale.languageCode,
       WidgetsBinding.instance.platformDispatcher.locale.countryCode ?? "",

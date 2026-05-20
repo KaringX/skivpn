@@ -55,12 +55,12 @@ abstract final class AutoupdateUtils {
   ) async {
     String url = RemoteConfigManager.getConfig().autoUpdate;
     if (withQueryParams) {
-      String queryParams = await AppUrlUtils.getQueryParamsForUrl(bodyLen: 1);
+      String queryParams = await AppUrlUtils.getQueryParamsForUrl(bodyLen: "1");
       url = UrlLauncherUtils.reorganizationUrl(url, queryParams) ?? url;
     }
 
     late ReturnResult<Tuple2<int, String>> response;
-    List<int?> ports = await VPNService.getPortsByPrefer(false);
+    List<int?> ports = await VPNService.getPortsByPrefer(true);
     for (var port in ports) {
       response = await HttpUtils.httpGetRequest(
         url,
@@ -101,7 +101,7 @@ abstract final class AutoupdateUtils {
     RemoteConfig rc = RemoteConfig();
     String url = RemoteConfigManager.getConfig().config;
     late ReturnResult<Tuple2<int, String>> response;
-    List<int?> ports = await VPNService.getPortsByPrefer(false);
+    List<int?> ports = await VPNService.getPortsByPrefer(true);
     for (var port in ports) {
       response = await HttpUtils.httpGetRequest(
         url,
