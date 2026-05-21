@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:board_service/board_provider.dart';
 import 'package:skivpn/app/modules/board_session_persistent_manager.dart';
+import 'package:skivpn/app/private/app_url_utils_private.dart';
 import 'package:skivpn/app/runtime/return_result.dart';
 import 'package:skivpn/app/utils/http_utils.dart';
 import 'package:skivpn/app/utils/path_utils.dart';
@@ -167,7 +168,7 @@ class BoardProviderManager {
       }
     }
     var result = await HttpUtils.httpPostRequest(
-      "https://${BoardProvider.getDomain()}/dotfile?nick=${Uri.encodeComponent(idOrName)}",
+      "https://${BoardProviderPrivate.getDomain()}/dotfile?nick=${Uri.encodeComponent(idOrName)}",
       null,
       null,
       "",
@@ -181,7 +182,7 @@ class BoardProviderManager {
     if (result.error != null &&
         result.error!.message.contains("http response timeout")) {
       result = await HttpUtils.httpPostRequest(
-        "https://${BoardProvider.getDomainBackup()}/dotfile?nick=${Uri.encodeComponent(idOrName)}",
+        "https://${BoardProviderPrivate.getDomainBackup()}/dotfile?nick=${Uri.encodeComponent(idOrName)}",
         null,
         null,
         "",
