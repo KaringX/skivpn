@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:board_service/board_provider.dart';
+
 import 'package:skivpn/app/modules/board_session_persistent_manager.dart';
 import 'package:skivpn/app/private/app_url_utils_private.dart';
 import 'package:skivpn/app/runtime/return_result.dart';
