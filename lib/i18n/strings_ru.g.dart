@@ -139,8 +139,8 @@ class _TranslationsLoginScreenRu implements TranslationsLoginScreenEn {
 	@override String get register => 'Зарегистрировать аккаунт';
 	@override String get forgotPassword => 'Забыли пароль';
 	@override String get provider => 'Провайдер';
-	@override String get providerName => 'Название ${_root.loginScreen.provider}';
-	@override String get providerNameRequired => 'Пожалуйста, введите название ${_root.loginScreen.provider}';
+	@override String get providerName => 'Код доступа ${_root.loginScreen.provider}';
+	@override String get providerNameRequired => 'Пожалуйста, введите код доступа ${_root.loginScreen.provider}';
 	@override String get account => 'Аккаунт';
 	@override String get accountRequired => 'Пожалуйста, введите аккаунт';
 	@override String get email => 'Электронная почта';
@@ -407,8 +407,8 @@ extension on TranslationsRu {
 			'loginScreen.register' => 'Зарегистрировать аккаунт',
 			'loginScreen.forgotPassword' => 'Забыли пароль',
 			'loginScreen.provider' => 'Провайдер',
-			'loginScreen.providerName' => 'Название ${_root.loginScreen.provider}',
-			'loginScreen.providerNameRequired' => 'Пожалуйста, введите название ${_root.loginScreen.provider}',
+			'loginScreen.providerName' => 'Код доступа ${_root.loginScreen.provider}',
+			'loginScreen.providerNameRequired' => 'Пожалуйста, введите код доступа ${_root.loginScreen.provider}',
 			'loginScreen.account' => 'Аккаунт',
 			'loginScreen.accountRequired' => 'Пожалуйста, введите аккаунт',
 			'loginScreen.email' => 'Электронная почта',

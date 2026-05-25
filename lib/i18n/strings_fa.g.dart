@@ -139,8 +139,8 @@ class _TranslationsLoginScreenFa implements TranslationsLoginScreenEn {
 	@override String get register => 'ایجاد حساب';
 	@override String get forgotPassword => 'فراموشی رمز عبور';
 	@override String get provider => 'ارائه دهنده خدمات';
-	@override String get providerName => 'نام ${_root.loginScreen.provider}';
-	@override String get providerNameRequired => 'لطفا نام ${_root.loginScreen.provider} را وارد کنید';
+	@override String get providerName => 'کد ورود ${_root.loginScreen.provider}';
+	@override String get providerNameRequired => 'لطفا کد ورود ${_root.loginScreen.provider} را وارد کنید';
 	@override String get account => 'حساب';
 	@override String get accountRequired => 'لطفا حساب را وارد کنید';
 	@override String get email => 'ایمیل';
@@ -407,8 +407,8 @@ extension on TranslationsFa {
 			'loginScreen.register' => 'ایجاد حساب',
 			'loginScreen.forgotPassword' => 'فراموشی رمز عبور',
 			'loginScreen.provider' => 'ارائه دهنده خدمات',
-			'loginScreen.providerName' => 'نام ${_root.loginScreen.provider}',
-			'loginScreen.providerNameRequired' => 'لطفا نام ${_root.loginScreen.provider} را وارد کنید',
+			'loginScreen.providerName' => 'کد ورود ${_root.loginScreen.provider}',
+			'loginScreen.providerNameRequired' => 'لطفا کد ورود ${_root.loginScreen.provider} را وارد کنید',
 			'loginScreen.account' => 'حساب',
 			'loginScreen.accountRequired' => 'لطفا حساب را وارد کنید',
 			'loginScreen.email' => 'ایمیل',

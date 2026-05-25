@@ -139,8 +139,8 @@ class _TranslationsLoginScreenZhCn implements TranslationsLoginScreenEn {
 	@override String get register => '注册账号';
 	@override String get forgotPassword => '忘记密码';
 	@override String get provider => '服务商(机场)';
-	@override String get providerName => '${_root.loginScreen.provider}名称';
-	@override String get providerNameRequired => '请输入${_root.loginScreen.provider}名称';
+	@override String get providerName => '${_root.loginScreen.provider}通行码';
+	@override String get providerNameRequired => '请输入${_root.loginScreen.provider}通行码';
 	@override String get account => '账号';
 	@override String get accountRequired => '请输入账号';
 	@override String get email => '邮箱';
@@ -407,8 +407,8 @@ extension on TranslationsZhCn {
 			'loginScreen.register' => '注册账号',
 			'loginScreen.forgotPassword' => '忘记密码',
 			'loginScreen.provider' => '服务商(机场)',
-			'loginScreen.providerName' => '${_root.loginScreen.provider}名称',
-			'loginScreen.providerNameRequired' => '请输入${_root.loginScreen.provider}名称',
+			'loginScreen.providerName' => '${_root.loginScreen.provider}通行码',
+			'loginScreen.providerNameRequired' => '请输入${_root.loginScreen.provider}通行码',
 			'loginScreen.account' => '账号',
 			'loginScreen.accountRequired' => '请输入账号',
 			'loginScreen.email' => '邮箱',

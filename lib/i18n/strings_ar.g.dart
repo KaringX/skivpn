@@ -139,8 +139,8 @@ class _TranslationsLoginScreenAr implements TranslationsLoginScreenEn {
 	@override String get register => 'إنشاء حساب';
 	@override String get forgotPassword => 'هل نسيت كلمة المرور';
 	@override String get provider => 'مزود الخدمة';
-	@override String get providerName => 'اسم ${_root.loginScreen.provider}';
-	@override String get providerNameRequired => 'يرجى إدخال اسم ${_root.loginScreen.provider}';
+	@override String get providerName => 'رمز المرور الخاص بـ ${_root.loginScreen.provider}';
+	@override String get providerNameRequired => 'يرجى إدخال رمز المرور الخاص بـ ${_root.loginScreen.provider}';
 	@override String get account => 'حساب';
 	@override String get accountRequired => 'يرجى إدخال الحساب';
 	@override String get email => 'البريد الإلكتروني';
@@ -407,8 +407,8 @@ extension on TranslationsAr {
 			'loginScreen.register' => 'إنشاء حساب',
 			'loginScreen.forgotPassword' => 'هل نسيت كلمة المرور',
 			'loginScreen.provider' => 'مزود الخدمة',
-			'loginScreen.providerName' => 'اسم ${_root.loginScreen.provider}',
-			'loginScreen.providerNameRequired' => 'يرجى إدخال اسم ${_root.loginScreen.provider}',
+			'loginScreen.providerName' => 'رمز المرور الخاص بـ ${_root.loginScreen.provider}',
+			'loginScreen.providerNameRequired' => 'يرجى إدخال رمز المرور الخاص بـ ${_root.loginScreen.provider}',
 			'loginScreen.account' => 'حساب',
 			'loginScreen.accountRequired' => 'يرجى إدخال الحساب',
 			'loginScreen.email' => 'البريد الإلكتروني',

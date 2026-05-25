@@ -196,11 +196,11 @@ class TranslationsLoginScreenEn {
 	/// en: 'Provider'
 	String get provider => 'Provider';
 
-	/// en: 'Provider Name'
-	String get providerName => '${_root.loginScreen.provider} Name';
+	/// en: 'Provider Passcode'
+	String get providerName => '${_root.loginScreen.provider} Passcode';
 
-	/// en: 'Please enter the Provider name'
-	String get providerNameRequired => 'Please enter the ${_root.loginScreen.provider} name';
+	/// en: 'Please enter the Provider passcode'
+	String get providerNameRequired => 'Please enter the ${_root.loginScreen.provider} passcode';
 
 	/// en: 'Account'
 	String get account => 'Account';
@@ -801,8 +801,8 @@ extension on Translations {
 			'loginScreen.register' => 'Register Account',
 			'loginScreen.forgotPassword' => 'Forgot Password',
 			'loginScreen.provider' => 'Provider',
-			'loginScreen.providerName' => '${_root.loginScreen.provider} Name',
-			'loginScreen.providerNameRequired' => 'Please enter the ${_root.loginScreen.provider} name',
+			'loginScreen.providerName' => '${_root.loginScreen.provider} Passcode',
+			'loginScreen.providerNameRequired' => 'Please enter the ${_root.loginScreen.provider} passcode',
 			'loginScreen.account' => 'Account',
 			'loginScreen.accountRequired' => 'Please enter account',
 			'loginScreen.email' => 'Email',

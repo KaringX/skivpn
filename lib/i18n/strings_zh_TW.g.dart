@@ -139,8 +139,8 @@ class _TranslationsLoginScreenZhTw implements TranslationsLoginScreenEn {
 	@override String get register => '註冊賬號';
 	@override String get forgotPassword => '忘記密碼';
 	@override String get provider => '服務商';
-	@override String get providerName => '${_root.loginScreen.provider}名稱';
-	@override String get providerNameRequired => '請輸入${_root.loginScreen.provider}名稱';
+	@override String get providerName => '${_root.loginScreen.provider}通行碼';
+	@override String get providerNameRequired => '請輸入${_root.loginScreen.provider}通行碼';
 	@override String get account => '賬號';
 	@override String get accountRequired => '請輸入賬號';
 	@override String get email => '郵箱';
@@ -407,8 +407,8 @@ extension on TranslationsZhTw {
 			'loginScreen.register' => '註冊賬號',
 			'loginScreen.forgotPassword' => '忘記密碼',
 			'loginScreen.provider' => '服務商',
-			'loginScreen.providerName' => '${_root.loginScreen.provider}名稱',
-			'loginScreen.providerNameRequired' => '請輸入${_root.loginScreen.provider}名稱',
+			'loginScreen.providerName' => '${_root.loginScreen.provider}通行碼',
+			'loginScreen.providerNameRequired' => '請輸入${_root.loginScreen.provider}通行碼',
 			'loginScreen.account' => '賬號',
 			'loginScreen.accountRequired' => '請輸入賬號',
 			'loginScreen.email' => '郵箱',
