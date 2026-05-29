@@ -139,8 +139,8 @@ class _TranslationsLoginScreenJa implements TranslationsLoginScreenEn {
 	@override String get register => 'アカウント登録';
 	@override String get forgotPassword => 'パスワードを忘れた';
 	@override String get provider => 'プロバイダー';
-	@override String get providerName => '${_root.loginScreen.provider}パスコード';
-	@override String get providerNameRequired => '${_root.loginScreen.provider}パスコードを入力してください';
+	@override String get providerName => '${_root.loginScreen.provider}コード/別名';
+	@override String get providerNameRequired => '${_root.loginScreen.provider}コード/別名を入力してください';
 	@override String get account => 'アカウント';
 	@override String get accountRequired => 'アカウントを入力してください';
 	@override String get email => 'メール';
@@ -407,8 +407,8 @@ extension on TranslationsJa {
 			'loginScreen.register' => 'アカウント登録',
 			'loginScreen.forgotPassword' => 'パスワードを忘れた',
 			'loginScreen.provider' => 'プロバイダー',
-			'loginScreen.providerName' => '${_root.loginScreen.provider}パスコード',
-			'loginScreen.providerNameRequired' => '${_root.loginScreen.provider}パスコードを入力してください',
+			'loginScreen.providerName' => '${_root.loginScreen.provider}コード/別名',
+			'loginScreen.providerNameRequired' => '${_root.loginScreen.provider}コード/別名を入力してください',
 			'loginScreen.account' => 'アカウント',
 			'loginScreen.accountRequired' => 'アカウントを入力してください',
 			'loginScreen.email' => 'メール',
