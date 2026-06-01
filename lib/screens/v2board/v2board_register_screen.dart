@@ -43,6 +43,7 @@ class _RegisterScreenState extends State<V2boardRegisterScreen> {
     super.initState();
     _client = V2BoardClient(
       baseUrl: "https://${widget.provider.domain}",
+      baseDomains: widget.provider.domains,
       id: widget.provider.id,
       persistent: null,
     );

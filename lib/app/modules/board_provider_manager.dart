@@ -40,6 +40,7 @@ class BoardProviderConfig {
   String name;
   List<String> names = [];
   String domain;
+  List<String> domains = [];
   String userAgent;
   String urltestUrl;
   bool xhwid;
@@ -62,6 +63,7 @@ class BoardProviderConfig {
     this.name = '',
     this.names = const [],
     this.domain = '',
+    this.domains = const [],
     this.userAgent = '',
     this.urltestUrl = '',
     this.xhwid = false,
@@ -84,8 +86,9 @@ class BoardProviderConfig {
     'type': type.name,
     'id': id,
     'name': name,
-    'nicknames': names,
+    'names': names,
     'domain': domain,
+    'domains': domains,
     'user_agent': userAgent,
     'urltest_url': urltestUrl,
     'xhwid': xhwid,
@@ -112,13 +115,14 @@ class BoardProviderConfig {
       (e) => e.name == type_,
       orElse: () => BoardProviderType.v2board,
     );
-    id = map["id"] ?? "";
+    id = map["id"] ?? map["pid"] ?? "";
     name = map["name"] ?? "";
-    names = List<String>.from(map["nicknames"] ?? []);
-    if (names.isEmpty && name.isNotEmpty) {
+    names = List<String>.from(map["names"] ?? map["nicknames"] ?? []);
+    if (name.isNotEmpty && !names.contains(name)) {
       names.add(name);
     }
     domain = map["domain"] ?? "";
+    domains = List<String>.from(map["domains"] ?? []);
     userAgent = map["user_agent"] ?? "";
     urltestUrl = map["urltest_url"] ?? "";
     xhwid = map["xhwid"] ?? false;
@@ -151,24 +155,43 @@ class BoardProviderManager {
     return _providers;
   }
 
-  static Future<ReturnResult<BoardProviderConfig>> getProvider(
-    String idOrName,
-  ) async {
+  static BoardProviderConfig? getProviderById(String id) {
+    if (id.isEmpty) {
+      return null;
+    }
     for (final provider in _providers) {
-      if (provider.id == idOrName || provider.names.contains(idOrName)) {
+      if (provider.id == id) {
+        return provider;
+      }
+    }
+    return null;
+  }
+
+  static Future<ReturnResult<BoardProviderConfig>> getProvider(
+    String name,
+  ) async {
+    if (name.isEmpty) {
+      return ReturnResult(
+        error: ReturnResultError("getProvider: name is empty"),
+      );
+    }
+
+    for (final provider in _providers) {
+      if (provider.names.contains(name)) {
         if (provider.lastUpdated != null &&
             DateTime.now().difference(provider.lastUpdated!) <=
-                const Duration(hours: 8)) {
-          if (provider.name != idOrName && provider.names.contains(idOrName)) {
-            provider.name = idOrName;
+                const Duration(hours: 1)) {
+          if (provider.name != name) {
+            provider.name = name;
             await _save();
           }
           return ReturnResult(data: provider);
         }
+        break;
       }
     }
     var result = await HttpUtils.httpPostRequest(
-      "https://${BoardProviderPrivate.getDomain()}/dotfile?nick=${Uri.encodeComponent(idOrName)}",
+      "https://${BoardProviderPrivate.getDomain()}/dotfile?nick=${Uri.encodeComponent(name)}",
       null,
       null,
       "",
@@ -182,7 +205,7 @@ class BoardProviderManager {
     if (result.error != null &&
         result.error!.message.contains("http response timeout")) {
       result = await HttpUtils.httpPostRequest(
-        "https://${BoardProviderPrivate.getDomainBackup()}/dotfile?nick=${Uri.encodeComponent(idOrName)}",
+        "https://${BoardProviderPrivate.getDomainBackup()}/dotfile?nick=${Uri.encodeComponent(name)}",
         null,
         null,
         "",
@@ -195,9 +218,9 @@ class BoardProviderManager {
     }
     if (result.error != null) {
       for (final provider in _providers) {
-        if (provider.id == idOrName || provider.names.contains(idOrName)) {
-          if (provider.name != idOrName && provider.names.contains(idOrName)) {
-            provider.name = idOrName;
+        if (provider.names.contains(name)) {
+          if (provider.name != name) {
+            provider.name = name;
             await _save();
           }
           return ReturnResult(data: provider);
@@ -208,9 +231,9 @@ class BoardProviderManager {
 
     if (result.data!.item1 != 200) {
       final updated = _providers
-          .where((element) => element.names.contains(idOrName))
+          .where((element) => element.names.contains(name))
           .isNotEmpty;
-      _providers.removeWhere((element) => element.names.contains(idOrName));
+      _providers.removeWhere((element) => element.names.contains(name));
       if (updated) {
         await _save();
       }
@@ -220,8 +243,8 @@ class BoardProviderManager {
       return ReturnResult(
         error: ReturnResultError(
           result.data!.item1 == 410
-              ? "${t.loginScreen.unsupportedProvider}: $idOrName"
-              : "getProvider $idOrName: http statuscode ${result.data!.item1}",
+              ? "${t.loginScreen.unsupportedProvider}: $name"
+              : "getProvider $name: http statuscode ${result.data!.item1}",
         ),
       );
     }
@@ -233,27 +256,35 @@ class BoardProviderManager {
     config.fromJson(decodedBody);
     if (error.code != 0) {
       final updated = _providers
-          .where((element) => element.names.contains(idOrName))
+          .where((element) => element.names.contains(name))
           .isNotEmpty;
-      _providers.removeWhere((element) => element.names.contains(idOrName));
+      _providers.removeWhere((element) => element.names.contains(name));
       if (updated) {
         await _save();
       }
       return ReturnResult(
         error: ReturnResultError(
-          error.msg ?? "getProvider $idOrName: error code ${error.code}",
+          error.msg ?? "getProvider $name: error code ${error.code}",
         ),
       );
     }
-    if (config.names.isEmpty && config.name.isNotEmpty) {
-      config.names.add(config.name);
+    if (config.id.isEmpty) {
+      return ReturnResult(
+        error: ReturnResultError(
+          error.msg ?? "getProvider $name: invalid provider config, empty id",
+        ),
+      );
     }
+    if (!config.names.contains(name)) {
+      config.names.add(name);
+    }
+    if (config.name != name) {
+      config.name = name;
+    }
+
     var updated = _providers
         .where((element) => element.id == config.id)
         .isEmpty;
-    if (config.name != idOrName && config.names.contains(idOrName)) {
-      config.name = idOrName;
-    }
 
     config.lastUpdated = DateTime.now();
     if (updated) {
@@ -302,11 +333,13 @@ class BoardProviderManager {
           return config;
         }).toList();
       } catch (e) {}
+    } else {
+      await _save();
     }
     await updateSessionProviders();
-    final session = BoardSessionPersistentManager.instance().current();
-    if (session != null) {
-      getProvider(session.provider.name);
+    final sessionNames = BoardSessionPersistentManager.instance().getAllNames();
+    for (var name in sessionNames) {
+      getProvider(name);
     }
   }
 }

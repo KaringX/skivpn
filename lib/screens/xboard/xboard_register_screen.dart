@@ -43,6 +43,7 @@ class _RegisterScreenState extends State<XboardRegisterScreen> {
     super.initState();
     _client = XboardClient(
       baseUrl: "https://${widget.provider.domain}",
+      baseDomains: widget.provider.domains,
       id: widget.provider.id,
       persistent: null,
     );

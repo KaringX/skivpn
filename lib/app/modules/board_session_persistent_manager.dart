@@ -311,7 +311,8 @@ class BoardSessionPersistentManager implements BoardSessionPersistent {
     if (newSession.provider.type == BoardProviderType.v2board) {
       newSession._v2board = v2board_client.V2BoardClient(
         baseUrl: baseUrl,
-        id: newSession.provider.id,
+        baseDomains: provider.domains,
+        id: provider.id,
         persistent: this,
       );
       newSession._v2board!.userAgent = useagent;
@@ -319,14 +320,16 @@ class BoardSessionPersistentManager implements BoardSessionPersistent {
     } else if (newSession.provider.type == BoardProviderType.xboard) {
       newSession._xboard = xboard_client.XboardClient(
         baseUrl: baseUrl,
-        id: newSession.provider.id,
+        baseDomains: provider.domains,
+        id: provider.id,
         persistent: this,
       );
       newSession._xboard!.userAgent = useagent;
     } else if (newSession.provider.type == BoardProviderType.sspanel) {
       newSession._ssPanel = sspanel_client.SSPanelUimClient(
         baseUrl: baseUrl,
-        id: newSession.provider.id,
+        baseDomains: provider.domains,
+        id: provider.id,
         persistent: this,
       );
       newSession._ssPanel!.userAgent = useagent;
@@ -344,6 +347,14 @@ class BoardSessionPersistentManager implements BoardSessionPersistent {
       return null;
     }
     return _config.sessions.first;
+  }
+
+  Set<String> getAllNames() {
+    Set<String> names = {};
+    for (var session in _config.sessions) {
+      names.add(session.provider.name);
+    }
+    return names;
   }
 
   BoardSession? getBySubscribeUrl(String url) {
@@ -373,26 +384,31 @@ class BoardSessionPersistentManager implements BoardSessionPersistent {
     await _save();
   }
 
-  void _updateProvider(BoardSession session, BoardProviderConfig provider) {
-    final useagent = session.provider.userAgent.isNotEmpty
-        ? session.provider.userAgent
+  Future<void> _updateProvider(
+    BoardSession session,
+    BoardProviderConfig provider,
+  ) async {
+    final useagent = provider.userAgent.isNotEmpty
+        ? provider.userAgent
         : SettingManager.getConfig().userAgent();
     final baseUrl = "https://${provider.domain}";
     if (session.provider.type == BoardProviderType.v2board) {
       session._v2board ??= v2board_client.V2BoardClient(
         baseUrl: baseUrl,
-        id: session.provider.id,
+        baseDomains: provider.domains,
+        id: provider.id,
         persistent: this,
       );
       session._v2board!.baseUrl = baseUrl;
       session._v2board!.userAgent = useagent;
-      session._v2board!.setVersion(session.provider.version);
+      session._v2board!.setVersion(provider.version);
       session._v2board!.setAccount(session.account);
       session._v2board!.setAuthToken(session.authData);
     } else if (session.provider.type == BoardProviderType.xboard) {
       session._xboard ??= xboard_client.XboardClient(
         baseUrl: baseUrl,
-        id: session.provider.id,
+        baseDomains: provider.domains,
+        id: provider.id,
         persistent: this,
       );
       session._xboard!.baseUrl = baseUrl;
@@ -402,7 +418,8 @@ class BoardSessionPersistentManager implements BoardSessionPersistent {
     } else if (session.provider.type == BoardProviderType.sspanel) {
       session._ssPanel ??= sspanel_client.SSPanelUimClient(
         baseUrl: baseUrl,
-        id: session.provider.id,
+        baseDomains: provider.domains,
+        id: provider.id,
         persistent: this,
       );
       session._ssPanel!.baseUrl = baseUrl;
@@ -433,6 +450,7 @@ class BoardSessionPersistentManager implements BoardSessionPersistent {
     final filePath = await PathUtils.boardSessionFilePath();
     final file = File(filePath);
     if (!await file.exists()) {
+      await _save();
       return;
     }
     final content = await file.readAsString();
@@ -445,7 +463,7 @@ class BoardSessionPersistentManager implements BoardSessionPersistent {
     }
     _config.fromJson(jsonData);
     for (var session in _config.sessions) {
-      _updateProvider(session, session.provider);
+      await _updateProvider(session, session.provider);
       if (session.provider.botCookie.isNotEmpty) {
         final headersAndCookies =
             _config.headersAndCookies[session.provider.botCookie];
