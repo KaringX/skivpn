@@ -5,12 +5,8 @@ import 'package:skivpn/generated/build_time.dart' as build_time;
 
 abstract final class AppUtils {
   static Future<String> getPackgetVersion() async {
-    try {
-      PackageInfo packageInfo = await PackageInfo.fromPlatform();
-      return "${packageInfo.version}.${packageInfo.buildNumber}";
-    } catch (e) {
-      return getBuildinVersion();
-    }
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    return "${packageInfo.version}.${packageInfo.buildNumber}";
   }
 
   static String getName() {
