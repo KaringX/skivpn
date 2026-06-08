@@ -302,6 +302,9 @@ class _HomeScreenConnectWidgetState extends State<HomeScreenConnectWidget> {
                           translateProxyName(profile?.currentProxy ?? ""),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontFamily: Platform.isWindows ? 'Emoji' : null,
+                          ),
                         ),
                       ),
                     ],
@@ -806,6 +809,7 @@ class _HomeScreenConnectWidgetState extends State<HomeScreenConnectWidget> {
                 color: profile.currentProxy == proxy.name
                     ? ThemeDefine.kColorBlue
                     : null,
+                fontFamily: Platform.isWindows ? 'Emoji' : null,
               ),
             ),
             onTap: () async {
