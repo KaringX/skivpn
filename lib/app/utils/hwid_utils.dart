@@ -19,6 +19,7 @@ class HwidUtils {
       headers['x-device-os'] = "iOS";
       headers['x-ver-os'] = info.systemVersion;
       headers['x-device-model'] = info.model;
+      headers['x-device-model-name'] = info.modelName;
     } else if (Platform.isMacOS) {
       final info = await plugin.macOsInfo;
       headers['x-device-os'] = "macOS";
