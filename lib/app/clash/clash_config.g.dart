@@ -96,6 +96,9 @@ Map<String, dynamic> _$RawExtensionTunToJson(RawExtensionTun instance) =>
 
 RawExtension _$RawExtensionFromJson(Map<String, dynamic> json) =>
     RawExtension(
+        (json['append_rules'] as List<dynamic>?)
+            ?.map((e) => e as String)
+            .toList(),
         RawExtensionGeoRuleset.fromJson(
           json['geo-rule-set'] as Map<String, dynamic>,
         ),
@@ -109,6 +112,7 @@ RawExtension _$RawExtensionFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$RawExtensionToJson(RawExtension instance) =>
     <String, dynamic>{
+      'append_rules': instance.AppendRules,
       'geo-rule-set': instance.Ruleset.toJson(),
       'profile-store-selected-prefix': instance.ProfileStoreSelectedPrefix,
       'tun': instance.Tun.toJson(),
@@ -178,7 +182,7 @@ RawDNS _$RawDNSFromJson(Map<String, dynamic> json) => RawDNS(
       ?.map((e) => e as String)
       .toList(),
   json['direct-nameserver-follow-policy'] as bool?,
-);
+)..OverwriteNameServerPolicy = json['overwrite-nameserver-policy'] as bool?;
 
 Map<String, dynamic> _$RawDNSToJson(RawDNS instance) => <String, dynamic>{
   'overwrite': instance.OverWrite,
@@ -199,6 +203,7 @@ Map<String, dynamic> _$RawDNSToJson(RawDNS instance) => <String, dynamic>{
   'fake-ip-filter-mode': instance.FakeIPFilterMode,
   'default-nameserver': instance.DefaultNameserver,
   'cache-algorithm': instance.CacheAlgorithm,
+  'overwrite-nameserver-policy': instance.OverwriteNameServerPolicy,
   'nameserver-policy': instance.NameServerPolicy,
   'proxy-server-nameserver': instance.ProxyServerNameserver,
   'direct-nameserver': instance.DirectNameServer,
@@ -535,111 +540,122 @@ Map<String, dynamic> _$RawTLSToJson(RawTLS instance) => <String, dynamic>{
   'custom-certifactes': instance.CustomTrustCert,
 };
 
-RawConfig _$RawConfigFromJson(Map<String, dynamic> json) => RawConfig(
-  (json['port'] as num?)?.toInt(),
-  (json['socks-port'] as num?)?.toInt(),
-  (json['redir-port'] as num?)?.toInt(),
-  (json['tproxy-port'] as num?)?.toInt(),
-  (json['mixed-port'] as num?)?.toInt(),
-  json['ss-config'] as String?,
-  json['vmess-config'] as String?,
-  json['inbound-tfo'] as bool?,
-  json['inbound-mptcp'] as bool?,
-  (json['authentication'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  (json['skip-auth-prefixes'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-  (json['lan-allowed-ips'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  (json['lan-disallowed-ips'] as List<dynamic>?)
-      ?.map((e) => e as String)
-      .toList(),
-  json['allow-lan'] as bool?,
-  json['bind-address'] as String?,
-  json['mode'] as String?,
-  json['unified-delay'] as bool?,
-  json['log-level'] as String?,
-  json['ipv6'] as bool?,
-  json['external-controller'] as String?,
-  json['external-controller-pipe'] as String?,
-  json['external-controller-unix'] as String?,
-  json['external-controller-tls'] as String?,
-  json['external-controller-cors'] == null
-      ? null
-      : RawCors.fromJson(
-          json['external-controller-cors'] as Map<String, dynamic>,
-        ),
-  json['external-ui'] as String?,
-  json['external-ui-url'] as String?,
-  json['external-ui-name'] as String?,
-  json['external-doh-server'] as String?,
-  json['secret'] as String?,
-  json['interface-name'] as String?,
-  (json['routing-mark'] as num?)?.toInt(),
-  (json['tunnels'] as List<dynamic>?)
-      ?.map((e) => RawTunnel.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  json['geo-auto-update'] as bool?,
-  (json['geo-update-interval'] as num?)?.toInt(),
-  json['geodata-mode'] as bool?,
-  json['geodata-loader'] as String?,
-  json['geosite-matcher'] as String?,
-  json['tcp-concurrent'] as bool?,
-  json['find-process-mode'] as String?,
-  json['global-client-fingerprint'] as String?,
-  json['global-ua'] as String?,
-  json['etag-support'] as bool?,
-  (json['keep-alive-idle'] as num?)?.toInt(),
-  (json['keep-alive-interval'] as num?)?.toInt(),
-  json['disable-keep-alive'] as bool?,
-  json['overwrite-rule-providers'] as bool?,
-  json['rule-providers'] as Map<String, dynamic>?,
-  json['overwrite-rules'] as bool?,
-  (json['rules'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  json['overwrite-sub-rules'] as bool?,
-  (json['sub-rules'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  json['overwrite-proxy-groups'] as bool?,
-  json['proxy-groups'] as List<dynamic>?,
-  json['listeners'] as Map<String, dynamic>?,
-  json['hosts'] as Map<String, dynamic>?,
-  json['dns'] == null
-      ? null
-      : RawDNS.fromJson(json['dns'] as Map<String, dynamic>),
-  json['ntp'] == null
-      ? null
-      : RawNTP.fromJson(json['ntp'] as Map<String, dynamic>),
-  json['tun'] == null
-      ? null
-      : RawTun.fromJson(json['tun'] as Map<String, dynamic>),
-  json['tuic-server'] == null
-      ? null
-      : RawTuicServer.fromJson(json['tuic-server'] as Map<String, dynamic>),
-  json['iptables'] == null
-      ? null
-      : RawIPTables.fromJson(json['iptables'] as Map<String, dynamic>),
-  json['experimental'] == null
-      ? null
-      : RawExperimental.fromJson(json['experimental'] as Map<String, dynamic>),
-  json['profile'] == null
-      ? null
-      : RawProfile.fromJson(json['profile'] as Map<String, dynamic>),
-  json['geox-url'] == null
-      ? null
-      : RawGeoXUrl.fromJson(json['geox-url'] as Map<String, dynamic>),
-  json['sniffer'] == null
-      ? null
-      : RawSniffer.fromJson(json['sniffer'] as Map<String, dynamic>),
-  json['tls'] == null
-      ? null
-      : RawTLS.fromJson(json['tls'] as Map<String, dynamic>),
-  json['clash-for-android'] == null
-      ? null
-      : RawClashForAndroid.fromJson(
-          json['clash-for-android'] as Map<String, dynamic>,
-        ),
-  json['extension'] == null
-      ? null
-      : RawExtension.fromJson(json['extension'] as Map<String, dynamic>),
-)..OverWriteHosts = json['overwrite-hosts'] as bool?;
+RawConfig _$RawConfigFromJson(Map<String, dynamic> json) =>
+    RawConfig(
+        (json['port'] as num?)?.toInt(),
+        (json['socks-port'] as num?)?.toInt(),
+        (json['redir-port'] as num?)?.toInt(),
+        (json['tproxy-port'] as num?)?.toInt(),
+        (json['mixed-port'] as num?)?.toInt(),
+        json['ss-config'] as String?,
+        json['vmess-config'] as String?,
+        json['inbound-tfo'] as bool?,
+        json['inbound-mptcp'] as bool?,
+        (json['authentication'] as List<dynamic>?)
+            ?.map((e) => e as String)
+            .toList(),
+        (json['skip-auth-prefixes'] as List<dynamic>?)
+            ?.map((e) => e as String)
+            .toList(),
+        (json['lan-allowed-ips'] as List<dynamic>?)
+            ?.map((e) => e as String)
+            .toList(),
+        (json['lan-disallowed-ips'] as List<dynamic>?)
+            ?.map((e) => e as String)
+            .toList(),
+        json['allow-lan'] as bool?,
+        json['bind-address'] as String?,
+        json['mode'] as String?,
+        json['unified-delay'] as bool?,
+        json['log-level'] as String?,
+        json['ipv6'] as bool?,
+        json['external-controller'] as String?,
+        json['external-controller-pipe'] as String?,
+        json['external-controller-unix'] as String?,
+        json['external-controller-tls'] as String?,
+        json['external-controller-cors'] == null
+            ? null
+            : RawCors.fromJson(
+                json['external-controller-cors'] as Map<String, dynamic>,
+              ),
+        json['external-ui'] as String?,
+        json['external-ui-url'] as String?,
+        json['external-ui-name'] as String?,
+        json['external-doh-server'] as String?,
+        json['secret'] as String?,
+        json['interface-name'] as String?,
+        (json['routing-mark'] as num?)?.toInt(),
+        (json['tunnels'] as List<dynamic>?)
+            ?.map((e) => RawTunnel.fromJson(e as Map<String, dynamic>))
+            .toList(),
+        json['geo-auto-update'] as bool?,
+        (json['geo-update-interval'] as num?)?.toInt(),
+        json['geodata-mode'] as bool?,
+        json['geodata-loader'] as String?,
+        json['geosite-matcher'] as String?,
+        json['tcp-concurrent'] as bool?,
+        json['find-process-mode'] as String?,
+        json['global-client-fingerprint'] as String?,
+        json['global-ua'] as String?,
+        json['etag-support'] as bool?,
+        (json['keep-alive-idle'] as num?)?.toInt(),
+        (json['keep-alive-interval'] as num?)?.toInt(),
+        json['disable-keep-alive'] as bool?,
+        json['overwrite-rule-providers'] as bool?,
+        json['rule-providers'] as Map<String, dynamic>?,
+        json['overwrite-rules'] as bool?,
+        (json['rules'] as List<dynamic>?)?.map((e) => e as String).toList(),
+        json['overwrite-sub-rules'] as bool?,
+        (json['sub-rules'] as List<dynamic>?)?.map((e) => e as String).toList(),
+        json['overwrite-proxy-groups'] as bool?,
+        json['proxy-groups'] as List<dynamic>?,
+        json['listeners'] as Map<String, dynamic>?,
+        json['hosts'] as Map<String, dynamic>?,
+        json['dns'] == null
+            ? null
+            : RawDNS.fromJson(json['dns'] as Map<String, dynamic>),
+        json['ntp'] == null
+            ? null
+            : RawNTP.fromJson(json['ntp'] as Map<String, dynamic>),
+        json['tun'] == null
+            ? null
+            : RawTun.fromJson(json['tun'] as Map<String, dynamic>),
+        json['tuic-server'] == null
+            ? null
+            : RawTuicServer.fromJson(
+                json['tuic-server'] as Map<String, dynamic>,
+              ),
+        json['iptables'] == null
+            ? null
+            : RawIPTables.fromJson(json['iptables'] as Map<String, dynamic>),
+        json['experimental'] == null
+            ? null
+            : RawExperimental.fromJson(
+                json['experimental'] as Map<String, dynamic>,
+              ),
+        json['profile'] == null
+            ? null
+            : RawProfile.fromJson(json['profile'] as Map<String, dynamic>),
+        json['geox-url'] == null
+            ? null
+            : RawGeoXUrl.fromJson(json['geox-url'] as Map<String, dynamic>),
+        json['sniffer'] == null
+            ? null
+            : RawSniffer.fromJson(json['sniffer'] as Map<String, dynamic>),
+        json['tls'] == null
+            ? null
+            : RawTLS.fromJson(json['tls'] as Map<String, dynamic>),
+        json['clash-for-android'] == null
+            ? null
+            : RawClashForAndroid.fromJson(
+                json['clash-for-android'] as Map<String, dynamic>,
+              ),
+        json['extension'] == null
+            ? null
+            : RawExtension.fromJson(json['extension'] as Map<String, dynamic>),
+      )
+      ..OverwriteListeners = json['overwrite-listeners'] as bool?
+      ..OverWriteHosts = json['overwrite-hosts'] as bool?;
 
 Map<String, dynamic> _$RawConfigToJson(RawConfig instance) => <String, dynamic>{
   'port': instance.Port,
@@ -695,6 +711,7 @@ Map<String, dynamic> _$RawConfigToJson(RawConfig instance) => <String, dynamic>{
   'sub-rules': instance.SubRules,
   'overwrite-proxy-groups': instance.OverWriteProxyGroups,
   'proxy-groups': instance.ProxyGroups,
+  'overwrite-listeners': instance.OverwriteListeners,
   'listeners': instance.Listeners,
   'overwrite-hosts': instance.OverWriteHosts,
   'hosts': instance.Hosts,
