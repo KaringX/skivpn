@@ -12,12 +12,12 @@ class MapStringAndStringAddScreen extends LasyRenderingStatefulWidget {
   }
 
   final String title;
-  final List<Tuple2<String, String>> data;
+  List<Tuple2<String, String>> data;
   final String dialogTitle1;
   final String dialogTextHit1;
   final String dialogTitle2;
   final String dialogTextHit2;
-  const MapStringAndStringAddScreen({
+  MapStringAndStringAddScreen({
     super.key,
     required this.title,
     required this.data,
