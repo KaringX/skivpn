@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:skivpn/app/local_services/vpn_service.dart';
@@ -133,7 +134,7 @@ class SettingConfig {
     alwayOn = map["alway_on"] ?? false;
     autoUpdateChannel = map["auto_update_channel"] ?? "stable";
     if (autoUpdateChannel.isEmpty) {
-      autoUpdateChannel = "stable";
+      autoUpdateChannel = Random().nextInt(10) < 5 ? "beta" : "stable";
     }
     autoDownloadUpdatePkg = map["auto_download_udpate_pkg"] ?? true;
     autoConnectAfterLaunch = map["auto_connect_after_launch"] ?? false;
