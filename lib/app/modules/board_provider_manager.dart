@@ -45,6 +45,7 @@ class BoardProviderConfig {
   String urltestUrl;
   bool xhwid;
   bool web;
+  bool overwrite = true;
   bool overwriteDns = true;
   String version;
   String userAgreement;
@@ -55,6 +56,8 @@ class BoardProviderConfig {
   String forgotPasswordUrl;
   String planUrl;
   String homeUrl;
+  String appIconUrl;
+  List<String> benefits = [];
   String botCookie;
   DateTime? lastUpdated;
   BoardProviderConfig({
@@ -68,6 +71,7 @@ class BoardProviderConfig {
     this.urltestUrl = '',
     this.xhwid = false,
     this.web = false,
+    this.overwrite = true,
     this.overwriteDns = true,
     this.version = '',
     this.userAgreement = '',
@@ -78,7 +82,9 @@ class BoardProviderConfig {
     this.forgotPasswordUrl = '',
     this.planUrl = '',
     this.homeUrl = '',
-    this.botCookie = 'cf_clearance',
+    this.appIconUrl = '',
+    this.benefits = const [],
+    this.botCookie = '', //'cf_clearance',
     this.lastUpdated,
   });
 
@@ -93,6 +99,7 @@ class BoardProviderConfig {
     'urltest_url': urltestUrl,
     'xhwid': xhwid,
     'web': web,
+    'overwrite': overwrite,
     'overwrite_dns': overwriteDns,
     'version': version,
     'user_agreement': userAgreement,
@@ -103,6 +110,8 @@ class BoardProviderConfig {
     'forgot_password_url': forgotPasswordUrl,
     'plan_url': planUrl,
     'home_url': homeUrl,
+    'app_icon_url': appIconUrl,
+    'benefits': benefits,
     'bot_cookie': botCookie,
     //'last_updated': lastUpdated?.microsecondsSinceEpoch,
   };
@@ -127,6 +136,7 @@ class BoardProviderConfig {
     urltestUrl = map["urltest_url"] ?? "";
     xhwid = map["xhwid"] ?? false;
     web = map["web"] ?? false;
+    overwrite = map["overwrite"] ?? true;
     overwriteDns = map["overwrite_dns"] ?? true;
     version = map["version"] ?? "";
     userAgreement = map["user_agreement"] ?? "";
@@ -137,7 +147,9 @@ class BoardProviderConfig {
     forgotPasswordUrl = map["forgot_password_url"] ?? "";
     planUrl = map["plan_url"] ?? "";
     homeUrl = map["home_url"] ?? "";
-    botCookie = map["bot_cookie"] ?? "cf_clearance";
+    appIconUrl = map["app_icon_url"] ?? "";
+    benefits = List<String>.from(map["benefits"] ?? []);
+    botCookie = map["bot_cookie"] ?? ""; //"cf_clearance";
     // lastUpdated = map["last_updated"] != null
     //     ? DateTime.fromMicrosecondsSinceEpoch(map["last_updated"])
     //    : null;

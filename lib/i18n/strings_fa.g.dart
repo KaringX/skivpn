@@ -37,18 +37,18 @@ class TranslationsFa with BaseTranslations<AppLocale, Translations> implements T
 	TranslationsFa $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsFa(meta: meta ?? this.$meta);
 
 	// Translations
-	@override late final _TranslationsLaunchFailedScreenFa LaunchFailedScreen = _TranslationsLaunchFailedScreenFa._(_root);
-	@override late final _TranslationsPerAppAndroidScreenFa PerAppAndroidScreen = _TranslationsPerAppAndroidScreenFa._(_root);
-	@override late final _TranslationsUserAgreementScreenFa UserAgreementScreen = _TranslationsUserAgreementScreenFa._(_root);
-	@override late final _TranslationsVersionUpdateScreenFa VersionUpdateScreen = _TranslationsVersionUpdateScreenFa._(_root);
-	@override late final _TranslationsHomeScreenFa homeScreen = _TranslationsHomeScreenFa._(_root);
-	@override late final _TranslationsLoginScreenFa loginScreen = _TranslationsLoginScreenFa._(_root);
-	@override late final _TranslationsPlanWidgetFa planWidget = _TranslationsPlanWidgetFa._(_root);
-	@override late final _TranslationsXboardRegisterScreenFa xboardRegisterScreen = _TranslationsXboardRegisterScreenFa._(_root);
-	@override late final _TranslationsMainFa main = _TranslationsMainFa._(_root);
-	@override late final _TranslationsMetaFa meta = _TranslationsMetaFa._(_root);
-	@override late final _TranslationsPermissionFa permission = _TranslationsPermissionFa._(_root);
-	@override late final _TranslationsTunFa tun = _TranslationsTunFa._(_root);
+	@override late final _Translations$LaunchFailedScreen$fa LaunchFailedScreen = _Translations$LaunchFailedScreen$fa._(_root);
+	@override late final _Translations$PerAppAndroidScreen$fa PerAppAndroidScreen = _Translations$PerAppAndroidScreen$fa._(_root);
+	@override late final _Translations$UserAgreementScreen$fa UserAgreementScreen = _Translations$UserAgreementScreen$fa._(_root);
+	@override late final _Translations$VersionUpdateScreen$fa VersionUpdateScreen = _Translations$VersionUpdateScreen$fa._(_root);
+	@override late final _Translations$homeScreen$fa homeScreen = _Translations$homeScreen$fa._(_root);
+	@override late final _Translations$loginScreen$fa loginScreen = _Translations$loginScreen$fa._(_root);
+	@override late final _Translations$planWidget$fa planWidget = _Translations$planWidget$fa._(_root);
+	@override late final _Translations$xboardRegisterScreen$fa xboardRegisterScreen = _Translations$xboardRegisterScreen$fa._(_root);
+	@override late final _Translations$main$fa main = _Translations$main$fa._(_root);
+	@override late final _Translations$meta$fa meta = _Translations$meta$fa._(_root);
+	@override late final _Translations$permission$fa permission = _Translations$permission$fa._(_root);
+	@override late final _Translations$tun$fa tun = _Translations$tun$fa._(_root);
 	@override String get edgeRuntimeNotInstalled => 'زمان اجرا Edge WebView2 روی دستگاه فعلی نصب نشده است و صفحه قابل نمایش نیست لطفاً زمان اجرا Edge WebView2 (x64) را بارگیری و نصب کنید، برنامه را مجدداً راه اندازی کنید و دوباره امتحان کنید.';
 	@override Map<String, String> get locales => {
 		'en': 'English',
@@ -63,8 +63,8 @@ class TranslationsFa with BaseTranslations<AppLocale, Translations> implements T
 }
 
 // Path: LaunchFailedScreen
-class _TranslationsLaunchFailedScreenFa implements TranslationsLaunchFailedScreenEn {
-	_TranslationsLaunchFailedScreenFa._(this._root);
+class _Translations$LaunchFailedScreen$fa implements Translations$LaunchFailedScreen$en {
+	_Translations$LaunchFailedScreen$fa._(this._root);
 
 	final TranslationsFa _root; // ignore: unused_field
 
@@ -77,8 +77,8 @@ class _TranslationsLaunchFailedScreenFa implements TranslationsLaunchFailedScree
 }
 
 // Path: PerAppAndroidScreen
-class _TranslationsPerAppAndroidScreenFa implements TranslationsPerAppAndroidScreenEn {
-	_TranslationsPerAppAndroidScreenFa._(this._root);
+class _Translations$PerAppAndroidScreen$fa implements Translations$PerAppAndroidScreen$en {
+	_Translations$PerAppAndroidScreen$fa._(this._root);
 
 	final TranslationsFa _root; // ignore: unused_field
 
@@ -89,8 +89,8 @@ class _TranslationsPerAppAndroidScreenFa implements TranslationsPerAppAndroidScr
 }
 
 // Path: UserAgreementScreen
-class _TranslationsUserAgreementScreenFa implements TranslationsUserAgreementScreenEn {
-	_TranslationsUserAgreementScreenFa._(this._root);
+class _Translations$UserAgreementScreen$fa implements Translations$UserAgreementScreen$en {
+	_Translations$UserAgreementScreen$fa._(this._root);
 
 	final TranslationsFa _root; // ignore: unused_field
 
@@ -100,8 +100,8 @@ class _TranslationsUserAgreementScreenFa implements TranslationsUserAgreementScr
 }
 
 // Path: VersionUpdateScreen
-class _TranslationsVersionUpdateScreenFa implements TranslationsVersionUpdateScreenEn {
-	_TranslationsVersionUpdateScreenFa._(this._root);
+class _Translations$VersionUpdateScreen$fa implements Translations$VersionUpdateScreen$en {
+	_Translations$VersionUpdateScreen$fa._(this._root);
 
 	final TranslationsFa _root; // ignore: unused_field
 
@@ -112,8 +112,8 @@ class _TranslationsVersionUpdateScreenFa implements TranslationsVersionUpdateScr
 }
 
 // Path: homeScreen
-class _TranslationsHomeScreenFa implements TranslationsHomeScreenEn {
-	_TranslationsHomeScreenFa._(this._root);
+class _Translations$homeScreen$fa implements Translations$homeScreen$en {
+	_Translations$homeScreen$fa._(this._root);
 
 	final TranslationsFa _root; // ignore: unused_field
 
@@ -129,8 +129,8 @@ class _TranslationsHomeScreenFa implements TranslationsHomeScreenEn {
 }
 
 // Path: loginScreen
-class _TranslationsLoginScreenFa implements TranslationsLoginScreenEn {
-	_TranslationsLoginScreenFa._(this._root);
+class _Translations$loginScreen$fa implements Translations$loginScreen$en {
+	_Translations$loginScreen$fa._(this._root);
 
 	final TranslationsFa _root; // ignore: unused_field
 
@@ -154,8 +154,8 @@ class _TranslationsLoginScreenFa implements TranslationsLoginScreenEn {
 }
 
 // Path: planWidget
-class _TranslationsPlanWidgetFa implements TranslationsPlanWidgetEn {
-	_TranslationsPlanWidgetFa._(this._root);
+class _Translations$planWidget$fa implements Translations$planWidget$en {
+	_Translations$planWidget$fa._(this._root);
 
 	final TranslationsFa _root; // ignore: unused_field
 
@@ -167,8 +167,8 @@ class _TranslationsPlanWidgetFa implements TranslationsPlanWidgetEn {
 }
 
 // Path: xboardRegisterScreen
-class _TranslationsXboardRegisterScreenFa implements TranslationsXboardRegisterScreenEn {
-	_TranslationsXboardRegisterScreenFa._(this._root);
+class _Translations$xboardRegisterScreen$fa implements Translations$xboardRegisterScreen$en {
+	_Translations$xboardRegisterScreen$fa._(this._root);
 
 	final TranslationsFa _root; // ignore: unused_field
 
@@ -197,18 +197,18 @@ class _TranslationsXboardRegisterScreenFa implements TranslationsXboardRegisterS
 }
 
 // Path: main
-class _TranslationsMainFa implements TranslationsMainEn {
-	_TranslationsMainFa._(this._root);
+class _Translations$main$fa implements Translations$main$en {
+	_Translations$main$fa._(this._root);
 
 	final TranslationsFa _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMainTrayFa tray = _TranslationsMainTrayFa._(_root);
+	@override late final _Translations$main$tray$fa tray = _Translations$main$tray$fa._(_root);
 }
 
 // Path: meta
-class _TranslationsMetaFa implements TranslationsMetaEn {
-	_TranslationsMetaFa._(this._root);
+class _Translations$meta$fa implements Translations$meta$en {
+	_Translations$meta$fa._(this._root);
 
 	final TranslationsFa _root; // ignore: unused_field
 
@@ -233,6 +233,7 @@ class _TranslationsMetaFa implements TranslationsMetaEn {
 	@override String get hours => 'ساعت';
 	@override String get minutes => 'دقیقه';
 	@override String get seconds => 'دومین';
+	@override String get milliseconds => 'میلی‌ثانیه';
 	@override String get protocol => 'پروتکل';
 	@override String get search => 'جستجو';
 	@override String get custom => 'سفارشی';
@@ -334,8 +335,8 @@ class _TranslationsMetaFa implements TranslationsMetaEn {
 }
 
 // Path: permission
-class _TranslationsPermissionFa implements TranslationsPermissionEn {
-	_TranslationsPermissionFa._(this._root);
+class _Translations$permission$fa implements Translations$permission$en {
+	_Translations$permission$fa._(this._root);
 
 	final TranslationsFa _root; // ignore: unused_field
 
@@ -346,8 +347,8 @@ class _TranslationsPermissionFa implements TranslationsPermissionEn {
 }
 
 // Path: tun
-class _TranslationsTunFa implements TranslationsTunEn {
-	_TranslationsTunFa._(this._root);
+class _Translations$tun$fa implements Translations$tun$en {
+	_Translations$tun$fa._(this._root);
 
 	final TranslationsFa _root; // ignore: unused_field
 
@@ -364,8 +365,8 @@ class _TranslationsTunFa implements TranslationsTunEn {
 }
 
 // Path: main.tray
-class _TranslationsMainTrayFa implements TranslationsMainTrayEn {
-	_TranslationsMainTrayFa._(this._root);
+class _Translations$main$tray$fa implements Translations$main$tray$en {
+	_Translations$main$tray$fa._(this._root);
 
 	final TranslationsFa _root; // ignore: unused_field
 
@@ -466,6 +467,7 @@ extension on TranslationsFa {
 			'meta.hours' => 'ساعت',
 			'meta.minutes' => 'دقیقه',
 			'meta.seconds' => 'دومین',
+			'meta.milliseconds' => 'میلی‌ثانیه',
 			'meta.protocol' => 'پروتکل',
 			'meta.search' => 'جستجو',
 			'meta.custom' => 'سفارشی',

@@ -338,6 +338,10 @@ class _LoginScreenState extends State<LoginScreen> {
     }
     _provider = result.data;
     Future.delayed(const Duration(milliseconds: 100)).then((value) {
+      if (!mounted) {
+        return;
+      }
+
       setState(() {});
     });
   }
@@ -473,6 +477,7 @@ class _LoginScreenState extends State<LoginScreen> {
       );
       return;
     }
+
     _provider = result.data!;
     BoardProviderConfig provider = _provider!;
     BoardSessionLoginError? sessionLoginError;

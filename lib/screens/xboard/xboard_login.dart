@@ -2,6 +2,7 @@ import 'package:board_service/xboard/xboard_models.dart';
 import 'package:skivpn/app/modules/board_provider_manager.dart';
 import 'package:skivpn/app/modules/board_session_persistent_manager.dart';
 import 'package:skivpn/app/modules/profile_manager.dart';
+import 'package:skivpn/app/utils/log.dart';
 
 class XboardLogin {
   static final Map<int, Function()> onEventLogin = {};
@@ -12,16 +13,23 @@ class XboardLogin {
     String email,
     String password,
   ) async {
-    final session = BoardSessionPersistentManager.instance().getOrCreate(
+    final session = await BoardSessionPersistentManager.instance().getOrCreate(
       provider,
       email,
     );
     if (session == null || session.xboard == null) {
-      return BoardSessionLoginError(message: "unsupported provider type");
+      return BoardSessionLoginError(
+        message: "create session failed, check provider or account",
+      );
     }
+    Log.i('xboard: login, provider: ${provider.name}, email: $email');
     //session.xboard!.proxyUrl = "127.0.0.1:8888";
     final loginRequest = LoginRequest(email: email, password: password);
+    session.xboard!.timeout = const Duration(seconds: 10);
     final loginResponse = await session.xboard!.login(loginRequest);
+    Log.i(
+      'xboard: login response, provider: ${provider.name}, email: $email, statusCode: ${loginResponse.statusCode}',
+    );
     if (loginResponse.statusCode != 200) {
       return BoardSessionLoginError(
         session: session,
@@ -57,7 +65,11 @@ class XboardLogin {
     if (session.xboard == null) {
       return null;
     }
+    Log.i('xboard: getSubscribe, provider: ${session.provider.name}');
     final subscribeResponse = await session.xboard!.getSubscribe();
+    Log.i(
+      'xboard: getSubscribe response, provider: ${session.provider.name}, statusCode: ${subscribeResponse.statusCode}',
+    );
     if (subscribeResponse.statusCode != 200) {
       return subscribeResponse.getFullMessage();
     }

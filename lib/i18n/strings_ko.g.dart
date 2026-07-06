@@ -37,18 +37,18 @@ class TranslationsKo with BaseTranslations<AppLocale, Translations> implements T
 	TranslationsKo $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsKo(meta: meta ?? this.$meta);
 
 	// Translations
-	@override late final _TranslationsLaunchFailedScreenKo LaunchFailedScreen = _TranslationsLaunchFailedScreenKo._(_root);
-	@override late final _TranslationsPerAppAndroidScreenKo PerAppAndroidScreen = _TranslationsPerAppAndroidScreenKo._(_root);
-	@override late final _TranslationsUserAgreementScreenKo UserAgreementScreen = _TranslationsUserAgreementScreenKo._(_root);
-	@override late final _TranslationsVersionUpdateScreenKo VersionUpdateScreen = _TranslationsVersionUpdateScreenKo._(_root);
-	@override late final _TranslationsHomeScreenKo homeScreen = _TranslationsHomeScreenKo._(_root);
-	@override late final _TranslationsLoginScreenKo loginScreen = _TranslationsLoginScreenKo._(_root);
-	@override late final _TranslationsPlanWidgetKo planWidget = _TranslationsPlanWidgetKo._(_root);
-	@override late final _TranslationsXboardRegisterScreenKo xboardRegisterScreen = _TranslationsXboardRegisterScreenKo._(_root);
-	@override late final _TranslationsMainKo main = _TranslationsMainKo._(_root);
-	@override late final _TranslationsMetaKo meta = _TranslationsMetaKo._(_root);
-	@override late final _TranslationsPermissionKo permission = _TranslationsPermissionKo._(_root);
-	@override late final _TranslationsTunKo tun = _TranslationsTunKo._(_root);
+	@override late final _Translations$LaunchFailedScreen$ko LaunchFailedScreen = _Translations$LaunchFailedScreen$ko._(_root);
+	@override late final _Translations$PerAppAndroidScreen$ko PerAppAndroidScreen = _Translations$PerAppAndroidScreen$ko._(_root);
+	@override late final _Translations$UserAgreementScreen$ko UserAgreementScreen = _Translations$UserAgreementScreen$ko._(_root);
+	@override late final _Translations$VersionUpdateScreen$ko VersionUpdateScreen = _Translations$VersionUpdateScreen$ko._(_root);
+	@override late final _Translations$homeScreen$ko homeScreen = _Translations$homeScreen$ko._(_root);
+	@override late final _Translations$loginScreen$ko loginScreen = _Translations$loginScreen$ko._(_root);
+	@override late final _Translations$planWidget$ko planWidget = _Translations$planWidget$ko._(_root);
+	@override late final _Translations$xboardRegisterScreen$ko xboardRegisterScreen = _Translations$xboardRegisterScreen$ko._(_root);
+	@override late final _Translations$main$ko main = _Translations$main$ko._(_root);
+	@override late final _Translations$meta$ko meta = _Translations$meta$ko._(_root);
+	@override late final _Translations$permission$ko permission = _Translations$permission$ko._(_root);
+	@override late final _Translations$tun$ko tun = _Translations$tun$ko._(_root);
 	@override String get edgeRuntimeNotInstalled => '현재 장치에 Edge WebView2 런타임이 설치되어 있지 않아 페이지를 표시할 수 없습니다. Edge WebView2 런타임(x64)을 다운로드하여 설치하고 앱을 다시 시작한 후 다시 시도하십시오。';
 	@override Map<String, String> get locales => {
 		'en': 'English',
@@ -63,8 +63,8 @@ class TranslationsKo with BaseTranslations<AppLocale, Translations> implements T
 }
 
 // Path: LaunchFailedScreen
-class _TranslationsLaunchFailedScreenKo implements TranslationsLaunchFailedScreenEn {
-	_TranslationsLaunchFailedScreenKo._(this._root);
+class _Translations$LaunchFailedScreen$ko implements Translations$LaunchFailedScreen$en {
+	_Translations$LaunchFailedScreen$ko._(this._root);
 
 	final TranslationsKo _root; // ignore: unused_field
 
@@ -77,8 +77,8 @@ class _TranslationsLaunchFailedScreenKo implements TranslationsLaunchFailedScree
 }
 
 // Path: PerAppAndroidScreen
-class _TranslationsPerAppAndroidScreenKo implements TranslationsPerAppAndroidScreenEn {
-	_TranslationsPerAppAndroidScreenKo._(this._root);
+class _Translations$PerAppAndroidScreen$ko implements Translations$PerAppAndroidScreen$en {
+	_Translations$PerAppAndroidScreen$ko._(this._root);
 
 	final TranslationsKo _root; // ignore: unused_field
 
@@ -89,8 +89,8 @@ class _TranslationsPerAppAndroidScreenKo implements TranslationsPerAppAndroidScr
 }
 
 // Path: UserAgreementScreen
-class _TranslationsUserAgreementScreenKo implements TranslationsUserAgreementScreenEn {
-	_TranslationsUserAgreementScreenKo._(this._root);
+class _Translations$UserAgreementScreen$ko implements Translations$UserAgreementScreen$en {
+	_Translations$UserAgreementScreen$ko._(this._root);
 
 	final TranslationsKo _root; // ignore: unused_field
 
@@ -100,8 +100,8 @@ class _TranslationsUserAgreementScreenKo implements TranslationsUserAgreementScr
 }
 
 // Path: VersionUpdateScreen
-class _TranslationsVersionUpdateScreenKo implements TranslationsVersionUpdateScreenEn {
-	_TranslationsVersionUpdateScreenKo._(this._root);
+class _Translations$VersionUpdateScreen$ko implements Translations$VersionUpdateScreen$en {
+	_Translations$VersionUpdateScreen$ko._(this._root);
 
 	final TranslationsKo _root; // ignore: unused_field
 
@@ -112,8 +112,8 @@ class _TranslationsVersionUpdateScreenKo implements TranslationsVersionUpdateScr
 }
 
 // Path: homeScreen
-class _TranslationsHomeScreenKo implements TranslationsHomeScreenEn {
-	_TranslationsHomeScreenKo._(this._root);
+class _Translations$homeScreen$ko implements Translations$homeScreen$en {
+	_Translations$homeScreen$ko._(this._root);
 
 	final TranslationsKo _root; // ignore: unused_field
 
@@ -129,8 +129,8 @@ class _TranslationsHomeScreenKo implements TranslationsHomeScreenEn {
 }
 
 // Path: loginScreen
-class _TranslationsLoginScreenKo implements TranslationsLoginScreenEn {
-	_TranslationsLoginScreenKo._(this._root);
+class _Translations$loginScreen$ko implements Translations$loginScreen$en {
+	_Translations$loginScreen$ko._(this._root);
 
 	final TranslationsKo _root; // ignore: unused_field
 
@@ -154,8 +154,8 @@ class _TranslationsLoginScreenKo implements TranslationsLoginScreenEn {
 }
 
 // Path: planWidget
-class _TranslationsPlanWidgetKo implements TranslationsPlanWidgetEn {
-	_TranslationsPlanWidgetKo._(this._root);
+class _Translations$planWidget$ko implements Translations$planWidget$en {
+	_Translations$planWidget$ko._(this._root);
 
 	final TranslationsKo _root; // ignore: unused_field
 
@@ -167,8 +167,8 @@ class _TranslationsPlanWidgetKo implements TranslationsPlanWidgetEn {
 }
 
 // Path: xboardRegisterScreen
-class _TranslationsXboardRegisterScreenKo implements TranslationsXboardRegisterScreenEn {
-	_TranslationsXboardRegisterScreenKo._(this._root);
+class _Translations$xboardRegisterScreen$ko implements Translations$xboardRegisterScreen$en {
+	_Translations$xboardRegisterScreen$ko._(this._root);
 
 	final TranslationsKo _root; // ignore: unused_field
 
@@ -197,18 +197,18 @@ class _TranslationsXboardRegisterScreenKo implements TranslationsXboardRegisterS
 }
 
 // Path: main
-class _TranslationsMainKo implements TranslationsMainEn {
-	_TranslationsMainKo._(this._root);
+class _Translations$main$ko implements Translations$main$en {
+	_Translations$main$ko._(this._root);
 
 	final TranslationsKo _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMainTrayKo tray = _TranslationsMainTrayKo._(_root);
+	@override late final _Translations$main$tray$ko tray = _Translations$main$tray$ko._(_root);
 }
 
 // Path: meta
-class _TranslationsMetaKo implements TranslationsMetaEn {
-	_TranslationsMetaKo._(this._root);
+class _Translations$meta$ko implements Translations$meta$en {
+	_Translations$meta$ko._(this._root);
 
 	final TranslationsKo _root; // ignore: unused_field
 
@@ -233,6 +233,7 @@ class _TranslationsMetaKo implements TranslationsMetaEn {
 	@override String get hours => '시간';
 	@override String get minutes => '분';
 	@override String get seconds => '초';
+	@override String get milliseconds => '밀리초';
 	@override String get protocol => '프로토콜';
 	@override String get search => '검색';
 	@override String get custom => '사용자 정의';
@@ -334,8 +335,8 @@ class _TranslationsMetaKo implements TranslationsMetaEn {
 }
 
 // Path: permission
-class _TranslationsPermissionKo implements TranslationsPermissionEn {
-	_TranslationsPermissionKo._(this._root);
+class _Translations$permission$ko implements Translations$permission$en {
+	_Translations$permission$ko._(this._root);
 
 	final TranslationsKo _root; // ignore: unused_field
 
@@ -346,8 +347,8 @@ class _TranslationsPermissionKo implements TranslationsPermissionEn {
 }
 
 // Path: tun
-class _TranslationsTunKo implements TranslationsTunEn {
-	_TranslationsTunKo._(this._root);
+class _Translations$tun$ko implements Translations$tun$en {
+	_Translations$tun$ko._(this._root);
 
 	final TranslationsKo _root; // ignore: unused_field
 
@@ -364,8 +365,8 @@ class _TranslationsTunKo implements TranslationsTunEn {
 }
 
 // Path: main.tray
-class _TranslationsMainTrayKo implements TranslationsMainTrayEn {
-	_TranslationsMainTrayKo._(this._root);
+class _Translations$main$tray$ko implements Translations$main$tray$en {
+	_Translations$main$tray$ko._(this._root);
 
 	final TranslationsKo _root; // ignore: unused_field
 
@@ -466,6 +467,7 @@ extension on TranslationsKo {
 			'meta.hours' => '시간',
 			'meta.minutes' => '분',
 			'meta.seconds' => '초',
+			'meta.milliseconds' => '밀리초',
 			'meta.protocol' => '프로토콜',
 			'meta.search' => '검색',
 			'meta.custom' => '사용자 정의',

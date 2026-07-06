@@ -104,6 +104,7 @@
         "hours": "시간",
         "minutes": "분",
         "seconds": "초",
+        "milliseconds": "밀리초",
         "protocol": "프로토콜",
         "search": "검색",
         "custom": "사용자 정의",

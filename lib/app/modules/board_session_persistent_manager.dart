@@ -282,7 +282,10 @@ class BoardSessionPersistentManager implements BoardSessionPersistent {
     _save();
   }
 
-  BoardSession? getOrCreate(BoardProviderConfig provider, String account) {
+  Future<BoardSession?> getOrCreate(
+    BoardProviderConfig provider,
+    String account,
+  ) async {
     if (provider.id.isEmpty || account.isEmpty) {
       return null;
     }
@@ -292,8 +295,8 @@ class BoardSessionPersistentManager implements BoardSessionPersistent {
         _config.sessions[i].provider = provider;
         if (i != 0) {
           _config.sessions.insert(0, _config.sessions.removeAt(i));
+          _save();
         }
-        _save();
         return _config.sessions[0];
       }
     }

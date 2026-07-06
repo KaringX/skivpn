@@ -3,7 +3,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:skivpn/app/clash/clash_http_api.dart';
 import 'package:skivpn/app/local_services/vpn_service.dart';
 import 'package:skivpn/app/modules/clash_setting_manager.dart';
 import 'package:skivpn/app/modules/setting_manager.dart';
@@ -282,7 +281,7 @@ class _AboutScreenState extends LasyRenderingState<AboutScreen> {
                 String host = Platform.isIOS
                     ? await _getLocalAddress()
                     : "127.0.0.1";
-                String secret = await ClashHttpApi.getSecret();
+                String secret = ClashSettingManager.getConfig().Secret ?? "";
                 final url =
                     '${shortUrl.toString()}/?hostname=$host&port=${ClashSettingManager.getControlPort()}&secret=$secret&http=true';
                 if (!context.mounted) {

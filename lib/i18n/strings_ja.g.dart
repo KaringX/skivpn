@@ -37,18 +37,18 @@ class TranslationsJa with BaseTranslations<AppLocale, Translations> implements T
 	TranslationsJa $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsJa(meta: meta ?? this.$meta);
 
 	// Translations
-	@override late final _TranslationsLaunchFailedScreenJa LaunchFailedScreen = _TranslationsLaunchFailedScreenJa._(_root);
-	@override late final _TranslationsPerAppAndroidScreenJa PerAppAndroidScreen = _TranslationsPerAppAndroidScreenJa._(_root);
-	@override late final _TranslationsUserAgreementScreenJa UserAgreementScreen = _TranslationsUserAgreementScreenJa._(_root);
-	@override late final _TranslationsVersionUpdateScreenJa VersionUpdateScreen = _TranslationsVersionUpdateScreenJa._(_root);
-	@override late final _TranslationsHomeScreenJa homeScreen = _TranslationsHomeScreenJa._(_root);
-	@override late final _TranslationsLoginScreenJa loginScreen = _TranslationsLoginScreenJa._(_root);
-	@override late final _TranslationsPlanWidgetJa planWidget = _TranslationsPlanWidgetJa._(_root);
-	@override late final _TranslationsXboardRegisterScreenJa xboardRegisterScreen = _TranslationsXboardRegisterScreenJa._(_root);
-	@override late final _TranslationsMainJa main = _TranslationsMainJa._(_root);
-	@override late final _TranslationsMetaJa meta = _TranslationsMetaJa._(_root);
-	@override late final _TranslationsPermissionJa permission = _TranslationsPermissionJa._(_root);
-	@override late final _TranslationsTunJa tun = _TranslationsTunJa._(_root);
+	@override late final _Translations$LaunchFailedScreen$ja LaunchFailedScreen = _Translations$LaunchFailedScreen$ja._(_root);
+	@override late final _Translations$PerAppAndroidScreen$ja PerAppAndroidScreen = _Translations$PerAppAndroidScreen$ja._(_root);
+	@override late final _Translations$UserAgreementScreen$ja UserAgreementScreen = _Translations$UserAgreementScreen$ja._(_root);
+	@override late final _Translations$VersionUpdateScreen$ja VersionUpdateScreen = _Translations$VersionUpdateScreen$ja._(_root);
+	@override late final _Translations$homeScreen$ja homeScreen = _Translations$homeScreen$ja._(_root);
+	@override late final _Translations$loginScreen$ja loginScreen = _Translations$loginScreen$ja._(_root);
+	@override late final _Translations$planWidget$ja planWidget = _Translations$planWidget$ja._(_root);
+	@override late final _Translations$xboardRegisterScreen$ja xboardRegisterScreen = _Translations$xboardRegisterScreen$ja._(_root);
+	@override late final _Translations$main$ja main = _Translations$main$ja._(_root);
+	@override late final _Translations$meta$ja meta = _Translations$meta$ja._(_root);
+	@override late final _Translations$permission$ja permission = _Translations$permission$ja._(_root);
+	@override late final _Translations$tun$ja tun = _Translations$tun$ja._(_root);
 	@override String get edgeRuntimeNotInstalled => '現在のデバイスには Edge WebView2 ランタイムがインストールされていないため、ページを表示できません。Edge WebView2 ランタイム (x64) をダウンロードしてインストールし、アプリを再起動してからもう一度お試しください。';
 	@override Map<String, String> get locales => {
 		'en': 'English',
@@ -63,8 +63,8 @@ class TranslationsJa with BaseTranslations<AppLocale, Translations> implements T
 }
 
 // Path: LaunchFailedScreen
-class _TranslationsLaunchFailedScreenJa implements TranslationsLaunchFailedScreenEn {
-	_TranslationsLaunchFailedScreenJa._(this._root);
+class _Translations$LaunchFailedScreen$ja implements Translations$LaunchFailedScreen$en {
+	_Translations$LaunchFailedScreen$ja._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -77,8 +77,8 @@ class _TranslationsLaunchFailedScreenJa implements TranslationsLaunchFailedScree
 }
 
 // Path: PerAppAndroidScreen
-class _TranslationsPerAppAndroidScreenJa implements TranslationsPerAppAndroidScreenEn {
-	_TranslationsPerAppAndroidScreenJa._(this._root);
+class _Translations$PerAppAndroidScreen$ja implements Translations$PerAppAndroidScreen$en {
+	_Translations$PerAppAndroidScreen$ja._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -89,8 +89,8 @@ class _TranslationsPerAppAndroidScreenJa implements TranslationsPerAppAndroidScr
 }
 
 // Path: UserAgreementScreen
-class _TranslationsUserAgreementScreenJa implements TranslationsUserAgreementScreenEn {
-	_TranslationsUserAgreementScreenJa._(this._root);
+class _Translations$UserAgreementScreen$ja implements Translations$UserAgreementScreen$en {
+	_Translations$UserAgreementScreen$ja._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -100,8 +100,8 @@ class _TranslationsUserAgreementScreenJa implements TranslationsUserAgreementScr
 }
 
 // Path: VersionUpdateScreen
-class _TranslationsVersionUpdateScreenJa implements TranslationsVersionUpdateScreenEn {
-	_TranslationsVersionUpdateScreenJa._(this._root);
+class _Translations$VersionUpdateScreen$ja implements Translations$VersionUpdateScreen$en {
+	_Translations$VersionUpdateScreen$ja._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -112,8 +112,8 @@ class _TranslationsVersionUpdateScreenJa implements TranslationsVersionUpdateScr
 }
 
 // Path: homeScreen
-class _TranslationsHomeScreenJa implements TranslationsHomeScreenEn {
-	_TranslationsHomeScreenJa._(this._root);
+class _Translations$homeScreen$ja implements Translations$homeScreen$en {
+	_Translations$homeScreen$ja._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -129,8 +129,8 @@ class _TranslationsHomeScreenJa implements TranslationsHomeScreenEn {
 }
 
 // Path: loginScreen
-class _TranslationsLoginScreenJa implements TranslationsLoginScreenEn {
-	_TranslationsLoginScreenJa._(this._root);
+class _Translations$loginScreen$ja implements Translations$loginScreen$en {
+	_Translations$loginScreen$ja._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -154,8 +154,8 @@ class _TranslationsLoginScreenJa implements TranslationsLoginScreenEn {
 }
 
 // Path: planWidget
-class _TranslationsPlanWidgetJa implements TranslationsPlanWidgetEn {
-	_TranslationsPlanWidgetJa._(this._root);
+class _Translations$planWidget$ja implements Translations$planWidget$en {
+	_Translations$planWidget$ja._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -167,8 +167,8 @@ class _TranslationsPlanWidgetJa implements TranslationsPlanWidgetEn {
 }
 
 // Path: xboardRegisterScreen
-class _TranslationsXboardRegisterScreenJa implements TranslationsXboardRegisterScreenEn {
-	_TranslationsXboardRegisterScreenJa._(this._root);
+class _Translations$xboardRegisterScreen$ja implements Translations$xboardRegisterScreen$en {
+	_Translations$xboardRegisterScreen$ja._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -197,18 +197,18 @@ class _TranslationsXboardRegisterScreenJa implements TranslationsXboardRegisterS
 }
 
 // Path: main
-class _TranslationsMainJa implements TranslationsMainEn {
-	_TranslationsMainJa._(this._root);
+class _Translations$main$ja implements Translations$main$en {
+	_Translations$main$ja._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMainTrayJa tray = _TranslationsMainTrayJa._(_root);
+	@override late final _Translations$main$tray$ja tray = _Translations$main$tray$ja._(_root);
 }
 
 // Path: meta
-class _TranslationsMetaJa implements TranslationsMetaEn {
-	_TranslationsMetaJa._(this._root);
+class _Translations$meta$ja implements Translations$meta$en {
+	_Translations$meta$ja._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -233,6 +233,7 @@ class _TranslationsMetaJa implements TranslationsMetaEn {
 	@override String get hours => '時間';
 	@override String get minutes => '分';
 	@override String get seconds => '秒';
+	@override String get milliseconds => 'ミリ秒';
 	@override String get protocol => 'プロトコル';
 	@override String get search => '検索';
 	@override String get custom => 'カスタム';
@@ -334,8 +335,8 @@ class _TranslationsMetaJa implements TranslationsMetaEn {
 }
 
 // Path: permission
-class _TranslationsPermissionJa implements TranslationsPermissionEn {
-	_TranslationsPermissionJa._(this._root);
+class _Translations$permission$ja implements Translations$permission$en {
+	_Translations$permission$ja._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -346,8 +347,8 @@ class _TranslationsPermissionJa implements TranslationsPermissionEn {
 }
 
 // Path: tun
-class _TranslationsTunJa implements TranslationsTunEn {
-	_TranslationsTunJa._(this._root);
+class _Translations$tun$ja implements Translations$tun$en {
+	_Translations$tun$ja._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -364,8 +365,8 @@ class _TranslationsTunJa implements TranslationsTunEn {
 }
 
 // Path: main.tray
-class _TranslationsMainTrayJa implements TranslationsMainTrayEn {
-	_TranslationsMainTrayJa._(this._root);
+class _Translations$main$tray$ja implements Translations$main$tray$en {
+	_Translations$main$tray$ja._(this._root);
 
 	final TranslationsJa _root; // ignore: unused_field
 
@@ -466,6 +467,7 @@ extension on TranslationsJa {
 			'meta.hours' => '時間',
 			'meta.minutes' => '分',
 			'meta.seconds' => '秒',
+			'meta.milliseconds' => 'ミリ秒',
 			'meta.protocol' => 'プロトコル',
 			'meta.search' => '検索',
 			'meta.custom' => 'カスタム',

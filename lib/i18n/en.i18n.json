@@ -104,6 +104,7 @@
         "hours": "Hours",
         "minutes": "Minutes",
         "seconds": "Seconds",
+        "milliseconds": "Milliseconds",
         "protocol": "Protocol",
         "search": "Search",
         "custom": "Custom",

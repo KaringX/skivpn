@@ -104,6 +104,7 @@
         "hours": "時",
         "minutes": "分",
         "seconds": "秒",
+        "milliseconds": "毫秒",
         "protocol": "協議",
         "search": "搜索",
         "custom": "自定義",

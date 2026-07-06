@@ -240,7 +240,6 @@ enum ClashGlobalClientFingerprint {
   }
 
   static List<Tuple2<String?, String>> toTupleList(BuildContext context) {
-    final tcontext = Translations.of(context);
     return [
       Tuple2(ClashGlobalClientFingerprint.noOverwrite.name, "noOverwrite"),
       Tuple2(

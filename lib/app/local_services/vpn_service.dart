@@ -3,7 +3,13 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:skivpn/app/clash/clash_http_api.dart';
+import 'package:launch_at_startup/launch_at_startup.dart';
+import 'package:libclash_vpn_service/proxy_manager.dart';
+import 'package:libclash_vpn_service/state.dart';
+import 'package:libclash_vpn_service/vpn_service.dart';
+import 'package:libclash_vpn_service/vpn_service_platform_interface.dart';
+import 'package:package_info_plus/package_info_plus.dart';
+import 'package:path/path.dart' as path;
 import 'package:skivpn/app/modules/board_session_persistent_manager.dart';
 import 'package:skivpn/app/modules/clash_setting_manager.dart';
 import 'package:skivpn/app/modules/profile_manager.dart';
@@ -19,13 +25,6 @@ import 'package:skivpn/app/utils/log.dart';
 import 'package:skivpn/app/utils/network_utils.dart';
 import 'package:skivpn/app/utils/path_utils.dart';
 import 'package:skivpn/app/utils/platform_utils.dart';
-import 'package:launch_at_startup/launch_at_startup.dart';
-import 'package:libclash_vpn_service/proxy_manager.dart';
-import 'package:libclash_vpn_service/state.dart';
-import 'package:libclash_vpn_service/vpn_service.dart';
-import 'package:libclash_vpn_service/vpn_service_platform_interface.dart';
-import 'package:package_info_plus/package_info_plus.dart';
-import 'package:path/path.dart' as path;
 
 class VPNServiceSetServerOptions {
   String disabledServerError = "";
@@ -44,14 +43,14 @@ class VPNService {
   >
   onEventStateChanged = [];
 
-  static initABI() async {
+  static Future<void> initABI() async {
     if (Platform.isAndroid) {
       String abisAll = await FlutterVpnService.getABIs();
       _abis = abisAll.replaceAll("[", "").replaceAll("]", "").split(",");
     }
   }
 
-  static init() async {
+  static Future<void> init() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     if (Platform.isWindows) {
       _runAsAdmin = await FlutterVpnService.isRunAsAdmin();
@@ -189,7 +188,7 @@ class VPNService {
     config.id = await Did.getDid();
     config.version = AppUtils.getBuildinVersion();
     config.name = name;
-    config.secret = await ClashHttpApi.getSecret();
+    config.secret = ClashSettingManager.getConfig().Secret!;
     config.install_refer = installReferrer;
     config.prepare =
         (setting.Tun?.OverWrite == true && setting.Tun?.Enable == true);

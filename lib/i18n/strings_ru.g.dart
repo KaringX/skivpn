@@ -37,18 +37,18 @@ class TranslationsRu with BaseTranslations<AppLocale, Translations> implements T
 	TranslationsRu $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsRu(meta: meta ?? this.$meta);
 
 	// Translations
-	@override late final _TranslationsLaunchFailedScreenRu LaunchFailedScreen = _TranslationsLaunchFailedScreenRu._(_root);
-	@override late final _TranslationsPerAppAndroidScreenRu PerAppAndroidScreen = _TranslationsPerAppAndroidScreenRu._(_root);
-	@override late final _TranslationsUserAgreementScreenRu UserAgreementScreen = _TranslationsUserAgreementScreenRu._(_root);
-	@override late final _TranslationsVersionUpdateScreenRu VersionUpdateScreen = _TranslationsVersionUpdateScreenRu._(_root);
-	@override late final _TranslationsHomeScreenRu homeScreen = _TranslationsHomeScreenRu._(_root);
-	@override late final _TranslationsLoginScreenRu loginScreen = _TranslationsLoginScreenRu._(_root);
-	@override late final _TranslationsPlanWidgetRu planWidget = _TranslationsPlanWidgetRu._(_root);
-	@override late final _TranslationsXboardRegisterScreenRu xboardRegisterScreen = _TranslationsXboardRegisterScreenRu._(_root);
-	@override late final _TranslationsMainRu main = _TranslationsMainRu._(_root);
-	@override late final _TranslationsMetaRu meta = _TranslationsMetaRu._(_root);
-	@override late final _TranslationsPermissionRu permission = _TranslationsPermissionRu._(_root);
-	@override late final _TranslationsTunRu tun = _TranslationsTunRu._(_root);
+	@override late final _Translations$LaunchFailedScreen$ru LaunchFailedScreen = _Translations$LaunchFailedScreen$ru._(_root);
+	@override late final _Translations$PerAppAndroidScreen$ru PerAppAndroidScreen = _Translations$PerAppAndroidScreen$ru._(_root);
+	@override late final _Translations$UserAgreementScreen$ru UserAgreementScreen = _Translations$UserAgreementScreen$ru._(_root);
+	@override late final _Translations$VersionUpdateScreen$ru VersionUpdateScreen = _Translations$VersionUpdateScreen$ru._(_root);
+	@override late final _Translations$homeScreen$ru homeScreen = _Translations$homeScreen$ru._(_root);
+	@override late final _Translations$loginScreen$ru loginScreen = _Translations$loginScreen$ru._(_root);
+	@override late final _Translations$planWidget$ru planWidget = _Translations$planWidget$ru._(_root);
+	@override late final _Translations$xboardRegisterScreen$ru xboardRegisterScreen = _Translations$xboardRegisterScreen$ru._(_root);
+	@override late final _Translations$main$ru main = _Translations$main$ru._(_root);
+	@override late final _Translations$meta$ru meta = _Translations$meta$ru._(_root);
+	@override late final _Translations$permission$ru permission = _Translations$permission$ru._(_root);
+	@override late final _Translations$tun$ru tun = _Translations$tun$ru._(_root);
 	@override String get edgeRuntimeNotInstalled => 'Среда выполнения Edge WebView2 не установлена ​​на текущем устройстве, и страница не может быть отображена. Загрузите и установите среду выполнения Edge WebView2 (x64), перезапустите приложение и повторите попытку.';
 	@override Map<String, String> get locales => {
 		'en': 'English',
@@ -63,8 +63,8 @@ class TranslationsRu with BaseTranslations<AppLocale, Translations> implements T
 }
 
 // Path: LaunchFailedScreen
-class _TranslationsLaunchFailedScreenRu implements TranslationsLaunchFailedScreenEn {
-	_TranslationsLaunchFailedScreenRu._(this._root);
+class _Translations$LaunchFailedScreen$ru implements Translations$LaunchFailedScreen$en {
+	_Translations$LaunchFailedScreen$ru._(this._root);
 
 	final TranslationsRu _root; // ignore: unused_field
 
@@ -77,8 +77,8 @@ class _TranslationsLaunchFailedScreenRu implements TranslationsLaunchFailedScree
 }
 
 // Path: PerAppAndroidScreen
-class _TranslationsPerAppAndroidScreenRu implements TranslationsPerAppAndroidScreenEn {
-	_TranslationsPerAppAndroidScreenRu._(this._root);
+class _Translations$PerAppAndroidScreen$ru implements Translations$PerAppAndroidScreen$en {
+	_Translations$PerAppAndroidScreen$ru._(this._root);
 
 	final TranslationsRu _root; // ignore: unused_field
 
@@ -89,8 +89,8 @@ class _TranslationsPerAppAndroidScreenRu implements TranslationsPerAppAndroidScr
 }
 
 // Path: UserAgreementScreen
-class _TranslationsUserAgreementScreenRu implements TranslationsUserAgreementScreenEn {
-	_TranslationsUserAgreementScreenRu._(this._root);
+class _Translations$UserAgreementScreen$ru implements Translations$UserAgreementScreen$en {
+	_Translations$UserAgreementScreen$ru._(this._root);
 
 	final TranslationsRu _root; // ignore: unused_field
 
@@ -100,8 +100,8 @@ class _TranslationsUserAgreementScreenRu implements TranslationsUserAgreementScr
 }
 
 // Path: VersionUpdateScreen
-class _TranslationsVersionUpdateScreenRu implements TranslationsVersionUpdateScreenEn {
-	_TranslationsVersionUpdateScreenRu._(this._root);
+class _Translations$VersionUpdateScreen$ru implements Translations$VersionUpdateScreen$en {
+	_Translations$VersionUpdateScreen$ru._(this._root);
 
 	final TranslationsRu _root; // ignore: unused_field
 
@@ -112,8 +112,8 @@ class _TranslationsVersionUpdateScreenRu implements TranslationsVersionUpdateScr
 }
 
 // Path: homeScreen
-class _TranslationsHomeScreenRu implements TranslationsHomeScreenEn {
-	_TranslationsHomeScreenRu._(this._root);
+class _Translations$homeScreen$ru implements Translations$homeScreen$en {
+	_Translations$homeScreen$ru._(this._root);
 
 	final TranslationsRu _root; // ignore: unused_field
 
@@ -129,8 +129,8 @@ class _TranslationsHomeScreenRu implements TranslationsHomeScreenEn {
 }
 
 // Path: loginScreen
-class _TranslationsLoginScreenRu implements TranslationsLoginScreenEn {
-	_TranslationsLoginScreenRu._(this._root);
+class _Translations$loginScreen$ru implements Translations$loginScreen$en {
+	_Translations$loginScreen$ru._(this._root);
 
 	final TranslationsRu _root; // ignore: unused_field
 
@@ -154,8 +154,8 @@ class _TranslationsLoginScreenRu implements TranslationsLoginScreenEn {
 }
 
 // Path: planWidget
-class _TranslationsPlanWidgetRu implements TranslationsPlanWidgetEn {
-	_TranslationsPlanWidgetRu._(this._root);
+class _Translations$planWidget$ru implements Translations$planWidget$en {
+	_Translations$planWidget$ru._(this._root);
 
 	final TranslationsRu _root; // ignore: unused_field
 
@@ -167,8 +167,8 @@ class _TranslationsPlanWidgetRu implements TranslationsPlanWidgetEn {
 }
 
 // Path: xboardRegisterScreen
-class _TranslationsXboardRegisterScreenRu implements TranslationsXboardRegisterScreenEn {
-	_TranslationsXboardRegisterScreenRu._(this._root);
+class _Translations$xboardRegisterScreen$ru implements Translations$xboardRegisterScreen$en {
+	_Translations$xboardRegisterScreen$ru._(this._root);
 
 	final TranslationsRu _root; // ignore: unused_field
 
@@ -197,18 +197,18 @@ class _TranslationsXboardRegisterScreenRu implements TranslationsXboardRegisterS
 }
 
 // Path: main
-class _TranslationsMainRu implements TranslationsMainEn {
-	_TranslationsMainRu._(this._root);
+class _Translations$main$ru implements Translations$main$en {
+	_Translations$main$ru._(this._root);
 
 	final TranslationsRu _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMainTrayRu tray = _TranslationsMainTrayRu._(_root);
+	@override late final _Translations$main$tray$ru tray = _Translations$main$tray$ru._(_root);
 }
 
 // Path: meta
-class _TranslationsMetaRu implements TranslationsMetaEn {
-	_TranslationsMetaRu._(this._root);
+class _Translations$meta$ru implements Translations$meta$en {
+	_Translations$meta$ru._(this._root);
 
 	final TranslationsRu _root; // ignore: unused_field
 
@@ -232,7 +232,8 @@ class _TranslationsMetaRu implements TranslationsMetaEn {
 	@override String get days => 'дни';
 	@override String get hours => 'часы';
 	@override String get minutes => 'минуты';
-	@override String get seconds => 'Второй';
+	@override String get seconds => 'секунды';
+	@override String get milliseconds => 'миллисекунды';
 	@override String get protocol => 'Протокол';
 	@override String get search => 'Поиск';
 	@override String get custom => 'Настроить самостоятельно';
@@ -334,8 +335,8 @@ class _TranslationsMetaRu implements TranslationsMetaEn {
 }
 
 // Path: permission
-class _TranslationsPermissionRu implements TranslationsPermissionEn {
-	_TranslationsPermissionRu._(this._root);
+class _Translations$permission$ru implements Translations$permission$en {
+	_Translations$permission$ru._(this._root);
 
 	final TranslationsRu _root; // ignore: unused_field
 
@@ -346,8 +347,8 @@ class _TranslationsPermissionRu implements TranslationsPermissionEn {
 }
 
 // Path: tun
-class _TranslationsTunRu implements TranslationsTunEn {
-	_TranslationsTunRu._(this._root);
+class _Translations$tun$ru implements Translations$tun$en {
+	_Translations$tun$ru._(this._root);
 
 	final TranslationsRu _root; // ignore: unused_field
 
@@ -364,8 +365,8 @@ class _TranslationsTunRu implements TranslationsTunEn {
 }
 
 // Path: main.tray
-class _TranslationsMainTrayRu implements TranslationsMainTrayEn {
-	_TranslationsMainTrayRu._(this._root);
+class _Translations$main$tray$ru implements Translations$main$tray$en {
+	_Translations$main$tray$ru._(this._root);
 
 	final TranslationsRu _root; // ignore: unused_field
 
@@ -465,7 +466,8 @@ extension on TranslationsRu {
 			'meta.days' => 'дни',
 			'meta.hours' => 'часы',
 			'meta.minutes' => 'минуты',
-			'meta.seconds' => 'Второй',
+			'meta.seconds' => 'секунды',
+			'meta.milliseconds' => 'миллисекунды',
 			'meta.protocol' => 'Протокол',
 			'meta.search' => 'Поиск',
 			'meta.custom' => 'Настроить самостоятельно',

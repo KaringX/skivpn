@@ -104,6 +104,7 @@
         "hours": "ساعت",
         "minutes": "دقیقه",
         "seconds": "دومین",
+        "milliseconds": "میلی‌ثانیه",
         "protocol": "پروتکل",
         "search": "جستجو",
         "custom": "سفارشی",

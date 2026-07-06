@@ -13,6 +13,7 @@ import 'package:skivpn/app/local_services/vpn_service.dart';
 import 'package:skivpn/app/modules/setting_manager.dart';
 import 'package:skivpn/app/runtime/return_result.dart';
 import 'package:skivpn/app/utils/app_utils.dart';
+import 'package:skivpn/app/utils/did.dart';
 import 'package:skivpn/app/utils/log.dart';
 import 'package:skivpn/app/utils/path_utils.dart';
 
@@ -26,6 +27,9 @@ class ClashSettingManager {
   static Future<void> init() async {
     ClashHttpApi.getControlPort = () {
       return getControlPort();
+    };
+    ClashHttpApi.getSecret = () {
+      return _setting.Secret ?? "";
     };
     await load();
     await initGeo();
@@ -53,6 +57,11 @@ class ClashSettingManager {
     } catch (err) {
       Log.w("ClashSettingManager.initGeo exception ${err.toString()} ");
     }
+  }
+
+  static Future<String> getSecretFromDid() async {
+    String secret = await Did.getDid();
+    return secret.substring(8, 24);
   }
 
   static Future<void> reload() async {
@@ -159,7 +168,7 @@ class ClashSettingManager {
   }
 
   static RawDNS defaultDNS() {
-    const nameServer = [
+    const List<String> nameServer = [
       "223.5.5.5",
       "119.29.29.29",
       "8.8.8.8",
@@ -176,7 +185,28 @@ class ClashSettingManager {
       "quic://dns.adguard.com:784",
       "system",
     ];
-    const defaultNameserver = [
+    const List<String> defaultNameserver = [
+      "223.5.5.5",
+      "119.29.29.29",
+      "8.8.8.8",
+      "8.8.4.4",
+      "1.0.0.1",
+      "1.1.1.1",
+      "system",
+    ];
+    const List<String> proxyServerNameserver = [
+      "223.5.5.5",
+      "119.29.29.29",
+      "8.8.8.8",
+      "8.8.4.4",
+      "1.0.0.1",
+      "1.1.1.1",
+      "tls://8.8.4.4",
+      "tls://1.1.1.1",
+      "tls://223.5.5.5:853",
+      "https://dns.alidns.com/dns-query#h3=true",
+    ];
+    const List<String> directNameServer = [
       "223.5.5.5",
       "119.29.29.29",
       "8.8.8.8",
@@ -192,13 +222,7 @@ class ClashSettingManager {
         "https://1.12.12.12/dns-query",
         "https://120.53.53.53/dns-query"*/
     ];
-    const List<String> proxyServerNameserver = [
-      /*"tls://8.8.4.4",
-        "tls://1.1.1.1",
-        "tls://223.5.5.5:853",
-        "https://dns.alidns.com/dns-query#h3=true",*/
-    ];
-    const fakeIPFilter = [
+    const List<String> fakeIPFilter = [
       "*.lan",
       "*.local",
       "time.*.com",
@@ -264,11 +288,11 @@ class ClashSettingManager {
       FakeIPRange: "${iNet4Address.split('/')[0]}/16",
       FakeIPFilter: fakeIPFilter,
       FakeIPFilterMode: ClashFakeIPFilterMode.blacklist.name,
-      DefaultNameserver: defaultNameserver,
       CacheAlgorithm: ClashDnsCacheAlgorithm.arc.name,
+      DefaultNameserver: defaultNameserver,
       NameServerPolicy: {},
       ProxyServerNameserver: proxyServerNameserver,
-      DirectNameServer: [],
+      DirectNameServer: directNameServer,
       DirectNameServerFollowPolicy: false,
     );
   }
@@ -350,6 +374,9 @@ class ClashSettingManager {
       Secret: _setting.Secret,
       IPv6: _setting.IPv6,
       DNS: null,
+      NTP: null,
+      Sniffer: null,
+      TLS: null,
       Tun: _setting.Tun,
       Extension: _setting.Extension,
       UnifiedDelay: _setting.UnifiedDelay,
@@ -505,7 +532,9 @@ class ClashSettingManager {
   }
 
   static Future<void> _initFixed() async {
-    _setting.Secret = await ClashHttpApi.getSecret();
+    if (_setting.Secret == null || _setting.Secret!.isEmpty) {
+      _setting.Secret = await getSecretFromDid();
+    }
     _setting.UnifiedDelay = true;
     _setting.ExternalUI = "";
     _setting.ExternalUIName = "";

@@ -7,8 +7,6 @@ import 'package:skivpn/app/clash/clash_config.dart';
 import 'package:skivpn/app/runtime/return_result.dart';
 import 'package:skivpn/app/utils/http_utils.dart';
 
-import '../utils/did.dart';
-
 class ClashConfigsTun {
   bool enable = false;
   String device = "";
@@ -328,10 +326,7 @@ class ClashHttpApi {
   static String wshost = "ws://127.0.0.1";
   static const int timeoutSeconds = 1;
   static int Function()? getControlPort;
-  static Future<String> getSecret() async {
-    String secret = await Did.getDid();
-    return secret.substring(8, 24);
-  }
+  static String Function()? getSecret;
 
   static Map<String, String> getHeaders(String secret) {
     Map<String, String> headers = {};
@@ -343,7 +338,7 @@ class ClashHttpApi {
   }
 
   static Future<ReturnResult<ClashConfigs>> getConfigs() async {
-    String secret = await getSecret();
+    String secret = getSecret?.call() ?? "";
     Map<String, String> headers = getHeaders(secret);
 
     var result = await HttpUtils.httpGetRequest(
@@ -372,7 +367,7 @@ class ClashHttpApi {
     String url = "https://www.gstatic.com",
     Duration timeout = const Duration(seconds: 5),
   }) async {
-    String secret = await getSecret();
+    String secret = getSecret?.call() ?? "";
     Map<String, String> headers = getHeaders(secret);
 
     final encodeNode = Uri.encodeComponent(node);
@@ -402,7 +397,7 @@ class ClashHttpApi {
   }
 
   static Future<ReturnResult<List<ClashProxiesNode>>> getProxies() async {
-    String secret = await getSecret();
+    String secret = getSecret?.call() ?? "";
     Map<String, String> headers = getHeaders(secret);
 
     var result = await HttpUtils.httpGetRequest(
@@ -493,7 +488,7 @@ class ClashHttpApi {
     String group,
     String node,
   ) async {
-    String secret = await getSecret();
+    String secret = getSecret?.call() ?? "";
     Map<String, String> headers = getHeaders(secret);
 
     final encodeGroup = Uri.encodeComponent(group);
@@ -516,7 +511,7 @@ class ClashHttpApi {
     String domain, {
     String queryType = "A",
   }) async {
-    String secret = await getSecret();
+    String secret = getSecret?.call() ?? "";
     Map<String, String> headers = getHeaders(secret);
     var result = await HttpUtils.httpGetRequest(
       "$host:${getControlPort?.call()}/dns/query?name=$domain&type=$queryType",
@@ -550,7 +545,7 @@ class ClashHttpApi {
   }
 
   static Future<ReturnResultError?> setConfigsMode(String mode) async {
-    String secret = await getSecret();
+    String secret = getSecret?.call() ?? "";
     Map<String, String> headers = getHeaders(secret);
 
     var body = JsonEncoder().convert({"mode": mode});

@@ -104,6 +104,7 @@
         "hours": "時間",
         "minutes": "分",
         "seconds": "秒",
+        "milliseconds": "ミリ秒",
         "protocol": "プロトコル",
         "search": "検索",
         "custom": "カスタム",

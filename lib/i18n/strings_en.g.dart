@@ -40,18 +40,18 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	Translations $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => Translations(meta: meta ?? this.$meta);
 
 	// Translations
-	late final TranslationsLaunchFailedScreenEn LaunchFailedScreen = TranslationsLaunchFailedScreenEn._(_root);
-	late final TranslationsPerAppAndroidScreenEn PerAppAndroidScreen = TranslationsPerAppAndroidScreenEn._(_root);
-	late final TranslationsUserAgreementScreenEn UserAgreementScreen = TranslationsUserAgreementScreenEn._(_root);
-	late final TranslationsVersionUpdateScreenEn VersionUpdateScreen = TranslationsVersionUpdateScreenEn._(_root);
-	late final TranslationsHomeScreenEn homeScreen = TranslationsHomeScreenEn._(_root);
-	late final TranslationsLoginScreenEn loginScreen = TranslationsLoginScreenEn._(_root);
-	late final TranslationsPlanWidgetEn planWidget = TranslationsPlanWidgetEn._(_root);
-	late final TranslationsXboardRegisterScreenEn xboardRegisterScreen = TranslationsXboardRegisterScreenEn._(_root);
-	late final TranslationsMainEn main = TranslationsMainEn._(_root);
-	late final TranslationsMetaEn meta = TranslationsMetaEn._(_root);
-	late final TranslationsPermissionEn permission = TranslationsPermissionEn._(_root);
-	late final TranslationsTunEn tun = TranslationsTunEn._(_root);
+	late final Translations$LaunchFailedScreen$en LaunchFailedScreen = Translations$LaunchFailedScreen$en._(_root);
+	late final Translations$PerAppAndroidScreen$en PerAppAndroidScreen = Translations$PerAppAndroidScreen$en._(_root);
+	late final Translations$UserAgreementScreen$en UserAgreementScreen = Translations$UserAgreementScreen$en._(_root);
+	late final Translations$VersionUpdateScreen$en VersionUpdateScreen = Translations$VersionUpdateScreen$en._(_root);
+	late final Translations$homeScreen$en homeScreen = Translations$homeScreen$en._(_root);
+	late final Translations$loginScreen$en loginScreen = Translations$loginScreen$en._(_root);
+	late final Translations$planWidget$en planWidget = Translations$planWidget$en._(_root);
+	late final Translations$xboardRegisterScreen$en xboardRegisterScreen = Translations$xboardRegisterScreen$en._(_root);
+	late final Translations$main$en main = Translations$main$en._(_root);
+	late final Translations$meta$en meta = Translations$meta$en._(_root);
+	late final Translations$permission$en permission = Translations$permission$en._(_root);
+	late final Translations$tun$en tun = Translations$tun$en._(_root);
 
 	/// en: 'The current device has not installed the Edge WebView2 runtime, so the page cannot be displayed. Please download and install the Edge WebView2 runtime (x64), restart the App and try again.'
 	String get edgeRuntimeNotInstalled => 'The current device has not installed the Edge WebView2 runtime, so the page cannot be displayed. Please download and install the Edge WebView2 runtime (x64), restart the App and try again.';
@@ -69,8 +69,8 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 }
 
 // Path: LaunchFailedScreen
-class TranslationsLaunchFailedScreenEn {
-	TranslationsLaunchFailedScreenEn._(this._root);
+class Translations$LaunchFailedScreen$en {
+	Translations$LaunchFailedScreen$en._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -93,8 +93,8 @@ class TranslationsLaunchFailedScreenEn {
 }
 
 // Path: PerAppAndroidScreen
-class TranslationsPerAppAndroidScreenEn {
-	TranslationsPerAppAndroidScreenEn._(this._root);
+class Translations$PerAppAndroidScreen$en {
+	Translations$PerAppAndroidScreen$en._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -111,8 +111,8 @@ class TranslationsPerAppAndroidScreenEn {
 }
 
 // Path: UserAgreementScreen
-class TranslationsUserAgreementScreenEn {
-	TranslationsUserAgreementScreenEn._(this._root);
+class Translations$UserAgreementScreen$en {
+	Translations$UserAgreementScreen$en._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -126,8 +126,8 @@ class TranslationsUserAgreementScreenEn {
 }
 
 // Path: VersionUpdateScreen
-class TranslationsVersionUpdateScreenEn {
-	TranslationsVersionUpdateScreenEn._(this._root);
+class Translations$VersionUpdateScreen$en {
+	Translations$VersionUpdateScreen$en._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -144,8 +144,8 @@ class TranslationsVersionUpdateScreenEn {
 }
 
 // Path: homeScreen
-class TranslationsHomeScreenEn {
-	TranslationsHomeScreenEn._(this._root);
+class Translations$homeScreen$en {
+	Translations$homeScreen$en._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -177,8 +177,8 @@ class TranslationsHomeScreenEn {
 }
 
 // Path: loginScreen
-class TranslationsLoginScreenEn {
-	TranslationsLoginScreenEn._(this._root);
+class Translations$loginScreen$en {
+	Translations$loginScreen$en._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -234,8 +234,8 @@ class TranslationsLoginScreenEn {
 }
 
 // Path: planWidget
-class TranslationsPlanWidgetEn {
-	TranslationsPlanWidgetEn._(this._root);
+class Translations$planWidget$en {
+	Translations$planWidget$en._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -255,8 +255,8 @@ class TranslationsPlanWidgetEn {
 }
 
 // Path: xboardRegisterScreen
-class TranslationsXboardRegisterScreenEn {
-	TranslationsXboardRegisterScreenEn._(this._root);
+class Translations$xboardRegisterScreen$en {
+	Translations$xboardRegisterScreen$en._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -327,18 +327,18 @@ class TranslationsXboardRegisterScreenEn {
 }
 
 // Path: main
-class TranslationsMainEn {
-	TranslationsMainEn._(this._root);
+class Translations$main$en {
+	Translations$main$en._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	late final TranslationsMainTrayEn tray = TranslationsMainTrayEn._(_root);
+	late final Translations$main$tray$en tray = Translations$main$tray$en._(_root);
 }
 
 // Path: meta
-class TranslationsMetaEn {
-	TranslationsMetaEn._(this._root);
+class Translations$meta$en {
+	Translations$meta$en._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -403,6 +403,9 @@ class TranslationsMetaEn {
 
 	/// en: 'Seconds'
 	String get seconds => 'Seconds';
+
+	/// en: 'Milliseconds'
+	String get milliseconds => 'Milliseconds';
 
 	/// en: 'Protocol'
 	String get protocol => 'Protocol';
@@ -700,8 +703,8 @@ class TranslationsMetaEn {
 }
 
 // Path: permission
-class TranslationsPermissionEn {
-	TranslationsPermissionEn._(this._root);
+class Translations$permission$en {
+	Translations$permission$en._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -718,8 +721,8 @@ class TranslationsPermissionEn {
 }
 
 // Path: tun
-class TranslationsTunEn {
-	TranslationsTunEn._(this._root);
+class Translations$tun$en {
+	Translations$tun$en._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -754,8 +757,8 @@ class TranslationsTunEn {
 }
 
 // Path: main.tray
-class TranslationsMainTrayEn {
-	TranslationsMainTrayEn._(this._root);
+class Translations$main$tray$en {
+	Translations$main$tray$en._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -860,6 +863,7 @@ extension on Translations {
 			'meta.hours' => 'Hours',
 			'meta.minutes' => 'Minutes',
 			'meta.seconds' => 'Seconds',
+			'meta.milliseconds' => 'Milliseconds',
 			'meta.protocol' => 'Protocol',
 			'meta.search' => 'Search',
 			'meta.custom' => 'Custom',

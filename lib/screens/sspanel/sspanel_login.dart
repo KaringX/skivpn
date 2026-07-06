@@ -1,6 +1,7 @@
 import 'package:skivpn/app/modules/board_provider_manager.dart';
 import 'package:skivpn/app/modules/board_session_persistent_manager.dart';
 import 'package:skivpn/app/modules/profile_manager.dart';
+import 'package:skivpn/app/utils/log.dart';
 
 class SSPanelLogin {
   static final Map<int, Function()> onEventLogin = {};
@@ -11,15 +12,22 @@ class SSPanelLogin {
     String email,
     String password,
   ) async {
-    final session = BoardSessionPersistentManager.instance().getOrCreate(
+    final session = await BoardSessionPersistentManager.instance().getOrCreate(
       provider,
       email,
     );
     if (session == null || session.ssPanel == null) {
-      return BoardSessionLoginError(message: "unsupported provider type");
+      return BoardSessionLoginError(
+        message: "create session failed, check provider or account",
+      );
     }
     //session.ssPanel!.proxyUrl = "127.0.0.1:8888";
+    Log.i('sspanel: login, provider: ${provider.name}, email: $email');
+    session.ssPanel!.timeout = const Duration(seconds: 10);
     final loginResponse = await session.ssPanel!.login(email, password);
+    Log.i(
+      'sspanel: login response, provider: ${provider.name}, email: $email, statusCode: ${loginResponse.statusCode}',
+    );
     if (loginResponse.statusCode != 200 || loginResponse.ret != true) {
       return BoardSessionLoginError(
         session: session,
@@ -44,8 +52,13 @@ class SSPanelLogin {
     if (session.ssPanel == null) {
       return null;
     }
+    Log.i('sspanel: getSubscribe, provider: ${session.provider.name}');
+    session.ssPanel!.timeout = const Duration(seconds: 30);
     final userProfileUrlResponse = await session.ssPanel!
         .getUserProfileUrlAndToken();
+    Log.i(
+      'sspanel: getSubscribe response, provider: ${session.provider.name}, statusCode: ${userProfileUrlResponse.statusCode}',
+    );
     if (userProfileUrlResponse.statusCode != 200 ||
         userProfileUrlResponse.ret != true) {
       return userProfileUrlResponse.getFullMessage();
@@ -57,6 +70,7 @@ class SSPanelLogin {
         userSubscribeResponse.ret != true) {
       return userSubscribeResponse.getFullMessage();
     }*/
+    Log.i('sspanel: add profile, provider: ${session.provider.name}');
 
     final result = await ProfileManager.addRemote(
       userProfileUrlResponse.data!.item1,

@@ -37,18 +37,18 @@ class TranslationsZhTw with BaseTranslations<AppLocale, Translations> implements
 	TranslationsZhTw $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsZhTw(meta: meta ?? this.$meta);
 
 	// Translations
-	@override late final _TranslationsLaunchFailedScreenZhTw LaunchFailedScreen = _TranslationsLaunchFailedScreenZhTw._(_root);
-	@override late final _TranslationsPerAppAndroidScreenZhTw PerAppAndroidScreen = _TranslationsPerAppAndroidScreenZhTw._(_root);
-	@override late final _TranslationsUserAgreementScreenZhTw UserAgreementScreen = _TranslationsUserAgreementScreenZhTw._(_root);
-	@override late final _TranslationsVersionUpdateScreenZhTw VersionUpdateScreen = _TranslationsVersionUpdateScreenZhTw._(_root);
-	@override late final _TranslationsHomeScreenZhTw homeScreen = _TranslationsHomeScreenZhTw._(_root);
-	@override late final _TranslationsLoginScreenZhTw loginScreen = _TranslationsLoginScreenZhTw._(_root);
-	@override late final _TranslationsPlanWidgetZhTw planWidget = _TranslationsPlanWidgetZhTw._(_root);
-	@override late final _TranslationsXboardRegisterScreenZhTw xboardRegisterScreen = _TranslationsXboardRegisterScreenZhTw._(_root);
-	@override late final _TranslationsMainZhTw main = _TranslationsMainZhTw._(_root);
-	@override late final _TranslationsMetaZhTw meta = _TranslationsMetaZhTw._(_root);
-	@override late final _TranslationsPermissionZhTw permission = _TranslationsPermissionZhTw._(_root);
-	@override late final _TranslationsTunZhTw tun = _TranslationsTunZhTw._(_root);
+	@override late final Translations$LaunchFailedScreen$zh_TW LaunchFailedScreen = Translations$LaunchFailedScreen$zh_TW.internal(_root);
+	@override late final Translations$PerAppAndroidScreen$zh_TW PerAppAndroidScreen = Translations$PerAppAndroidScreen$zh_TW.internal(_root);
+	@override late final Translations$UserAgreementScreen$zh_TW UserAgreementScreen = Translations$UserAgreementScreen$zh_TW.internal(_root);
+	@override late final Translations$VersionUpdateScreen$zh_TW VersionUpdateScreen = Translations$VersionUpdateScreen$zh_TW.internal(_root);
+	@override late final Translations$homeScreen$zh_TW homeScreen = Translations$homeScreen$zh_TW.internal(_root);
+	@override late final Translations$loginScreen$zh_TW loginScreen = Translations$loginScreen$zh_TW.internal(_root);
+	@override late final Translations$planWidget$zh_TW planWidget = Translations$planWidget$zh_TW.internal(_root);
+	@override late final Translations$xboardRegisterScreen$zh_TW xboardRegisterScreen = Translations$xboardRegisterScreen$zh_TW.internal(_root);
+	@override late final Translations$main$zh_TW main = Translations$main$zh_TW.internal(_root);
+	@override late final Translations$meta$zh_TW meta = Translations$meta$zh_TW.internal(_root);
+	@override late final Translations$permission$zh_TW permission = Translations$permission$zh_TW.internal(_root);
+	@override late final Translations$tun$zh_TW tun = Translations$tun$zh_TW.internal(_root);
 	@override String get edgeRuntimeNotInstalled => '當前設備尚未安裝Edge WebView2運行時,無法展示頁面,請下載安裝Edge WebView2運行時(x64)後,重啟App再試';
 	@override Map<String, String> get locales => {
 		'en': 'English',
@@ -63,8 +63,8 @@ class TranslationsZhTw with BaseTranslations<AppLocale, Translations> implements
 }
 
 // Path: LaunchFailedScreen
-class _TranslationsLaunchFailedScreenZhTw implements TranslationsLaunchFailedScreenEn {
-	_TranslationsLaunchFailedScreenZhTw._(this._root);
+class Translations$LaunchFailedScreen$zh_TW implements Translations$LaunchFailedScreen$en {
+	Translations$LaunchFailedScreen$zh_TW.internal(this._root);
 
 	final TranslationsZhTw _root; // ignore: unused_field
 
@@ -77,8 +77,8 @@ class _TranslationsLaunchFailedScreenZhTw implements TranslationsLaunchFailedScr
 }
 
 // Path: PerAppAndroidScreen
-class _TranslationsPerAppAndroidScreenZhTw implements TranslationsPerAppAndroidScreenEn {
-	_TranslationsPerAppAndroidScreenZhTw._(this._root);
+class Translations$PerAppAndroidScreen$zh_TW implements Translations$PerAppAndroidScreen$en {
+	Translations$PerAppAndroidScreen$zh_TW.internal(this._root);
 
 	final TranslationsZhTw _root; // ignore: unused_field
 
@@ -89,8 +89,8 @@ class _TranslationsPerAppAndroidScreenZhTw implements TranslationsPerAppAndroidS
 }
 
 // Path: UserAgreementScreen
-class _TranslationsUserAgreementScreenZhTw implements TranslationsUserAgreementScreenEn {
-	_TranslationsUserAgreementScreenZhTw._(this._root);
+class Translations$UserAgreementScreen$zh_TW implements Translations$UserAgreementScreen$en {
+	Translations$UserAgreementScreen$zh_TW.internal(this._root);
 
 	final TranslationsZhTw _root; // ignore: unused_field
 
@@ -100,8 +100,8 @@ class _TranslationsUserAgreementScreenZhTw implements TranslationsUserAgreementS
 }
 
 // Path: VersionUpdateScreen
-class _TranslationsVersionUpdateScreenZhTw implements TranslationsVersionUpdateScreenEn {
-	_TranslationsVersionUpdateScreenZhTw._(this._root);
+class Translations$VersionUpdateScreen$zh_TW implements Translations$VersionUpdateScreen$en {
+	Translations$VersionUpdateScreen$zh_TW.internal(this._root);
 
 	final TranslationsZhTw _root; // ignore: unused_field
 
@@ -112,8 +112,8 @@ class _TranslationsVersionUpdateScreenZhTw implements TranslationsVersionUpdateS
 }
 
 // Path: homeScreen
-class _TranslationsHomeScreenZhTw implements TranslationsHomeScreenEn {
-	_TranslationsHomeScreenZhTw._(this._root);
+class Translations$homeScreen$zh_TW implements Translations$homeScreen$en {
+	Translations$homeScreen$zh_TW.internal(this._root);
 
 	final TranslationsZhTw _root; // ignore: unused_field
 
@@ -129,8 +129,8 @@ class _TranslationsHomeScreenZhTw implements TranslationsHomeScreenEn {
 }
 
 // Path: loginScreen
-class _TranslationsLoginScreenZhTw implements TranslationsLoginScreenEn {
-	_TranslationsLoginScreenZhTw._(this._root);
+class Translations$loginScreen$zh_TW implements Translations$loginScreen$en {
+	Translations$loginScreen$zh_TW.internal(this._root);
 
 	final TranslationsZhTw _root; // ignore: unused_field
 
@@ -154,8 +154,8 @@ class _TranslationsLoginScreenZhTw implements TranslationsLoginScreenEn {
 }
 
 // Path: planWidget
-class _TranslationsPlanWidgetZhTw implements TranslationsPlanWidgetEn {
-	_TranslationsPlanWidgetZhTw._(this._root);
+class Translations$planWidget$zh_TW implements Translations$planWidget$en {
+	Translations$planWidget$zh_TW.internal(this._root);
 
 	final TranslationsZhTw _root; // ignore: unused_field
 
@@ -167,8 +167,8 @@ class _TranslationsPlanWidgetZhTw implements TranslationsPlanWidgetEn {
 }
 
 // Path: xboardRegisterScreen
-class _TranslationsXboardRegisterScreenZhTw implements TranslationsXboardRegisterScreenEn {
-	_TranslationsXboardRegisterScreenZhTw._(this._root);
+class Translations$xboardRegisterScreen$zh_TW implements Translations$xboardRegisterScreen$en {
+	Translations$xboardRegisterScreen$zh_TW.internal(this._root);
 
 	final TranslationsZhTw _root; // ignore: unused_field
 
@@ -197,18 +197,18 @@ class _TranslationsXboardRegisterScreenZhTw implements TranslationsXboardRegiste
 }
 
 // Path: main
-class _TranslationsMainZhTw implements TranslationsMainEn {
-	_TranslationsMainZhTw._(this._root);
+class Translations$main$zh_TW implements Translations$main$en {
+	Translations$main$zh_TW.internal(this._root);
 
 	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMainTrayZhTw tray = _TranslationsMainTrayZhTw._(_root);
+	@override late final Translations$main$tray$zh_TW tray = Translations$main$tray$zh_TW.internal(_root);
 }
 
 // Path: meta
-class _TranslationsMetaZhTw implements TranslationsMetaEn {
-	_TranslationsMetaZhTw._(this._root);
+class Translations$meta$zh_TW implements Translations$meta$en {
+	Translations$meta$zh_TW.internal(this._root);
 
 	final TranslationsZhTw _root; // ignore: unused_field
 
@@ -233,6 +233,7 @@ class _TranslationsMetaZhTw implements TranslationsMetaEn {
 	@override String get hours => '時';
 	@override String get minutes => '分';
 	@override String get seconds => '秒';
+	@override String get milliseconds => '毫秒';
 	@override String get protocol => '協議';
 	@override String get search => '搜索';
 	@override String get custom => '自定義';
@@ -334,8 +335,8 @@ class _TranslationsMetaZhTw implements TranslationsMetaEn {
 }
 
 // Path: permission
-class _TranslationsPermissionZhTw implements TranslationsPermissionEn {
-	_TranslationsPermissionZhTw._(this._root);
+class Translations$permission$zh_TW implements Translations$permission$en {
+	Translations$permission$zh_TW.internal(this._root);
 
 	final TranslationsZhTw _root; // ignore: unused_field
 
@@ -346,8 +347,8 @@ class _TranslationsPermissionZhTw implements TranslationsPermissionEn {
 }
 
 // Path: tun
-class _TranslationsTunZhTw implements TranslationsTunEn {
-	_TranslationsTunZhTw._(this._root);
+class Translations$tun$zh_TW implements Translations$tun$en {
+	Translations$tun$zh_TW.internal(this._root);
 
 	final TranslationsZhTw _root; // ignore: unused_field
 
@@ -364,8 +365,8 @@ class _TranslationsTunZhTw implements TranslationsTunEn {
 }
 
 // Path: main.tray
-class _TranslationsMainTrayZhTw implements TranslationsMainTrayEn {
-	_TranslationsMainTrayZhTw._(this._root);
+class Translations$main$tray$zh_TW implements Translations$main$tray$en {
+	Translations$main$tray$zh_TW.internal(this._root);
 
 	final TranslationsZhTw _root; // ignore: unused_field
 
@@ -466,6 +467,7 @@ extension on TranslationsZhTw {
 			'meta.hours' => '時',
 			'meta.minutes' => '分',
 			'meta.seconds' => '秒',
+			'meta.milliseconds' => '毫秒',
 			'meta.protocol' => '協議',
 			'meta.search' => '搜索',
 			'meta.custom' => '自定義',

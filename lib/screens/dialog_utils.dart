@@ -36,7 +36,7 @@ class DialogUtils {
     }
     if (withVersion) {
       text =
-          "${AppUtils.getBuildinVersion()} ${Platform.operatingSystem}\n$text";
+          "${AppUtils.getBuildinVersion()} ${Platform.operatingSystem}\n\n$text";
     }
 
     const int kMaxLength = 1024;
@@ -126,10 +126,16 @@ class DialogUtils {
 
   static Future<bool?> showConfirmDialog(
     BuildContext context,
-    String text,
-  ) async {
+    String text, {
+    bool showCopy = false,
+    bool withVersion = false,
+  }) async {
     if (!context.mounted) {
       return null;
+    }
+    if (withVersion) {
+      text =
+          "${AppUtils.getBuildinVersion()} ${Platform.operatingSystem}\n\n$text";
     }
     final tcontext = Translations.of(context);
     return await showDialog<bool>(
@@ -154,16 +160,6 @@ class DialogUtils {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  child: Text(tcontext.meta.ok),
-                  onPressed: () {
-                    if (!context.mounted) {
-                      return;
-                    }
-                    Navigator.pop(context, true);
-                  },
-                ),
-                const SizedBox(width: 60),
-                ElevatedButton(
                   child: Text(tcontext.meta.cancel),
                   onPressed: () {
                     if (!context.mounted) {
@@ -172,8 +168,32 @@ class DialogUtils {
                     Navigator.pop(context, false);
                   },
                 ),
+                const SizedBox(width: 60),
+                ElevatedButton(
+                  child: Text(tcontext.meta.ok),
+                  onPressed: () {
+                    if (!context.mounted) {
+                      return;
+                    }
+                    Navigator.pop(context, true);
+                  },
+                ),
               ],
             ),
+            const SizedBox(height: 20),
+            if (showCopy) ...[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                child: ElevatedButton(
+                  child: Text(tcontext.meta.copy),
+                  onPressed: () async {
+                    try {
+                      await Clipboard.setData(ClipboardData(text: text));
+                    } catch (e) {}
+                  },
+                ),
+              ),
+            ],
           ],
         );
       },
@@ -241,25 +261,24 @@ class DialogUtils {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  child: Text(tcontext.meta.ok),
-                  onPressed: () {
-                    if (!context.mounted) {
-                      return;
-                    }
-
-                    if (callback(textController.text)) {
-                      Navigator.pop(context, textController.text);
-                    }
-                  },
-                ),
-                const SizedBox(width: 60),
-                ElevatedButton(
                   child: Text(tcontext.meta.cancel),
                   onPressed: () {
                     if (!context.mounted) {
                       return;
                     }
                     Navigator.pop(context, null);
+                  },
+                ),
+                const SizedBox(width: 60),
+                ElevatedButton(
+                  child: Text(tcontext.meta.ok),
+                  onPressed: () {
+                    if (!context.mounted) {
+                      return;
+                    }
+                    if (callback(textController.text)) {
+                      Navigator.pop(context, textController.text);
+                    }
                   },
                 ),
               ],
@@ -340,12 +359,21 @@ class DialogUtils {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
+                  child: Text(tcontext.meta.cancel),
+                  onPressed: () {
+                    if (!context.mounted) {
+                      return;
+                    }
+                    Navigator.pop(context, null);
+                  },
+                ),
+                const SizedBox(width: 60),
+                ElevatedButton(
                   child: Text(tcontext.meta.ok),
                   onPressed: () {
                     if (!context.mounted) {
                       return;
                     }
-
                     if (textControllerL.text.isNotEmpty &&
                         textControllerR.text.isNotEmpty &&
                         callback(
@@ -362,16 +390,6 @@ class DialogUtils {
                         ),
                       );
                     }
-                  },
-                ),
-                const SizedBox(width: 60),
-                ElevatedButton(
-                  child: Text(tcontext.meta.cancel),
-                  onPressed: () {
-                    if (!context.mounted) {
-                      return;
-                    }
-                    Navigator.pop(context, null);
                   },
                 ),
               ],
@@ -452,6 +470,7 @@ class DialogUtils {
     bool showHours = true,
     bool showMinutes = true,
     bool showSeconds = true,
+    bool showMilliSeconds = false,
     bool showDisable = true,
   }) async {
     if (!context.mounted) {
@@ -463,6 +482,7 @@ class DialogUtils {
     String hours = "h(${tcontext.meta.hours})";
     String minutes = "m(${tcontext.meta.minutes})";
     String seconds = "s(${tcontext.meta.seconds})";
+    String milliseconds = "ms(${tcontext.meta.milliseconds})";
     List<String> data = [];
 
     if (showDays) {
@@ -476,6 +496,9 @@ class DialogUtils {
     }
     if (showSeconds) {
       data.add(seconds);
+    }
+    if (showMilliSeconds) {
+      data.add(milliseconds);
     }
     if (showDisable) {
       data.add(tcontext.meta.disable);
@@ -501,6 +524,11 @@ class DialogUtils {
         selected = seconds;
         textController.value = textController.value.copyWith(
           text: duration.inSeconds.toString(),
+        );
+      } else if (duration.inMilliseconds > 0) {
+        selected = milliseconds;
+        textController.value = textController.value.copyWith(
+          text: duration.inMilliseconds.toString(),
         );
       }
     } else {
@@ -552,6 +580,16 @@ class DialogUtils {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(
+                      child: Text(tcontext.meta.cancel),
+                      onPressed: () {
+                        if (!context.mounted) {
+                          return;
+                        }
+                        Navigator.pop(context, null);
+                      },
+                    ),
+                    const SizedBox(width: 60),
+                    ElevatedButton(
                       child: Text(tcontext.meta.ok),
                       onPressed: () {
                         if (!context.mounted) {
@@ -571,19 +609,11 @@ class DialogUtils {
                           duration = Duration(minutes: value);
                         } else if (selected == seconds) {
                           duration = Duration(seconds: value);
+                        } else if (selected == milliseconds) {
+                          duration = Duration(milliseconds: value);
                         } else if (selected == tcontext.meta.disable) {}
 
                         Navigator.pop(context, DialogUtilsResult(duration));
-                      },
-                    ),
-                    const SizedBox(width: 60),
-                    ElevatedButton(
-                      child: Text(tcontext.meta.cancel),
-                      onPressed: () {
-                        if (!context.mounted) {
-                          return;
-                        }
-                        Navigator.pop(context, null);
                       },
                     ),
                   ],
@@ -641,22 +671,22 @@ class DialogUtils {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(
-                      child: Text(tcontext.meta.ok),
-                      onPressed: () {
-                        if (!context.mounted) {
-                          return;
-                        }
-                        Navigator.pop(context, DialogUtilsResult(selected));
-                      },
-                    ),
-                    const SizedBox(width: 60),
-                    ElevatedButton(
                       child: Text(tcontext.meta.cancel),
                       onPressed: () {
                         if (!context.mounted) {
                           return;
                         }
                         Navigator.pop(context, null);
+                      },
+                    ),
+                    const SizedBox(width: 60),
+                    ElevatedButton(
+                      child: Text(tcontext.meta.ok),
+                      onPressed: () {
+                        if (!context.mounted) {
+                          return;
+                        }
+                        Navigator.pop(context, DialogUtilsResult(selected));
                       },
                     ),
                   ],
