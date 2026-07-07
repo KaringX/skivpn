@@ -481,25 +481,39 @@ class _LoginScreenState extends State<LoginScreen> {
     _provider = result.data!;
     BoardProviderConfig provider = _provider!;
     BoardSessionLoginError? sessionLoginError;
-    if (provider.type == BoardProviderType.v2board) {
-      sessionLoginError = await V2boardLogin.login(
-        provider,
-        _usernameController.text.trim(),
-        _passwordController.text.trim(),
-      );
-    } else if (provider.type == BoardProviderType.xboard) {
-      sessionLoginError = await XboardLogin.login(
-        provider,
-        _usernameController.text.trim(),
-        _passwordController.text.trim(),
-      );
-    } else if (provider.type == BoardProviderType.sspanel) {
-      sessionLoginError = await SSPanelLogin.login(
-        provider,
-        _usernameController.text.trim(),
-        _passwordController.text.trim(),
+    try {
+      if (provider.type == BoardProviderType.v2board) {
+        sessionLoginError = await V2boardLogin.login(
+          provider,
+          _usernameController.text.trim(),
+          _passwordController.text.trim(),
+        );
+      } else if (provider.type == BoardProviderType.xboard) {
+        sessionLoginError = await XboardLogin.login(
+          provider,
+          _usernameController.text.trim(),
+          _passwordController.text.trim(),
+        );
+      } else if (provider.type == BoardProviderType.sspanel) {
+        sessionLoginError = await SSPanelLogin.login(
+          provider,
+          _usernameController.text.trim(),
+          _passwordController.text.trim(),
+        );
+      }
+    } catch (e) {
+      if (!mounted) {
+        return;
+      }
+      DialogUtils.showAlertDialog(
+        context,
+        e.toString(),
+        showCopy: true,
+        showFAQ: true,
+        withVersion: true,
       );
     }
+
     if (!mounted) {
       return;
     }
