@@ -235,7 +235,9 @@ class AutoUpdateManager {
     if (!isSupport()) {
       return;
     }
-
+    if (PathUtils.portableMode()) {
+      return;
+    }
     if (_versionCheck.version.isEmpty || _versionCheck.url.isEmpty) {
       return;
     }
