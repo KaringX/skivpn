@@ -146,7 +146,7 @@ class DialogUtils {
         return SimpleDialog(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+              padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
               child: Text(
                 text,
                 maxLines: 20,
