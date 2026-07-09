@@ -111,6 +111,7 @@ class Printer extends LogPrinter {
         "${event.time.timeZoneOffset.inHours > 0 ? "+" : "-"}$zone  ${event.time.toLocal().toString()}";
     List<String> ret = [
       time,
+      pid.toString(),
       _prefixMap[event.level] ?? 'UNKNOWN',
       event.message,
     ];

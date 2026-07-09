@@ -17,6 +17,7 @@ class Biz {
 
   static void Function()? onEventExit;
   static void Function(bool)? onEventVPNStateChanged;
+  static void Function(String)? onEventSingletonInstance;
 
   static Future<void> init(bool launchAtStartup) async {
     await ClashSettingManager.init();

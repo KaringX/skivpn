@@ -35,7 +35,7 @@ import 'package:skivpn/screens/themes.dart';
 import 'package:skivpn/screens/widgets/routes.dart';
 import 'package:tray_manager/tray_manager.dart';
 import 'package:window_manager/window_manager.dart';
-import 'package:windows_single_instance/windows_single_instance.dart';
+import 'package:flutter_single_instance/flutter_single_instance.dart';
 
 List<String> processArgs = [];
 StartFailedReason? startFailedReason;
@@ -143,17 +143,21 @@ Future<void> run(List<String> args) async {
       await windowManager.center();
     }
 
-    if (Platform.isWindows) {
-      await WindowsSingleInstance.ensureSingleInstance(
-        args,
-        "ski_single_identifier",
-        onSecondWindow: (args) async {
-          if (await windowManager.isMinimized()) {
-            await windowManager.restore();
-          }
-          await windowManager.focus();
-        },
-      );
+    if (Platform.isWindows || Platform.isLinux) {
+      FlutterSingleInstance.debugMode = false;
+      // Use a stable lock file key. On Linux, process names can vary by launch
+      // path (e.g. xdg-open/AppImage), which breaks single-instance detection.
+      FlutterSingleInstance.processName = AppUtils.getId();
+      FlutterSingleInstance.onFocus = (metadata) {
+        var args = metadata["args"] as List<dynamic>?;
+        if (args != null && args.isNotEmpty) {
+          Biz.onEventSingletonInstance?.call("");
+        }
+      };
+      if (!await FlutterSingleInstance().isFirstInstance()) {
+        await FlutterSingleInstance().focus({"args": processArgs});
+        exit(0);
+      }
     }
 
     await AutoUpdateManager.init();
