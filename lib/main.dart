@@ -184,14 +184,7 @@ Future<void> _ensureSingleInstanceOrExit() async {
   FlutterSingleInstance.onFocus = (metadata) {
     var args = metadata["args"] as List<dynamic>?;
     if (args != null && args.isNotEmpty) {
-      String schemeArg = args.firstWhere((element) {
-        final arg = element.toString().trim();
-        return arg.startsWith(SystemSchemeUtils.getClashSchemeWith()) ||
-            arg.startsWith(SystemSchemeUtils.getClashMiSchemeWith());
-      }, orElse: () => '');
-      if (schemeArg.isNotEmpty) {
-        Biz.onEventSingletonInstance?.call(schemeArg);
-      }
+      Biz.onEventSingletonInstance?.call("");
     }
   };
 
