@@ -1,1 +1,1 @@
-appdmg macos/packaging/appdmg_make_config.json dist/skivpn_1.0.1.205_macos_universal.dmg
+appdmg macos/packaging/appdmg_make_config.json dist/skivpn_1.0.1.206_macos_universal.dmg
