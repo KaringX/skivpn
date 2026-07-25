@@ -2,7 +2,7 @@ name: skivpn
 description: skivpn
 
 publish_to: none 
-version: 1.0.1+206
+version: 1.0.1+207
 environment:
   sdk: ">=3.12.2 <4.0.0"
   flutter: ">=3.35.0"
@@ -20,6 +20,7 @@ dependencies:
   package_info_plus: 9.0.0
   ffi: 2.2.0
   url_launcher: 6.3.2
+  #flutter_inappwebview: 6.2.0-beta.3
   flutter_inappwebview:
     #path: ../../KaringX/flutter_inappwebview/flutter_inappwebview
     git: 

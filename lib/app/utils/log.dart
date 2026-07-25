@@ -130,9 +130,10 @@ class Printer extends LogPrinter {
 
 class Log {
   static final FileLogOutput _fileLogOutput = FileLogOutput();
+  static final DevelopmentFilter _filter = DevelopmentFilter();
   static final Logger _logger = Logger(
     printer: Printer(),
-    filter: DevelopmentFilter(),
+    filter: _filter,
     output: _fileLogOutput,
     level: bool.fromEnvironment("dart.vm.product")
         ? Level.warning
@@ -146,6 +147,20 @@ class Log {
 
   static Future<void> uninit() async {
     await _fileLogOutput.destroy();
+  }
+
+  static void setLevel(String logLevel) {
+    if (logLevel == "trace") {
+      _filter.level = Level.trace;
+    } else if (logLevel == "debug") {
+      _filter.level = Level.debug;
+    } else if (logLevel == "info") {
+      _filter.level = Level.info;
+    } else if (logLevel == "warning") {
+      _filter.level = Level.warning;
+    } else if (logLevel == "error") {
+      _filter.level = Level.error;
+    }
   }
 
   static void d(dynamic message) {

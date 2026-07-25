@@ -123,7 +123,7 @@ class AutoUpdateManager {
           String downloadPath = await _versionCheck.getDownloadPath();
           if (downloadPath.isNotEmpty) {
             Future.delayed(const Duration(seconds: 10), () async {
-              FileUtils.deletePath(downloadPath);
+              await FileUtils.deletePath(downloadPath);
             });
           }
         }

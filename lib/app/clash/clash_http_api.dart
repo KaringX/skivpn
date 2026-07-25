@@ -253,12 +253,12 @@ class ClashProxiesNode {
 class ClashProxies {
   List<ClashProxiesNode> proxies = [];
 
-  void fromJson(Map<String, dynamic>? map) {
+  void fromJsonProxies(Map<String, dynamic>? map) {
     if (map == null) {
       return;
     }
 
-    var p = map['proxies'];
+    final p = map['proxies'];
     if (p is Map) {
       Set<String> toRemove = {};
       p.forEach((key, value) {
@@ -289,6 +289,33 @@ class ClashProxies {
         }
       }
       proxies.insertAll(0, globalAllProxies);
+    }
+  }
+
+  void fromJsonProviders(Map<String, dynamic>? map) {
+    if (map == null) {
+      return;
+    }
+
+    final p = map['providers'];
+    if (p is Map) {
+      p.forEach((key, value) {
+        final p = value['proxies'];
+        if (p != null && p is List) {
+          for (var item in p) {
+            var node = ClashProxiesNode();
+            node.fromJson(item);
+            if (node.type.toLowerCase() != "dns") {
+              final index = proxies.indexWhere(
+                (element) => element.name == node.name,
+              );
+              if (index < 0) {
+                proxies.add(node);
+              }
+            }
+          }
+        }
+      });
     }
   }
 
@@ -400,7 +427,7 @@ class ClashHttpApi {
     String secret = getSecret?.call() ?? "";
     Map<String, String> headers = getHeaders(secret);
 
-    var result = await HttpUtils.httpGetRequest(
+    var resultProxies = await HttpUtils.httpGetRequest(
       "$host:${getControlPort?.call()}/proxies",
       null,
       headers,
@@ -408,17 +435,33 @@ class ClashHttpApi {
       null,
       null,
     );
-    if (result.error != null) {
-      return ReturnResult(error: result.error);
+    if (resultProxies.error != null) {
+      return ReturnResult(error: resultProxies.error);
     }
+    ClashProxies proxies = ClashProxies();
     try {
-      var decodedResponse = jsonDecode(result.data!.item2);
-      ClashProxies proxies = ClashProxies();
-      proxies.fromJson(decodedResponse);
-      return ReturnResult(data: proxies.proxies);
+      var decodedResponse = jsonDecode(resultProxies.data!.item2);
+      proxies.fromJsonProxies(decodedResponse);
     } catch (err) {
       return ReturnResult(error: ReturnResultError(err.toString()));
     }
+    var resultProviders = await HttpUtils.httpGetRequest(
+      "$host:${getControlPort?.call()}/providers/proxies",
+      null,
+      headers,
+      const Duration(seconds: timeoutSeconds),
+      null,
+      null,
+    );
+    if (resultProviders.error == null) {
+      try {
+        var decodedResponse = jsonDecode(resultProviders.data!.item2);
+        proxies.fromJsonProviders(decodedResponse);
+      } catch (err) {
+        return ReturnResult(error: ReturnResultError(err.toString()));
+      }
+    }
+    return ReturnResult(data: proxies.proxies);
   }
 
   static List<ClashProxiesNode> getNowChain(

@@ -21,7 +21,7 @@ if (project.hasProperty("dart-defines")) {
 
 android {
     namespace = "com.nebula.ski"
-    compileSdkVersion = "android-36"
+    compileSdkVersion = "android-35"
     buildToolsVersion = "36.0.0"
     ndkVersion = "28.2.13676358" // flutter.ndkVersion
 
@@ -36,7 +36,7 @@ android {
     defaultConfig {
         applicationId = "com.nebula.ski"
         minSdk = 26
-        targetSdk = 36
+        targetSdk = 35
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
@@ -96,5 +96,3 @@ configurations.configureEach {
             "androidx.activity:activity-ktx:1.9.3",
     )
 }
-
-
