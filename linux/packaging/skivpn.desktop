@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=SkiVPN
+GenericName=SkiVPN
+Comment=SkiVPN client
+Exec=skivpn %u
+TryExec=skivpn
+Terminal=false
+Categories=Network;
+StartupNotify=true
+Icon=com.nebula.skivpn
+MimeType=x-scheme-handler/skivpn;x-scheme-handler/skivpn;
