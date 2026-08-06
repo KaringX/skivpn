@@ -2,7 +2,7 @@ name: skivpn
 description: skivpn
 
 publish_to: none 
-version: 1.0.1+208
+version: 1.0.1+209
 environment:
   sdk: ">=3.12.2 <4.0.0"
   flutter: ">=3.35.0"
