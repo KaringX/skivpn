@@ -16,7 +16,7 @@ import 'package:skivpn/screens/widgets/framework.dart';
 import 'package:skivpn/screens/widgets/text_field.dart';
 
 class PerAppAndroidScreen extends LasyRenderingStatefulWidget {
-  static RouteSettings routSettings() {
+  static RouteSettings routeSettings() {
     return const RouteSettings(name: "PerAppAndroidScreen");
   }
 

@@ -9,7 +9,7 @@ import 'package:skivpn/screens/theme_define.dart';
 import 'package:tuple/tuple.dart';
 
 class SSPanelRegisterScreen extends StatefulWidget {
-  static RouteSettings routSettings() {
+  static RouteSettings routeSettings() {
     return const RouteSettings(name: "SSPanelRegisterScreen");
   }
 

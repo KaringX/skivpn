@@ -8,7 +8,7 @@ import 'package:skivpn/screens/theme_define.dart';
 import 'package:skivpn/screens/widgets/framework.dart';
 
 class ListAddScreen extends LasyRenderingStatefulWidget {
-  static RouteSettings routSettings(String viewTag) {
+  static RouteSettings routeSettings(String viewTag) {
     return RouteSettings(name: "ListAddScreen:$viewTag");
   }
 

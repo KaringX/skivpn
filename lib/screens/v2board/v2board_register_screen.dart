@@ -11,7 +11,7 @@ import 'package:skivpn/screens/theme_define.dart';
 import 'package:tuple/tuple.dart';
 
 class V2boardRegisterScreen extends StatefulWidget {
-  static RouteSettings routSettings() {
+  static RouteSettings routeSettings() {
     return const RouteSettings(name: "V2boardRegisterScreen");
   }
 

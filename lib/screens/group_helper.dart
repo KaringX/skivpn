@@ -49,7 +49,7 @@ class GroupHelper {
         await Navigator.push(
           context,
           MaterialPageRoute(
-            settings: VersionUpdateScreen.routSettings(),
+            settings: VersionUpdateScreen.routeSettings(),
             builder: (context) => const VersionUpdateScreen(),
           ),
         );
@@ -132,7 +132,7 @@ class GroupHelper {
     await Navigator.push(
       context,
       MaterialPageRoute(
-        settings: GroupScreen.routSettings("help"),
+        settings: GroupScreen.routeSettings("help"),
         builder: (context) =>
             GroupScreen(title: tcontext.meta.help, getOptions: getOptions),
       ),
@@ -174,7 +174,7 @@ class GroupHelper {
               await Navigator.push(
                 context,
                 MaterialPageRoute(
-                  settings: LanguageSettingsScreen.routSettings(),
+                  settings: LanguageSettingsScreen.routeSettings(),
                   builder: (context) => const LanguageSettingsScreen(
                     canPop: true,
                     canGoBack: true,
@@ -346,7 +346,7 @@ class GroupHelper {
                       await Navigator.push(
                         context,
                         MaterialPageRoute(
-                          settings: ListAddScreen.routSettings(
+                          settings: ListAddScreen.routeSettings(
                             "systemProxyBypassDomain",
                           ),
                           builder: (context) => ListAddScreen(
@@ -443,7 +443,7 @@ class GroupHelper {
     await Navigator.push(
       context,
       MaterialPageRoute(
-        settings: GroupScreen.routSettings("appSettings"),
+        settings: GroupScreen.routeSettings("appSettings"),
         builder: (context) => GroupScreen(
           title: tcontext.meta.settingApp,
           getOptions: getOptions,
@@ -485,7 +485,7 @@ class GroupHelper {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    settings: PerAppAndroidScreen.routSettings(),
+                    settings: PerAppAndroidScreen.routeSettings(),
                     builder: (context) => const PerAppAndroidScreen(),
                   ),
                 );
@@ -558,7 +558,7 @@ class GroupHelper {
     await Navigator.push(
       context,
       MaterialPageRoute(
-        settings: GroupScreen.routSettings("clashSettings"),
+        settings: GroupScreen.routeSettings("clashSettings"),
         builder: (context) => GroupScreen(
           title: tcontext.meta.settingCore,
           getOptions: getOptions,
@@ -809,7 +809,7 @@ class GroupHelper {
                       await Navigator.push(
                         context,
                         MaterialPageRoute(
-                          settings: ListAddScreen.routSettings(
+                          settings: ListAddScreen.routeSettings(
                             "HttpProxyBypassDomain",
                           ),
                           builder: (context) => ListAddScreen(
@@ -844,7 +844,7 @@ class GroupHelper {
     await Navigator.push(
       context,
       MaterialPageRoute(
-        settings: GroupScreen.routSettings("tun"),
+        settings: GroupScreen.routeSettings("tun"),
         builder: (context) => GroupScreen(title: "tun", getOptions: getOptions),
       ),
     );
@@ -996,7 +996,7 @@ class GroupHelper {
                     await Navigator.push(
                       context,
                       MaterialPageRoute(
-                        settings: ListAddScreen.routSettings("FakeIPFilter"),
+                        settings: ListAddScreen.routeSettings("FakeIPFilter"),
                         builder: (context) => ListAddScreen(
                           title: "fake-ip-filter",
                           data: dns.FakeIPFilter!,
@@ -1031,7 +1031,7 @@ class GroupHelper {
                     await Navigator.push(
                       context,
                       MaterialPageRoute(
-                        settings: ListAddScreen.routSettings(
+                        settings: ListAddScreen.routeSettings(
                           "DefaultNameserver",
                         ),
                         builder: (context) => ListAddScreen(
@@ -1054,7 +1054,7 @@ class GroupHelper {
                     await Navigator.push(
                       context,
                       MaterialPageRoute(
-                        settings: ListAddScreen.routSettings("NameServer"),
+                        settings: ListAddScreen.routeSettings("NameServer"),
                         builder: (context) => ListAddScreen(
                           title: "nameserver",
                           data: dns.NameServer!,
@@ -1075,7 +1075,7 @@ class GroupHelper {
                     await Navigator.push(
                       context,
                       MaterialPageRoute(
-                        settings: ListAddScreen.routSettings(
+                        settings: ListAddScreen.routeSettings(
                           "ProxyServerNameserver",
                         ),
                         builder: (context) => ListAddScreen(
@@ -1098,7 +1098,7 @@ class GroupHelper {
                     await Navigator.push(
                       context,
                       MaterialPageRoute(
-                        settings: ListAddScreen.routSettings(
+                        settings: ListAddScreen.routeSettings(
                           "DirectNameServer",
                         ),
                         builder: (context) => ListAddScreen(
@@ -1121,7 +1121,7 @@ class GroupHelper {
                     await Navigator.push(
                       context,
                       MaterialPageRoute(
-                        settings: ListAddScreen.routSettings("Fallback"),
+                        settings: ListAddScreen.routeSettings("Fallback"),
                         builder: (context) => ListAddScreen(
                           title: "fallback",
                           data: dns.Fallback!,
@@ -1170,7 +1170,7 @@ class GroupHelper {
     await Navigator.push(
       context,
       MaterialPageRoute(
-        settings: GroupScreen.routSettings("dns"),
+        settings: GroupScreen.routeSettings("dns"),
         builder: (context) =>
             GroupScreen(title: tcontext.meta.dns, getOptions: getOptions),
       ),

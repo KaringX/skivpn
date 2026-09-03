@@ -27,7 +27,7 @@ class BotHelper {
     await Navigator.push(
       context,
       MaterialPageRoute(
-        settings: InAppWebViewScreen.routSettings("botHelper"),
+        settings: InAppWebViewScreen.routeSettings("botHelper"),
         builder: (context) => InAppWebViewScreen(
           title: tcontext.loginScreen.login,
           url: provider.loginUrl,

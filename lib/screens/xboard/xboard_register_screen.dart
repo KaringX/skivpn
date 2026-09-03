@@ -11,7 +11,7 @@ import 'package:skivpn/screens/theme_define.dart';
 import 'package:tuple/tuple.dart';
 
 class XboardRegisterScreen extends StatefulWidget {
-  static RouteSettings routSettings() {
+  static RouteSettings routeSettings() {
     return const RouteSettings(name: "XboardRegisterScreen");
   }
 

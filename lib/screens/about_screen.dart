@@ -24,7 +24,7 @@ import 'package:skivpn/screens/widgets/framework.dart';
 import 'package:skivpn/screens/file_view_screen.dart';
 
 class AboutScreen extends LasyRenderingStatefulWidget {
-  static RouteSettings routSettings() {
+  static RouteSettings routeSettings() {
     return const RouteSettings(name: "AboutScreen");
   }
 
@@ -207,7 +207,7 @@ class _AboutScreenState extends LasyRenderingState<AboutScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  settings: RichtextViewScreen.routSettings(),
+                  settings: RichtextViewScreen.routeSettings(),
                   builder: (context) => RichtextViewScreen(
                     title: tcontext.meta.coreLog,
                     file: "",
@@ -248,7 +248,7 @@ class _AboutScreenState extends LasyRenderingState<AboutScreen> {
                 await Navigator.push(
                   context,
                   MaterialPageRoute(
-                    settings: FileViewScreen.routSettings(),
+                    settings: FileViewScreen.routeSettings(),
                     builder: (context) => FileViewScreen(
                       title: tcontext.meta.runtimeProfile,
                       content: content,
@@ -306,7 +306,7 @@ class _AboutScreenState extends LasyRenderingState<AboutScreen> {
     await Navigator.push(
       context,
       MaterialPageRoute(
-        settings: GroupScreen.routSettings("devOptions"),
+        settings: GroupScreen.routeSettings("devOptions"),
         builder: (context) => GroupScreen(
           title: tcontext.meta.devOptions,
           getOptions: getOptions,

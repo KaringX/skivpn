@@ -19,7 +19,7 @@ import 'package:skivpn/screens/xboard/xboard_register_screen.dart';
 import 'package:tuple/tuple.dart';
 
 class LoginScreen extends StatefulWidget {
-  static RouteSettings routSettings() {
+  static RouteSettings routeSettings() {
     return const RouteSettings(name: "LoginScreen");
   }
 
@@ -564,7 +564,7 @@ class _LoginScreenState extends State<LoginScreen> {
       up = await Navigator.push(
         context,
         MaterialPageRoute(
-          settings: V2boardRegisterScreen.routSettings(),
+          settings: V2boardRegisterScreen.routeSettings(),
           builder: (context) => V2boardRegisterScreen(provider: _provider!),
         ),
       );
@@ -572,7 +572,7 @@ class _LoginScreenState extends State<LoginScreen> {
       up = await Navigator.push(
         context,
         MaterialPageRoute(
-          settings: XboardRegisterScreen.routSettings(),
+          settings: XboardRegisterScreen.routeSettings(),
           builder: (context) => XboardRegisterScreen(provider: _provider!),
         ),
       );
@@ -580,7 +580,7 @@ class _LoginScreenState extends State<LoginScreen> {
       up = await Navigator.push(
         context,
         MaterialPageRoute(
-          settings: SSPanelRegisterScreen.routSettings(),
+          settings: SSPanelRegisterScreen.routeSettings(),
           builder: (context) => SSPanelRegisterScreen(provider: _provider!),
         ),
       );
