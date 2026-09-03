@@ -39,7 +39,6 @@ class _PerAppAndroidScreenState
 
   @override
   void initState() {
-    _loading = true;
     getInstalledPackages();
     super.initState();
   }
@@ -448,7 +447,6 @@ class _PerAppAndroidScreenState
           switchValue: SettingManager.getConfig().ui.perAppHideSystemApp,
           onSwitch: (bool value) async {
             SettingManager.getConfig().ui.perAppHideSystemApp = value;
-            _loading = true;
             getInstalledPackages();
             setState(() {});
           },
