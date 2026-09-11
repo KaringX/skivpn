@@ -54,14 +54,17 @@ class AutoUpdateCheckVersion {
   }
 
   String getExtension() {
-    String ext = "";
+    String ext = path.extension(url);
+    if (ext.isNotEmpty && ext.length <= ".AppImage".length) {
+      return ext;
+    }
     final channelName = InstallReferrerUtils.getBuildChannelName();
     if (Platform.isAndroid) {
       ext = ".apk";
     } else if (Platform.isWindows) {
       ext = ".exe";
     } else if (Platform.isMacOS) {
-      ext = ".dmg";
+      ext = ".pkg";
     } else if (Platform.isLinux) {
       if (channelName.toLowerCase().contains("deb")) {
         ext = ".deb";
@@ -96,6 +99,7 @@ class AutoUpdateManager {
   static final List<void Function()> onEventCheck = [];
   static Timer? _timerChecker;
   static bool _checking = false;
+  static final FileSaver _fileSaver = FileSaver();
   static bool _downloading = false;
   static Duration _duration = const Duration(hours: 3);
   static DateTime? _lastCheck;
@@ -113,6 +117,7 @@ class AutoUpdateManager {
   }
 
   static Future<void> init() async {
+    _fileSaver.setSavePath(await PathUtils.autoUpdateFilePath());
     await load();
     String version = AppUtils.getBuildinVersion();
 
@@ -190,17 +195,7 @@ class AutoUpdateManager {
   }
 
   static Future<void> save() async {
-    String filePath = await PathUtils.autoUpdateFilePath();
-    const JsonEncoder encoder = JsonEncoder.withIndent('  ');
-    String content = encoder.convert(_versionCheck.toJson());
-    try {
-      await File(filePath).writeAsString(content, flush: true);
-      if (!await FileUtils.validJsonFile(filePath)) {
-        await File(filePath).writeAsString(content, flush: true);
-      }
-    } catch (err, stacktrace) {
-      ErrorReporterUtils.tryReportNoSpace(err.toString());
-    }
+    await _fileSaver.saveAsJson(_versionCheck);
   }
 
   static Future<String?> checkReplace() async {

@@ -8,6 +8,7 @@ import 'dart:ui';
 import 'package:skivpn/app/local_services/vpn_service.dart';
 import 'package:skivpn/app/utils/app_utils.dart';
 import 'package:skivpn/app/utils/convert_utils.dart';
+import 'package:skivpn/app/utils/file_utils.dart';
 import 'package:skivpn/app/utils/log.dart';
 import 'package:skivpn/app/utils/path_utils.dart';
 import 'package:skivpn/i18n/strings.g.dart';
@@ -183,9 +184,10 @@ class SettingConfig {
 }
 
 class SettingManager {
-  static bool _saving = false;
+  static final FileSaver _fileSaver = FileSaver();
   static SettingConfig _config = SettingConfig();
   static Future<void> init({bool fromBackupRestore = false}) async {
+    _fileSaver.setSavePath(await PathUtils.settingFilePath());
     await load();
     bool needSave = await parseConfig();
     if (needSave) {
@@ -262,19 +264,7 @@ class SettingManager {
   }
 
   static void save() async {
-    if (_saving) {
-      return;
-    }
-    _saving = true;
-    String filePath = await PathUtils.settingFilePath();
-    const JsonEncoder encoder = JsonEncoder.withIndent('  ');
-    String content = encoder.convert(_config.toJson());
-    try {
-      await File(filePath).writeAsString(content, flush: true);
-    } catch (err, stacktrace) {
-      Log.w("SettingManager.save exception  $filePath ${err.toString()}");
-    }
-    _saving = false;
+    await _fileSaver.saveAsJson(_config);
   }
 
   static void reset() {

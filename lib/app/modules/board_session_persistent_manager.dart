@@ -9,6 +9,7 @@ import 'package:board_service/v2board/v2board_client.dart' as v2board_client;
 import 'package:board_service/xboard/xboard_client.dart' as xboard_client;
 import 'package:skivpn/app/modules/board_provider_manager.dart';
 import 'package:skivpn/app/modules/setting_manager.dart';
+import 'package:skivpn/app/utils/file_utils.dart';
 import 'package:skivpn/app/utils/path_utils.dart';
 
 class BoardSessionLoginError {
@@ -181,7 +182,7 @@ class BoardSessionPersistentManager implements BoardSessionPersistent {
       BoardSessionPersistentManager();
   final BoardSessionConfig _config = BoardSessionConfig();
 
-  bool _isSaving = false;
+  static final FileSaver _fileSaver = FileSaver();
   List<Function()> onEventReloginRequired = [];
 
   @override
@@ -266,6 +267,7 @@ class BoardSessionPersistentManager implements BoardSessionPersistent {
   }
 
   static Future<void> init() async {
+    _fileSaver.setSavePath(await PathUtils.boardSessionFilePath());
     await _instance._load();
   }
 
@@ -436,14 +438,7 @@ class BoardSessionPersistentManager implements BoardSessionPersistent {
   }
 
   Future<void> _save() async {
-    if (_isSaving) return;
-    _isSaving = true;
-    final filePath = await PathUtils.boardSessionFilePath();
-    final file = File(filePath);
-    const JsonEncoder encoder = JsonEncoder.withIndent('  ');
-    String content = encoder.convert(_config);
-    await file.writeAsString(content);
-    _isSaving = false;
+    await _fileSaver.saveAsJson(_config);
   }
 
   Future<void> _load() async {

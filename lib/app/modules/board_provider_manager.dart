@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:skivpn/app/modules/board_session_persistent_manager.dart';
 import 'package:skivpn/app/private/app_url_utils_private.dart';
 import 'package:skivpn/app/runtime/return_result.dart';
+import 'package:skivpn/app/utils/file_utils.dart';
 import 'package:skivpn/app/utils/http_utils.dart';
 import 'package:skivpn/app/utils/path_utils.dart';
 import 'package:skivpn/i18n/strings.g.dart';
@@ -158,7 +159,7 @@ class BoardProviderConfig {
 
 class BoardProviderManager {
   static List<BoardProviderConfig> _providers = [];
-  static bool _saving = false;
+  static final FileSaver _fileSaver = FileSaver();
   static Future<void> updateSessionProviders() async {
     await BoardSessionPersistentManager.instance().updateProviders(_providers);
   }
@@ -306,19 +307,12 @@ class BoardProviderManager {
   }
 
   static Future<void> init() async {
+    _fileSaver.setSavePath(await PathUtils.providersConfigFilePath());
     await _load();
   }
 
   static Future<void> _save() async {
-    if (_saving) {
-      return;
-    }
-    _saving = true;
-    final file = File(await PathUtils.providersConfigFilePath());
-    const JsonEncoder encoder = JsonEncoder.withIndent('  ');
-    String content = encoder.convert(_providers);
-    await file.writeAsString(content);
-    _saving = false;
+    await _fileSaver.saveAsJson(_providers);
   }
 
   static Future<void> _load() async {
