@@ -4,6 +4,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:libclash_vpn_service/state.dart';
+import 'package:path/path.dart' as path;
 import 'package:skivpn/app/local_services/vpn_service.dart';
 import 'package:skivpn/app/modules/setting_manager.dart';
 import 'package:skivpn/app/runtime/return_result.dart';
@@ -12,15 +14,12 @@ import 'package:skivpn/app/utils/app_utils.dart';
 import 'package:skivpn/app/utils/auto_update_utils.dart';
 import 'package:skivpn/app/utils/crypto_utils.dart';
 import 'package:skivpn/app/utils/download_utils.dart';
-import 'package:skivpn/app/utils/error_reporter_utils.dart';
 import 'package:skivpn/app/utils/file_utils.dart';
 import 'package:skivpn/app/utils/install_referrer_utils.dart';
 import 'package:skivpn/app/utils/log.dart';
 import 'package:skivpn/app/utils/path_utils.dart';
 import 'package:skivpn/app/utils/platform_utils.dart';
 import 'package:skivpn/app/utils/version_compare_utils.dart';
-import 'package:libclash_vpn_service/state.dart';
-import 'package:path/path.dart' as path;
 
 class AutoUpdateCheckVersion {
   String latestCheck = "";

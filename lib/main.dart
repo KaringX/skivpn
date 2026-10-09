@@ -33,7 +33,7 @@ import 'package:skivpn/screens/launch_failed_screen.dart';
 import 'package:skivpn/screens/theme_data_dark.dart';
 import 'package:skivpn/screens/themes.dart';
 import 'package:skivpn/screens/widgets/routes.dart';
-import 'package:tray_manager/tray_manager.dart';
+import 'package:tray_manager/legacy.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:flutter_single_instance/flutter_single_instance.dart';
 
