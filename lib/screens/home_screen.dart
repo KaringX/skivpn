@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hotkey_manager/hotkey_manager.dart';
 import 'package:libclash_vpn_service/state.dart';
+import 'package:libclash_vpn_service/vpn_service.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:skivpn/app/local_services/vpn_service.dart';
 import 'package:skivpn/app/modules/auto_update_manager.dart';
@@ -186,6 +188,16 @@ class _HomeScreenState extends LasyRenderingState<HomeScreen>
       );
     }
     _agreementing = false;
+    if (Platform.isAndroid) {
+      String version = await FlutterVpnService.getSystemVersion();
+      int? v = int.tryParse(version);
+      if (v != null && v >= 33) {
+        final status = await Permission.notification.status;
+        if (status != PermissionStatus.granted) {
+          await Permission.notification.request();
+        }
+      }
+    }
   }
 
   void _init() async {
