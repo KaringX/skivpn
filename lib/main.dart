@@ -214,11 +214,6 @@ class MyApp extends StatefulWidget {
 
 class MyAppState extends State<MyApp>
     with WidgetsBindingObserver, WindowListener {
-  static const kMenuConnect = "connect";
-  static const kMenuDisconnect = "disconnect";
-
-  static const kMenuOpen = "show_window";
-  static const kMenuExit = "exit_app";
   bool _launchAtStartup = false;
   bool _windowVisibleForMac = false;
   Tray? _tray;
@@ -427,7 +422,7 @@ class MyAppState extends State<MyApp>
 
     Biz.onEventVPNStateChanged = ((bool connected) {
       if (PlatformUtils.isPC()) {
-        _tray?.setIconTitleForConnected("");
+        _tray?.setIconDisconneted(!connected);
       }
     });
     if (startFailedReason == null) {
