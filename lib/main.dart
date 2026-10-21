@@ -26,6 +26,7 @@ import 'package:skivpn/app/utils/log.dart';
 import 'package:skivpn/app/utils/move_to_background_utils.dart';
 import 'package:skivpn/app/utils/path_utils.dart';
 import 'package:skivpn/app/utils/platform_utils.dart';
+import 'package:skivpn/app/utils/vpn_action_handler.dart';
 import 'package:skivpn/app/utils/windows_version_helper.dart';
 import 'package:skivpn/i18n/strings.g.dart';
 import 'package:skivpn/screens/home_screen.dart';
@@ -35,6 +36,7 @@ import 'package:skivpn/screens/themes.dart';
 import 'package:skivpn/screens/widgets/routes.dart';
 import 'package:skivpn/tray.dart';
 import 'package:window_manager/window_manager.dart';
+import 'package:tray_manager/legacy.dart';
 
 List<String> processArgs = [];
 StartFailedReason? startFailedReason;
@@ -213,9 +215,15 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp>
-    with WidgetsBindingObserver, WindowListener {
+    with WidgetsBindingObserver, WindowListener, TrayListener {
+  static const kMenuConnect = "connect";
+  static const kMenuDisconnect = "disconnect";
+
+  static const kMenuOpen = "show_window";
+  static const kMenuExit = "exit_app";
   bool _launchAtStartup = false;
   bool _windowVisibleForMac = false;
+  bool _trayGrey = true;
   Tray? _tray;
   @override
   void initState() {
@@ -224,7 +232,7 @@ class MyAppState extends State<MyApp>
     if (PlatformUtils.isPC()) {
       windowManager.addListener(this);
       windowManager.setPreventClose(true);
-      _tray = Tray();
+      /*_tray = Tray();
       _tray!.init(
         onOpen: () async {
           if (await windowManager.isMinimized()) {
@@ -237,7 +245,9 @@ class MyAppState extends State<MyApp>
         onExit: () async {
           await _quit();
         },
-      );
+      );*/
+      trayManager.addListener(this);
+      _setTray(true, false, true);
     }
     AppLifecycleStateNofity.init();
     LocaleSettings.getLocaleStream().listen((event) {});
@@ -257,8 +267,10 @@ class MyAppState extends State<MyApp>
     WidgetsBinding.instance.removeObserver(this);
     if (PlatformUtils.isPC()) {
       windowManager.removeListener(this);
-      _tray?.dispose();
-      _tray = null;
+      //_tray?.dispose();
+      //_tray = null;
+      trayManager.removeListener(this);
+      trayManager.destroy();
     }
 
     super.dispose();
@@ -422,7 +434,11 @@ class MyAppState extends State<MyApp>
 
     Biz.onEventVPNStateChanged = ((bool connected) {
       if (PlatformUtils.isPC()) {
-        _tray?.setIconDisconneted(!connected);
+        //_tray?.setIconDisconneted(!connected);
+        if (_trayGrey == !connected) {
+          return;
+        }
+        _setTray(!connected, false, false);
       }
     });
     if (startFailedReason == null) {
@@ -443,6 +459,9 @@ class MyAppState extends State<MyApp>
     if (startFailedReason == null) {
       await Biz.uninit();
     }
+    if (PlatformUtils.isPC()) {
+      await trayManager.destroy();
+    }
   }
 
   Future<void> _quit() async {
@@ -451,5 +470,96 @@ class MyAppState extends State<MyApp>
       await Log.uninit();
       await ServicesBinding.instance.exitApplication(AppExitType.required);
     });
+  }
+
+  void _setTray(bool grey, bool destroy, bool quitIfFailed) {
+    Future.delayed(const Duration(milliseconds: 300), () async {
+      if (destroy || Platform.isLinux) {
+        await trayManager.destroy();
+      }
+
+      try {
+        if (Platform.isWindows) {
+          await trayManager.setIcon(
+            grey ? 'assets/images/grey_tray.ico' : 'assets/images/tray.ico',
+            isTemplate: false,
+          );
+        } else {
+          await trayManager.setIcon(
+            grey ? 'assets/images/grey_tray.png' : 'assets/images/tray.png',
+            isTemplate: false,
+          );
+        }
+        _trayGrey = grey;
+      } catch (err, stacktrace) {
+        Log.w("setIcon exception: ${err.toString()}");
+        if (quitIfFailed) {
+          Future.delayed(const Duration(milliseconds: 1000), () async {
+            _quit();
+          });
+        }
+      }
+      if (!Platform.isLinux) {
+        await trayManager.setToolTip(AppUtils.getName());
+      } else {
+        await _setTrayMenu(grey);
+      }
+    });
+  }
+
+  Future<void> _setTrayMenu(bool grey) async {
+    if (!PlatformUtils.isPC()) {
+      return;
+    }
+
+    List<MenuItem> items = [
+      if (grey) ...[
+        MenuItem(key: kMenuConnect, label: "   ${t.meta.connect}   "),
+      ],
+      if (!grey) ...[
+        MenuItem(key: kMenuDisconnect, label: "   ${t.meta.disconnect}   "),
+      ],
+      MenuItem.separator(),
+      MenuItem(key: kMenuOpen, label: "   ${t.main.tray.menuOpen}   "),
+      MenuItem(key: kMenuExit, label: "   ${t.main.tray.menuExit}   "),
+    ];
+
+    await trayManager.setContextMenu(Menu(items: items));
+    if (!Platform.isLinux) {
+      await trayManager.popUpContextMenu(bringAppToFront: true);
+    }
+  }
+
+  @override
+  void onTrayIconMouseDown() async {
+    if (await windowManager.isMinimized()) {
+      await windowManager.restore();
+    } else {
+      await windowManager.show();
+      onWindowRestore();
+    }
+  }
+
+  @override
+  void onTrayIconRightMouseDown() async {
+    await _setTrayMenu(_trayGrey);
+  }
+
+  @override
+  void onTrayMenuItemClick(MenuItem menuItem) async {
+    if (menuItem.key == kMenuConnect) {
+      VpnActionHandler.vpnConnect?.call("menu", false);
+    } else if (menuItem.key == kMenuDisconnect) {
+      VpnActionHandler.vpnDisconnect?.call("menu", false);
+    } else if (menuItem.key == kMenuExit) {
+      await _quit();
+    } else if (menuItem.key == kMenuOpen) {
+      if (await windowManager.isMinimized()) {
+        await windowManager.restore();
+      } else {
+        await windowManager.show();
+        onWindowRestore();
+      }
+    }
   }
 }
