@@ -224,7 +224,7 @@ class MyAppState extends State<MyApp>
   bool _launchAtStartup = false;
   bool _windowVisibleForMac = false;
   bool _trayGrey = true;
-  Tray? _tray;
+  //Tray? _tray;
   @override
   void initState() {
     super.initState();
