@@ -36,7 +36,7 @@ import 'package:skivpn/screens/themes.dart';
 import 'package:skivpn/screens/widgets/routes.dart';
 import 'package:skivpn/tray.dart';
 import 'package:window_manager/window_manager.dart';
-import 'package:tray_manager/legacy.dart';
+import 'package:tray_manager/tray_manager.dart';
 
 List<String> processArgs = [];
 StartFailedReason? startFailedReason;

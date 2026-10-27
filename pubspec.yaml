@@ -38,7 +38,7 @@ dependencies:
   after_layout: 1.2.0
   flutter_install_referrer: 2.1.1
   flutter_single_instance: 1.7.0
-  tray_manager: 0.8.0
+  tray_manager: 0.5.3
   hotkey_manager: 0.2.3
   #accessibility_tools: 2.2.2
   logger: 2.8.0
