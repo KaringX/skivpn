@@ -5,7 +5,8 @@ import 'dart:io';
 import 'dart:math';
 import 'dart:ui';
 
-import 'package:skivpn/app/local_services/vpn_service.dart';
+import 'package:device_info_plus/device_info_plus.dart';
+import 'package:libclash_vpn_service/proxy_manager.dart';
 import 'package:skivpn/app/utils/app_utils.dart';
 import 'package:skivpn/app/utils/convert_utils.dart';
 import 'package:skivpn/app/utils/file_utils.dart';
@@ -15,14 +16,12 @@ import 'package:skivpn/i18n/strings.g.dart';
 import 'package:skivpn/screens/theme_define.dart';
 import 'package:skivpn/screens/widgets/text_field.dart';
 
-import 'package:libclash_vpn_service/proxy_manager.dart';
-
 class SettingConfigItemUI {
   String theme = ThemeDefine.kThemeSystem;
-  bool autoOrientation = maybeTv();
+  bool autoOrientation = false;
   bool disableFontScaler = false;
   bool hideAfterLaunch = false;
-  bool tvMode = maybeTv();
+  bool tvMode = false;
   bool perAppHideSystemApp = true;
   bool perAppHideAppIcon = false;
   Map<String, dynamic> toJson() => {
@@ -39,13 +38,13 @@ class SettingConfigItemUI {
       return;
     }
     //theme = map["theme"] ?? "";
-    autoOrientation = map["auto_orientation"] ?? maybeTv();
+    autoOrientation = map["auto_orientation"] ?? false;
     disableFontScaler = map["disable_font_scaler"] ?? false;
     hideAfterLaunch = map["hide_after_launch"] ?? false;
     perAppHideSystemApp = map["perapp_hide_system_app"] ?? true;
     perAppHideAppIcon = map["perapp_hide_app_icon"] ?? false;
     if (Platform.isAndroid) {
-      tvMode = map["tv_mode"] ?? maybeTv();
+      tvMode = map["tv_mode"] ?? false;
       TextFieldEx.popupEdit = tvMode;
     }
 
@@ -74,12 +73,15 @@ class SettingConfigItemUI {
     return config;
   }
 
-  static bool maybeTv() {
+  static Future<bool> maybeTv() async {
     if (Platform.isAndroid) {
-      final abis = VPNService.getABIs();
-      if (abis.length == 1 &&
-          (abis.contains("armeabi") || abis.contains("x86"))) {
-        return true;
+      final deviceInfo = await DeviceInfoPlugin().deviceInfo;
+      if (deviceInfo is AndroidDeviceInfo) {
+        final systemFeatures = deviceInfo.systemFeatures;
+        if (systemFeatures.contains("android.hardware.type.television") ||
+            systemFeatures.contains("android.software.leanback")) {
+          return true;
+        }
       }
     }
     return false;
@@ -249,6 +251,9 @@ class SettingManager {
     var file = File(filePath);
     bool exists = await file.exists();
     if (!exists) {
+      _config.ui.autoOrientation = await SettingConfigItemUI.maybeTv();
+      _config.ui.tvMode = _config.ui.autoOrientation;
+      TextFieldEx.popupEdit = _config.ui.tvMode;
       return;
     }
     String content = "";
