@@ -75,3 +75,5 @@ ios/skiWidget/VpnServiceHandler.swift
 /dist
 /lib/generated
 
+/ios/Build
+/macos/Build
