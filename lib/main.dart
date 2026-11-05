@@ -25,9 +25,6 @@ import 'package:skivpn/i18n/strings.g.dart';
 import 'package:skivpn/my_app.dart';
 import 'package:skivpn/screens/launch_failed_screen.dart';
 
-StartFailedReason? startFailedReason;
-String? startFailedReasonDesc;
-
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
   await LocaleSettings.useDeviceLocale();
@@ -44,6 +41,9 @@ void main(List<String> args) async {
 }
 
 Future<void> run(List<String> args) async {
+  StartFailedReason? startFailedReason;
+  String? startFailedReasonDesc;
+
   try {
     do {
       String profileDir = await PathUtils.profileDir();
