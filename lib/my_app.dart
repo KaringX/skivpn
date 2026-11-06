@@ -150,6 +150,28 @@ class MyAppState extends State<MyApp>
               supportedLocales: AppLocaleUtils.supportedLocales,
               localizationsDelegates: GlobalMaterialLocalizations.delegates,
               navigatorObservers: observers,
+              // Deep links delivered by the engine arrive as route names; without
+              // this fallback Flutter crashes in _onUnknownRoute. The placeholder
+              // dispatches skivpn:// URLs to SchemeHandler and is then removed.
+              onUnknownRoute: (settings) => PageRouteBuilder<void>(
+                settings: settings,
+                opaque: false,
+                transitionDuration: Duration.zero,
+                reverseTransitionDuration: Duration.zero,
+                pageBuilder: (context, _, _) {
+                  final name = settings.name ?? '';
+                  final route = ModalRoute.of(context);
+                  Log.w('Unknown route: $name\n');
+                  WidgetsBinding.instance.addPostFrameCallback((_) async {
+                    final navigator = Navigator.maybeOf(context);
+                    if (name.startsWith("skivpn://") && context.mounted) {}
+                    if (navigator != null && route != null && route.isActive) {
+                      navigator.removeRoute(route);
+                    }
+                  });
+                  return const SizedBox.shrink();
+                },
+              ),
               home: PopScope(
                 canPop: false,
                 onPopInvokedWithResult: (didPop, result) {
