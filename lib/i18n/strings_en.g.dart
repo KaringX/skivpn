@@ -20,20 +20,21 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	Translations({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = meta ?? TranslationMetadata(
+		  _meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.en,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
 		  ) {
-		$meta.setFlatMapFunction(_flatMapFunction);
+		_meta.setFlatMapFunction(_flatMapFunction);
 	}
 
 	/// Metadata for the translations of <en>.
-	@override final TranslationMetadata<AppLocale, Translations> $meta;
+	final TranslationMetadata<AppLocale, Translations> _meta;
+	@override TranslationMetadata<AppLocale, Translations> get $meta => _meta;
 
 	/// Access flat map
-	dynamic operator[](String key) => $meta.getTranslation(key);
+	dynamic operator[](String key) => _meta.getTranslation(key);
 
 	late final Translations _root = this; // ignore: unused_field
 
@@ -515,8 +516,8 @@ class Translations$meta$en {
 	/// en: 'Please restart SkiVPN as administrator'
 	String get launchAtStartupRunAsAdmin => 'Please restart SkiVPN as administrator';
 
-	/// en: 'The TUN mode requires system administrator permissions, please restart the app as an administrator'
-	String get tunModeRunAsAdmin => 'The TUN mode requires system administrator permissions, please restart the app as an administrator';
+	/// en: 'This feature requires system administrator permissions, please restart the app as an administrator'
+	String get needRunAsAdmin => 'This feature requires system administrator permissions, please restart the app as an administrator';
 
 	/// en: 'Please restart the app as administrator (Administrator privileges required for TUN mode)'
 	String get requireAdminPrivilegeAtStartup => 'Please restart the app as administrator (Administrator privileges required for TUN mode)';
@@ -900,7 +901,7 @@ extension on Translations {
 			'meta.urlCannotEmpty' => 'Link can not be empty',
 			'meta.launchAtStartup' => 'Launch at Startup',
 			'meta.launchAtStartupRunAsAdmin' => 'Please restart SkiVPN as administrator',
-			'meta.tunModeRunAsAdmin' => 'The TUN mode requires system administrator permissions, please restart the app as an administrator',
+			'meta.needRunAsAdmin' => 'This feature requires system administrator permissions, please restart the app as an administrator',
 			'meta.requireAdminPrivilegeAtStartup' => 'Please restart the app as administrator (Administrator privileges required for TUN mode)',
 			'meta.portableMode' => 'Portable Mode',
 			'meta.portableModeDisableTips' => 'If you need to exit portable mode, please exit [skivpn] and manually delete the [portable] folder in the same directory as [ski.exe]',

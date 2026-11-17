@@ -16,20 +16,21 @@ class TranslationsKo with BaseTranslations<AppLocale, Translations> implements T
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsKo({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = meta ?? TranslationMetadata(
+		  _meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.ko,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
 		  ) {
-		$meta.setFlatMapFunction(_flatMapFunction);
+		_meta.setFlatMapFunction(_flatMapFunction);
 	}
 
 	/// Metadata for the translations of <ko>.
-	@override final TranslationMetadata<AppLocale, Translations> $meta;
+	final TranslationMetadata<AppLocale, Translations> _meta;
+	@override TranslationMetadata<AppLocale, Translations> get $meta => _meta;
 
 	/// Access flat map
-	@override dynamic operator[](String key) => $meta.getTranslation(key);
+	@override dynamic operator[](String key) => _meta.getTranslation(key);
 
 	late final TranslationsKo _root = this; // ignore: unused_field
 
@@ -270,7 +271,7 @@ class _Translations$meta$ko implements Translations$meta$en {
 	@override String get urlCannotEmpty => '링크는 비워둘 수 없습니다';
 	@override String get launchAtStartup => '시작 시 실행';
 	@override String get launchAtStartupRunAsAdmin => 'Ski를 관리자 권한으로 다시 시작하십시오';
-	@override String get tunModeRunAsAdmin => 'TUN 모드는 시스템 관리자 권한이 필요합니다. 앱을 관리자 권한으로 다시 시작하십시오';
+	@override String get needRunAsAdmin => '이 기능은 시스템 관리자 권한이 필요합니다. 관리자 권한으로 앱을 다시 시작하십시오';
 	@override String get requireAdminPrivilegeAtStartup => '관리자로 앱을 다시 시작하십시오(TUN 모드에 관리자 권한이 필요함)';
 	@override String get portableMode => '포터블 모드';
 	@override String get portableModeDisableTips => '포터블 모드를 종료해야 하는 경우 [skivpn]를 종료하고 [ski.exe]와 동일한 디렉토리에 있는 [portable] 폴더를 수동으로 삭제하십시오';
@@ -504,7 +505,7 @@ extension on TranslationsKo {
 			'meta.urlCannotEmpty' => '링크는 비워둘 수 없습니다',
 			'meta.launchAtStartup' => '시작 시 실행',
 			'meta.launchAtStartupRunAsAdmin' => 'Ski를 관리자 권한으로 다시 시작하십시오',
-			'meta.tunModeRunAsAdmin' => 'TUN 모드는 시스템 관리자 권한이 필요합니다. 앱을 관리자 권한으로 다시 시작하십시오',
+			'meta.needRunAsAdmin' => '이 기능은 시스템 관리자 권한이 필요합니다. 관리자 권한으로 앱을 다시 시작하십시오',
 			'meta.requireAdminPrivilegeAtStartup' => '관리자로 앱을 다시 시작하십시오(TUN 모드에 관리자 권한이 필요함)',
 			'meta.portableMode' => '포터블 모드',
 			'meta.portableModeDisableTips' => '포터블 모드를 종료해야 하는 경우 [skivpn]를 종료하고 [ski.exe]와 동일한 디렉토리에 있는 [portable] 폴더를 수동으로 삭제하십시오',

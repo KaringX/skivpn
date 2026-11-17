@@ -141,7 +141,7 @@
         "urlCannotEmpty": "Link can not be empty",
         "launchAtStartup": "Launch at Startup",
         "launchAtStartupRunAsAdmin": "Please restart SkiVPN as administrator",
-        "tunModeRunAsAdmin": "The TUN mode requires system administrator permissions, please restart the app as an administrator",
+        "needRunAsAdmin": "This feature requires system administrator permissions, please restart the app as an administrator",
         "requireAdminPrivilegeAtStartup": "Please restart the app as administrator (Administrator privileges required for TUN mode)",
         "portableMode": "Portable Mode",
         "portableModeDisableTips": "If you need to exit portable mode, please exit [skivpn] and manually delete the [portable] folder in the same directory as [ski.exe]",

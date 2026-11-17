@@ -16,20 +16,21 @@ class TranslationsJa with BaseTranslations<AppLocale, Translations> implements T
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsJa({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = meta ?? TranslationMetadata(
+		  _meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.ja,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
 		  ) {
-		$meta.setFlatMapFunction(_flatMapFunction);
+		_meta.setFlatMapFunction(_flatMapFunction);
 	}
 
 	/// Metadata for the translations of <ja>.
-	@override final TranslationMetadata<AppLocale, Translations> $meta;
+	final TranslationMetadata<AppLocale, Translations> _meta;
+	@override TranslationMetadata<AppLocale, Translations> get $meta => _meta;
 
 	/// Access flat map
-	@override dynamic operator[](String key) => $meta.getTranslation(key);
+	@override dynamic operator[](String key) => _meta.getTranslation(key);
 
 	late final TranslationsJa _root = this; // ignore: unused_field
 
@@ -270,7 +271,7 @@ class _Translations$meta$ja implements Translations$meta$en {
 	@override String get urlCannotEmpty => 'リンクを空にすることはできません';
 	@override String get launchAtStartup => 'スタートアップ時に起動';
 	@override String get launchAtStartupRunAsAdmin => 'Skiを管理者として再起動してください';
-	@override String get tunModeRunAsAdmin => 'TUNモードにはシステム管理者権限が必要です。アプリを管理者として再起動してください';
+	@override String get needRunAsAdmin => 'この機能にはシステム管理者権限が必要です。アプリを管理者として再起動してください';
 	@override String get requireAdminPrivilegeAtStartup => '管理者としてアプリを再起動してください(TUNモードには管理者権限が必要です)';
 	@override String get portableMode => 'ポータブルモード';
 	@override String get portableModeDisableTips => 'ポータブルモードを終了する必要がある場合は、[skivpn]を終了し、[ski.exe]と同じディレクトリにある[portable]フォルダを手動で削除してください';
@@ -504,7 +505,7 @@ extension on TranslationsJa {
 			'meta.urlCannotEmpty' => 'リンクを空にすることはできません',
 			'meta.launchAtStartup' => 'スタートアップ時に起動',
 			'meta.launchAtStartupRunAsAdmin' => 'Skiを管理者として再起動してください',
-			'meta.tunModeRunAsAdmin' => 'TUNモードにはシステム管理者権限が必要です。アプリを管理者として再起動してください',
+			'meta.needRunAsAdmin' => 'この機能にはシステム管理者権限が必要です。アプリを管理者として再起動してください',
 			'meta.requireAdminPrivilegeAtStartup' => '管理者としてアプリを再起動してください(TUNモードには管理者権限が必要です)',
 			'meta.portableMode' => 'ポータブルモード',
 			'meta.portableModeDisableTips' => 'ポータブルモードを終了する必要がある場合は、[skivpn]を終了し、[ski.exe]と同じディレクトリにある[portable]フォルダを手動で削除してください',

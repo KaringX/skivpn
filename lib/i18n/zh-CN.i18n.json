@@ -141,7 +141,7 @@
         "urlCannotEmpty": "URL不能为空",
         "launchAtStartup": "开机启动",
         "launchAtStartupRunAsAdmin": "请以管理员身份重新启动Ski",
-        "tunModeRunAsAdmin": "TUN模式需要系统管理员权限,请以管理员身份重新启动应用",
+        "needRunAsAdmin": "本功能需要系统管理员权限,请以管理员身份重新启动应用",
         "requireAdminPrivilegeAtStartup": "请以管理员身份重启启动应用(TUN模式需要管理员权限)",
         "portableMode": "便携模式",
         "portableModeDisableTips": "如需退出便携模式,请退出[skivpn]后,手动删除[ski.exe]同目录下的[portable]文件夹即可",

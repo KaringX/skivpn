@@ -16,20 +16,21 @@ class TranslationsRu with BaseTranslations<AppLocale, Translations> implements T
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsRu({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = meta ?? TranslationMetadata(
+		  _meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.ru,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
 		  ) {
-		$meta.setFlatMapFunction(_flatMapFunction);
+		_meta.setFlatMapFunction(_flatMapFunction);
 	}
 
 	/// Metadata for the translations of <ru>.
-	@override final TranslationMetadata<AppLocale, Translations> $meta;
+	final TranslationMetadata<AppLocale, Translations> _meta;
+	@override TranslationMetadata<AppLocale, Translations> get $meta => _meta;
 
 	/// Access flat map
-	@override dynamic operator[](String key) => $meta.getTranslation(key);
+	@override dynamic operator[](String key) => _meta.getTranslation(key);
 
 	late final TranslationsRu _root = this; // ignore: unused_field
 
@@ -270,7 +271,7 @@ class _Translations$meta$ru implements Translations$meta$en {
 	@override String get urlCannotEmpty => 'Ссылка не может быть пустой';
 	@override String get launchAtStartup => 'Запуск при включении';
 	@override String get launchAtStartupRunAsAdmin => 'Пожалуйста, перезапустите SkiVPN от имени администратора.';
-	@override String get tunModeRunAsAdmin => 'Для режима TUN требуются права администратора. Перезапустите приложение от имени администратора';
+	@override String get needRunAsAdmin => 'Для этой функции требуются права администратора. Перезапустите приложение от имени администратора';
 	@override String get requireAdminPrivilegeAtStartup => 'Перезапустите приложение от имени администратора (Для режима TUN требуются права администратора)';
 	@override String get portableMode => 'Портативный режим';
 	@override String get portableModeDisableTips => 'Если вам нужно выйти из портативного режима, выйдите из [skivpn] и вручную удалите папку [portable] в том же каталоге, что и [ski.exe]';
@@ -504,7 +505,7 @@ extension on TranslationsRu {
 			'meta.urlCannotEmpty' => 'Ссылка не может быть пустой',
 			'meta.launchAtStartup' => 'Запуск при включении',
 			'meta.launchAtStartupRunAsAdmin' => 'Пожалуйста, перезапустите SkiVPN от имени администратора.',
-			'meta.tunModeRunAsAdmin' => 'Для режима TUN требуются права администратора. Перезапустите приложение от имени администратора',
+			'meta.needRunAsAdmin' => 'Для этой функции требуются права администратора. Перезапустите приложение от имени администратора',
 			'meta.requireAdminPrivilegeAtStartup' => 'Перезапустите приложение от имени администратора (Для режима TUN требуются права администратора)',
 			'meta.portableMode' => 'Портативный режим',
 			'meta.portableModeDisableTips' => 'Если вам нужно выйти из портативного режима, выйдите из [skivpn] и вручную удалите папку [portable] в том же каталоге, что и [ski.exe]',

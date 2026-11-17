@@ -141,7 +141,7 @@
         "urlCannotEmpty": "リンクを空にすることはできません",
         "launchAtStartup": "スタートアップ時に起動",
         "launchAtStartupRunAsAdmin": "Skiを管理者として再起動してください",
-        "tunModeRunAsAdmin": "TUNモードにはシステム管理者権限が必要です。アプリを管理者として再起動してください",
+        "needRunAsAdmin": "この機能にはシステム管理者権限が必要です。アプリを管理者として再起動してください",
         "requireAdminPrivilegeAtStartup": "管理者としてアプリを再起動してください(TUNモードには管理者権限が必要です)",
         "portableMode": "ポータブルモード",
         "portableModeDisableTips": "ポータブルモードを終了する必要がある場合は、[skivpn]を終了し、[ski.exe]と同じディレクトリにある[portable]フォルダを手動で削除してください",

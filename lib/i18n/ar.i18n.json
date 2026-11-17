@@ -141,7 +141,7 @@
         "urlCannotEmpty": "لا يمكن أن يكون الرابط فارغًا",
         "launchAtStartup": "إطلاق عند بدء التشغيل",
         "launchAtStartupRunAsAdmin": "يرجى إعادة تشغيل SkiVPN كمسؤول",
-        "tunModeRunAsAdmin": "يتطلب وضع TUN أذونات مسؤول النظام ، يرجى إعادة تشغيل التطبيق كمسؤول",
+        "needRunAsAdmin": "تتطلب هذه الميزة أذونات مسؤول النظام، يرجى إعادة تشغيل التطبيق كمسؤول",
         "requireAdminPrivilegeAtStartup": "أعد تشغيل التطبيق كمسؤول (يتطلب وضع TUN أذونات المسؤول)",
         "portableMode": "الوضع المحمول",
         "portableModeDisableTips": "إذا كنت بحاجة إلى الخروج من الوضع المحمول، فيرجى الخروج من [skivpn] وحذف المجلد [portable] يدويًا في نفس الدليل مثل [ski.exe]",

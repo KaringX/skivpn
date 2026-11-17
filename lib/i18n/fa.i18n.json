@@ -141,7 +141,7 @@
         "urlCannotEmpty": "لینک نمی‌تواند خالی باشد",
         "launchAtStartup": "اجرا در راه‌اندازی",
         "launchAtStartupRunAsAdmin": "لطفاً SkiVPN را به عنوان مدیر راه اندازی مجدد کنید",
-        "tunModeRunAsAdmin": "حالت TUN نیازمند مجوز مدیر سیستم می‌باشد لطفا نرم‌افزار را مجدد با حالت مدیر (administrator) راه‌اندازی کنید",
+        "needRunAsAdmin": "این قابلیت نیازمند مجوز مدیر سیستم می‌باشد، لطفا نرم‌افزار را مجدد با حالت مدیر (administrator) راه‌اندازی کنید",
         "requireAdminPrivilegeAtStartup": "برنامه را به عنوان مدیر راه اندازی مجدد کنید (حالت TUN نیازمند مجوز مدیر می‌باشد)",
         "portableMode": "حالت قابل‌حمل",
         "portableModeDisableTips": "اگر نیاز دارین از حالت قابل‌حمل خارج شوید لطفا از [skivpn] خارج شده و به‌صورت دستی پوشه [portable] هم مسیر با فایل [ski.exe] را حذف کنید",

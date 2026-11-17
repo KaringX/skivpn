@@ -16,20 +16,21 @@ class TranslationsZhCn with BaseTranslations<AppLocale, Translations> implements
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsZhCn({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = meta ?? TranslationMetadata(
+		  _meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.zhCn,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
 		  ) {
-		$meta.setFlatMapFunction(_flatMapFunction);
+		_meta.setFlatMapFunction(_flatMapFunction);
 	}
 
 	/// Metadata for the translations of <zh-CN>.
-	@override final TranslationMetadata<AppLocale, Translations> $meta;
+	final TranslationMetadata<AppLocale, Translations> _meta;
+	@override TranslationMetadata<AppLocale, Translations> get $meta => _meta;
 
 	/// Access flat map
-	@override dynamic operator[](String key) => $meta.getTranslation(key);
+	@override dynamic operator[](String key) => _meta.getTranslation(key);
 
 	late final TranslationsZhCn _root = this; // ignore: unused_field
 
@@ -270,7 +271,7 @@ class Translations$meta$zh_CN implements Translations$meta$en {
 	@override String get urlCannotEmpty => 'URL不能为空';
 	@override String get launchAtStartup => '开机启动';
 	@override String get launchAtStartupRunAsAdmin => '请以管理员身份重新启动Ski';
-	@override String get tunModeRunAsAdmin => 'TUN模式需要系统管理员权限,请以管理员身份重新启动应用';
+	@override String get needRunAsAdmin => '本功能需要系统管理员权限,请以管理员身份重新启动应用';
 	@override String get requireAdminPrivilegeAtStartup => '请以管理员身份重启启动应用(TUN模式需要管理员权限)';
 	@override String get portableMode => '便携模式';
 	@override String get portableModeDisableTips => '如需退出便携模式,请退出[skivpn]后,手动删除[ski.exe]同目录下的[portable]文件夹即可';
@@ -504,7 +505,7 @@ extension on TranslationsZhCn {
 			'meta.urlCannotEmpty' => 'URL不能为空',
 			'meta.launchAtStartup' => '开机启动',
 			'meta.launchAtStartupRunAsAdmin' => '请以管理员身份重新启动Ski',
-			'meta.tunModeRunAsAdmin' => 'TUN模式需要系统管理员权限,请以管理员身份重新启动应用',
+			'meta.needRunAsAdmin' => '本功能需要系统管理员权限,请以管理员身份重新启动应用',
 			'meta.requireAdminPrivilegeAtStartup' => '请以管理员身份重启启动应用(TUN模式需要管理员权限)',
 			'meta.portableMode' => '便携模式',
 			'meta.portableModeDisableTips' => '如需退出便携模式,请退出[skivpn]后,手动删除[ski.exe]同目录下的[portable]文件夹即可',

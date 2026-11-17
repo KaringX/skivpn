@@ -16,20 +16,21 @@ class TranslationsAr with BaseTranslations<AppLocale, Translations> implements T
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsAr({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = meta ?? TranslationMetadata(
+		  _meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.ar,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
 		  ) {
-		$meta.setFlatMapFunction(_flatMapFunction);
+		_meta.setFlatMapFunction(_flatMapFunction);
 	}
 
 	/// Metadata for the translations of <ar>.
-	@override final TranslationMetadata<AppLocale, Translations> $meta;
+	final TranslationMetadata<AppLocale, Translations> _meta;
+	@override TranslationMetadata<AppLocale, Translations> get $meta => _meta;
 
 	/// Access flat map
-	@override dynamic operator[](String key) => $meta.getTranslation(key);
+	@override dynamic operator[](String key) => _meta.getTranslation(key);
 
 	late final TranslationsAr _root = this; // ignore: unused_field
 
@@ -270,7 +271,7 @@ class _Translations$meta$ar implements Translations$meta$en {
 	@override String get urlCannotEmpty => 'لا يمكن أن يكون الرابط فارغًا';
 	@override String get launchAtStartup => 'إطلاق عند بدء التشغيل';
 	@override String get launchAtStartupRunAsAdmin => 'يرجى إعادة تشغيل SkiVPN كمسؤول';
-	@override String get tunModeRunAsAdmin => 'يتطلب وضع TUN أذونات مسؤول النظام ، يرجى إعادة تشغيل التطبيق كمسؤول';
+	@override String get needRunAsAdmin => 'تتطلب هذه الميزة أذونات مسؤول النظام، يرجى إعادة تشغيل التطبيق كمسؤول';
 	@override String get requireAdminPrivilegeAtStartup => 'أعد تشغيل التطبيق كمسؤول (يتطلب وضع TUN أذونات المسؤول)';
 	@override String get portableMode => 'الوضع المحمول';
 	@override String get portableModeDisableTips => 'إذا كنت بحاجة إلى الخروج من الوضع المحمول، فيرجى الخروج من [skivpn] وحذف المجلد [portable] يدويًا في نفس الدليل مثل [ski.exe]';
@@ -504,7 +505,7 @@ extension on TranslationsAr {
 			'meta.urlCannotEmpty' => 'لا يمكن أن يكون الرابط فارغًا',
 			'meta.launchAtStartup' => 'إطلاق عند بدء التشغيل',
 			'meta.launchAtStartupRunAsAdmin' => 'يرجى إعادة تشغيل SkiVPN كمسؤول',
-			'meta.tunModeRunAsAdmin' => 'يتطلب وضع TUN أذونات مسؤول النظام ، يرجى إعادة تشغيل التطبيق كمسؤول',
+			'meta.needRunAsAdmin' => 'تتطلب هذه الميزة أذونات مسؤول النظام، يرجى إعادة تشغيل التطبيق كمسؤول',
 			'meta.requireAdminPrivilegeAtStartup' => 'أعد تشغيل التطبيق كمسؤول (يتطلب وضع TUN أذونات المسؤول)',
 			'meta.portableMode' => 'الوضع المحمول',
 			'meta.portableModeDisableTips' => 'إذا كنت بحاجة إلى الخروج من الوضع المحمول، فيرجى الخروج من [skivpn] وحذف المجلد [portable] يدويًا في نفس الدليل مثل [ski.exe]',

@@ -16,20 +16,21 @@ class TranslationsFa with BaseTranslations<AppLocale, Translations> implements T
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsFa({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = meta ?? TranslationMetadata(
+		  _meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.fa,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
 		  ) {
-		$meta.setFlatMapFunction(_flatMapFunction);
+		_meta.setFlatMapFunction(_flatMapFunction);
 	}
 
 	/// Metadata for the translations of <fa>.
-	@override final TranslationMetadata<AppLocale, Translations> $meta;
+	final TranslationMetadata<AppLocale, Translations> _meta;
+	@override TranslationMetadata<AppLocale, Translations> get $meta => _meta;
 
 	/// Access flat map
-	@override dynamic operator[](String key) => $meta.getTranslation(key);
+	@override dynamic operator[](String key) => _meta.getTranslation(key);
 
 	late final TranslationsFa _root = this; // ignore: unused_field
 
@@ -270,7 +271,7 @@ class _Translations$meta$fa implements Translations$meta$en {
 	@override String get urlCannotEmpty => 'لینک نمی‌تواند خالی باشد';
 	@override String get launchAtStartup => 'اجرا در راه‌اندازی';
 	@override String get launchAtStartupRunAsAdmin => 'لطفاً SkiVPN را به عنوان مدیر راه اندازی مجدد کنید';
-	@override String get tunModeRunAsAdmin => 'حالت TUN نیازمند مجوز مدیر سیستم می‌باشد لطفا نرم‌افزار را مجدد با حالت مدیر (administrator) راه‌اندازی کنید';
+	@override String get needRunAsAdmin => 'این قابلیت نیازمند مجوز مدیر سیستم می‌باشد، لطفا نرم‌افزار را مجدد با حالت مدیر (administrator) راه‌اندازی کنید';
 	@override String get requireAdminPrivilegeAtStartup => 'برنامه را به عنوان مدیر راه اندازی مجدد کنید (حالت TUN نیازمند مجوز مدیر می‌باشد)';
 	@override String get portableMode => 'حالت قابل‌حمل';
 	@override String get portableModeDisableTips => 'اگر نیاز دارین از حالت قابل‌حمل خارج شوید لطفا از [skivpn] خارج شده و به‌صورت دستی پوشه [portable] هم مسیر با فایل [ski.exe] را حذف کنید';
@@ -504,7 +505,7 @@ extension on TranslationsFa {
 			'meta.urlCannotEmpty' => 'لینک نمی‌تواند خالی باشد',
 			'meta.launchAtStartup' => 'اجرا در راه‌اندازی',
 			'meta.launchAtStartupRunAsAdmin' => 'لطفاً SkiVPN را به عنوان مدیر راه اندازی مجدد کنید',
-			'meta.tunModeRunAsAdmin' => 'حالت TUN نیازمند مجوز مدیر سیستم می‌باشد لطفا نرم‌افزار را مجدد با حالت مدیر (administrator) راه‌اندازی کنید',
+			'meta.needRunAsAdmin' => 'این قابلیت نیازمند مجوز مدیر سیستم می‌باشد، لطفا نرم‌افزار را مجدد با حالت مدیر (administrator) راه‌اندازی کنید',
 			'meta.requireAdminPrivilegeAtStartup' => 'برنامه را به عنوان مدیر راه اندازی مجدد کنید (حالت TUN نیازمند مجوز مدیر می‌باشد)',
 			'meta.portableMode' => 'حالت قابل‌حمل',
 			'meta.portableModeDisableTips' => 'اگر نیاز دارین از حالت قابل‌حمل خارج شوید لطفا از [skivpn] خارج شده و به‌صورت دستی پوشه [portable] هم مسیر با فایل [ski.exe] را حذف کنید',
