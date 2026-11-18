@@ -135,9 +135,9 @@ class SettingConfig {
     languageTag = map["language_tag"] ?? "";
     ui = SettingConfigItemUI.fromJsonStatic(map["ui"]);
     alwayOn = map["alway_on"] ?? false;
-    autoUpdateChannel = map["auto_update_channel"] ?? "stable";
+    autoUpdateChannel = map["auto_update_channel"] ?? "";
     if (autoUpdateChannel.isEmpty) {
-      autoUpdateChannel = Random().nextInt(10) < 5 ? "beta" : "stable";
+      autoUpdateChannel = Random().nextInt(10) < 4 ? "beta" : "stable";
     }
     autoDownloadUpdatePkg = map["auto_download_udpate_pkg"] ?? true;
     autoConnectAfterLaunch = map["auto_connect_after_launch"] ?? false;
