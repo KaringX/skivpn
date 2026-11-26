@@ -101,11 +101,14 @@ enum ClashProtocolType {
   selector(name: "Selector"),
   loadBalance(name: "LoadBalance"),
   fallback(name: "Fallback"),
+  relay(name: "Relay"),
   direct(name: "Direct"),
   compatible(name: "Compatible"),
   pass(name: "Pass"),
+  passRule(name: "PassRule"),
   reject(name: "Reject"),
-  rejectDrop(name: "RejectDrop");
+  rejectDrop(name: "RejectDrop"),
+  dns(name: "Dns");
 
   const ClashProtocolType({required this.name});
   final String name;
@@ -116,9 +119,21 @@ enum ClashProtocolType {
       ClashProtocolType.selector.name,
       ClashProtocolType.loadBalance.name,
       ClashProtocolType.fallback.name,
+      ClashProtocolType.relay.name,
       ClashProtocolType.direct.name,
       ClashProtocolType.compatible.name,
       ClashProtocolType.pass.name,
+      ClashProtocolType.passRule.name,
+      ClashProtocolType.reject.name,
+      ClashProtocolType.rejectDrop.name,
+    ];
+  }
+
+  static List<String> RuleToList() {
+    return [
+      ClashProtocolType.compatible.name,
+      ClashProtocolType.pass.name,
+      ClashProtocolType.passRule.name,
       ClashProtocolType.reject.name,
       ClashProtocolType.rejectDrop.name,
     ];
@@ -130,6 +145,7 @@ enum ClashProtocolType {
       ClashProtocolType.selector.name,
       ClashProtocolType.loadBalance.name,
       ClashProtocolType.fallback.name,
+      ClashProtocolType.relay.name,
     ];
   }
 }
@@ -273,18 +289,20 @@ enum ClashGlobalClientFingerprint {
 enum ClashTunStack {
   mixed(name: "mixed"),
   gvisor(name: "gvisor"),
-  system(name: "system");
+  system(name: "system"),
+  mips(name: "mips");
 
   const ClashTunStack({required this.name});
   final String name;
   static List<String> toList() {
     if (Platform.isIOS || Platform.isMacOS) {
-      return [ClashTunStack.gvisor.name];
+      return [ClashTunStack.gvisor.name, ClashTunStack.mips.name];
     }
     return [
       ClashTunStack.gvisor.name,
       ClashTunStack.mixed.name,
       ClashTunStack.system.name,
+      ClashTunStack.mips.name,
     ];
   }
 }
@@ -303,6 +321,11 @@ enum ClashFindProcessMode {
       ClashFindProcessMode.off.name,
     ];
   }
+}
+
+class ClashConvertHelper {
+  static List<String>? IntOrStringListFromJson(List<dynamic>? list) =>
+      list?.map((e) => e.toString()).toList();
 }
 
 ///Extension
@@ -434,7 +457,15 @@ class RawExtensionTun {
 
 @JsonSerializable(explicitToJson: true)
 class RawExtension {
-  @JsonKey(name: 'append_rules')
+  @JsonKey(name: 'proxy-groups')
+  List<dynamic>? ProxyGroups;
+  @JsonKey(name: 'rule-providers')
+  Map<String, dynamic>? RuleProviders;
+  @JsonKey(name: 'rules')
+  List<String>? Rules;
+  @JsonKey(name: 'append-proxy-groups')
+  List<dynamic>? AppendProxyGroups;
+  @JsonKey(name: 'append-rules')
   List<String>? AppendRules;
   @JsonKey(name: 'geo-rule-set')
   RawExtensionGeoRuleset Ruleset;
@@ -442,6 +473,8 @@ class RawExtension {
   String? ProfileStoreSelectedPrefix;
   @JsonKey(name: 'tun')
   RawExtensionTun Tun;
+  @JsonKey(name: 'age-secret-key')
+  String? AgeSecretKey;
   @JsonKey(name: 'pprof-addr')
   String? PprofAddr;
   @JsonKey(name: 'proxy-group-replace')
@@ -449,17 +482,27 @@ class RawExtension {
   @JsonKey(name: 'runtime-profile-save-path')
   String? RuntimeProfileSavePath;
   RawExtension.by({
+    this.ProxyGroups,
+    this.RuleProviders,
+    this.Rules,
+    this.AppendProxyGroups,
     this.AppendRules,
     required this.Ruleset,
     required this.Tun,
+    this.AgeSecretKey,
     this.PprofAddr,
     this.ProxyGroupReplace,
     this.RuntimeProfileSavePath,
   });
   RawExtension(
+    this.ProxyGroups,
+    this.RuleProviders,
+    this.Rules,
+    this.AppendProxyGroups,
     this.AppendRules,
     this.Ruleset,
     this.Tun,
+    this.AgeSecretKey,
     this.PprofAddr,
     this.ProxyGroupReplace,
     this.RuntimeProfileSavePath,
@@ -629,7 +672,7 @@ class RawFallbackFilter {
   List<String>? IPCIDR;
   @JsonKey(name: 'domain')
   List<String>? Domain;
-  @JsonKey(name: 'domageositein')
+  @JsonKey(name: 'geosite')
   List<String>? GeoSite;
 
   RawFallbackFilter.by({
@@ -813,6 +856,7 @@ class RawTun {
     this.AutoRedirectInputMark,
     this.AutoRedirectOutputMark,
     this.StrictRoute,
+    this.DisableICMPForwarding,
     this.RouteAddress,
     this.RouteAddressSet,
     this.RouteExcludeAddress,
@@ -853,6 +897,7 @@ class RawTun {
     this.AutoRedirectInputMark,
     this.AutoRedirectOutputMark,
     this.StrictRoute,
+    this.DisableICMPForwarding,
     this.RouteAddress,
     this.RouteAddressSet,
     this.RouteExcludeAddress,
@@ -1064,7 +1109,10 @@ class RawSniffer {
   List<String>? SkipDstAddress;
   @JsonKey(name: 'skip-domain')
   List<String>? SkipDomain;
-  @JsonKey(name: 'port-whitelist')
+  @JsonKey(
+    name: 'port-whitelist',
+    fromJson: ClashConvertHelper.IntOrStringListFromJson,
+  )
   List<String>? Ports;
   @JsonKey(name: 'force-dns-mapping')
   bool? ForceDnsMapping;
@@ -1108,7 +1156,7 @@ class RawSniffer {
 
 @JsonSerializable(explicitToJson: true)
 class RawSniffingConfig {
-  @JsonKey(name: 'ports')
+  @JsonKey(name: 'ports', fromJson: ClashConvertHelper.IntOrStringListFromJson)
   List<String>? Ports;
   @JsonKey(name: 'override-destination')
   bool? OverrideDest;

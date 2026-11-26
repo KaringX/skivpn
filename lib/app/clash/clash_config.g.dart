@@ -96,13 +96,18 @@ Map<String, dynamic> _$RawExtensionTunToJson(RawExtensionTun instance) =>
 
 RawExtension _$RawExtensionFromJson(Map<String, dynamic> json) =>
     RawExtension(
-        (json['append_rules'] as List<dynamic>?)
+        json['proxy-groups'] as List<dynamic>?,
+        json['rule-providers'] as Map<String, dynamic>?,
+        (json['rules'] as List<dynamic>?)?.map((e) => e as String).toList(),
+        json['append-proxy-groups'] as List<dynamic>?,
+        (json['append-rules'] as List<dynamic>?)
             ?.map((e) => e as String)
             .toList(),
         RawExtensionGeoRuleset.fromJson(
           json['geo-rule-set'] as Map<String, dynamic>,
         ),
         RawExtensionTun.fromJson(json['tun'] as Map<String, dynamic>),
+        json['age-secret-key'] as String?,
         json['pprof-addr'] as String?,
         json['proxy-group-replace'] as String?,
         json['runtime-profile-save-path'] as String?,
@@ -112,10 +117,15 @@ RawExtension _$RawExtensionFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$RawExtensionToJson(RawExtension instance) =>
     <String, dynamic>{
-      'append_rules': instance.AppendRules,
+      'proxy-groups': instance.ProxyGroups,
+      'rule-providers': instance.RuleProviders,
+      'rules': instance.Rules,
+      'append-proxy-groups': instance.AppendProxyGroups,
+      'append-rules': instance.AppendRules,
       'geo-rule-set': instance.Ruleset.toJson(),
       'profile-store-selected-prefix': instance.ProfileStoreSelectedPrefix,
       'tun': instance.Tun.toJson(),
+      'age-secret-key': instance.AgeSecretKey,
       'pprof-addr': instance.PprofAddr,
       'proxy-group-replace': instance.ProxyGroupReplace,
       'runtime-profile-save-path': instance.RuntimeProfileSavePath,
@@ -216,9 +226,7 @@ RawFallbackFilter _$RawFallbackFilterFromJson(Map<String, dynamic> json) =>
       json['geoip-code'] as String?,
       (json['ipcidr'] as List<dynamic>?)?.map((e) => e as String).toList(),
       (json['domain'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      (json['domageositein'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
+      (json['geosite'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$RawFallbackFilterToJson(RawFallbackFilter instance) =>
@@ -227,7 +235,7 @@ Map<String, dynamic> _$RawFallbackFilterToJson(RawFallbackFilter instance) =>
       'geoip-code': instance.GeoIPCode,
       'ipcidr': instance.IPCIDR,
       'domain': instance.Domain,
-      'domageositein': instance.GeoSite,
+      'geosite': instance.GeoSite,
     };
 
 RawClashForAndroid _$RawClashForAndroidFromJson(Map<String, dynamic> json) =>
@@ -283,6 +291,7 @@ RawTun _$RawTunFromJson(Map<String, dynamic> json) => RawTun(
   (json['auto-redirect-input-mark'] as num?)?.toInt(),
   (json['auto-redirect-output-mark'] as num?)?.toInt(),
   json['strict-route'] as bool?,
+  json['disable-icmp-forwarding'] as bool?,
   (json['route-address'] as List<dynamic>?)?.map((e) => e as String).toList(),
   (json['route-address-set'] as List<dynamic>?)
       ?.map((e) => e as String)
@@ -331,7 +340,7 @@ RawTun _$RawTunFromJson(Map<String, dynamic> json) => RawTun(
   (json['inet6-route-exclude-address'] as List<dynamic>?)
       ?.map((e) => e as String)
       .toList(),
-)..DisableICMPForwarding = json['disable-icmp-forwarding'] as bool?;
+);
 
 Map<String, dynamic> _$RawTunToJson(RawTun instance) => <String, dynamic>{
   'overwrite': instance.OverWrite,
@@ -487,7 +496,7 @@ RawSniffer _$RawSnifferFromJson(Map<String, dynamic> json) => RawSniffer(
       ?.map((e) => e as String)
       .toList(),
   (json['skip-domain'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  (json['port-whitelist'] as List<dynamic>?)?.map((e) => e as String).toList(),
+  ClashConvertHelper.IntOrStringListFromJson(json['port-whitelist'] as List?),
   json['force-dns-mapping'] as bool?,
   json['parse-pure-ip'] as bool?,
   (json['sniff'] as Map<String, dynamic>?)?.map(
@@ -514,7 +523,7 @@ Map<String, dynamic> _$RawSnifferToJson(RawSniffer instance) =>
 
 RawSniffingConfig _$RawSniffingConfigFromJson(Map<String, dynamic> json) =>
     RawSniffingConfig(
-      (json['ports'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      ClashConvertHelper.IntOrStringListFromJson(json['ports'] as List?),
       json['override-destination'] as bool?,
     );
 
