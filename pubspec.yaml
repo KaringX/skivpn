@@ -25,7 +25,7 @@ dependencies:
   json_annotation: 4.12.0
   re_editor: 0.10.0
   re_highlight: 0.0.3
-  permission_handler: 12.0.3
+  permission_handler: 13.0.2
   launch_at_startup: 0.2.2 #0.5.1 #0.2.2 - 0.3.1 StartupApproved cause reg exceptions
   provider: 6.1.5+1
   uuid: 4.6.0 #flutter_test 
@@ -36,23 +36,23 @@ dependencies:
   yaml: 3.1.4
   scrollview_observer: 1.27.1
   after_layout: 1.2.0
-  flutter_install_referrer: 2.1.1
+  flutter_install_referrer: 3.0.1
   flutter_single_instance: 1.7.0
   tray_manager: 0.8.3
-  hotkey_manager: 0.2.3
+  hotkey_manager: 0.3.0
   #accessibility_tools: 2.2.2
   logger: 2.8.0
   tuple: 2.0.2
-  crypto: 3.0.7
+  crypto: 3.0.8
   cryptography: 2.9.0
   encrypt: 5.0.3
   open_dir: 0.0.2+1
   path: 1.9.1 #flutter_test
   characters: 1.4.1 #flutter_test
   win32_registry: 1.1.5 #3.0.3 #flutter_test
-  share_plus: 12.0.2 #13.3.0
+  share_plus: 12.0.2 #13.3.1
   app_installer: 1.3.1
-  app_settings: 9.0.0
+  app_settings: 9.0.1
   quick_actions: 1.1.1
   #overrides
   flutter_inappwebview: 6.2.0-beta.3

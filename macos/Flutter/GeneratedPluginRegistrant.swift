@@ -10,7 +10,6 @@ import app_settings
 import device_info_plus
 import flutter_inappwebview_macos
 import flutter_secure_storage_darwin
-import hotkey_manager_macos
 import libclash_vpn_service
 import open_dir_macos
 import package_info_plus
@@ -26,7 +25,6 @@ func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
   DeviceInfoPlusMacosPlugin.register(with: registry.registrar(forPlugin: "DeviceInfoPlusMacosPlugin"))
   InAppWebViewFlutterPlugin.register(with: registry.registrar(forPlugin: "InAppWebViewFlutterPlugin"))
   FlutterSecureStorageDarwinPlugin.register(with: registry.registrar(forPlugin: "FlutterSecureStorageDarwinPlugin"))
-  HotkeyManagerMacosPlugin.register(with: registry.registrar(forPlugin: "HotkeyManagerMacosPlugin"))
   VpnServicePlugin.register(with: registry.registrar(forPlugin: "VpnServicePlugin"))
   OpenDirMacosPlugin.register(with: registry.registrar(forPlugin: "OpenDirMacosPlugin"))
   FPPPackageInfoPlusPlugin.register(with: registry.registrar(forPlugin: "FPPPackageInfoPlusPlugin"))
